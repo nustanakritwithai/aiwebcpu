@@ -28,7 +28,10 @@
     auth:`สถานะ: ล็อกอินผิดพลาด\nอาการ: HTTP_401 token หมดอายุ\nเป้าหมาย: ล็อกอินสำเร็จ\n\nใช้สกิล: กู้คืนการยืนยันตัวตน\n\nทำงาน:\n- ตรวจโทเคน\n- รีเฟรชโทเคนถ้าหมดอายุ\n- ลองล็อกอินใหม่\n\nตรวจสอบ: HTTP_200\n\nถ้าไม่สำเร็จ: ส่งต่อเอเจนต์`,
     api:`สถานะ: API ผิดพลาด\nอาการ: HTTP_503 และ timeout\nเป้าหมาย: API ใช้งานได้\n\nทำงาน:\n- ตรวจ HTTP status\n- รอ backoff\n- ลอง request ใหม่\n\nตรวจสอบ: HTTP_200\n\nถ้าไม่สำเร็จ: ส่งต่อเอเจนต์`,
     build:`สถานะ: Build ผิดพลาด\nอาการ: dependency version conflict\nเป้าหมาย: Build ผ่าน\n\nทำงาน:\n- อ่าน build error\n- ตรวจ dependency\n- ปรับ version\n- รัน build ใหม่\n\nตรวจสอบ: BUILD_PASS\n\nถ้าไม่สำเร็จ: ส่งต่อเอเจนต์`,
-    unknown:`สถานะ: ระบบชำระเงินผิดพลาด\nอาการ: PAYMENT_X91 signature mismatch\nเป้าหมาย: ชำระเงินสำเร็จ\n\nทำงาน:\n- ตรวจ signature\n- ตรวจ payment session\n\nตรวจสอบ: PAYMENT_OK\n\nถ้าไม่สำเร็จ: ส่งต่อเอเจนต์`
+    unknown:`สถานะ: ระบบชำระเงินผิดพลาด\nอาการ: PAYMENT_X91 signature mismatch\nเป้าหมาย: ชำระเงินสำเร็จ\n\nทำงาน:\n- ตรวจ signature\n- ตรวจ payment session\n\nตรวจสอบ: PAYMENT_OK\n\nถ้าไม่สำเร็จ: ส่งต่อเอเจนต์`,
+    conflict:`สถานะ: Build ผิดพลาด\nอาการ: dependency version conflict\nเป้าหมาย: Build ผ่าน\n\nใช้สกิล: AUTH_RECOVERY\n\nทำงาน:\n- ตรวจ dependency\n\nตรวจสอบ: BUILD_PASS\n\nถ้าไม่สำเร็จ: ส่งต่อเอเจนต์`,
+    weak:`สถานะ: ระบบล่ม\nอาการ: api timeout retry 503 request\nเป้าหมาย: ทำให้กลับมาได้`,
+    conflictAuth:`สถานะ: ล็อกอินผิดพลาด\nอาการ: HTTP_401 token หมดอายุ\nเป้าหมาย: ล็อกอินสำเร็จ\n\nใช้สกิล: BUILD_REPAIR\n\nตรวจสอบ: HTTP_200`
   };
 
   const vocab = {
@@ -93,27 +96,64 @@
     out.normalizedText=lower([out.stateText,out.observation,out.goalText,out.skillText,...out.steps,out.verify].join(' '));out.detected={state:stateDetected,goal:goalDetected};return out;
   }
 
+  function enabledSkills(skills){return (skills||[]).filter(function(s){return s&&s.enabled!==false;});}
+  function findRequestedSkill(cmd,skills){
+    const explicit=lower(cmd.skillText); if(!explicit) return null;
+    for(const skill of skills){const id=lower(skill.id), name=lower(skill.name); if(explicit===id||explicit===name) return skill;}
+    for(const skill of skills){const name=lower(skill.name); if(name&&(name.includes(explicit)||explicit.includes(name))) return skill;}
+    return null;
+  }
+  function skillSupports(skill,cmd){
+    const stateOk=!skill.states||!skill.states.length||cmd.state==="UNKNOWN_STATE"||skill.states.includes(cmd.state);
+    const goalOk=!skill.goals||!skill.goals.length||cmd.goal==="UNKNOWN_GOAL"||skill.goals.includes(cmd.goal);
+    return stateOk&&goalOk;
+  }
   function scoreSkill(skill,cmd){
     let score=0;const reasons=[];const explicit=lower(cmd.skillText),skillId=lower(skill.id),skillName=lower(skill.name);
-    if(explicit){if(explicit===skillId||explicit===skillName){score+=18;reasons.push({type:'EXPLICIT_SKILL_EXACT',score:18});}else if(skillName.includes(explicit)||explicit.includes(skillName)){score+=12;reasons.push({type:'EXPLICIT_SKILL_PARTIAL',score:12});}}
-    if(skill.states?.includes(cmd.state)){score+=8;reasons.push({type:'STATE',value:cmd.state,score:8});}
-    if(skill.goals?.includes(cmd.goal)){score+=7;reasons.push({type:'GOAL',value:cmd.goal,score:7});}
-    const keywordHits=[];for(const keyword of skill.keywords||[]){const k=lower(keyword);if(k&&cmd.normalizedText.includes(k))keywordHits.push(keyword);}
-    if(keywordHits.length){const keywordScore=Math.min(6,keywordHits.length*2);score+=keywordScore;reasons.push({type:'KEYWORDS',value:keywordHits,score:keywordScore});}
-    if(cmd.state!=='UNKNOWN_STATE'&&skill.states?.length&&!skill.states.includes(cmd.state)){score-=5;reasons.push({type:'STATE_MISMATCH',value:cmd.state,score:-5});}
-    if(cmd.goal!=='UNKNOWN_GOAL'&&skill.goals?.length&&!skill.goals.includes(cmd.goal)){score-=4;reasons.push({type:'GOAL_MISMATCH',value:cmd.goal,score:-4});}
-    return {score,reasons};
+    const obs=lower(cmd.observation), command=lower([cmd.stateText,cmd.observation,cmd.goalText].join(" "));
+    const stateMatch=!!(skill.states&&skill.states.includes(cmd.state));
+    const goalMatch=!!(skill.goals&&skill.goals.includes(cmd.goal));
+    let explicitMatch=false;
+    if(explicit){if(explicit===skillId||explicit===skillName){explicitMatch=true;score+=20;reasons.push({type:"EXPLICIT_SKILL_MATCH",score:20});}else if(skillName.includes(explicit)||explicit.includes(skillName)){explicitMatch=true;score+=12;reasons.push({type:"EXPLICIT_SKILL_PARTIAL",score:12});}}
+    if(stateMatch){score+=10;reasons.push({type:"STATE_MATCH",value:cmd.state,score:10});}
+    if(goalMatch){score+=8;reasons.push({type:"GOAL_MATCH",value:cmd.goal,score:8});}
+    const obsHits=[], cmdHits=[];
+    for(const keyword of skill.keywords||[]){const k=lower(keyword); if(!k) continue; if(obs.includes(k)) obsHits.push(keyword); if(command.includes(k)) cmdHits.push(keyword);}
+    const kwRaw=obsHits.length+cmdHits.length;
+    const kwScore=Math.min(2,kwRaw);
+    if(kwScore){score+=kwScore;reasons.push({type:"KEYWORD_MATCH",value:obsHits.concat(cmdHits),score:kwScore,cappedFrom:kwRaw});}
+    if(cmd.state!=="UNKNOWN_STATE"&&skill.states&&skill.states.length&&!stateMatch){score-=8;reasons.push({type:"STATE_MISMATCH",value:cmd.state,score:-8});}
+    if(cmd.goal!=="UNKNOWN_GOAL"&&skill.goals&&skill.goals.length&&!goalMatch){score-=6;reasons.push({type:"GOAL_MISMATCH",value:cmd.goal,score:-6});}
+    return {score:score,reasons:reasons,stateMatch:stateMatch,goalMatch:goalMatch,explicitMatch:explicitMatch,keywordScore:kwScore};
   }
-
-  function rankSkills(cmd,skills){return (skills||[]).map(skill=>({skill,...scoreSkill(skill,cmd)})).sort((a,b)=>b.score-a.score||a.skill.id.localeCompare(b.skill.id));}
+  function rankSkills(cmd,skills){return enabledSkills(skills).map(function(skill){return Object.assign({skill:skill},scoreSkill(skill,cmd));}).sort(function(a,b){return b.score-a.score||a.skill.id.localeCompare(b.skill.id);});}
+  function isUnconstrained(skill){return (!skill.states||!skill.states.length)&&(!skill.goals||!skill.goals.length);}
+  function isStructuralStrong(row,requested){
+    if(row.stateMatch&&row.goalMatch) return true;
+    if(!requested||requested.id!==row.skill.id) return false;
+    if(isUnconstrained(row.skill)) return true;
+    return (row.stateMatch||row.goalMatch);
+  }
   function matchSkill(cmd,skills){
-    if(!cmd?.parse?.valid)return{classification:MATCH.NONE,selected:null,ranked:[],confidence:0,reason:'PARSE_INVALID'};
-    const ranked=rankSkills(cmd,skills),first=ranked[0]||null,second=ranked[1]||null;
-    if(!first||first.score<5)return{classification:MATCH.NONE,selected:null,ranked,confidence:0,reason:'SCORE_BELOW_MINIMUM'};
-    const gap=second?first.score-second.score:first.score;
-    if(second&&first.score>=8&&second.score>=8&&gap<=2)return{classification:MATCH.CONFLICT,selected:null,ranked,confidence:Math.max(0,Math.min(100,first.score*4)),reason:'TOP_CANDIDATES_TOO_CLOSE'};
-    if(first.score>=12&&gap>=3)return{classification:MATCH.STRONG,selected:first,ranked,confidence:Math.min(99,55+first.score*2),reason:'STRONG_SCORE_AND_GAP'};
-    return{classification:MATCH.WEAK,selected:first,ranked,confidence:Math.min(79,35+first.score*3),reason:'NOT_STRONG_ENOUGH'};
+    const list=enabledSkills(skills);
+    if(!cmd||!cmd.parse||!cmd.parse.valid)return{classification:MATCH.NONE,selected:null,ranked:[],confidence:0,reason:"PARSE_INVALID"};
+    const requested=findRequestedSkill(cmd,list);
+    const ranked=rankSkills(cmd,list);
+    if(requested&&!skillSupports(requested,cmd)){
+      return{classification:MATCH.CONFLICT,selected:null,ranked:ranked,requestedSkill:requested.id,confidence:0,reason:"EXPLICIT_SKILL_STATE_GOAL_MISMATCH"};
+    }
+    const strongs=ranked.filter(function(row){return isStructuralStrong(row,requested);});
+    if(strongs.length>=2&&(strongs[0].score-strongs[1].score)<=2){
+      return{classification:MATCH.CONFLICT,selected:null,ranked:ranked,confidence:Math.max(0,Math.min(100,strongs[0].score*4)),reason:"TOP_CANDIDATES_TOO_CLOSE"};
+    }
+    if(strongs.length){
+      const pick=strongs[0];
+      return{classification:MATCH.STRONG,selected:pick,ranked:ranked,confidence:Math.min(99,55+pick.score*2),reason:"STRUCTURAL_EVIDENCE"};
+    }
+    const first=ranked[0]||null;
+    const partial=first&&(first.stateMatch||first.goalMatch||first.keywordScore>0||first.explicitMatch);
+    if(partial)return{classification:MATCH.WEAK,selected:first,ranked:ranked,confidence:Math.min(79,35+first.score*3),reason:"PARTIAL_EVIDENCE"};
+    return{classification:MATCH.NONE,selected:null,ranked:ranked,confidence:0,reason:"NO_STRUCTURAL_OR_PARTIAL_EVIDENCE"};
   }
 
   function decideRuntime(cmd,match){
