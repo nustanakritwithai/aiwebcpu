@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0a0d12" />
+  <title>AI CPU Web V0</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><div class="brand-mark">AI</div><div><strong>AI CPU</strong><span>Skill Runtime V0</span></div></div>
+      <button class="new-task" id="newTaskBtn">＋ งานใหม่</button>
+      <nav class="nav" aria-label="เมนูหลัก">
+        <button class="nav-item active" data-view="chat">💬 <span>Chat</span></button>
+        <button class="nav-item" data-view="skills">⚡ <span>CPU Skills</span><b id="skillCountBadge">5</b></button>
+        <button class="nav-item" data-view="memory">🗃 <span>Memory</span></button>
+        <button class="nav-item" data-view="history">🧪 <span>History</span></button>
+        <button class="nav-item" data-view="tools">🛠 <span>Tools</span></button>
+      </nav>
+      <div class="sidebar-section"><div class="section-label">ตัวอย่างล่าสุด</div><button class="recent-item" data-sample="auth">แก้ Login HTTP 401</button><button class="recent-item" data-sample="api">API Timeout / 503</button><button class="recent-item" data-sample="unknown">งานที่ยังไม่มี Skill</button></div>
+      <div class="sidebar-footer"><span class="status-dot"></span>Local CPU Runtime</div>
+    </aside>
+    <main class="workspace">
+      <header class="topbar"><button class="mobile-menu" id="mobileMenuBtn" aria-label="เปิดเมนู">☰</button><div><strong id="workspaceTitle">AI CPU Chat</strong><span>Manual Thai Command → Skill Match → CPU Simulation</span></div><div class="mode-pill">⚡ CPU-first</div></header>
+      <section class="content-view active" id="view-chat">
+        <div class="chat-scroll" id="chatScroll">
+          <div class="welcome-card"><div class="eyebrow">AI CPU WEB V0</div><h1>วางคำสั่งภาษาไทย แล้วให้ CPU หา Skill ที่เหมาะสม</h1><p>เวอร์ชันนี้ยังไม่มี LLM ในเว็บ ตัวเว็บทำหน้าที่เป็น Skill Runtime แบบ deterministic และเก็บประสบการณ์ไว้ในเครื่องของคุณ</p><div class="principle"><b>หลักการ:</b> Agent แก้สิ่งที่ยังไม่รู้ — AI CPU จำและรันสิ่งที่รู้แล้ว</div></div>
+          <div class="message assistant"><div class="avatar cpu">AI</div><div class="message-body"><div class="bubble">ลองตัวอย่างด้านล่าง หรือวางคำสั่ง AI CPU ภาษาไทยของคุณเองได้เลย</div><div class="message-meta">AI CPU Runtime</div></div></div><div id="messageList"></div>
+        </div>
+        <div class="composer-wrap"><div class="sample-row"><button data-sample="auth">AUTH 401</button><button data-sample="api">API Retry</button><button data-sample="build">Build Repair</button><button data-sample="unknown">Unknown → Agent</button></div><div class="composer"><textarea id="commandInput" rows="7" spellcheck="false" placeholder="วางคำสั่งภาษาไทย เช่น&#10;สถานะ: ล็อกอินผิดพลาด&#10;อาการ: HTTP_401&#10;เป้าหมาย: ล็อกอินสำเร็จ&#10;..."></textarea><div class="composer-actions"><div class="hint">V0: ไม่มี AI API — Parser + Skill Matcher รันบน JavaScript</div><button class="run-btn" id="runBtn">▶ RUN AI CPU</button></div></div></div>
+      </section>
+      <section class="content-view" id="view-skills"><div class="page-panel"><div class="page-heading"><div><div class="eyebrow">SKILL REGISTRY</div><h2>CPU Skills</h2><p>Skill คือโปรแกรม/Workflow ที่ AI CPU ทำซ้ำได้โดยไม่ต้องเรียก Agent</p></div><button class="secondary-btn" id="openAddSkillBtn">＋ เพิ่ม Skill</button></div><div id="skillsGrid" class="skills-grid"></div></div></section>
+      <section class="content-view" id="view-memory"><div class="page-panel"><div class="eyebrow">SKILL-ORIENTED MEMORY</div><h2>Memory</h2><p>จำว่า State/Goal แบบไหนเคยใช้ Skill อะไร และผลเป็นอย่างไร</p><div id="memoryTableWrap"></div></div></section>
+      <section class="content-view" id="view-history"><div class="page-panel"><div class="eyebrow">EXPERIENCE</div><h2>Execution History</h2><p>ทุกครั้งที่รันจะกลายเป็น Episode สำหรับใช้พัฒนาระบบต่อไป</p><div id="historyList" class="history-list"></div></div></section>
+      <section class="content-view" id="view-tools"><div class="page-panel"><div class="eyebrow">TOOL REGISTRY — SIMULATION</div><h2>Tools</h2><p>V0 ยังเป็นตัวจำลอง Tool เพื่อทดสอบ architecture ก่อนเชื่อมของจริง</p><div id="toolsGrid" class="skills-grid"></div></div></section>
+    </main>
+    <aside class="canvas">
+      <header class="canvas-header"><div><strong>Work Canvas</strong><span>Live AI CPU activity</span></div><div class="canvas-tabs"><button class="active" data-canvas="work">Work</button><button data-canvas="trace">Trace</button><button data-canvas="state">State</button></div></header>
+      <div class="canvas-body"><section class="canvas-pane active" id="canvas-work"><div class="task-card"><div class="task-head"><div><div class="eyebrow">CURRENT TASK</div><h3 id="taskName">รอคำสั่ง</h3></div><span class="status-chip idle" id="runStatus">IDLE</span></div><div class="flow" id="flowList"><div class="flow-empty">ยังไม่มี Workflow — กด RUN เพื่อเริ่ม</div></div></div><div class="metrics-grid"><div><span>CPU Solved</span><strong id="metricCpu">0</strong></div><div><span>Agent Needed</span><strong id="metricAgent">0</strong></div><div><span>Skills</span><strong id="metricSkills">5</strong></div></div><div class="agent-card" id="agentCard"><div class="agent-icon">🧠</div><div><b>Agent Escalation</b><p>จะถูกใช้เมื่อ AI CPU ไม่มี Skill ที่เหมาะสม หรือ workflow ไม่ผ่าน Verify</p></div></div></section><section class="canvas-pane" id="canvas-trace"><pre id="traceOutput">// Trace จะปรากฏหลังรันคำสั่ง</pre></section><section class="canvas-pane" id="canvas-state"><pre id="stateOutput">{
+  "state": "IDLE",
+  "goal": null
+}</pre></section></div>
+    </aside>
+  </div>
+  <dialog id="addSkillDialog"><form method="dialog" id="addSkillForm" class="dialog-card"><div class="dialog-head"><div><div class="eyebrow">INSTALL CPU SKILL</div><h3>เพิ่ม Skill ใหม่</h3></div><button value="cancel" class="icon-btn" aria-label="ปิด">×</button></div><label>Skill ID<input id="newSkillId" placeholder="CSV_REPAIR" required /></label><label>ชื่อสกิล<input id="newSkillName" placeholder="ซ่อม CSV" required /></label><label>คำที่ใช้จับคู่ (คั่นด้วย comma)<input id="newSkillKeywords" placeholder="csv, encoding, import" required /></label><label>ขั้นตอน (1 บรรทัดต่อ 1 ขั้น)<textarea id="newSkillSteps" rows="4" placeholder="ตรวจ encoding&#10;แปลงเป็น UTF-8&#10;ลอง import ใหม่" required></textarea></label><div class="dialog-actions"><button value="cancel" class="secondary-btn">ยกเลิก</button><button value="default" id="installSkillBtn" class="run-btn">Install Skill</button></div></form></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
