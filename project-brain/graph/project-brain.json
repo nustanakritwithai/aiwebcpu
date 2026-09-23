@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "0.1",
+  "updated": "2026-09-24",
+  "purpose": "Machine-readable seed for Project Brain. GitHub repos remain source of truth for code.",
+  "nodeTypes": ["PROJECT", "CAPABILITY", "EVIDENCE", "GOAL", "ISSUE", "INTEGRATION", "VERSION"],
+  "relationTypes": ["PROVIDES", "NEEDS", "VERIFIED_BY", "USED_IN", "DEPENDS_ON", "BLOCKED_BY", "ADAPTED_FROM", "SUPERSEDES", "REUSE_CANDIDATE_FOR"],
+  "nodes": [
+    {"id":"repo:aiwebcpu","type":"PROJECT","name":"aiwebcpu","repo":"nustanakritwithai/aiwebcpu","status":"active"},
+    {"id":"repo:testge","type":"PROJECT","name":"TestGE","repo":"nustanakritwithai/TestGE","status":"v1"},
+    {"id":"repo:astralife","type":"PROJECT","name":"AstraLife","repo":"nustanakritwithai/AstraLife","status":"v0.5"},
+    {"id":"repo:simclone","type":"PROJECT","name":"Simclone","repo":"nustanakritwithai/Simclone","status":"active-alpha"},
+
+    {"id":"cap:verification","type":"CAPABILITY","name":"Verification","status":"active"},
+    {"id":"cap:rollback","type":"CAPABILITY","name":"Rollback","status":"documented-verified"},
+    {"id":"cap:replay","type":"CAPABILITY","name":"Replay","status":"documented-verified"},
+    {"id":"cap:world-state","type":"CAPABILITY","name":"Authoritative World State","status":"documented-verified"},
+    {"id":"cap:replication","type":"CAPABILITY","name":"Delta Replication","status":"documented-verified"},
+    {"id":"cap:agent-learning","type":"CAPABILITY","name":"Agent Learning","status":"experimental"},
+    {"id":"cap:emergent-role","type":"CAPABILITY","name":"Emergent Roles","status":"experimental"},
+    {"id":"cap:colony","type":"CAPABILITY","name":"Colony Simulation","status":"active"},
+    {"id":"cap:cpu-decision","type":"CAPABILITY","name":"CPU Decision","status":"active"},
+
+    {"id":"ev:testge-v1-readme","type":"EVIDENCE","name":"TestGE TWA V1 documented feature set","verdict":"SAT"},
+    {"id":"ev:astralife-v05-readme","type":"EVIDENCE","name":"AstraLife V0.5 documented checkpoint","verdict":"SAT"},
+    {"id":"ev:aiwebcpu-v02-plan","type":"EVIDENCE","name":"aiwebcpu V0.2 Real Skill First contract","verdict":"SAT"},
+    {"id":"ev:simclone-ui-tests-20260923","type":"EVIDENCE","name":"Simclone recent unit/browser verification signal","verdict":"SAT_WITH_LIMITS"},
+
+    {"id":"goal:simclone-time-travel","type":"GOAL","name":"Simclone ย้อนเวลาได้","status":"proposed"}
+  ],
+  "edges": [
+    {"from":"repo:aiwebcpu","to":"cap:verification","type":"PROVIDES"},
+
+    {"from":"repo:testge","to":"cap:world-state","type":"PROVIDES"},
+    {"from":"repo:testge","to":"cap:rollback","type":"PROVIDES"},
+    {"from":"repo:testge","to":"cap:replay","type":"PROVIDES"},
+    {"from":"repo:testge","to":"cap:replication","type":"PROVIDES"},
+    {"from":"cap:rollback","to":"ev:testge-v1-readme","type":"VERIFIED_BY"},
+    {"from":"cap:replay","to":"ev:testge-v1-readme","type":"VERIFIED_BY"},
+
+    {"from":"repo:astralife","to":"cap:agent-learning","type":"PROVIDES"},
+    {"from":"repo:astralife","to":"cap:emergent-role","type":"PROVIDES"},
+    {"from":"cap:agent-learning","to":"ev:astralife-v05-readme","type":"VERIFIED_BY"},
+
+    {"from":"repo:simclone","to":"cap:colony","type":"PROVIDES"},
+    {"from":"repo:simclone","to":"cap:cpu-decision","type":"PROVIDES"},
+
+    {"from":"goal:simclone-time-travel","to":"cap:rollback","type":"NEEDS"},
+    {"from":"goal:simclone-time-travel","to":"cap:replay","type":"NEEDS"},
+    {"from":"goal:simclone-time-travel","to":"cap:verification","type":"NEEDS"},
+    {"from":"cap:rollback","to":"goal:simclone-time-travel","type":"REUSE_CANDIDATE_FOR"},
+    {"from":"cap:replay","to":"goal:simclone-time-travel","type":"REUSE_CANDIDATE_FOR"}
+  ],
+  "timeline": [
+    {"date":"2026-09-03","event":"aiwebcpu current main direction reaches V0.2 Real Skill First work","source":"nustanakritwithai/aiwebcpu"},
+    {"date":"2026-09-23","event":"Simclone active alpha receives verified UI/save recovery work with explicit verification limits","source":"nustanakritwithai/Simclone"},
+    {"date":"2026-09-24","event":"Project Brain Obsidian V0.1 bootstrap created","source":"nustanakritwithai/aiwebcpu"}
+  ],
+  "rules": {
+    "buildOrder": ["REUSE", "ADAPT", "BUILD"],
+    "verificationStates": ["SAT", "VIOL", "UNKNOWN"],
+    "unknownIsPass": false,
+    "agentCompletionIsEvidence": false
+  }
+}
