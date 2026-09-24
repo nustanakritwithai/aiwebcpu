@@ -323,8 +323,26 @@
       "id": "version:project-brain-v05",
       "type": "VERSION",
       "name": "Project Brain Verifier V0.5",
+      "status": "superseded",
+      "activeFrom": "pb-2026-09-24-verifier-v05",
+      "activeUntil": "pb-2026-09-24-command-center-v051"
+    },
+    {
+      "id": "ev:project-brain-v051-ui-ci",
+      "type": "EVIDENCE",
+      "name": "Project Brain V0.5.1 Command Center UX contract CI",
+      "verdict": "SAT",
+      "scope": "PR #18 candidate head d6b90ae; one-view routing, canonical global search, dynamic overview metrics, responsive rail/drawer, deep-link views and reduced-motion regressions",
+      "limitations": "Exact-main completed workflow for merge commit 8e3c816 was not observed at bookkeeping time. SAT applies to the Command Center UI contract only.",
+      "source": "GitHub Actions run 36034046624",
+      "activeFrom": "pb-2026-09-24-command-center-v051"
+    },
+    {
+      "id": "version:project-brain-v051",
+      "type": "VERSION",
+      "name": "Project Brain Command Center UX V0.5.1",
       "status": "current",
-      "activeFrom": "pb-2026-09-24-verifier-v05"
+      "activeFrom": "pb-2026-09-24-command-center-v051"
     }
   ],
   "edges": [
@@ -569,6 +587,12 @@
       "to": "version:project-brain-v041",
       "type": "SUPERSEDES",
       "activeFrom": "pb-2026-09-24-verifier-v05"
+    },
+    {
+      "from": "version:project-brain-v051",
+      "to": "version:project-brain-v05",
+      "type": "SUPERSEDES",
+      "activeFrom": "pb-2026-09-24-command-center-v051"
     }
   ],
   "timeline": [
@@ -626,6 +650,11 @@
       "date": "2026-09-24",
       "event": "Project Brain V0.5 adds contract-driven verification from documented capabilities to SAT/VIOL/UNKNOWN and review-only REUSE/ADAPT/BUILD patch candidates",
       "source": "nustanakritwithai/aiwebcpu@6801920"
+    },
+    {
+      "date": "2026-09-24",
+      "event": "Project Brain V0.5.1 replaces the long stacked Web Viewer with a verified Command Center workspace, Overview dashboard and canonical global search",
+      "source": "nustanakritwithai/aiwebcpu@8e3c816"
     }
   ],
   "rules": {
@@ -723,9 +752,16 @@
         "label": "Verifier V0.5",
         "description": "Contract-driven goal verification, fail-closed evidence freshness, Agent query and review-only graph patch generation are merged.",
         "source": "nustanakritwithai/aiwebcpu@6801920"
+      },
+      {
+        "id": "pb-2026-09-24-command-center-v051",
+        "date": "2026-09-24",
+        "label": "Command Center UX V0.5.1",
+        "description": "Verified one-view workspace shell, Overview dashboard, canonical global search, responsive rail/drawer and deep-link views are merged.",
+        "source": "nustanakritwithai/aiwebcpu@8e3c816"
       }
     ],
-    "defaultCheckpoint": "pb-2026-09-24-verifier-v05"
+    "defaultCheckpoint": "pb-2026-09-24-command-center-v051"
   },
   "interfaces": {
     "human": "web",
