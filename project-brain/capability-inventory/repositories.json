@@ -11,7 +11,7 @@
     "repositories": 33,
     "documentedRepositories": 29,
     "unknownRepositories": 4,
-    "documentedCapabilities": 115
+    "documentedCapabilities": 116
   },
   "repositories": [
     {
@@ -140,7 +140,7 @@
       "repo": "nustanakritwithai/aiwebcpu",
       "catalogStatus": "DISCOVERED",
       "extractionStatus": "DOCUMENTED",
-      "capabilityCount": 5,
+      "capabilityCount": 6,
       "capabilities": [
         {
           "label": "CPU-first skill execution",
@@ -199,6 +199,18 @@
               "path": "brain/scanner.js",
               "sha": "9f1a507f977cc2e4fe98fc142c44dc7de88c6c18",
               "claim": "Web UI exposes scanner baseline/candidates while preserving UNKNOWN on unreadable pending state."
+            }
+          ]
+        },
+        {
+          "label": "Goal-specific contract verification",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "project-brain/verifier/verifier.mjs",
+              "sha": "aff36f8b48207917c16df62a584864542603442a",
+              "claim": "Verifier V0.5 evaluates explicit goal contracts against documented capability evidence, freshness, CI policy and compatibility checks, then emits SAT/VIOL/UNKNOWN plus review-only patch candidates."
             }
           ]
         }
