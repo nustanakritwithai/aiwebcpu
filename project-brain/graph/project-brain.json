@@ -273,8 +273,33 @@
       "id": "version:project-brain-v04",
       "type": "VERSION",
       "name": "Project Brain GitHub Scanner V0.4",
+      "status": "superseded",
+      "activeFrom": "pb-2026-09-24-scanner-v04",
+      "activeUntil": "pb-2026-09-24-capability-inventory-v041"
+    },
+    {
+      "id": "cap:repository-capability-inventory",
+      "type": "CAPABILITY",
+      "name": "Repository Capability Inventory",
+      "status": "verified",
+      "activeFrom": "pb-2026-09-24-capability-inventory-v041"
+    },
+    {
+      "id": "ev:project-brain-v041-ci",
+      "type": "EVIDENCE",
+      "name": "Project Brain V0.4.1 capability inventory contract CI",
+      "verdict": "SAT",
+      "scope": "PR #14 candidate head b4c1665; catalog coverage, capability provenance, DOCUMENTED/VERIFIED boundary, Web inventory source-of-truth and existing regressions",
+      "limitations": "This evidence verifies the inventory machinery and evidence contract. It does not verify reuse compatibility of the 115 documented capability candidates.",
+      "source": "GitHub Actions run 36030755605",
+      "activeFrom": "pb-2026-09-24-capability-inventory-v041"
+    },
+    {
+      "id": "version:project-brain-v041",
+      "type": "VERSION",
+      "name": "Project Brain Capability Inventory V0.4.1",
       "status": "current",
-      "activeFrom": "pb-2026-09-24-scanner-v04"
+      "activeFrom": "pb-2026-09-24-capability-inventory-v041"
     }
   ],
   "edges": [
@@ -483,6 +508,24 @@
       "to": "version:project-brain-v03",
       "type": "SUPERSEDES",
       "activeFrom": "pb-2026-09-24-scanner-v04"
+    },
+    {
+      "from": "repo:aiwebcpu",
+      "to": "cap:repository-capability-inventory",
+      "type": "PROVIDES",
+      "activeFrom": "pb-2026-09-24-capability-inventory-v041"
+    },
+    {
+      "from": "cap:repository-capability-inventory",
+      "to": "ev:project-brain-v041-ci",
+      "type": "VERIFIED_BY",
+      "activeFrom": "pb-2026-09-24-capability-inventory-v041"
+    },
+    {
+      "from": "version:project-brain-v041",
+      "to": "version:project-brain-v04",
+      "type": "SUPERSEDES",
+      "activeFrom": "pb-2026-09-24-capability-inventory-v041"
     }
   ],
   "timeline": [
@@ -530,6 +573,11 @@
       "date": "2026-09-24",
       "event": "Project Brain GitHub Scanner V0.4 verified on candidate CI and merged with a web-only Repository Change Inbox",
       "source": "nustanakritwithai/aiwebcpu@aab1a88"
+    },
+    {
+      "date": "2026-09-24",
+      "event": "Project Brain V0.4.1 adds evidence-backed semantic extraction across the public repository catalog while keeping every reuse decision UNKNOWN",
+      "source": "nustanakritwithai/aiwebcpu@02917f5"
     }
   ],
   "rules": {
@@ -613,9 +661,16 @@
         "label": "GitHub Scanner V0.4",
         "description": "Verified deterministic repository-change scanner, safe candidate PR automation and Web Scanner Inbox are merged.",
         "source": "nustanakritwithai/aiwebcpu@aab1a88"
+      },
+      {
+        "id": "pb-2026-09-24-capability-inventory-v041",
+        "date": "2026-09-24",
+        "label": "Capability Inventory V0.4.1",
+        "description": "Verified repository semantic extraction layer and Web capability inventory are merged; documented capability reuse remains UNKNOWN.",
+        "source": "nustanakritwithai/aiwebcpu@02917f5"
       }
     ],
-    "defaultCheckpoint": "pb-2026-09-24-scanner-v04"
+    "defaultCheckpoint": "pb-2026-09-24-capability-inventory-v041"
   },
   "interfaces": {
     "human": "web",
