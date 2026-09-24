@@ -43,3 +43,20 @@ Proof แรก:
 - [[Goals/Simclone-Time-Travel]]
 
 หมายเหตุ: ข้อมูล capability เป็น registry สำหรับการค้นหาและวางแผน ไม่ได้หมายความว่า module จากแต่ละ repo เชื่อมกันได้โดยตรงจนกว่าจะผ่าน compatibility check และ verification
+
+
+## Query Layer
+
+Project Brain V0.1 มี CLI แบบ dependency-free สำหรับ Agent/automation:
+
+```bash
+node project-brain/query.mjs providers rollback
+node project-brain/query.mjs capability replay
+node project-brain/query.mjs goal "Simclone ย้อนเวลาได้"
+node project-brain/query.mjs integration "Simclone TestGE"
+node project-brain/query.mjs node AstraLife
+```
+
+ผลลัพธ์เป็น JSON เพื่อให้ Agent ใช้ต่อได้โดยไม่ต้อง scrape Obsidian Markdown
+
+หลักสำคัญ: Query layer อ่าน `graph/project-brain.json` ซึ่งเป็น machine view เดียวกับ Knowledge Graph ไม่สร้างฐานความจริงอีกชุด
