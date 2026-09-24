@@ -161,7 +161,7 @@
         },
         {
           "path": "project-brain/graph/sync-catalog-inventory.mjs",
-          "sha": "8ebddb17b04063ccb553d40d8b3bbc599be77bf2",
+          "sha": "826bd2d12906a118468f94e9f9a2d050cb1aebe9",
           "status": "present"
         },
         {
