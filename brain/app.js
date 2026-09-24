@@ -212,6 +212,7 @@ function connectedSet(id,edges){
 function renderGraph(){
   const {nodes,edges,matches,q}=filtered();
   ensureLayout(nodes,edges);
+  svg.dataset.density=nodes.length<=60?'comfortable':nodes.length<=120?'compact':'dense';
   nodeLayer.replaceChildren();edgeLayer.replaceChildren();edgeLabelLayer.replaceChildren();
   empty.hidden=nodes.length>0;
   const connected=selectedId?connectedSet(selectedId,edges):null;
@@ -453,10 +454,13 @@ async function boot(){
 
 document.addEventListener('project-brain:set-visible-types',event=>{
   const requested=Array.isArray(event.detail?.types)?event.detail.types:[];
-  visibleTypes=new Set(requested.filter(type=>graph?.nodeTypes?.includes(type)));
+  const next=new Set(requested.filter(type=>graph?.nodeTypes?.includes(type)));
+  const changed=next.size!==visibleTypes.size||[...next].some(type=>!visibleTypes.has(type));
+  visibleTypes=next;
   document.querySelectorAll('#type-filters .filter-chip').forEach(button=>{
     button.classList.toggle('off',!visibleTypes.has(button.dataset.type));
   });
+  if(!changed)return;
   if(selectedId&&!graph.nodes.some(n=>n.id===selectedId&&visibleTypes.has(n.type)))selectedId=null;
   layoutKey='';
   renderGraph();
