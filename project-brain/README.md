@@ -1,15 +1,26 @@
-# Project Brain — Obsidian Vault V0.1
+# Project Brain
 
-โฟลเดอร์นี้คือ Human Interface ของ Project Brain สำหรับอ่านร่วมกันระหว่างคนและ AI
+Project Brain คือ shared knowledge system สำหรับคนและ AI โดยมี **Web Viewer เป็น Human Interface หลักเพียงตัวเดียว**
 
-## หลักการ
+## Architecture
 
-GitHub = source of truth ของ code  
-Obsidian = human-readable knowledge map  
-project-brain/graph/project-brain.json = machine-readable graph seed  
-AI/Agent = อ่าน ค้นหา วางแผน และอัปเดตความรู้หลัง Verify
+```text
+GitHub repos
+    ↓
+project-brain/graph/project-brain.json
+    ├─→ Project Brain Web Viewer
+    └─→ query.mjs → AI / Agent
+```
 
-กฎก่อนสร้างของใหม่:
+- GitHub repositories = source of truth ของ code และ evidence
+- `project-brain/graph/project-brain.json` = canonical machine-readable Knowledge Graph
+- `/brain/` = human-readable Web Viewer
+- `project-brain/query.mjs` = query layer สำหรับ AI / Agent / automation
+- Markdown ใน `project-brain/` = architecture notes และ evidence context บน GitHub
+
+Project Brain **ไม่ใช้ Obsidian, local Vault หรือ mobile sync เป็นส่วนของระบบแล้ว**
+
+## Decision Rule
 
 ```text
 NEED
@@ -25,29 +36,40 @@ SAT / VIOL / UNKNOWN
 UPDATE PROJECT BRAIN
 ```
 
-## เปิดใน Obsidian
+UNKNOWN ไม่ใช่ PASS และ Agent บอกว่าเสร็จไม่ถือเป็นหลักฐาน
 
-Clone repo นี้ แล้วเลือกโฟลเดอร์ `project-brain` เป็น Vault ได้ทันที ไม่ต้องใช้ community plugin สำหรับ V0.1
+## Current Scope
 
-เริ่มที่ [[00-Home]]
+Projects:
+- [aiwebcpu](Projects/aiwebcpu.md)
+- [TestGE](Projects/TestGE.md)
+- [AstraLife](Projects/AstraLife.md)
+- [Simclone](Projects/Simclone.md)
 
-## V0.1 Scope
+First cross-repo proof:
+- [Simclone Time Travel](Goals/Simclone-Time-Travel.md)
+- [Simclone × TestGE Time Travel](Integrations/Simclone-TestGE-TimeTravel.md)
 
-เริ่มจาก 4 โปรเจกต์:
-- [[Projects/aiwebcpu]]
-- [[Projects/TestGE]]
-- [[Projects/AstraLife]]
-- [[Projects/Simclone]]
+## Web Viewer
 
-Proof แรก:
-- [[Goals/Simclone-Time-Travel]]
+Live path:
 
-หมายเหตุ: ข้อมูล capability เป็น registry สำหรับการค้นหาและวางแผน ไม่ได้หมายความว่า module จากแต่ละ repo เชื่อมกันได้โดยตรงจนกว่าจะผ่าน compatibility check และ verification
+```text
+/brain/
+```
 
+Viewer อ่าน canonical graph เดียวโดยตรง ไม่มีฐานความจริงซ้ำ
+
+ฟีเจอร์ปัจจุบัน:
+- typed Knowledge Graph
+- relation labels
+- search / presets / focus mode
+- evidence inspection
+- Temporal Graph slider
+- historical deep links ด้วย `?at=<checkpoint-id>`
+- node deep links ด้วย `?node=<node-id>`
 
 ## Query Layer
-
-Project Brain V0.1 มี CLI แบบ dependency-free สำหรับ Agent/automation:
 
 ```bash
 node project-brain/query.mjs providers rollback
@@ -55,60 +77,20 @@ node project-brain/query.mjs capability replay
 node project-brain/query.mjs goal "Simclone ย้อนเวลาได้"
 node project-brain/query.mjs integration "Simclone TestGE"
 node project-brain/query.mjs node AstraLife
-```
-
-ผลลัพธ์เป็น JSON เพื่อให้ Agent ใช้ต่อได้โดยไม่ต้อง scrape Obsidian Markdown
-
-หลักสำคัญ: Query layer อ่าน `graph/project-brain.json` ซึ่งเป็น machine view เดียวกับ Knowledge Graph ไม่สร้างฐานความจริงอีกชุด
-
-
-## Obsidian Sync บน Termux
-
-Vault ใน shared storage เป็นสำเนาสำหรับ Obsidian ส่วน GitHub `main` เป็น source of truth ของ Project Brain
-
-ติดตั้งคำสั่ง sync ครั้งเดียว:
-
-```bash
-cd ~/aiwebcpu
-git pull --ff-only
-bash project-brain/install-pb-sync.sh
-```
-
-หลังจากนั้นอัปเดต Obsidian ได้จากที่ไหนก็ได้ด้วย:
-
-```bash
-pb-sync
-```
-
-`pb-sync` จะ:
-
-1. fetch `origin/main`
-2. export เฉพาะ `project-brain/` จาก Git โดยไม่เปลี่ยน branch ที่กำลังใช้อยู่
-3. sync ไป `~/storage/shared/ProjectBrain`
-4. รักษา `.obsidian/` ไว้เสมอ จึงไม่ลบสี Groups / Graph settings ของผู้ใช้
-5. บันทึก source commit ไว้ที่ `.pb-sync-source`
-
-ตัวเลือก:
-
-```bash
-pb-sync --no-fetch
-pb-sync --vault ~/storage/shared/ProjectBrain
-pb-sync --ref main
-```
-
-กฎ V0.1: sync เป็น **GitHub → Obsidian ทางเดียว** เพื่อไม่ให้การแก้โน้ตใน Vault ไปเขียนทับ source of truth โดยไม่ผ่าน Git review
-
-
-## Temporal Graph V0.3
-
-Project Brain รองรับ knowledge-state checkpoints แล้ว
-
-```bash
 node project-brain/query.mjs checkpoints
-node project-brain/query.mjs snapshot pb-2026-09-24-bootstrap
 node project-brain/query.mjs snapshot pb-2026-09-24-compat
 ```
 
-อ่าน semantics และข้อจำกัดที่ [[Temporal-Graph]]
+ผลลัพธ์เป็น JSON เพื่อให้ Agent ใช้งานต่อได้โดยไม่ต้อง scrape หน้าเว็บ
 
-สำคัญ: `activeFrom` / `activeUntil` บอกช่วงที่ความรู้นั้นมีผลใน Project Brain ไม่ได้อ้างว่าเป็นวันที่ capability ถูกสร้างจริง
+## Temporal Graph V0.3
+
+อ่านรายละเอียดที่ [Temporal-Graph.md](Temporal-Graph.md)
+
+`activeFrom` / `activeUntil` บอกช่วงที่ความรู้นั้นมีผลใน Project Brain ไม่ได้อ้างว่าเป็นวันที่ capability ถูกสร้างจริง
+
+## Interface Policy
+
+ดู [Web-Only.md](Web-Only.md)
+
+Project Brain ใช้ **Web-only human interface** เพื่อให้มี UI เดียว, source เดียว และลดภาระ sync ระหว่างเครื่อง
