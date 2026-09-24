@@ -37,14 +37,15 @@
       "trackHead": false,
       "trackExactHeadWorkflow": false,
       "evidencePaths": [
-        "README.md",
-        "project-brain/graph/project-brain.json",
-        ".github/workflows/project-brain.yml",
-        "project-brain/scanner/config.json",
-        "project-brain/scanner/scanner.mjs",
         ".github/workflows/project-brain-scan.yml",
+        ".github/workflows/project-brain.yml",
+        "README.md",
+        "brain/catalog.js",
         "brain/scanner.js",
-        "project-brain/catalog/repositories.json"
+        "project-brain/catalog/repositories.json",
+        "project-brain/graph/project-brain.json",
+        "project-brain/scanner/config.json",
+        "project-brain/scanner/scanner.mjs"
       ]
     },
     {
