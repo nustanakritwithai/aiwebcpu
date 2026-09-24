@@ -1,4 +1,4 @@
-# Project Brain Web Viewer V0.5.3
+# Project Brain Web Viewer V0.5.4
 
 Interactive read-only Knowledge Graph viewer for Project Brain.
 
@@ -209,3 +209,23 @@ The Documented preset isolates repository → candidate → documentation eviden
 Large graph layout uses bounded iterations for browser performance.
 
 CI verifies that Graph coverage remains synchronized with the Repository Catalog and Capability Inventory.
+
+
+## Graph Focus UX V0.5.4
+
+The complete graph became visually dense after V0.5.3 expanded coverage.
+
+V0.5.4 makes Graph view graph-first:
+
+- Graph opens with the Core preset instead of All
+- relation labels are opt-in
+- Brain Pulse metrics are removed from Graph view
+- Time Machine is moved to History
+- Graph legend is hidden; filter chips provide type context
+- presets + node types are grouped behind one filter control
+- node detail is an overlay drawer/bottom sheet instead of a permanent column
+- graph canvas consumes the primary viewport
+- portrait/coarse-pointer devices force the desktop rail into a drawer even when the browser reports a wide viewport
+- large complete graph remains available through Documented / All presets
+
+This preserves complete data while reducing simultaneous visual information.
