@@ -1,0 +1,59 @@
+name: Pocket Pirate Behavioral Pair Gate
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/project-brain-runtime-pair.yml'
+      - 'project-brain/cross-project/runtime-pocket-pirate.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  runtime-pair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: nustanakritwithai/PocketMonster
+          ref: f0a776449a0ef9b917fb0bcbaee952a44c343816
+          path: .qa/pocket
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: nustanakritwithai/Pirate-fruit-
+          ref: c8c725e8a12e6723a8015e74566965ae18218ff2
+          path: .qa/pirate
+          persist-credentials: false
+      - name: Verify pinned pair identities
+        run: |
+          test "$(git -C .qa/pocket rev-parse HEAD)" = 'f0a776449a0ef9b917fb0bcbaee952a44c343816'
+          test "$(git -C .qa/pirate rev-parse HEAD)" = 'c8c725e8a12e6723a8015e74566965ae18218ff2'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build actual Pirate domain worker
+        working-directory: .qa/pirate
+        run: |
+          npm ci --include=dev
+          npm run build:shared
+          npm run build:central-worker --workspace=pirate-fruit-server
+      - name: Execute real module behavior across repositories
+        env:
+          PAIR_REPORT_PATH: runtime-pair-report.json
+        run: node project-brain/cross-project/runtime-pocket-pirate.mjs .qa/pocket .qa/pirate
+      - name: Preserve exact pair and runtime evidence
+        if: always()
+        run: |
+          git -C .qa/pocket rev-parse HEAD > runtime-pair-pocket-sha.txt
+          git -C .qa/pirate rev-parse HEAD > runtime-pair-pirate-sha.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: runtime-pair-evidence
+          path: runtime-pair-*
+          if-no-files-found: error
+          retention-days: 14
