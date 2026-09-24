@@ -52,5 +52,5 @@ test('temporal property states use valid non-overlapping checkpoint ranges',()=>
 test('default snapshot contains only current Project Brain version node',()=>{
   const current=graphAtCheckpoint(graph,graph.temporal.defaultCheckpoint);
   const versions=current.nodes.filter(n=>n.type==='VERSION').map(n=>n.id);
-  assert.deepEqual(versions,['version:project-brain-v041']);
+  assert.deepEqual(versions,['version:project-brain-v05']);
 });

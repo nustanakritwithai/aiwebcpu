@@ -298,8 +298,33 @@
       "id": "version:project-brain-v041",
       "type": "VERSION",
       "name": "Project Brain Capability Inventory V0.4.1",
+      "status": "superseded",
+      "activeFrom": "pb-2026-09-24-capability-inventory-v041",
+      "activeUntil": "pb-2026-09-24-verifier-v05"
+    },
+    {
+      "id": "cap:goal-contract-verification",
+      "type": "CAPABILITY",
+      "name": "Goal-specific Contract Verification",
+      "status": "verified",
+      "activeFrom": "pb-2026-09-24-verifier-v05"
+    },
+    {
+      "id": "ev:project-brain-v05-ci",
+      "type": "EVIDENCE",
+      "name": "Project Brain V0.5 verifier contract CI",
+      "verdict": "SAT",
+      "scope": "PR #16 candidate head 9d0c9aa; real inventory/catalog/contract execution plus fail-closed negative tests, Web Verifier and Agent query regressions",
+      "limitations": "Exact-main completed workflow for merge commit 6801920 was not observed at bookkeeping time. SAT verifies the verifier machinery and the explicit simclone-time-travel contract, not every documented capability.",
+      "source": "GitHub Actions run 36032141648",
+      "activeFrom": "pb-2026-09-24-verifier-v05"
+    },
+    {
+      "id": "version:project-brain-v05",
+      "type": "VERSION",
+      "name": "Project Brain Verifier V0.5",
       "status": "current",
-      "activeFrom": "pb-2026-09-24-capability-inventory-v041"
+      "activeFrom": "pb-2026-09-24-verifier-v05"
     }
   ],
   "edges": [
@@ -526,6 +551,24 @@
       "to": "version:project-brain-v04",
       "type": "SUPERSEDES",
       "activeFrom": "pb-2026-09-24-capability-inventory-v041"
+    },
+    {
+      "from": "repo:aiwebcpu",
+      "to": "cap:goal-contract-verification",
+      "type": "PROVIDES",
+      "activeFrom": "pb-2026-09-24-verifier-v05"
+    },
+    {
+      "from": "cap:goal-contract-verification",
+      "to": "ev:project-brain-v05-ci",
+      "type": "VERIFIED_BY",
+      "activeFrom": "pb-2026-09-24-verifier-v05"
+    },
+    {
+      "from": "version:project-brain-v05",
+      "to": "version:project-brain-v041",
+      "type": "SUPERSEDES",
+      "activeFrom": "pb-2026-09-24-verifier-v05"
     }
   ],
   "timeline": [
@@ -578,6 +621,11 @@
       "date": "2026-09-24",
       "event": "Project Brain V0.4.1 adds evidence-backed semantic extraction across the public repository catalog while keeping every reuse decision UNKNOWN",
       "source": "nustanakritwithai/aiwebcpu@02917f5"
+    },
+    {
+      "date": "2026-09-24",
+      "event": "Project Brain V0.5 adds contract-driven verification from documented capabilities to SAT/VIOL/UNKNOWN and review-only REUSE/ADAPT/BUILD patch candidates",
+      "source": "nustanakritwithai/aiwebcpu@6801920"
     }
   ],
   "rules": {
@@ -668,9 +716,16 @@
         "label": "Capability Inventory V0.4.1",
         "description": "Verified repository semantic extraction layer and Web capability inventory are merged; documented capability reuse remains UNKNOWN.",
         "source": "nustanakritwithai/aiwebcpu@02917f5"
+      },
+      {
+        "id": "pb-2026-09-24-verifier-v05",
+        "date": "2026-09-24",
+        "label": "Verifier V0.5",
+        "description": "Contract-driven goal verification, fail-closed evidence freshness, Agent query and review-only graph patch generation are merged.",
+        "source": "nustanakritwithai/aiwebcpu@6801920"
       }
     ],
-    "defaultCheckpoint": "pb-2026-09-24-capability-inventory-v041"
+    "defaultCheckpoint": "pb-2026-09-24-verifier-v05"
   },
   "interfaces": {
     "human": "web",

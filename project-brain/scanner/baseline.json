@@ -106,12 +106,12 @@
         },
         {
           "path": "project-brain/capability-inventory/README.md",
-          "sha": "ddc1638b749d55ef641434e56ef241c286dfdb7a",
+          "sha": "c62c00afe8eef4c78aa9957721b160e8c5250f9c",
           "status": "present"
         },
         {
           "path": "project-brain/capability-inventory/repositories.json",
-          "sha": "18e77415c24c84d25e294e64cf6d0addc6ede70a",
+          "sha": "41d8e193a0638de32b836d4d99193276ef4d43ce",
           "status": "present"
         },
         {
@@ -121,7 +121,7 @@
         },
         {
           "path": "project-brain/graph/project-brain.json",
-          "sha": "78913342fefa691289e3a24d74f1d89f84c68c24",
+          "sha": "7a326925fac0ff9ed867c6908e6bd00ea096d663",
           "status": "present"
         },
         {
