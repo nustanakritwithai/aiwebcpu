@@ -278,7 +278,7 @@ function renderGraph(){
 
     g.addEventListener('click',event=>{
       event.stopPropagation();
-      selectNode(node.id);
+      selectNode(node.id,{source:'graph'});
     });
     nodeLayer.append(g);
   }
@@ -373,7 +373,7 @@ function clearSelection({clearFocus=true}={}){
   }));
 }
 
-function selectNode(id){
+function selectNode(id,{source='direct'}={}){
   selectedId=id;
   const current=filtered();
   const node=current.nodes.find(n=>n.id===id);
@@ -398,10 +398,10 @@ function selectNode(id){
     <h2>Relations</h2>
     <div class="relations">${relationRows||'<p class="note">ไม่มีความสัมพันธ์ใน graph ปัจจุบัน</p>'}</div>
   `;
-  detail.querySelectorAll('[data-node]').forEach(b=>b.addEventListener('click',()=>selectNode(b.dataset.node)));
+  detail.querySelectorAll('[data-node]').forEach(b=>b.addEventListener('click',()=>selectNode(b.dataset.node,{source:'relation'})));
   renderGraph();
   document.dispatchEvent(new CustomEvent('project-brain:node-selected',{
-    detail:{id:node.id,name:node.name,type:node.type,focusRootId}
+    detail:{id:node.id,name:node.name,type:node.type,focusRootId,source}
   }));
 }
 
@@ -524,11 +524,28 @@ document.addEventListener('project-brain:set-visible-types',event=>{
     button.classList.toggle('off',!visibleTypes.has(button.dataset.type));
   });
   if(!changed)return;
-  if(selectedId&&!graph.nodes.some(n=>n.id===selectedId&&visibleTypes.has(n.type)))selectedId=null;
+  const selectedHidden=Boolean(selectedId&&!graph.nodes.some(n=>n.id===selectedId&&visibleTypes.has(n.type)));
+  if(selectedHidden)selectedId=null;
   if(focusRootId&&!graph.nodes.some(n=>n.id===focusRootId&&visibleTypes.has(n.type)))focusRootId=null;
   layoutKey='';
   renderGraph();
   requestAnimationFrame(fit);
+  if(selectedHidden){
+    document.dispatchEvent(new CustomEvent('project-brain:selection-cleared',{
+      detail:{previousId:null,focusCleared:!focusRootId,reason:'filtered-out'}
+    }));
+  }
+});
+
+document.addEventListener('project-brain:select-node',event=>{
+  const id=event.detail?.id;
+  if(!id)return;
+  const current=filtered();
+  if(!current.nodes.some(node=>node.id===id))return;
+  selectNode(id,{source:event.detail?.source??'external'});
+  if(event.detail?.center!==false){
+    requestAnimationFrame(()=>centerOnNode(id,{scale:event.detail?.scale??1}));
+  }
 });
 
 document.addEventListener('project-brain:set-focus-root',event=>{
