@@ -288,7 +288,7 @@ test('Graph Focus UX defaults to Core and keeps relation labels opt-in',async()=
   assert.match(ux,/let activePreset='core'/);
   assert.match(ux,/activePreset=PRESETS\[prefs\.activePreset\]\?prefs\.activePreset:'core'/);
   assert.match(js,/let showEdgeLabels=false/);
-  assert.match(html,/data-preset=["']core["'][^>]+class=["'][^"']*active/);
+  assert.match(html,/class=["'][^"']*active[^"']*["'][^>]+data-preset=["']core["']/);
   assert.match(html,/id=["']edge-labels["'][^>]*type=["']checkbox["'](?![^>]*checked)/);
 });
 
