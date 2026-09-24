@@ -51,3 +51,19 @@ test('scanner report states the trust boundary',()=>{
   assert.match(markdown,/Capability meaning remains UNKNOWN until verified/);
   assert.match(markdown,/Merge accepts scanner state only after evidence review/);
 });
+
+
+test('scanner workflow cannot mutate canonical graph or auto-merge',async()=>{
+  const workflow=await readFile(new URL('../.github/workflows/project-brain-scan.yml',import.meta.url),'utf8');
+  assert.doesNotMatch(workflow,/project-brain\/graph\/project-brain\.json/);
+  assert.doesNotMatch(workflow,/gh\s+pr\s+merge/);
+  assert.match(workflow,/pull-requests: write/);
+  assert.match(workflow,/Candidates remain UNKNOWN/);
+});
+
+test('scanner monitors the four V0.4 bootstrap repositories',()=>{
+  assert.deepEqual(
+    config.repositories.map(x=>x.id),
+    ['repo:aiwebcpu','repo:testge','repo:astralife','repo:simclone']
+  );
+});
