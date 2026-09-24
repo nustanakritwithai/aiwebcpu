@@ -552,3 +552,30 @@ test('Project Deep Profile V0.6.1 loads source-level project profiles without pr
   assert.match(css,/\.project-authority-row/);
 });
 
+
+
+test('deep project profiles cover the major active cross-project systems',async()=>{
+  const profiles=JSON.parse(await readFile(new URL('./deep-profiles/projects.json',import.meta.url),'utf8'));
+  assert.equal(profiles.schemaVersion,'1.1.0');
+  for(const repoId of ['repo:simclone','repo:testge','repo:pocketmonster','repo:pirate-fruit','repo:echonews','repo:astralife']){
+    const row=profiles.projects.find(project=>project.repoId===repoId);
+    assert.ok(row,repoId);
+    assert.match(row.sourceHead.sha,/^[0-9a-f]{40}$/);
+    assert.ok(row.architecture.length>0);
+    assert.ok(row.authorityBoundaries.length>0);
+    assert.ok(row.limitations.length>0);
+  }
+  assert.equal(new Set(profiles.projects.map(project=>project.repoId)).size,profiles.projects.length);
+});
+
+test('deep project profiles keep evidence SHA-bound and reuse-neutral',async()=>{
+  const profiles=JSON.parse(await readFile(new URL('./deep-profiles/projects.json',import.meta.url),'utf8'));
+  for(const project of profiles.projects){
+    for(const row of [...project.architecture,...project.authorityBoundaries]){
+      assert.ok(row.evidence?.path,`${project.repoId}:${row.label??row.domain}`);
+      assert.match(row.evidence.sha,/^[0-9a-f]{40}$/);
+    }
+  }
+  assert.match(profiles.semantics.rule,/does not promote capability reuse decisions/);
+  assert.doesNotMatch(JSON.stringify(profiles),/\"reuseDecision\"\s*:\s*\"(?:REUSE|ADAPT|BUILD)\"/);
+});

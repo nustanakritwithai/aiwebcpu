@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "semantics": {
-    "status": "DOCUMENTED source-level project profile",
-    "rule": "Deep profile data adds source context but does not promote capability reuse decisions or overwrite canonical graph authority."
+    "status": "DOCUMENTED source-level multi-project profile",
+    "rule": "Deep profile data adds source context, authority boundaries and exact-head verification signals but does not promote capability reuse decisions or overwrite canonical graph authority."
   },
   "projects": [
     {
@@ -109,7 +109,548 @@
         "Native public-browser behavior and physical Android performance remain separate claims.",
         "WM4.0 does not yet move resource-regeneration authority to WorldSim.",
         "DOCUMENTED deep-profile data does not imply reusable compatibility in another project."
+      ],
+      "sourceRef": "main"
+    },
+    {
+      "repoId": "repo:testge",
+      "repo": "nustanakritwithai/TestGE",
+      "name": "TestGE",
+      "status": "DOCUMENTED",
+      "sourceRef": "main",
+      "sourceHead": {
+        "sha": "0ca33d9655df31d69045e0a483465f3271928471",
+        "date": "2026-09-16T07:16:58Z",
+        "title": "Merge pull request #83 from nustanakritwithai/jrpg-r11-offline-quality"
+      },
+      "exactHeadWorkflow": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy GitHub Pages",
+        "runId": 35067736936,
+        "url": "https://github.com/nustanakritwithai/TestGE/actions/runs/35067736936"
+      },
+      "productVision": "Deterministic, data-oriented, transactional, verifiable authoritative world runtime with rollback/replay, replication and auditable world truth.",
+      "currentStage": "TWA V1 core is architecture-locked around exact classical authority; repository HEAD also contains separate JRPG R11.5c offline post-battle quality work.",
+      "architecture": [
+        {
+          "label": "Transactional World Architecture",
+          "owner": "TWA V1 runtime",
+          "state": "AUTHORITATIVE",
+          "detail": "Commands compute against a canonical snapshot, produce proposals/write sets, pass deterministic conflict resolution and verification, then commit atomically to the canonical world.",
+          "evidence": {
+            "path": "README.md",
+            "sha": "260bfde1d4ce4cdfc2ea77876f3fec5ca36a485a"
+          }
+        },
+        {
+          "label": "Unified delta history",
+          "owner": "TWA commit/delta layer",
+          "state": "AUTHORITATIVE",
+          "detail": "Committed changes feed a unified delta log used for rollback, replay, time-travel audit and delta replication.",
+          "evidence": {
+            "path": "README.md",
+            "sha": "260bfde1d4ce4cdfc2ea77876f3fec5ca36a485a"
+          }
+        },
+        {
+          "label": "Learned compute experiments",
+          "owner": "Research slot only",
+          "state": "RESEARCH",
+          "detail": "Benchmarks retained exact classical as V1 authority; GNN/residual/local learned solvers did not satisfy the combined quality and speed gates.",
+          "evidence": {
+            "path": "DECISION_V1.md",
+            "sha": "6ce8d7b60da25771d85dd6831ccd74b4634c0ed1"
+          }
+        }
+      ],
+      "authorityBoundaries": [
+        {
+          "domain": "Canonical world mutation",
+          "owner": "Atomic Commit Authority",
+          "state": "AUTHORITATIVE",
+          "detail": "Compute workers cannot directly mutate canonical state; every change must traverse Proposal → Verify → Commit.",
+          "evidence": {
+            "path": "README.md",
+            "sha": "260bfde1d4ce4cdfc2ea77876f3fec5ca36a485a"
+          }
+        },
+        {
+          "domain": "Runtime compute baseline",
+          "owner": "Exact Classical",
+          "state": "AUTHORITATIVE",
+          "detail": "V1 locks Exact Classical as ground truth/runtime authority; approximate or learned paths must prove a competence region under the same gates before reuse.",
+          "evidence": {
+            "path": "DECISION_V1.md",
+            "sha": "6ce8d7b60da25771d85dd6831ccd74b4634c0ed1"
+          }
+        },
+        {
+          "domain": "Contact event authority",
+          "owner": "Classical contact/event path",
+          "state": "AUTHORITATIVE",
+          "detail": "Local residual experiments kept event/contact authority classical; speed gains alone were rejected because state-quality gates failed.",
+          "evidence": {
+            "path": "LOCAL_CONTACT_DECISION.md",
+            "sha": "82864e24eba7f7c1d6471c6cae38fe91dcaf4593"
+          }
+        },
+        {
+          "domain": "Iteration scheduling",
+          "owner": "Classical full solve",
+          "state": "AUTHORITATIVE",
+          "detail": "Learned iteration scheduling found no useful headroom at the required fidelity; the solver still needs nearly full iteration count.",
+          "evidence": {
+            "path": "LEARNED_RELAXATION_DECISION.md",
+            "sha": "df059a6b95f48bf4edf202327a6b4a1dbb51ba08"
+          }
+        }
+      ],
+      "nextGates": [
+        "Any future learned backend must remain a compute candidate behind the existing verifier/commit authority contract.",
+        "If learned research resumes, change the solver/representation problem rather than adding an adaptive control plane around a failing backend.",
+        "Cross-repo reuse must prove adapter compatibility separately from TWA's own green runtime evidence."
+      ],
+      "limitations": [
+        "The latest repository HEAD is JRPG R11.5c quality-report work; it does not replace or re-open the locked TWA V1 authority decision.",
+        "A green Pages workflow proves the checked-in repository gate, not compatibility with Simclone or another consumer.",
+        "Research benchmark conclusions apply to the measured workloads and gates, not every future learned solver."
+      ]
+    },
+    {
+      "repoId": "repo:pocketmonster",
+      "repo": "nustanakritwithai/PocketMonster",
+      "name": "PocketMonster",
+      "status": "DOCUMENTED",
+      "sourceRef": "main",
+      "sourceHead": {
+        "sha": "cf902e7410e8d67efa5a004d085dd7b7c858d2df",
+        "date": "2026-09-20T20:01:57Z",
+        "title": "Merge pull request #631 from nustanakritwithai/codex/pirate-original-combat-recovery-20260920"
+      },
+      "exactHeadWorkflow": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy PocketMonster game assets to GitHub Pages",
+        "runId": 35534212847,
+        "url": "https://github.com/nustanakritwithai/PocketMonster/actions/runs/35534212847"
+      },
+      "productVision": "Monster Life RPG domain integrated into a federation where Pocket owns monster identity/progression while shared world/server layers execute combined authoritative gameplay.",
+      "currentStage": "PocketMonster main contains V8 live progression plus V9.x federation/server-authority contracts and a current Pirate original-world/save bridge; the architecture plan remains an implementation baseline rather than proof that every server write is production-live.",
+      "architecture": [
+        {
+          "label": "Monster progression domain",
+          "owner": "Pocket Monster",
+          "state": "AUTHORITATIVE",
+          "detail": "Pocket owns monster species, stats/progression, types, skills, passives, capture, evolution, breeding and party/collection rules.",
+          "evidence": {
+            "path": "INTEGRATION-MASTER-PLAN-V3.3.md",
+            "sha": "fa81ab11b76a254fb436ed8753f491154307808e"
+          }
+        },
+        {
+          "label": "Federation combat vocabulary",
+          "owner": "Shared Core contracts",
+          "state": "CONTRACT",
+          "detail": "Human/monster/world domains exchange canonical CombatStats and versioned protocols while Shared Core is forbidden from owning progression formulae, HP stores or world truth.",
+          "evidence": {
+            "path": "INTEGRATION-MASTER-PLAN-V3.3.md",
+            "sha": "fa81ab11b76a254fb436ed8753f491154307808e"
+          }
+        },
+        {
+          "label": "Combat V9.1 server authority contract",
+          "owner": "Server authority module",
+          "state": "CANDIDATE",
+          "detail": "The server-authority policy defines server execution, target-owner HP writes, server RNG/dynamics permits and rejects client prediction as authority, but productionWritesEnabled is false in this module.",
+          "evidence": {
+            "path": "combat-v91-server-authority.mjs",
+            "sha": "cb56775235d88bd7dfb9ed6840731fc78d50216a"
+          }
+        },
+        {
+          "label": "Pirate original-world bridge",
+          "owner": "Bridge/transport only",
+          "state": "ADAPTER",
+          "detail": "The bridge sanitizes original Pirate world messages and explicitly does not calculate HP or rewards.",
+          "evidence": {
+            "path": "pirate-original-world-contract.mjs",
+            "sha": "e4bcc5c9c1b0f0681f7b7bbcc2a503849379502f"
+          }
+        }
+      ],
+      "authorityBoundaries": [
+        {
+          "domain": "Monster progression and definitions",
+          "owner": "Pocket Monster domain",
+          "state": "AUTHORITATIVE",
+          "detail": "Pocket calculators and definition versions remain the owner even if execution moves to a server host.",
+          "evidence": {
+            "path": "INTEGRATION-MASTER-PLAN-V3.3.md",
+            "sha": "fa81ab11b76a254fb436ed8753f491154307808e"
+          }
+        },
+        {
+          "domain": "Combined combat execution",
+          "owner": "World/Server Runtime",
+          "state": "PLANNED",
+          "detail": "The architecture baseline assigns effective combat computation and ordered hit/crit/defense/damage/status execution to the World/Server runtime; client remains intent/presentation only.",
+          "evidence": {
+            "path": "INTEGRATION-MASTER-PLAN-V3.3.md",
+            "sha": "fa81ab11b76a254fb436ed8753f491154307808e"
+          }
+        },
+        {
+          "domain": "HP mutation",
+          "owner": "Target domain owner",
+          "state": "AUTHORITATIVE",
+          "detail": "Human/ship HP belongs to Pirate; monster HP belongs to Pocket. Shared combat reads snapshots and proposes damage; the target owner commits HP inside the authoritative transaction.",
+          "evidence": {
+            "path": "INTEGRATION-MASTER-PLAN-V3.3.md",
+            "sha": "fa81ab11b76a254fb436ed8753f491154307808e"
+          }
+        },
+        {
+          "domain": "Pirate account/save operations inside Pocket shell",
+          "owner": "Parent central state client",
+          "state": "ADAPTER",
+          "detail": "Pocket's central-state client validates bounded operations, binds them to the current session and uses revision/idempotency semantics instead of letting the embedded game own account authority.",
+          "evidence": {
+            "path": "pirate-central-state-client.mjs",
+            "sha": "86d982d474fc15024c355327ca1a79d754114de9"
+          }
+        }
+      ],
+      "nextGates": [
+        "Move execution only after server authority gates are proven; do not transfer Pocket ownership of monster formulas/definitions.",
+        "Keep HP single-writer semantics and immutable effective-stat snapshots through combat integration.",
+        "Promote V9.1 production writes only with explicit server/persistence gates; client prediction must remain non-authoritative."
+      ],
+      "limitations": [
+        "INTEGRATION-MASTER-PLAN-V3.3.md is an architecture baseline / implementation plan, not proof that every planned authority transfer is live.",
+        "combat-v91-server-authority.mjs explicitly has productionWritesEnabled=false and networkCreation=false.",
+        "README still describes V8.1 live progression while newer V9.x integration code exists; version labels therefore describe different layers."
+      ]
+    },
+    {
+      "repoId": "repo:pirate-fruit",
+      "repo": "nustanakritwithai/Pirate-fruit-",
+      "name": "Pirate-fruit-",
+      "status": "DOCUMENTED",
+      "sourceRef": "claude/blox-fruits-three-js-roadmap-1f2f5u",
+      "sourceHead": {
+        "sha": "d20096d1720ec25a4c219fdc0e44b8373684e369",
+        "date": "2026-09-20T20:00:28Z",
+        "title": "Merge pull request #167 from nustanakritwithai/codex/pirate-monster-hp-stream-20260920"
+      },
+      "exactHeadWorkflow": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Client and server gates",
+        "runId": 35534125384,
+        "url": "https://github.com/nustanakritwithai/Pirate-fruit-/actions/runs/35534125384"
+      },
+      "productVision": "Three.js pirate action RPG evolving into a server-authoritative persistent multiplayer world with quests, combat, boats, monsters and a bounded living economy.",
+      "currentStage": "Current default branch contains the S-series server/persistence stack plus central original-world worker integration for shared monster/PvE outcomes; authority is split by feature gate and domain rather than handed wholesale to the client.",
+      "architecture": [
+        {
+          "label": "Client / Shared / Server separation",
+          "owner": "Repository architecture",
+          "state": "AUTHORITATIVE",
+          "detail": "Client owns rendering/input/camera/UI/prediction; Shared owns browser-free schemas/validation; Server owns HTTP lifecycle, sessions, authoritative state/persistence/realtime; PostgreSQL stores durable domain state.",
+          "evidence": {
+            "path": "SERVER_ARCHITECTURE.md",
+            "sha": "205116460e0df1a8144ce24918b15264e4d799c2"
+          }
+        },
+        {
+          "label": "Living Economy Core v1",
+          "owner": "Pirate economy domain",
+          "state": "AUTHORITATIVE",
+          "detail": "Adaptive factories, dynamic orders, trader memory, reputation/player influence and genome bias are bounded; genome may bias scores but cannot override E1/E2/E3/E3.5.",
+          "evidence": {
+            "path": "LIVING_ECONOMY_V1.md",
+            "sha": "a7bb6f535f7b169d2dd3a994e048021c74718a22"
+          }
+        },
+        {
+          "label": "Central original-world worker",
+          "owner": "Server world worker",
+          "state": "AUTHORITATIVE",
+          "detail": "The JSON-lines worker hosts monster world stepping, authoritative profiles, state operations, reward handoff and export/restore boundaries without starting a process on import.",
+          "evidence": {
+            "path": "server/src/world/centralWorker.ts",
+            "sha": "826618bf3c00380a18abaec47155f1d821d65b16a"
+          }
+        },
+        {
+          "label": "PvE incoming hit frame",
+          "owner": "Server central hit queue",
+          "state": "AUTHORITATIVE",
+          "detail": "Incoming monster hit frames are captured from server world messages, validated at the hit frame and acknowledged only after the SQL/CAS-side commit path succeeds.",
+          "evidence": {
+            "path": "server/src/world/centralPlayerHits.ts",
+            "sha": "e07c7da7ad8cb11598e927a5c3a21d6ef94a5a61"
+          }
+        }
+      ],
+      "authorityBoundaries": [
+        {
+          "domain": "Persistent player/cargo/economy state",
+          "owner": "Server + PostgreSQL",
+          "state": "AUTHORITATIVE",
+          "detail": "Remote state uses authenticated sessions, typed migrations, revision checks and idempotent mutations; the client never supplies database credentials.",
+          "evidence": {
+            "path": "SERVER_ARCHITECTURE.md",
+            "sha": "205116460e0df1a8144ce24918b15264e4d799c2"
+          }
+        },
+        {
+          "domain": "Shared living economy world",
+          "owner": "Elected Server runtime when enabled",
+          "state": "FEATURE_GATED",
+          "detail": "GET /api/economy/world exposes one canonical PostgreSQL-backed world; browsers cannot PUT prices, stock, factories, orders, trader memory, genome or tick state.",
+          "evidence": {
+            "path": "API_PROTOCOL.md",
+            "sha": "936c1cd54289faf073df6fc44a63e24dcdbfc326"
+          }
+        },
+        {
+          "domain": "Trade / quest / progression mutations",
+          "owner": "Server endpoints by gate",
+          "state": "FEATURE_GATED",
+          "detail": "Trade prices/stock/cargo and later quest/reward/level progression are calculated or committed server-side as each authority gate is enabled.",
+          "evidence": {
+            "path": "API_PROTOCOL.md",
+            "sha": "936c1cd54289faf073df6fc44a63e24dcdbfc326"
+          }
+        },
+        {
+          "domain": "PvP and shared monster world",
+          "owner": "Server runtime by gate",
+          "state": "FEATURE_GATED",
+          "detail": "PvP accepts attack intent without client damage; shared monsters are a single server-simulated world entity set with server HP/death/respawn and island-scoped replication.",
+          "evidence": {
+            "path": "API_PROTOCOL.md",
+            "sha": "936c1cd54289faf073df6fc44a63e24dcdbfc326"
+          }
+        }
+      ],
+      "nextGates": [
+        "Preserve intent-only client contracts as more combat/world authority moves into the central server worker.",
+        "Keep account, progression, reward and world commits revisioned/idempotent through cross-repo Pocket integration.",
+        "Treat feature flags as part of the authority boundary; disabled server gates must not be described as live production ownership."
+      ],
+      "limitations": [
+        "The repository default branch is claude/blox-fruits-three-js-roadmap-1f2f5u rather than main; this profile follows the actual default branch.",
+        "Several server-authoritative systems are feature-gated and may be absent at runtime when flags are disabled.",
+        "Green client/server CI does not prove every optional Render/server deployment flag is enabled in production."
+      ]
+    },
+    {
+      "repoId": "repo:echonews",
+      "repo": "nustanakritwithai/Echonews",
+      "name": "Echonews",
+      "status": "DOCUMENTED",
+      "sourceRef": "main",
+      "sourceHead": {
+        "sha": "81f4aea2daa7501bbf5f66d3ebff818b5912d6ba",
+        "date": "2026-09-24T15:54:12Z",
+        "title": "Merge P2 pinned JWKS HTTP-over-TLS integration"
+      },
+      "exactHeadWorkflow": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "P2.1c.2d.4c.5c.7b.2b.2b JWKS HTTP-over-TLS Gate",
+        "runId": 36023567244,
+        "url": "https://github.com/nustanakritwithai/Echonews/actions/runs/36023567244"
+      },
+      "productVision": "Event-centric social news system where one event room accumulates voices, claims and evidence references while preserving source provenance and evidence-family boundaries.",
+      "currentStage": "Public Pages remains a local-only research preview; the repository also contains a non-deployed P2 backend/auth hardening line whose latest exact-head gate proves pinned JWKS HTTP-over-TLS framing/validation, not production authentication.",
+      "architecture": [
+        {
+          "label": "Event-centric static research preview",
+          "owner": "Browser frontend",
+          "state": "PREVIEW",
+          "detail": "Feed → event room → voices → claims → supporting/opposing references works against fictional fixtures plus browser-local posts/rooms/follows.",
+          "evidence": {
+            "path": "README.md",
+            "sha": "79085fa621def1e889b322a289fab8997a0af519"
+          }
+        },
+        {
+          "label": "Evidence-family independence guard",
+          "owner": "Preview claim/evidence model",
+          "state": "AUTHORITATIVE",
+          "detail": "New voices do not automatically change claim status, and duplicate references from the same known evidence family do not increase independent-source counts.",
+          "evidence": {
+            "path": "README.md",
+            "sha": "79085fa621def1e889b322a289fab8997a0af519"
+          }
+        },
+        {
+          "label": "Pinned JWKS HTTP-over-TLS adapter",
+          "owner": "P2 backend reference path",
+          "state": "CANDIDATE",
+          "detail": "Latest backend task sends the exact pinned GET over verified TLS, enforces bounded fail-closed HTTP framing and feeds the result into the inherited JWKS envelope validator.",
+          "evidence": {
+            "path": "backend/p2_1c2d4c5c7b2b2b/README_TH.md",
+            "sha": "3c1294b63462a2c6919118785620f0b5ad9625fe"
+          }
+        }
+      ],
+      "authorityBoundaries": [
+        {
+          "domain": "Public web preview data",
+          "owner": "Browser localStorage + fixture data",
+          "state": "LOCAL_ONLY",
+          "detail": "Posts, rooms and followed rooms are visitor-local and not published to other users; local privacy-looking UI is not server authorization.",
+          "evidence": {
+            "path": "docs/WEB_PREVIEW.md",
+            "sha": "a2636baee7e048c9fa11b245443a7560cd4a671c"
+          }
+        },
+        {
+          "domain": "Claim status",
+          "owner": "Explicit claim/evidence state",
+          "state": "AUTHORITATIVE",
+          "detail": "Adding a voice does not automatically approve or rewrite claim status; freshness and source independence are not inferred from sharing behavior.",
+          "evidence": {
+            "path": "docs/WEB_PREVIEW.md",
+            "sha": "a2636baee7e048c9fa11b245443a7560cd4a671c"
+          }
+        },
+        {
+          "domain": "Authentication backend",
+          "owner": "P2 reference backend",
+          "state": "BLOCKED",
+          "detail": "Pinned TLS/JWKS transport is gated and fail-closed, but ETag/304, retry/backoff, refresh single-flight, persistent cache coordination and external production IdP handshake are still unproven; production Browser/API auth must remain off.",
+          "evidence": {
+            "path": "backend/p2_1c2d4c5c7b2b2b/README_TH.md",
+            "sha": "3c1294b63462a2c6919118785620f0b5ad9625fe"
+          }
+        }
+      ],
+      "nextGates": [
+        "Finish the remaining backend authentication/cache/refresh contracts before exposing production Browser/API authentication.",
+        "Connect a tested authenticated API only after permission, room-build and durable worker boundaries are complete.",
+        "Keep claim/evidence state evidence-driven; do not let voice volume or duplicated evidence families auto-promote truth."
+      ],
+      "limitations": [
+        "The public preview explicitly is not a live news service, emergency information source, AI fact-checker or multi-user social network.",
+        "The P2 Python/SQLite/reference backend is present in the repository but is not deployed by the public Pages preview.",
+        "At the captured exact head, the dedicated JWKS and Transaction Fence gates were SAT while the general Pages deploy workflow was still queued."
+      ]
+    },
+    {
+      "repoId": "repo:astralife",
+      "repo": "nustanakritwithai/AstraLife",
+      "name": "AstraLife",
+      "status": "DOCUMENTED",
+      "sourceRef": "main",
+      "sourceHead": {
+        "sha": "21dcf780d6666732af2ef27500e478871864a6ac",
+        "date": "2026-09-09T17:58:13Z",
+        "title": "Merge pull request #43 from nustanakritwithai/p6-11-snapshot-governor"
+      },
+      "exactHeadWorkflow": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy AstraLife to GitHub Pages",
+        "runId": 34386152724,
+        "url": "https://github.com/nustanakritwithai/AstraLife/actions/runs/34386152724"
+      },
+      "productVision": "Multi-agent survival world where independent agents observe partial reality, maintain individual models/memory, plan, communicate, cooperate and develop emergent specialization.",
+      "currentStage": "Source HEAD is beyond the V0.5 README checkpoint and contains the P6.11 direct world-snapshot governor: one browser-side world snapshot provider call can serve many agents, with cached reuse and event wakeups, while the runtime validator/resolver remains mutation authority.",
+      "architecture": [
+        {
+          "label": "Agent cognition boundary",
+          "owner": "Per-agent observation/memory/belief",
+          "state": "AUTHORITATIVE",
+          "detail": "The architecture requires cognition to use partial observation, owned memory/belief and delivered messages rather than hidden World Truth.",
+          "evidence": {
+            "path": "ASTRALIFE_DEVELOPMENT_PLAN_V051_V10_TH.md",
+            "sha": "11dfd21a8373e6bf1e0801c3cb19e36603189bdf"
+          }
+        },
+        {
+          "label": "World Snapshot Provider",
+          "owner": "P6.11 browser BYOK adapter",
+          "state": "PROPOSAL",
+          "detail": "The current adapter batches independent agents from one world snapshot, reuses safe cached actions and triggers urgent/periodic snapshots; its prompt explicitly states it cannot mutate world state.",
+          "evidence": {
+            "path": "js/35-world-snapshot-http-p610.js",
+            "sha": "0639817d9f8adfff574f79cca6f8e798d9eea47d"
+          }
+        },
+        {
+          "label": "Emergent role learning",
+          "owner": "AstraLife agent model",
+          "state": "AUTHORITATIVE",
+          "detail": "Agents begin as generalists and roles emerge from independent skill experience, competency and preference rather than being assigned at spawn.",
+          "evidence": {
+            "path": "README.md",
+            "sha": "e9a3f6096108e8661e774bc4e872a16080a363ce"
+          }
+        }
+      ],
+      "authorityBoundaries": [
+        {
+          "domain": "World truth and mutation",
+          "owner": "World Runtime / Resolver",
+          "state": "AUTHORITATIVE",
+          "detail": "Provider output is staged and validated; only the resolver mutates world state, with deterministic rechecks for resources and action preconditions.",
+          "evidence": {
+            "path": "ASTRALIFE_DEVELOPMENT_PLAN_V051_V10_TH.md",
+            "sha": "11dfd21a8373e6bf1e0801c3cb19e36603189bdf"
+          }
+        },
+        {
+          "domain": "Provider decisions",
+          "owner": "Provider proposal layer",
+          "state": "PROPOSAL",
+          "detail": "Provider sessions propose structured actions under observation/memory/action-contract bounds; they do not receive authority merely by returning a decision.",
+          "evidence": {
+            "path": "ASTRALIFE_DEVELOPMENT_PLAN_V051_V10_TH.md",
+            "sha": "11dfd21a8373e6bf1e0801c3cb19e36603189bdf"
+          }
+        },
+        {
+          "domain": "P6.11 snapshot cadence",
+          "owner": "Snapshot governor",
+          "state": "CANDIDATE",
+          "detail": "Bootstrap/new-agent, urgent event and periodic snapshot reasons control network refresh while reusable actions may continue between calls; the acceptance harness verifies one batch call for 60 agents.",
+          "evidence": {
+            "path": "tests/p6-10-direct-world-snapshot-acceptance.mjs",
+            "sha": "404e9009de2bce6235e1cdccefd1d3dd26af787a"
+          }
+        },
+        {
+          "domain": "Persistence/replay scale",
+          "owner": "P7 roadmap",
+          "state": "PLANNED",
+          "detail": "Save/restore epoch isolation, provider-response replay and scheduler fairness remain a later gate after cooperation/provider integration.",
+          "evidence": {
+            "path": "HANDOFF_P4_P8_NEXT_AGENT.md",
+            "sha": "279931887fd20d3b282a0e4e007e0f751773c7a2"
+          }
+        }
+      ],
+      "nextGates": [
+        "Preserve validator/resolver mutation authority while evolving provider transport and snapshot scheduling.",
+        "Complete executable-plan/cooperation/provider-isolation gates before claiming end-to-end social autonomy.",
+        "P7 persistence/replay and P8 held-out benchmark/report remain required before the roadmap's V1 evidence claims."
+      ],
+      "limitations": [
+        "README still names ASTRA COLONY V0.5 while source HEAD contains later P6.11 work; the profile distinguishes product checkpoint text from current code head.",
+        "The P6.11 adapter calls a remote model endpoint directly from the browser with a session-held BYOK key; this is a provider transport choice, not world-state authority.",
+        "A Pages deployment PASS does not substitute for the later P7 replay/persistence and P8 held-out benchmark gates."
       ]
     }
-  ]
+  ],
+  "summary": {
+    "profiledProjects": 6,
+    "sourceHeadsCaptured": 6,
+    "rule": "Profiles are source evidence overlays. Canonical graph and goal-specific verifier remain the authority for reuse decisions."
+  }
 }
