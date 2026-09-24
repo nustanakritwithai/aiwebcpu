@@ -2226,3 +2226,61 @@ body.ux-focus .graph-inspection{
   .graph-inspection-actions [data-inspection-action="center"]{display:none}
   .detail-actions{grid-template-columns:1fr 1fr}
 }
+
+
+/* Graph Exploration UX V0.5.8 */
+#graph-inspection-history{
+  flex:0 0 auto;
+  min-width:30px;
+  text-align:center;
+  color:#86a5b8;
+  font-size:.56rem;
+  font-variant-numeric:tabular-nums;
+}
+.graph-inspection-actions [data-inspection-action="back"],
+.graph-inspection-actions [data-inspection-action="forward"]{
+  width:32px;
+  padding:5px;
+  font-size:.72rem;
+}
+.graph-inspection-actions button:disabled,
+.detail-actions button:disabled{
+  opacity:.32;
+  cursor:not-allowed;
+}
+.detail-actions [data-detail-back],
+.detail-actions [data-detail-forward]{
+  color:#9fd7f3;
+  border-color:#28506a;
+  background:#091c2b;
+}
+.relation-row{
+  position:relative;
+}
+.relation-row::after{
+  content:"›";
+  flex:0 0 auto;
+  margin-left:auto;
+  color:#52758c;
+  font-size:.9rem;
+}
+.relation-row:hover::after,
+.relation-row:focus-visible::after{
+  color:var(--cyan);
+}
+
+@media(max-width:760px){
+  .graph-inspection-copy #graph-inspection-focus{display:none}
+  .graph-inspection-actions [data-inspection-action="center"],
+  .graph-inspection-actions [data-inspection-action="clear"]{display:none}
+  .graph-inspection-actions{gap:4px}
+}
+
+@media(max-width:460px){
+  #graph-inspection-history{display:none}
+  .graph-inspection-copy span{max-width:150px}
+  .graph-inspection-actions [data-inspection-action="back"],
+  .graph-inspection-actions [data-inspection-action="forward"]{
+    width:30px;
+  }
+}
