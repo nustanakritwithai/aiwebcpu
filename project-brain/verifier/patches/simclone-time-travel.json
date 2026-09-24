@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "0.1",
+  "contractId": "simclone-time-travel",
+  "status": "CANDIDATE",
+  "autoApply": false,
+  "requiresReview": true,
+  "recommendation": "ADAPT",
+  "operations": [
+    {
+      "operation": "UPSERT_VERIFICATION_REPORT",
+      "goalId": "goal:simclone-time-travel",
+      "verdict": "SAT",
+      "recommendation": "ADAPT",
+      "source": "project-brain/verifier/reports/simclone-time-travel.json"
+    }
+  ]
+}
