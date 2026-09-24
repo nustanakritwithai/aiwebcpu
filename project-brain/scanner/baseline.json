@@ -1,19 +1,19 @@
 {
   "schemaVersion": "0.1",
-  "acceptedSource": "V0.4 bootstrap from verified GitHub reads",
+  "acceptedSource": "Project Brain V0.4 verified merge bookkeeping",
   "repositories": {
     "repo:aiwebcpu": {
       "id": "repo:aiwebcpu",
       "repo": "nustanakritwithai/aiwebcpu",
       "branch": "main",
       "head": {
-        "sha": "fdb7e2b05d42f99c53662afbfef2a38543859b50",
-        "date": "2026-09-24T15:00:02Z",
-        "message": "refactor: make Project Brain web-only and retire Obsidian sync"
+        "sha": "aab1a88f247dcb8972c87309a2eeba6bcba9b6a7",
+        "date": "2026-09-24T15:10:48Z",
+        "message": "feat: add Project Brain GitHub Scanner V0.4"
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
-        "reason": "no-completed-workflow-run-for-head"
+        "reason": "exact-main completed workflow not observed at V0.4 bookkeeping time"
       },
       "evidenceFiles": [
         {
@@ -28,7 +28,22 @@
         },
         {
           "path": ".github/workflows/project-brain.yml",
-          "sha": "d76c561640bbb669b6c2b5d8f46f9a75268d9408",
+          "sha": "7235297e7f58e9910e9ab862ecd20e8b7e9b2ca8",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/scanner/scanner.mjs",
+          "sha": "94d7bfe8c04e7928205a3ddbdd9a3990bc896252",
+          "status": "present"
+        },
+        {
+          "path": ".github/workflows/project-brain-scan.yml",
+          "sha": "0ed31f7823f1ffe159baabe81e5e6d537ffbd819",
+          "status": "present"
+        },
+        {
+          "path": "brain/scanner.js",
+          "sha": "9f1a507f977cc2e4fe98fc142c44dc7de88c6c18",
           "status": "present"
         }
       ]
