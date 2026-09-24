@@ -1,4 +1,4 @@
-# Project Brain Web Viewer V0.5.1
+# Project Brain Web Viewer V0.5.2
 
 Interactive read-only Knowledge Graph viewer for Project Brain.
 
@@ -161,3 +161,31 @@ UX rules:
 - prefers-reduced-motion is respected
 
 The shell lives in `brain/shell.js` and does not duplicate domain data.
+
+
+## Decision Workspace V0.5.2
+
+Adds a goal-centered read-only workspace:
+
+```text
+Goal
+ ↓
+Canonical NEEDS
+ ↓
+Verifier/canonical candidates
+ ↓
+Documented evidence
+ ↓
+SAT / VIOL / UNKNOWN
+ ↓
+REUSE / ADAPT / BUILD
+```
+
+Rules:
+- Goal list comes from the canonical graph
+- verifier is matched by explicit `goalId`
+- candidate rows come from a verifier report or canonical NEEDS/PROVIDES relations
+- no keyword/fuzzy recommendation is performed in the browser
+- a Goal without an explicit verifier contract remains UNKNOWN
+- the workspace never writes contracts, reports, patches or graph state
+- deep links preserve `?view=decision&goal=<goal-id>`
