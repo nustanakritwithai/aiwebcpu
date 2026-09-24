@@ -451,7 +451,7 @@
     },
     {
       "date": "2026-09-24",
-      "event": "Project Brain mobile UX V0.2.1 verified and merged",
+      "event": "Project Brain responsive Web UX V0.2.1 verified and merged",
       "source": "nustanakritwithai/aiwebcpu@79be91b"
     },
     {
@@ -522,8 +522,8 @@
       {
         "id": "pb-2026-09-24-mobile-ux",
         "date": "2026-09-24",
-        "label": "Mobile UX V0.2.1",
-        "description": "Presets, focus mode, deep links and mobile bottom-sheet inspection are verified.",
+        "label": "Responsive Web UX V0.2.1",
+        "description": "Presets, focus mode, deep links and responsive Web Viewer inspection are verified.",
         "source": "nustanakritwithai/aiwebcpu@79be91b"
       },
       {
