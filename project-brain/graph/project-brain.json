@@ -241,8 +241,40 @@
       "id": "version:project-brain-v03",
       "type": "VERSION",
       "name": "Project Brain Temporal V0.3",
+      "status": "superseded",
+      "activeFrom": "pb-2026-09-24-temporal-v03",
+      "activeUntil": "pb-2026-09-24-scanner-v04"
+    },
+    {
+      "id": "cap:repo-change-detection",
+      "type": "CAPABILITY",
+      "name": "Repository Change Detection",
+      "status": "verified",
+      "activeFrom": "pb-2026-09-24-scanner-v04"
+    },
+    {
+      "id": "cap:candidate-evidence-inbox",
+      "type": "CAPABILITY",
+      "name": "Candidate Evidence Inbox",
+      "status": "verified",
+      "activeFrom": "pb-2026-09-24-scanner-v04"
+    },
+    {
+      "id": "ev:project-brain-v04-ci",
+      "type": "EVIDENCE",
+      "name": "Project Brain V0.4 scanner and Web Inbox contract CI",
+      "verdict": "SAT",
+      "scope": "PR #9 candidate head ae9602c; scanner diff tests, workflow safety guards, Web Inbox contract and existing Project Brain regressions",
+      "limitations": "Exact-main completed workflow for merge commit aab1a88 was not observed at bookkeeping time.",
+      "source": "GitHub Actions run 36018188145",
+      "activeFrom": "pb-2026-09-24-scanner-v04"
+    },
+    {
+      "id": "version:project-brain-v04",
+      "type": "VERSION",
+      "name": "Project Brain GitHub Scanner V0.4",
       "status": "current",
-      "activeFrom": "pb-2026-09-24-temporal-v03"
+      "activeFrom": "pb-2026-09-24-scanner-v04"
     }
   ],
   "edges": [
@@ -421,6 +453,36 @@
       "to": "version:project-brain-v021",
       "type": "SUPERSEDES",
       "activeFrom": "pb-2026-09-24-temporal-v03"
+    },
+    {
+      "from": "repo:aiwebcpu",
+      "to": "cap:repo-change-detection",
+      "type": "PROVIDES",
+      "activeFrom": "pb-2026-09-24-scanner-v04"
+    },
+    {
+      "from": "cap:repo-change-detection",
+      "to": "ev:project-brain-v04-ci",
+      "type": "VERIFIED_BY",
+      "activeFrom": "pb-2026-09-24-scanner-v04"
+    },
+    {
+      "from": "repo:aiwebcpu",
+      "to": "cap:candidate-evidence-inbox",
+      "type": "PROVIDES",
+      "activeFrom": "pb-2026-09-24-scanner-v04"
+    },
+    {
+      "from": "cap:candidate-evidence-inbox",
+      "to": "ev:project-brain-v04-ci",
+      "type": "VERIFIED_BY",
+      "activeFrom": "pb-2026-09-24-scanner-v04"
+    },
+    {
+      "from": "version:project-brain-v04",
+      "to": "version:project-brain-v03",
+      "type": "SUPERSEDES",
+      "activeFrom": "pb-2026-09-24-scanner-v04"
     }
   ],
   "timeline": [
@@ -463,6 +525,11 @@
       "date": "2026-09-24",
       "event": "Project Brain retires local vault/device sync and standardizes on the Web Viewer as its human interface",
       "source": "project-brain/Web-Only.md"
+    },
+    {
+      "date": "2026-09-24",
+      "event": "Project Brain GitHub Scanner V0.4 verified on candidate CI and merged with a web-only Repository Change Inbox",
+      "source": "nustanakritwithai/aiwebcpu@aab1a88"
     }
   ],
   "rules": {
@@ -539,9 +606,16 @@
         "label": "Web-only interface",
         "description": "Project Brain retires the local vault/device-sync path and uses the Web Viewer as the only human interface.",
         "source": "project-brain/Web-Only.md"
+      },
+      {
+        "id": "pb-2026-09-24-scanner-v04",
+        "date": "2026-09-24",
+        "label": "GitHub Scanner V0.4",
+        "description": "Verified deterministic repository-change scanner, safe candidate PR automation and Web Scanner Inbox are merged.",
+        "source": "nustanakritwithai/aiwebcpu@aab1a88"
       }
     ],
-    "defaultCheckpoint": "pb-2026-09-24-web-only"
+    "defaultCheckpoint": "pb-2026-09-24-scanner-v04"
   },
   "interfaces": {
     "human": "web",

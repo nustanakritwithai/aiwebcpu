@@ -10,7 +10,9 @@ import {
 
 const config=JSON.parse(await readFile(new URL('./scanner/config.json',import.meta.url),'utf8'));
 const baseline=JSON.parse(await readFile(new URL('./scanner/baseline.json',import.meta.url),'utf8'));
-const changed=JSON.parse(await readFile(new URL('./scanner/fixtures/changed.json',import.meta.url),'utf8'));
+const changedFixture=JSON.parse(await readFile(new URL('./scanner/fixtures/changed.json',import.meta.url),'utf8'));
+const changed=structuredClone(baseline);
+changed.repositories['repo:simclone']=changedFixture.repositories['repo:simclone'];
 
 test('unchanged accepted baseline produces no scanner candidates',()=>{
   assert.deepEqual(compareStates(baseline,baseline),[]);
