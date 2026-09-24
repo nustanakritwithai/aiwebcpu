@@ -63,11 +63,11 @@ test('scanner workflow cannot mutate canonical graph or auto-merge',async()=>{
   assert.match(workflow,/Candidates remain UNKNOWN/);
 });
 
-test('scanner monitors the four V0.4 bootstrap repositories',()=>{
-  assert.deepEqual(
-    config.repositories.map(x=>x.id),
-    ['repo:aiwebcpu','repo:testge','repo:astralife','repo:simclone']
-  );
+test('scanner monitors every public catalog repository',async()=>{
+  const catalog=JSON.parse(await readFile(new URL('./catalog/repositories.json',import.meta.url),'utf8'));
+  const auto=catalog.repositories.filter(x=>x.scheduledScan==='AUTO').map(x=>x.id).sort();
+  assert.deepEqual(config.repositories.map(x=>x.id).sort(),auto);
+  assert.equal(config.repositories.length,33);
 });
 
 
@@ -99,4 +99,34 @@ test('self repo disables exact-head workflow tracking while other repos retain i
   assert.equal(selfConfig.trackExactHeadWorkflow,false);
   assert.notEqual(simcloneConfig.trackHead,false);
   assert.notEqual(simcloneConfig.trackExactHeadWorkflow,false);
+});
+
+
+test('empty repository remains a valid mechanical state',()=>{
+  const row={
+    id:'repo:empty',
+    repo:'owner/empty',
+    branch:'main',
+    empty:true,
+    head:{sha:null,date:null,message:''},
+    exactHeadWorkflow:{verdict:'UNKNOWN',reason:'empty-repository'},
+    evidenceFiles:[]
+  };
+  const state={schemaVersion:'0.2',repositories:{'repo:empty':row}};
+  assert.deepEqual(compareStates(state,state),[]);
+});
+
+test('first commit in a formerly empty repository becomes UNKNOWN HEAD candidate',()=>{
+  const before={schemaVersion:'0.2',repositories:{'repo:empty':{
+    id:'repo:empty',repo:'owner/empty',branch:'main',empty:true,
+    head:{sha:null,date:null,message:''},
+    exactHeadWorkflow:{verdict:'UNKNOWN',reason:'empty-repository'},evidenceFiles:[]
+  }}};
+  const after=structuredClone(before);
+  after.repositories['repo:empty'].empty=false;
+  after.repositories['repo:empty'].head={sha:'abc',date:'2026-09-24',message:'first commit'};
+  const rows=compareStates(before,after);
+  assert.equal(rows.length,1);
+  assert.equal(rows[0].kind,'HEAD_CHANGED');
+  assert.equal(rows[0].verdict,'UNKNOWN');
 });
