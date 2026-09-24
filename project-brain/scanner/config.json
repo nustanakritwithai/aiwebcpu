@@ -56,7 +56,11 @@
         "project-brain/verifier/reports/simclone-time-travel.json",
         "project-brain/verifier/patches/simclone-time-travel.json",
         "brain/verifier.js",
-        "project-brain/query.mjs"
+        "project-brain/query.mjs",
+        "brain/index.html",
+        "brain/style.css",
+        "brain/shell.js",
+        "brain/README.md"
       ]
     },
     {

@@ -8,7 +8,31 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <header class="topbar">
+  <div class="app-shell">
+    <aside class="app-rail" aria-label="Project Brain workspace">
+      <a class="rail-brand" href="?view=overview" aria-label="Project Brain home">
+        <span class="rail-mark">PB</span>
+        <span><b>Project Brain</b><small>Command Center</small></span>
+      </a>
+
+      <nav class="rail-nav" aria-label="Primary views">
+        <button type="button" data-view-button="overview" class="active"><span>⌂</span><b>Overview</b></button>
+        <button type="button" data-view-button="graph"><span>◉</span><b>Graph</b></button>
+        <button type="button" data-view-button="repositories"><span>▦</span><b>Repositories</b></button>
+        <button type="button" data-view-button="capabilities"><span>◆</span><b>Capabilities</b></button>
+        <button type="button" data-view-button="verifier"><span>✓</span><b>Verifier</b></button>
+        <button type="button" data-view-button="scanner"><span>⌁</span><b>Scanner</b></button>
+        <button type="button" data-view-button="history"><span>◷</span><b>History</b></button>
+      </nav>
+
+      <div class="rail-footer">
+        <span class="rail-dot"></span>
+        <span><b>Web-only</b><small>Canonical data</small></span>
+      </div>
+    </aside>
+
+    <div class="app-stage">
+      <header class="topbar">
     <div>
       <p class="eyebrow">PROJECT BRAIN · KNOWLEDGE MAP</p>
       <h1>เห็นทั้งระบบในจอเดียว</h1>
@@ -18,27 +42,109 @@
       <span id="graph-status" class="status-dot">กำลังโหลด</span>
       <span id="graph-updated"></span>
     </div>
-  </header>
+      </header>
 
-  <main>
-    <section class="brain-pulse" aria-label="สรุป Project Brain">
+      <section class="command-bar card" aria-label="Project Brain command bar">
+        <button id="rail-toggle" class="rail-toggle" type="button" aria-label="เปิดเมนู">☰</button>
+        <label class="global-search">
+          <span>⌕</span>
+          <input id="global-search" type="search" placeholder="ค้นหา repo, capability, goal หรือ verifier…">
+          <kbd>Ctrl K</kbd>
+        </label>
+        <div class="command-context">
+          <span id="current-view-label">Overview</span>
+          <span id="command-health" class="command-health">Loading</span>
+        </div>
+      </section>
+
+      <main>
+    <section class="brain-pulse" aria-label="สรุป Project Brain" data-pb-view="graph">
       <article class="pulse-card"><small>KNOWLEDGE</small><b id="metric-nodes">—</b><span>Nodes</span></article>
       <article class="pulse-card"><small>CONNECTIONS</small><b id="metric-relations">—</b><span>Relations</span></article>
       <article class="pulse-card"><small>EVIDENCE</small><b id="metric-evidence">—</b><span>SAT / total</span></article>
       <article class="pulse-card decision"><small>ACTIVE DECISION</small><b id="metric-decision">—</b><span>Current goal</span></article>
     </section>
 
-    <nav class="section-nav card" aria-label="Project Brain sections">
-      <button type="button" data-scroll="graph-card" class="active">Graph</button>
-      <button type="button" data-scroll="catalog-section">Repositories</button>
-      <button type="button" data-scroll="capability-section">Capabilities</button>
-      <button type="button" data-scroll="verifier-section">Verifier</button>
-      <button type="button" data-scroll="scanner-section">Scanner</button>
-      <button type="button" data-scroll="timeline-section">Timeline</button>
-      <button type="button" data-scroll="rule-section">Decision Rule</button>
+    <nav class="section-nav card mobile-view-nav" aria-label="Project Brain views">
+      <button type="button" data-view-button="overview" class="active">Overview</button>
+      <button type="button" data-view-button="graph">Graph</button>
+      <button type="button" data-view-button="repositories">Repos</button>
+      <button type="button" data-view-button="capabilities">Caps</button>
+      <button type="button" data-view-button="verifier">Verify</button>
+      <button type="button" data-view-button="scanner">Scan</button>
+      <button type="button" data-view-button="history">History</button>
     </nav>
 
-    <section class="time-machine card" id="time-machine" aria-label="Temporal Knowledge Graph">
+
+    <section class="overview-panel" id="overview-section" data-pb-view="overview">
+      <div class="overview-hero card">
+        <div>
+          <p class="eyebrow">PROJECT BRAIN V0.5</p>
+          <h2>Decision Command Center</h2>
+          <p>เริ่มจากสิ่งที่มีอยู่ → ตรวจหลักฐาน → Verify → เลือก REUSE / ADAPT / BUILD</p>
+        </div>
+        <div class="overview-verdict">
+          <small>CURRENT VERIFIED PATH</small>
+          <b id="overview-decision">—</b>
+          <span id="overview-contract">กำลังโหลด contract…</span>
+        </div>
+      </div>
+
+      <div class="overview-grid">
+        <article class="overview-card card" data-jump-view="repositories">
+          <div class="overview-card-icon">▦</div>
+          <div><small>PUBLIC REPOSITORIES</small><b id="overview-repos">—</b><span>catalogued</span></div>
+          <button type="button">ดู Repositories →</button>
+        </article>
+        <article class="overview-card card" data-jump-view="capabilities">
+          <div class="overview-card-icon">◆</div>
+          <div><small>DOCUMENTED CAPABILITIES</small><b id="overview-capabilities">—</b><span>evidence-backed candidates</span></div>
+          <button type="button">ดู Capabilities →</button>
+        </article>
+        <article class="overview-card card" data-jump-view="verifier">
+          <div class="overview-card-icon">✓</div>
+          <div><small>VERIFIER</small><b id="overview-verdict">—</b><span>current contract verdict</span></div>
+          <button type="button">เปิด Verifier →</button>
+        </article>
+        <article class="overview-card card" data-jump-view="scanner">
+          <div class="overview-card-icon">⌁</div>
+          <div><small>SCANNER</small><b id="overview-pending">—</b><span>pending changes</span></div>
+          <button type="button">เปิด Scanner →</button>
+        </article>
+      </div>
+
+      <div class="overview-flow card">
+        <div class="overview-flow-head">
+          <div><p class="eyebrow">DECISION PIPELINE</p><h3>จาก Goal ไปสู่การตัดสิน</h3></div>
+          <button type="button" data-jump-view="graph">เปิด Knowledge Graph</button>
+        </div>
+        <div class="overview-steps">
+          <span><b>1</b> Goal</span><i>→</i>
+          <span><b>2</b> Search</span><i>→</i>
+          <span><b>3</b> Evidence</span><i>→</i>
+          <span><b>4</b> Verify</span><i>→</i>
+          <span class="is-result"><b>5</b> REUSE / ADAPT / BUILD</span>
+        </div>
+      </div>
+
+      <div class="overview-lower">
+        <article class="overview-list card">
+          <div class="overview-list-head"><h3>System status</h3><span id="overview-system-status">Loading</span></div>
+          <div id="overview-status-list" class="overview-status-list"></div>
+        </article>
+        <article class="overview-list card">
+          <div class="overview-list-head"><h3>Quick actions</h3><span>Web-only</span></div>
+          <button type="button" data-jump-view="capabilities">ค้นหาความสามารถที่มีอยู่</button>
+          <button type="button" data-jump-view="verifier">ตรวจ Goal Contract</button>
+          <button type="button" data-jump-view="scanner">ดูการเปลี่ยนแปลงของ repo</button>
+          <button type="button" data-jump-view="history">ย้อนดู Knowledge State</button>
+        </article>
+      </div>
+    </section>
+
+    <div class="global-search-results card" id="global-search-results" hidden></div>
+
+    <section class="time-machine card" id="time-machine" data-pb-view="graph" aria-label="Temporal Knowledge Graph">
       <div class="time-head">
         <div>
           <p class="eyebrow">TEMPORAL KNOWLEDGE GRAPH</p>
@@ -69,7 +175,7 @@
 
 
 
-    <section class="catalog-panel card" id="catalog-section" aria-label="Full Repository Catalog">
+    <section class="catalog-panel card" id="catalog-section" data-pb-view="repositories" aria-label="Full Repository Catalog">
       <div class="catalog-head">
         <div>
           <p class="eyebrow">FULL REPOSITORY CATALOG</p>
@@ -108,7 +214,7 @@
     </section>
 
 
-    <section class="capability-panel card" id="capability-section" aria-label="Repository Capability Inventory">
+    <section class="capability-panel card" id="capability-section" data-pb-view="capabilities" aria-label="Repository Capability Inventory">
       <div class="capability-head">
         <div>
           <p class="eyebrow">CAPABILITY INVENTORY</p>
@@ -145,7 +251,7 @@
     </section>
 
 
-    <section class="verifier-panel card" id="verifier-section" aria-label="Project Brain Verifier">
+    <section class="verifier-panel card" id="verifier-section" data-pb-view="verifier" aria-label="Project Brain Verifier">
       <div class="verifier-head">
         <div>
           <p class="eyebrow">VERIFIER V0.5</p>
@@ -182,7 +288,7 @@
       </p>
     </section>
 
-    <section class="scanner-panel card" id="scanner-section" aria-label="Project Brain GitHub Scanner">
+    <section class="scanner-panel card" id="scanner-section" data-pb-view="scanner" aria-label="Project Brain GitHub Scanner">
       <div class="scanner-head">
         <div>
           <p class="eyebrow">GITHUB SCANNER V0.4</p>
@@ -230,7 +336,7 @@
       </p>
     </section>
 
-    <section class="controls card">
+    <section class="controls card" data-pb-view="graph">
       <label class="search">
         <span>ค้นหา</span>
         <input id="search" type="search" placeholder="เช่น rollback, Simclone, evidence">
@@ -262,7 +368,7 @@
       </div>
     </section>
 
-    <section class="workspace">
+    <section class="workspace" data-pb-view="graph">
       <article class="graph-card card" id="graph-card">
         <div class="graph-head">
           <div>
@@ -308,7 +414,7 @@
 
     <div class="detail-backdrop" id="detail-backdrop" hidden></div>
 
-    <section class="timeline card" id="timeline-section">
+    <section class="timeline card" id="timeline-section" data-pb-view="history">
       <div class="section-head">
         <div>
           <h2>Timeline</h2>
@@ -320,14 +426,16 @@
       <p class="note">หมายเหตุ: V0.2 แสดง timeline ของเหตุการณ์ก่อน ส่วน historical graph replay ตาม valid_from / valid_to จะเป็น milestone ถัดไป</p>
     </section>
 
-    <section class="rule card" id="rule-section">
+    <section class="rule card" id="rule-section" data-pb-view="history">
       <h2>Decision Rule</h2>
       <div class="rule-flow">
         <span>NEED</span><b>→</b><span>SEARCH GRAPH</span><b>→</b><span class="reuse">REUSE</span><b>→</b><span class="adapt">ADAPT</span><b>→</b><span class="build">BUILD</span><b>→</b><span>VERIFY</span><b>→</b><span>UPDATE BRAIN</span>
       </div>
       <p>SAT / VIOL / UNKNOWN · UNKNOWN ไม่ใช่ PASS · Agent บอกว่าเสร็จไม่ถือเป็นหลักฐาน</p>
     </section>
-  </main>
+      </main>
+    </div>
+  </div>
 
   <div class="mobile-hint" id="mobile-hint">แตะ Node เพื่อดูรายละเอียด · ลากพื้นหลังเพื่อเลื่อน · จีบนิ้วหรือใช้ +/− เพื่อซูม</div>
 
@@ -344,5 +452,6 @@
   <script type="module" src="./catalog.js"></script>
   <script type="module" src="./capabilities.js"></script>
   <script type="module" src="./verifier.js"></script>
+  <script type="module" src="./shell.js"></script>
 </body>
 </html>

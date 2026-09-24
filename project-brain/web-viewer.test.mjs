@@ -175,3 +175,40 @@ test('Verifier web layer does not duplicate verifier engine logic',async()=>{
   assert.doesNotMatch(verifier,/verifyContract/);
   assert.doesNotMatch(verifier,/decisionFor/);
 });
+
+
+test('Command Center UX V0.5.1 exposes one-view workspace navigation',async()=>{
+  const shell=await readFile(new URL('../brain/shell.js',import.meta.url),'utf8');
+  for(const id of ['overview-section','global-search','global-search-results','current-view-label','rail-toggle'])assert.match(html,new RegExp(`id=["']${id}["']`));
+  for(const view of ['overview','graph','repositories','capabilities','verifier','scanner','history'])assert.match(html,new RegExp(`data-view-button=["']${view}["']`));
+  assert.match(shell,/data-pb-view/);
+  assert.match(shell,/section\.hidden=section\.dataset\.pbView!==view/);
+  assert.match(shell,/searchParams\.set\('view',view\)/);
+});
+
+test('Command Center global search reads canonical datasets instead of embedding repo data',async()=>{
+  const shell=await readFile(new URL('../brain/shell.js',import.meta.url),'utf8');
+  assert.match(shell,/project-brain\/graph\/project-brain\.json/);
+  assert.match(shell,/project-brain\/catalog\/repositories\.json/);
+  assert.match(shell,/project-brain\/capability-inventory\/repositories\.json/);
+  assert.match(shell,/project-brain\/verifier\/index\.json/);
+  assert.doesNotMatch(shell,/nustanakritwithai\/PocketMonster/);
+  assert.doesNotMatch(shell,/Transactional authoritative world runtime/);
+});
+
+test('Overview metrics are loaded from Project Brain data, not hard-coded',async()=>{
+  const shell=await readFile(new URL('../brain/shell.js',import.meta.url),'utf8');
+  for(const id of ['overview-repos','overview-capabilities','overview-verdict','overview-pending','overview-decision'])assert.match(html,new RegExp(`id=["']${id}["']`));
+  assert.match(shell,/catalog\.summary/);
+  assert.match(shell,/inventory\.summary/);
+  assert.match(shell,/verifierReport\.overallVerdict/);
+  assert.match(shell,/scanner\.summary/);
+});
+
+test('Command Center has responsive rail and reduced-motion contract',()=>{
+  assert.match(css,/Command Center UX V0\.5\.1/);
+  assert.match(css,/\.app-shell/);
+  assert.match(css,/body\.rail-open \.app-rail/);
+  assert.match(css,/\.mobile-view-nav/);
+  assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
+});
