@@ -1,4 +1,4 @@
-const UX_PREF='project-brain:ux:v054';
+const UX_PREF='project-brain:ux:v056';
 const PRESETS={
   all:['PROJECT','CAPABILITY','CAPABILITY_CANDIDATE','EVIDENCE','GOAL','ISSUE','INTEGRATION','VERSION'],
   core:['PROJECT','CAPABILITY','GOAL','INTEGRATION'],
@@ -12,6 +12,8 @@ let graph=null;
 let nodeMap=new Map();
 let activePreset='core';
 let focusMode=false;
+let selectedNodeId=null;
+let focusRootId=null;
 let observer=null;
 let temporalTimer=null;
 let temporalSelectedIndex=0;
@@ -25,7 +27,7 @@ function readPrefs(){
 }
 
 function writePrefs(){
-  try{localStorage.setItem(UX_PREF,JSON.stringify({activePreset,focusMode}))}catch{}
+  try{localStorage.setItem(UX_PREF,JSON.stringify({activePreset}))}catch{}
 }
 
 function setPreset(name,{persist=true}={}){
@@ -51,12 +53,62 @@ function updateFilterCount(){
   if(target)target.textContent=chips.length?`${on}/${chips.length}`:'—';
 }
 
-function setFocus(on,{persist=true}={}){
-  focusMode=Boolean(on);
+function nodeName(id){
+  return nodeMap.get(id)?.name??id??'—';
+}
+
+function updateInspectionUI(){
+  const bar=qs('#graph-inspection');
+  const topButton=qs('#focus-mode');
+  const detailButton=qs('#detail [data-detail-focus]');
+  const hasSelection=Boolean(selectedNodeId);
+  if(bar)bar.hidden=!hasSelection;
+
+  const nodeLabel=qs('#graph-inspection-node');
+  if(nodeLabel)nodeLabel.textContent=hasSelection?nodeName(selectedNodeId):'—';
+
+  const state=qs('#graph-inspection-state');
+  if(state)state.textContent=focusMode?'FOCUS':'SELECTED';
+
+  const focusCopy=qs('#graph-inspection-focus');
+  if(focusCopy){
+    focusCopy.textContent=focusMode&&focusRootId
+      ? `Focus: ${nodeName(focusRootId)}`
+      : 'คง selection ไว้เมื่อออกจาก Focus';
+  }
+
+  const label=focusMode?'ออกจาก Focus':'เข้า Focus';
+  if(topButton){
+    topButton.disabled=!hasSelection&&!focusMode;
+    topButton.textContent=label;
+    topButton.setAttribute('aria-pressed',String(focusMode));
+  }
+  if(detailButton){
+    detailButton.textContent=label;
+    detailButton.disabled=!hasSelection&&!focusMode;
+  }
+  const barButton=qs('[data-inspection-action="focus"]');
+  if(barButton){
+    barButton.textContent=label;
+    barButton.disabled=!hasSelection&&!focusMode;
+  }
+
   document.body.classList.toggle('ux-focus',focusMode);
-  const button=qs('#focus-mode');
-  if(button)button.setAttribute('aria-pressed',String(focusMode));
+}
+
+function setFocus(on,{rootId=selectedNodeId,persist=true}={}){
+  const next=Boolean(on);
+  if(next&&!rootId)return false;
+
+  focusMode=next;
+  focusRootId=next?rootId:null;
+  document.dispatchEvent(new CustomEvent('project-brain:set-focus-root',{
+    detail:{id:focusRootId}
+  }));
+  updateInspectionUI();
+
   if(persist)writePrefs();
+  return true;
 }
 
 function syncDeepLinkFromDetail(){
@@ -107,13 +159,18 @@ function enhanceDetailActions(){
   const detail=qs('#detail');
   const id=detail?.querySelector('.detail-id')?.textContent?.trim();
   if(!id)return;
+  selectedNodeId=id;
   const node=nodeMap.get(id);
-  if(!node||detail.querySelector('.detail-actions'))return;
+  if(!node||detail.querySelector('.detail-actions')){
+    updateInspectionUI();
+    return;
+  }
   const outgoing=(graph?.edges||[]).filter(e=>e.from===id);
   const incoming=(graph?.edges||[]).filter(e=>e.to===id);
   const evidence=[...outgoing,...incoming].filter(e=>e.type==='VERIFIED_BY'||e.type==='DOCUMENTED_BY').length;
   const actions=document.createElement('div');
   actions.className='detail-actions';
+
   if(node.repo){
     const a=document.createElement('a');
     a.href=`https://github.com/${node.repo}`;
@@ -122,17 +179,30 @@ function enhanceDetailActions(){
     a.textContent='เปิด Repo ↗';
     actions.append(a);
   }
+
+  const center=document.createElement('button');
+  center.type='button';
+  center.dataset.detailCenter='true';
+  center.textContent='จัดกึ่งกลาง';
+  center.addEventListener('click',()=>{
+    document.dispatchEvent(new CustomEvent('project-brain:center-node',{detail:{id:selectedNodeId,scale:1}}));
+  });
+  actions.append(center);
+
   const focus=document.createElement('button');
   focus.type='button';
-  focus.textContent=focusMode?'ออกจาก Focus':'โฟกัส Node นี้';
-  focus.addEventListener('click',()=>{setFocus(!focusMode);focus.textContent=focusMode?'ออกจาก Focus':'โฟกัส Node นี้'});
+  focus.dataset.detailFocus='true';
+  focus.addEventListener('click',()=>setFocus(!focusMode,{rootId:selectedNodeId}));
   actions.append(focus);
+
   const badge=document.createElement('span');
   badge.className='detail-badge';
   badge.textContent=`${outgoing.length+incoming.length} relations${evidence?` · ${evidence} evidence`:''}`;
   actions.append(badge);
+
   const idLine=detail.querySelector('.detail-id');
   idLine?.after(actions);
+  updateInspectionUI();
 }
 
 function populateMetrics(){
@@ -310,7 +380,18 @@ function installSearchEnter(){
 }
 
 function installGraphHooks(){
-  qs('#focus-mode')?.addEventListener('click',()=>setFocus(!focusMode));
+  qs('#focus-mode')?.addEventListener('click',()=>setFocus(!focusMode,{rootId:selectedNodeId}));
+
+  qsa('[data-inspection-action]').forEach(button=>button.addEventListener('click',()=>{
+    const action=button.dataset.inspectionAction;
+    if(action==='center'&&selectedNodeId){
+      document.dispatchEvent(new CustomEvent('project-brain:center-node',{detail:{id:selectedNodeId,scale:1}}));
+    }else if(action==='focus'){
+      setFocus(!focusMode,{rootId:selectedNodeId});
+    }else if(action==='clear'){
+      qs('#reset-selection')?.click();
+    }
+  }));
   qsa('[data-preset]').forEach(b=>b.addEventListener('click',()=>{
     setPreset(b.dataset.preset);
     if(matchMedia('(max-width:1180px), (pointer:coarse) and (orientation:portrait)').matches){
@@ -333,6 +414,27 @@ function installGraphHooks(){
       updateFilterCount();
       writePrefs();
     },0);
+  });
+}
+
+function installSelectionEvents(){
+  document.addEventListener('project-brain:node-selected',event=>{
+    selectedNodeId=event.detail?.id??null;
+    if(!focusMode)focusRootId=null;
+    updateInspectionUI();
+  });
+
+  document.addEventListener('project-brain:selection-cleared',()=>{
+    selectedNodeId=null;
+    focusRootId=null;
+    focusMode=false;
+    updateInspectionUI();
+  });
+
+  document.addEventListener('project-brain:focus-root-changed',event=>{
+    focusRootId=event.detail?.id??null;
+    focusMode=Boolean(focusRootId);
+    updateInspectionUI();
   });
 }
 
@@ -364,8 +466,11 @@ async function bootUX(){
   }catch{}
   const prefs=readPrefs();
   activePreset=PRESETS[prefs.activePreset]?prefs.activePreset:'core';
-  focusMode=prefs.focusMode===true;
+  focusMode=false;
+  focusRootId=null;
+  selectedNodeId=null;
   installSectionNav();
+  installSelectionEvents();
   installSearchEnter();
   installGraphHooks();
   installDetailObserver();
@@ -373,7 +478,7 @@ async function bootUX(){
     if(!qs('#type-filters .filter-chip'))return;
     clearInterval(wait);
     setPreset(activePreset,{persist:false});
-    setFocus(focusMode,{persist:false});
+    updateInspectionUI();
     updateFilterCount();
     openDeepLink();
   },60);

@@ -48,9 +48,10 @@ test('viewer loads a reusable UX layer with deep links and persisted presets',as
   assert.match(ux,/fetch\('\.\.\/project-brain\/graph\/project-brain\.json'/);
 });
 
-test('focus UX reuses the graph engine dimming contract instead of rebuilding layout',async()=>{
+test('focus UX delegates isolation to the graph-engine focus-root contract',async()=>{
   const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
-  assert.match(css,/body\.ux-focus \.node\.dim/);
+  assert.match(css,/body\.ux-focus \.node\.focus-out/);
+  assert.match(ux,/project-brain:set-focus-root/);
   assert.doesNotMatch(ux,/settle\(/);
 });
 
@@ -281,7 +282,7 @@ test('Graph Focus UX V0.5.4 removes secondary dashboards from Graph view',async(
   assert.match(css,/\.graph-card \.legend\{display:none!important\}/);
   assert.match(css,/\.workspace\[data-pb-view="graph"\]\{\s*display:block/);
   assert.match(css,/\.workspace>\.detail\{\s*position:fixed/);
-  assert.match(ux,/const UX_PREF='project-brain:ux:v054'/);
+  assert.match(ux,/const UX_PREF='project-brain:ux:v056'/);
 });
 
 test('Graph Focus UX defaults to Core and keeps relation labels opt-in',async()=>{
@@ -347,4 +348,68 @@ test('Graph labels scale with visible density',()=>{
   assert.match(css,/Adaptive Graph Layout V0\.5\.5/);
   assert.match(css,/#graph\[data-density="comfortable"\] \.node text/);
   assert.match(css,/#graph\[data-density="dense"\] \.node \.meta\{\s*display:none/);
+});
+
+
+test('Focus Inspection UX V0.5.6 separates selection from focus root',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  assert.match(js,/let selectedId=null;\s*let focusRootId=null;/);
+  assert.match(ux,/let selectedNodeId=null;\s*let focusRootId=null;/);
+  assert.match(js,/project-brain:set-focus-root/);
+  assert.match(js,/project-brain:focus-root-changed/);
+  assert.match(ux,/project-brain:node-selected/);
+  assert.match(ux,/project-brain:focus-root-changed/);
+});
+
+test('exiting Focus preserves selection and recenters the selected node',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  const start=ux.indexOf('function setFocus');
+  const end=ux.indexOf('\nfunction syncDeepLinkFromDetail',start);
+  const block=ux.slice(start,end);
+  assert.match(block,/focusRootId=next\?rootId:null/);
+  assert.match(block,/project-brain:set-focus-root/);
+  assert.doesNotMatch(block,/reset-selection/);
+  assert.doesNotMatch(block,/selectedNodeId=null/);
+
+  const appFocus=js.slice(
+    js.indexOf("document.addEventListener('project-brain:set-focus-root'"),
+    js.indexOf("document.addEventListener('project-brain:center-node'")
+  );
+  assert.match(appFocus,/else if\(selectedId\)/);
+  assert.match(appFocus,/centerOnNode\(selectedId,\{scale:1\}\)/);
+});
+
+test('Focus hides focus-out nodes instead of hiding selection-dim nodes',()=>{
+  assert.match(js,/classList\.add\('focus-out'\)/);
+  assert.match(css,/body\.ux-focus \.node\.focus-out/);
+  assert.doesNotMatch(css,/body\.ux-focus \.node\.dim[^\n]*display:none/);
+  assert.match(css,/\.node\.focus-root circle/);
+  assert.match(css,/\.node\.selected\.focus-root circle/);
+});
+
+test('graph inspection context bar persists selected node actions',()=>{
+  for(const id of ['graph-inspection','graph-inspection-state','graph-inspection-node','graph-inspection-focus']){
+    assert.match(html,new RegExp(`id=["']${id}["']`));
+  }
+  assert.match(html,/data-inspection-action=["']center["']/);
+  assert.match(html,/data-inspection-action=["']focus["']/);
+  assert.match(html,/data-inspection-action=["']clear["']/);
+  assert.match(css,/Focus Inspection UX V0\.5\.6/);
+});
+
+test('detail actions expose center and focus without clearing selection',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  const start=ux.indexOf('function enhanceDetailActions');
+  const end=ux.indexOf('\nfunction populateMetrics',start);
+  const block=ux.slice(start,end);
+  assert.match(block,/dataset\.detailCenter='true'/);
+  assert.match(block,/dataset\.detailFocus='true'/);
+  assert.match(block,/project-brain:center-node/);
+  assert.doesNotMatch(block,/reset-selection/);
+});
+
+test('only explicit clear/background actions clear graph selection',()=>{
+  assert.match(js,/function clearSelection\(\{clearFocus=true\}=\{\}\)/);
+  assert.match(js,/reset-selection[^\n]*addEventListener/);
+  assert.match(js,/svg\.addEventListener\('click',\(\)=>clearSelection/);
 });
