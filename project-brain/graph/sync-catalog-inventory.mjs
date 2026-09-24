@@ -173,6 +173,20 @@ function stableJson(value){
   return JSON.stringify(value,null,2)+'\n';
 }
 
+function canonical(value){
+  if(Array.isArray(value))return value.map(canonical);
+  if(value&&typeof value==='object'){
+    return Object.fromEntries(
+      Object.keys(value).sort().map(key=>[key,canonical(value[key])])
+    );
+  }
+  return value;
+}
+
+function semanticJson(value){
+  return JSON.stringify(canonical(value));
+}
+
 function parseArgs(argv){
   const args={check:false};
   for(let i=0;i<argv.length;i++){
@@ -200,8 +214,8 @@ async function main(argv=process.argv.slice(2)){
   const next=stableJson(synced);
 
   if(args.check){
-    const current=await readFile(graphPath,'utf8');
-    if(current!==next){
+    const current=JSON.parse(await readFile(graphPath,'utf8'));
+    if(semanticJson(current)!==semanticJson(synced)){
       console.error('Project Brain graph coverage drift detected. Run sync-catalog-inventory.mjs and commit the graph.');
       process.exitCode=1;
       return;
