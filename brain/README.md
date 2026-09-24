@@ -1,4 +1,4 @@
-# Project Brain Web Viewer V0.2.1
+# Project Brain Web Viewer V0.3
 
 Interactive read-only Knowledge Graph viewer for Project Brain.
 
@@ -42,3 +42,16 @@ Next milestone: temporal edge validity + graph replay slider.
 - larger touch targets and mobile graph viewport
 
 The UX layer is kept in `brain/ux.js` so graph layout/rendering and interaction presentation remain separable.
+
+
+## Temporal Graph V0.3
+
+- checkpoint slider
+- play / pause history
+- jump to current knowledge state
+- share historical view with `?at=<checkpoint-id>`
+- node/edge visibility from `activeFrom` / `activeUntil`
+- temporal node property materialization
+- Brain Pulse metrics recalculate for the selected checkpoint
+
+Time semantics are knowledge-state history, not inferred software creation dates.
