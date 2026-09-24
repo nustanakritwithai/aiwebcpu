@@ -1,25 +1,33 @@
 # Project Brain Repository Catalog
 
-Mechanical discovery catalog for every repository owned by `nustanakritwithai` visible to the connected GitHub account at the 2026-09-24 capture.
+Mechanical discovery catalog for repositories visible to the connected GitHub account at the 2026-09-24 capture.
 
-## Scope
+## Public persistence boundary
 
-- Total repositories: **37**
-- Non-empty: **34**
-- Empty: **3**
-- Public: **33**
-- Private: **4**
+The connected account exposed **37 repositories total** during discovery.
 
-Empty repositories:
+This public Project Brain persists details for **33 public repositories only**.
+
+Private repository details are intentionally omitted from the public catalog:
+
+- private repository count: **4**
+- private names: not persisted here
+- private commit metadata: not persisted here
+- private evidence paths/content: not persisted here
+
+An authenticated private storage/query layer is required before private repository details can become part of Project Brain.
+
+## Public catalog snapshot
+
+- 33 public repositories persisted
+- 30 public repositories with commits
+- 3 empty public repositories
+- exact-head CI evidence: 16 SAT / 1 VIOL / 16 UNKNOWN
+
+Empty public repositories:
 - Monkey-king
 - Empire-war
 - APK-Test
-
-Private repositories:
-- MulitAgentWork
-- Ai-game
-- MonsterLifeServer
-- A2A-blackboard
 
 ## Trust boundary
 
@@ -41,6 +49,6 @@ A filename, commit message, package manifest, or successful CI result does not b
 
 ## Scheduled scanning
 
-Public repositories can be monitored by the aiwebcpu GitHub Actions scanner.
+The public scanner monitors the 33 persisted public repositories.
 
-Private repositories are cataloged but marked `MANUAL_PRIVATE` until a cross-repository credential is explicitly configured for the scanner workflow.
+Private repositories are not persisted or scheduled by the public Project Brain workflow.
