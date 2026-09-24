@@ -1,0 +1,43 @@
+name: Project Brain Release Browser Gate
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'brain/**'
+      - 'project-brain/deep-profiles/**'
+      - 'project-brain/graph/project-brain.json'
+      - 'project-brain/browser-release-smoke.py'
+      - '.github/workflows/project-brain-browser.yml'
+  pull_request:
+    paths:
+      - 'brain/**'
+      - 'project-brain/deep-profiles/**'
+      - 'project-brain/graph/project-brain.json'
+      - 'project-brain/browser-release-smoke.py'
+      - '.github/workflows/project-brain-browser.yml'
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install isolated browser test tools
+        run: |
+          python -m pip install playwright==1.56.0
+          python -m playwright install --with-deps chromium
+      - name: Verify integration deep link, field map, partner navigation and focus
+        run: python project-brain/browser-release-smoke.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: project-brain-release-browser
+          path: browser-release-evidence/
+          retention-days: 7
+          if-no-files-found: error
