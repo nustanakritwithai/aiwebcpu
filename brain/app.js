@@ -38,6 +38,27 @@ let draggingStage=false;
 let dragStart=null;
 let showEdgeLabels=true;
 
+let temporalCheckpointId=null;
+
+function temporalIndex(id){
+  return (graph?.temporal?.checkpoints??[]).findIndex(cp=>cp.id===id);
+}
+
+function temporalActive(item){
+  if(!graph?.temporal?.checkpoints?.length||!temporalCheckpointId)return true;
+  const at=temporalIndex(temporalCheckpointId);
+  const from=item.activeFrom?temporalIndex(item.activeFrom):0;
+  const until=item.activeUntil?temporalIndex(item.activeUntil):Infinity;
+  if(at<0||from<0||until===-1)return false;
+  return at>=from&&at<until;
+}
+
+function temporalMaterialize(item){
+  const state=(item.temporalStates??[]).find(row=>temporalActive(row));
+  if(!state)return item;
+  return {...item,...(state.values??{})};
+}
+
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const el=(name,attrs={})=>{const x=document.createElementNS('http://www.w3.org/2000/svg',name);for(const [k,v] of Object.entries(attrs))x.setAttribute(k,v);return x};
 
@@ -106,9 +127,13 @@ function settle(nodes,edges){
 
 function filtered(){
   const q=search.value.trim().toLocaleLowerCase();
-  const nodes=graph.nodes.filter(n=>visibleTypes.has(n.type));
+  const nodes=graph.nodes
+    .filter(n=>visibleTypes.has(n.type)&&temporalActive(n))
+    .map(temporalMaterialize);
   const nodeIds=new Set(nodes.map(n=>n.id));
-  const edges=graph.edges.filter(e=>nodeIds.has(e.from)&&nodeIds.has(e.to));
+  const edges=graph.edges
+    .filter(e=>nodeIds.has(e.from)&&nodeIds.has(e.to)&&temporalActive(e))
+    .map(temporalMaterialize);
   const matches=new Set(!q?[]:nodes.filter(n=>
     [n.id,n.name,n.repo,n.status,n.decision,n.verdict,n.scope]
       .some(v=>String(v??'').toLocaleLowerCase().includes(q))
@@ -202,11 +227,12 @@ function fit(){
 
 function selectNode(id){
   selectedId=id;
-  const node=graph.nodes.find(n=>n.id===id);
+  const current=filtered();
+  const node=current.nodes.find(n=>n.id===id);
   if(!node)return;
-  const outgoing=graph.edges.filter(e=>e.from===id);
-  const incoming=graph.edges.filter(e=>e.to===id);
-  const nodeMap=new Map(graph.nodes.map(n=>[n.id,n]));
+  const outgoing=current.edges.filter(e=>e.from===id);
+  const incoming=current.edges.filter(e=>e.to===id);
+  const nodeMap=new Map(current.nodes.map(n=>[n.id,n]));
 
   const properties=Object.entries(node)
     .filter(([k])=>!['name'].includes(k))
@@ -304,6 +330,7 @@ async function boot(){
     const response=await fetch('../project-brain/graph/project-brain.json',{cache:'no-store'});
     if(!response.ok)throw new Error(`HTTP ${response.status}`);
     graph=await response.json();
+    temporalCheckpointId=graph.temporal?.defaultCheckpoint??graph.temporal?.checkpoints?.at(-1)?.id??null;
     settle(graph.nodes,graph.edges);
     setupFilters();
     renderTimeline();
@@ -313,10 +340,22 @@ async function boot(){
     document.querySelector('#graph-status').textContent='LIVE GRAPH';
     document.querySelector('#graph-status').classList.add('ok');
     document.querySelector('#graph-updated').textContent=`updated ${graph.updated??'—'}`;
+    document.dispatchEvent(new CustomEvent('project-brain:graph-ready',{detail:{temporal:graph.temporal??null}}));
   }catch(error){
     document.querySelector('#graph-status').textContent='LOAD FAILED';
     document.querySelector('#detail').innerHTML=`<div class="detail-placeholder"><h2>โหลดกราฟไม่ได้</h2><p>${esc(error.message)}</p></div>`;
   }
 }
+
+document.addEventListener('project-brain:set-checkpoint',event=>{
+  const id=event.detail?.id;
+  if(!id||temporalIndex(id)<0)return;
+  temporalCheckpointId=id;
+  const activeIds=new Set(graph.nodes.filter(temporalActive).map(n=>n.id));
+  if(selectedId&&!activeIds.has(selectedId))document.querySelector('#reset-selection')?.click();
+  renderGraph();
+  fit();
+  document.dispatchEvent(new CustomEvent('project-brain:checkpoint-changed',{detail:{id}}));
+});
 
 boot();
