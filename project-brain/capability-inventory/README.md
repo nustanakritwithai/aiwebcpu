@@ -19,7 +19,7 @@ Every extracted capability keeps `reuseDecision = UNKNOWN` until a concrete comp
 - 33 public repositories represented
 - 29 repositories with documented semantic extraction
 - 4 repositories still UNKNOWN
-- 115 documented capability candidates
+- 116 documented capability candidates
 
 Empty repositories remain UNKNOWN.
 
@@ -39,4 +39,16 @@ REUSE / ADAPT / BUILD
 Verify
       ↓
 Canonical Knowledge Graph
+```
+
+
+## Verifier V0.5
+
+The inventory now also documents Project Brain's own goal-specific contract verifier.
+
+This increases the documented capability count to **116**, but the rule remains unchanged:
+
+```text
+DOCUMENTED ≠ VERIFIED REUSE
+reuseDecision = UNKNOWN
 ```
