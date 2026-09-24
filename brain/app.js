@@ -33,6 +33,8 @@ const search=document.querySelector('#search');
 const empty=document.querySelector('#empty');
 
 let graph=null;
+let projectCatalog=null;
+let capabilityInventory=null;
 let visibleTypes=new Set();
 let selectedId=null;
 let focusRootId=null;
@@ -66,6 +68,137 @@ function temporalMaterialize(item){
 
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const el=(name,attrs={})=>{const x=document.createElementNS('http://www.w3.org/2000/svg',name);for(const [k,v] of Object.entries(attrs))x.setAttribute(k,v);return x};
+
+
+/* Project Deep Dive V0.6.0
+   Read-only composition across Catalog + Capability Inventory + canonical Graph. */
+const repoKey=node=>node?.repo??'';
+const catalogRow=node=>(projectCatalog?.repositories??[]).find(row=>row.id===node?.id||row.repo===repoKey(node))??null;
+const inventoryRow=node=>(capabilityInventory?.repositories??[]).find(row=>row.repoId===node?.id||row.repo===repoKey(node))??null;
+
+function projectDeepDive(node){
+  if(node?.type!=='PROJECT')return '';
+
+  const catalog=catalogRow(node);
+  const inventory=inventoryRow(node);
+  const activeEdges=(graph?.edges??[]).filter(temporalActive);
+  const graphNodes=new Map((graph?.nodes??[]).filter(temporalActive).map(row=>[row.id,row]));
+  const documentedTargets=activeEdges
+    .filter(edge=>edge.from===node.id&&edge.type==='DOCUMENTS')
+    .map(edge=>graphNodes.get(edge.to))
+    .filter(Boolean);
+  const documentedByName=new Map(documentedTargets.map(row=>[row.name,row.id]));
+  const verifiedCount=activeEdges
+    .filter(edge=>edge.from===node.id&&edge.type==='PROVIDES')
+    .map(edge=>graphNodes.get(edge.to))
+    .filter(target=>target?.type==='CAPABILITY').length;
+
+  const capabilities=(inventory?.capabilities?.length
+    ? inventory.capabilities.map(capability=>({
+        label:capability.label,
+        evidenceCount:(capability.evidence??[]).length,
+        targetId:documentedByName.get(capability.label)??null
+      }))
+    : documentedTargets.map(target=>({
+        label:target.name,
+        evidenceCount:Number(target.evidenceCount??0),
+        targetId:target.id
+      }))
+  );
+
+  const ci=catalog?.exactHeadWorkflow?.verdict??'UNKNOWN';
+  const ciClass=ci==='SAT'?'sat':ci==='VIOL'?'viol':'unknown';
+  const head=catalog?.head??null;
+  const headDate=head?.date?String(head.date).slice(0,10):'—';
+  const shortSha=head?.sha?String(head.sha).slice(0,8):(node.headSha?String(node.headSha).slice(0,8):'—');
+  const evidenceFiles=catalog?.evidenceFiles??[];
+  const signals=catalog?.detectedSignals??[];
+  const limitations=inventory?.limitations??[];
+  const notes=inventory?.notes??[];
+  const extraction=inventory?.extractionStatus??node.semanticStatus??'UNKNOWN';
+  const repo=repoKey(node);
+  const repoUrl=/^[\w.-]+\/[\w.-]+$/.test(repo)?`https://github.com/${repo}`:null;
+
+  const capabilityRows=capabilities.map(capability=>`
+    <button class="project-capability" ${capability.targetId?`data-node="${esc(capability.targetId)}"`:'disabled'}>
+      <span>${esc(capability.label)}</span>
+      <small>${esc(capability.evidenceCount)} evidence</small>
+    </button>
+  `).join('');
+
+  const evidenceRows=evidenceFiles.map(file=>`
+    <span class="project-evidence-file" title="${esc(file.sha??'')}">${esc(file.path)}</span>
+  `).join('');
+
+  const signalRows=signals.map(signal=>`<span class="project-signal">${esc(signal)}</span>`).join('');
+  const cautionRows=[...limitations,...notes].map(item=>`<li>${esc(item)}</li>`).join('');
+
+  return `
+    <section class="project-deep-dive" aria-label="Project Deep Dive">
+      <div class="project-deep-head">
+        <div>
+          <small>PROJECT DEEP DIVE · V0.6.0</small>
+          <h3>${esc(repo||node.name)}</h3>
+        </div>
+        ${repoUrl?`<a href="${esc(repoUrl)}" target="_blank" rel="noreferrer">GitHub ↗</a>`:''}
+      </div>
+
+      <div class="project-deep-badges">
+        <span>${esc(catalog?.catalogStatus??node.catalogStatus??'UNKNOWN')}</span>
+        <span>${esc(extraction)}</span>
+        <span class="ci-${ciClass}">CI ${esc(ci)}</span>
+      </div>
+
+      <div class="project-deep-metrics">
+        <article><small>DOCUMENTED</small><b>${capabilities.length}</b><span>capabilities</span></article>
+        <article><small>VERIFIED</small><b>${verifiedCount}</b><span>graph capabilities</span></article>
+        <article><small>EVIDENCE</small><b>${evidenceFiles.length}</b><span>catalog files</span></article>
+        <article><small>SIZE</small><b>${catalog?.sizeKB??'—'}</b><span>KB</span></article>
+      </div>
+
+      <div class="project-head-signal">
+        <small>HEAD · ${esc(headDate)} · ${esc(shortSha)}</small>
+        <b>${esc(head?.title??'ยังไม่มี commit headline ใน catalog snapshot')}</b>
+        <span>${esc(catalog?.defaultBranch??node.defaultBranch??'—')} · ${catalog?.archived?'ARCHIVED':'ACTIVE REPO'}</span>
+      </div>
+
+      <div class="project-deep-section">
+        <div class="project-deep-title"><b>Capabilities</b><span>DOCUMENTED ≠ VERIFIED REUSE</span></div>
+        <div class="project-capability-list">${capabilityRows||'<p class="note">ยังไม่มี semantic extraction สำหรับโปรเจกต์นี้</p>'}</div>
+      </div>
+
+      ${evidenceRows?`
+        <div class="project-deep-section">
+          <div class="project-deep-title"><b>Evidence files</b><span>catalog snapshot</span></div>
+          <div class="project-evidence-files">${evidenceRows}</div>
+        </div>
+      `:''}
+
+      ${signalRows?`
+        <div class="project-deep-section">
+          <div class="project-deep-title"><b>Signals</b><span>mechanical detection</span></div>
+          <div class="project-signals">${signalRows}</div>
+        </div>
+      `:''}
+
+      ${cautionRows?`
+        <div class="project-deep-section project-cautions">
+          <div class="project-deep-title"><b>Limitations / Notes</b><span>do not infer beyond evidence</span></div>
+          <ul>${cautionRows}</ul>
+        </div>
+      `:''}
+    </section>
+  `;
+}
+
+async function optionalJson(path){
+  try{
+    const response=await fetch(path,{cache:'no-store'});
+    return response.ok?await response.json():null;
+  }catch{
+    return null;
+  }
+}
 
 function hash(text){
   let h=2166136261>>>0;
@@ -394,6 +527,7 @@ function selectNode(id,{source='direct'}={}){
     <span class="detail-type" style="border-color:${TYPE_STYLE[node.type]?.color??'#fff'}">${esc(node.type)}</span>
     <h2 class="detail-title">${esc(node.name)}</h2>
     <div class="detail-id">${esc(node.id)}</div>
+    ${projectDeepDive(node)}
     <dl class="properties">${properties}</dl>
     <h2>Relations</h2>
     <div class="relations">${relationRows||'<p class="note">ไม่มีความสัมพันธ์ใน graph ปัจจุบัน</p>'}</div>
@@ -494,9 +628,15 @@ function setupInteraction(){
 
 async function boot(){
   try{
-    const response=await fetch('../project-brain/graph/project-brain.json',{cache:'no-store'});
+    const [response,catalogData,inventoryData]=await Promise.all([
+      fetch('../project-brain/graph/project-brain.json',{cache:'no-store'}),
+      optionalJson('../project-brain/catalog/repositories.json'),
+      optionalJson('../project-brain/capability-inventory/repositories.json')
+    ]);
     if(!response.ok)throw new Error(`HTTP ${response.status}`);
     graph=await response.json();
+    projectCatalog=catalogData;
+    capabilityInventory=inventoryData;
     const requestedCheckpoint=new URL(location.href).searchParams.get('at');
     const defaultCheckpoint=graph.temporal?.defaultCheckpoint??graph.temporal?.checkpoints?.at(-1)?.id??null;
     temporalCheckpointId=(requestedCheckpoint&&temporalIndex(requestedCheckpoint)>=0)?requestedCheckpoint:defaultCheckpoint;

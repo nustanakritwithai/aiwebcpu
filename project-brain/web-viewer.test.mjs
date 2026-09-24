@@ -518,3 +518,26 @@ test('Focus Sharpness UX V0.5.9 keeps graph nodes crisp behind Focus detail',()=
   assert.doesNotMatch(block,/body\.ux-focus\.detail-open \.detail-backdrop\{[^}]*blur\(/);
 });
 
+test('Project Deep Dive V0.6.0 composes catalog, semantic inventory and canonical graph',async()=>{
+  assert.match(js,/Project Deep Dive V0\.6\.0/);
+  assert.match(js,/optionalJson\('\.\.\/project-brain\/catalog\/repositories\.json'\)/);
+  assert.match(js,/optionalJson\('\.\.\/project-brain\/capability-inventory\/repositories\.json'\)/);
+  assert.match(js,/function projectDeepDive\(node\)/);
+  assert.match(js,/edge\.from===node\.id&&edge\.type==='DOCUMENTS'/);
+  assert.match(js,/edge\.from===node\.id&&edge\.type==='PROVIDES'/);
+  assert.match(js,/DOCUMENTED ≠ VERIFIED REUSE/);
+  assert.match(js,/exactHeadWorkflow/);
+  assert.match(css,/Project Deep Dive V0\.6\.0/);
+  assert.match(css,/\.project-deep-metrics\{/);
+  assert.match(css,/\.project-capability\{/);
+});
+
+test('Project Deep Dive capability rows navigate through canonical graph node ids',()=>{
+  const start=js.indexOf('function projectDeepDive(node)');
+  const end=js.indexOf('\nasync function optionalJson',start);
+  const block=js.slice(start,end);
+  assert.match(block,/documentedByName\.get\(capability\.label\)/);
+  assert.match(block,/data-node=/);
+  assert.doesNotMatch(block,/reuseDecision=['"]REUSE/);
+});
+

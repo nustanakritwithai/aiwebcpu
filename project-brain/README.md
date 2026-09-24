@@ -68,6 +68,7 @@ Viewer อ่าน canonical graph เดียวโดยตรง ไม่�
 - Temporal Graph slider
 - historical deep links ด้วย `?at=<checkpoint-id>`
 - node deep links ด้วย `?node=<node-id>`
+- Project Deep Dive V0.6.0 สำหรับ PROJECT node: repository HEAD/CI, semantic capability inventory, evidence files และ drill-through เข้า documented capability โดยยังคง boundary `DOCUMENTED ≠ VERIFIED REUSE`
 
 ## Query Layer
 
