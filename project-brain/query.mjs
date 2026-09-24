@@ -157,6 +157,15 @@ export function capabilitySummary(graph,query){
   }));
 }
 
+export function documentedCapabilitySummary(graph,query){
+  return findNodes(graph,query,{type:'CAPABILITY_CANDIDATE'}).map(capability=>({
+    capability,
+    repositories:incoming(graph,capability.id,'DOCUMENTS').map(e=>nodeById(graph,e.from)).filter(Boolean),
+    evidence:outgoing(graph,capability.id,'DOCUMENTED_BY').map(e=>nodeById(graph,e.to)).filter(Boolean),
+    reuseDecision:capability.reuseDecision??'UNKNOWN'
+  }));
+}
+
 function compact(value){
   if(Array.isArray(value))return value.map(compact);
   if(value&&typeof value==='object'){
@@ -193,7 +202,7 @@ async function main(argv=process.argv.slice(2)){
 
   const query=rest.join(' ').trim();
   if(!command||!query){
-    console.error('Usage: node project-brain/query.mjs <capability|providers|goal|integration|node|snapshot|verification> <query-or-id>\n       node project-brain/query.mjs checkpoints');
+    console.error('Usage: node project-brain/query.mjs <capability|documented|providers|goal|integration|node|snapshot|verification> <query-or-id>\n       node project-brain/query.mjs checkpoints');
     process.exitCode=2;
     return;
   }
@@ -201,6 +210,7 @@ async function main(argv=process.argv.slice(2)){
   let result;
   if(command==='capability')result=capabilitySummary(graph,query);
   else if(command==='providers')result=providersFor(graph,query);
+  else if(command==='documented')result=documentedCapabilitySummary(graph,query);
   else if(command==='goal')result=inspectGoal(graph,query);
   else if(command==='integration')result=inspectIntegration(graph,query);
   else if(command==='node')result=findNodes(graph,query);
