@@ -1,0 +1,44 @@
+name: Pocket x Pirate Paired Contract Gate
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "project-brain/cross-project/verify-pocket-pirate-pair.mjs"
+      - "project-brain/deep-profiles/projects.json"
+      - ".github/workflows/project-brain-pocket-pirate-pair.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify-pair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout Project Brain
+        uses: actions/checkout@v6
+        with:
+          path: project-brain-repo
+
+      - name: Checkout pinned PocketMonster candidate
+        uses: actions/checkout@v6
+        with:
+          repository: nustanakritwithai/PocketMonster
+          ref: ba1347d8537519543669273c7964d8c6079c57b2
+          path: pocket
+
+      - name: Checkout pinned Pirate Fruit candidate
+        uses: actions/checkout@v6
+        with:
+          repository: nustanakritwithai/Pirate-fruit-
+          ref: f08ed860162fb27d33332c8d31d1c1f3d4cbb32d
+          path: pirate
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Verify paired cross-repo contracts
+        run: node project-brain-repo/project-brain/cross-project/verify-pocket-pirate-pair.mjs pocket pirate

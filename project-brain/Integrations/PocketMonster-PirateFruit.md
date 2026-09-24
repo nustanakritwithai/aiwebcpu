@@ -1,6 +1,6 @@
 # PocketMonster × Pirate Fruit — Cross-Project Deep Dive V0.6.3
 
-Status: **CANDIDATE / exact-head gates VIOL**
+Status: **CANDIDATE / individual exact-head gates SAT / paired gate PENDING**
 
 This report is a source-evidence overlay. It does not declare the draft pair merged, deployed or reusable.
 
@@ -13,16 +13,16 @@ This report is a source-evidence overlay. It does not declare the draft pair mer
 ## Candidate pair
 
 ### PocketMonster PR #632
-- head: `ef84398e78471cad61c597dd4211d4f8dd7d128e`
+- head: `ba1347d8537519543669273c7964d8c6079c57b2`
 - draft: yes
-- exact-head gate: **VIOL**
-- blocker: the Monster controls regression still expects `world-presence-protocol.mjs?v=7` while the candidate imports v8.
+- exact-head gate: **SAT**
+- verification: Monster controls, world continuity, Studio integration and real-browser acceptance are SAT on the exact head.
 
 ### Pirate Fruit PR #168
-- head: `8842f808b3ac1aadf633f0f975812c7a800b8384`
+- head: `f08ed860162fb27d33332c8d31d1c1f3d4cbb32d`
 - draft: yes
-- exact-head gate: **VIOL**
-- blocker: TypeScript build fails on the PlayerVitalsSkillAuthority callback signature and RemoteTrade test IslandId fixtures.
+- exact-head gate: **SAT**
+- verification: build, server smoke, unit tests, extended economy test, browser smoke, renderer and audio gates are SAT on the exact head.
 
 ## Authority flow
 
@@ -67,11 +67,10 @@ Pocket sanitizes `tradeQuote` / `trade` operations. Pirate loads the bundled Eco
 
 ## Promotion gates
 
-1. Repair both exact-head CI failures without weakening existing contracts.
-2. Rerun PR #632 and PR #168 on their exact heads.
-3. Add a composed cross-repo test pinned to both candidate SHAs.
-4. Prove server → Pocket parent → Pirate vitals and Pirate → parent → server transient input.
-5. Prove trade/vitals under stale revision, duplicate idempotency, reconnect, session change and respawn retry.
-6. Only then promote authority changes into the canonical graph.
+1. Individual exact-head gates are SAT for Pocket #632 and Pirate #168.
+2. Run the composed cross-repo gate pinned to Pocket `ba1347d8…` + Pirate `f08ed860…`.
+3. Prove server → Pocket parent → Pirate vitals and Pirate → parent → server transient input at the pinned pair boundary.
+4. Keep stale revision, duplicate idempotency, reconnect, session change and respawn retry fail-closed.
+5. Only after paired SAT and integration review may the candidate authority changes be promoted into the canonical graph.
 
-UNKNOWN/VIOL is not PASS.
+Individual SAT is not paired SAT. UNKNOWN/VIOL is not PASS.

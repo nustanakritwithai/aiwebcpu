@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.3.0",
+  "schemaVersion": "1.4.0",
   "semantics": {
     "status": "DOCUMENTED source-level multi-project + cross-project profile",
     "rule": "Deep profile data adds source context, authority boundaries and exact-head verification signals but does not promote capability reuse decisions or overwrite canonical graph authority."
@@ -236,7 +236,7 @@
         "url": "https://github.com/nustanakritwithai/PocketMonster/actions/runs/35534212847"
       },
       "productVision": "Monster Life RPG domain integrated into a federation where Pocket owns monster identity/progression while shared world/server layers execute combined authoritative gameplay.",
-      "currentStage": "Pocket main has the merged Pirate original-world/save bridge. Draft PR #632 extends it with server-owned Pirate vitals relay, transient vitals input and central trade operation transport, but exact-head CI is currently VIOL.",
+      "currentStage": "Pocket main keeps the merged Pirate original-world/save bridge. Draft PR #632 is exact-head SAT and extends it with server-owned Pirate vitals relay, transient vitals input and central trade operation transport; cross-repo paired verification is still pending.",
       "architecture": [
         {
           "label": "Monster progression domain",
@@ -291,8 +291,8 @@
         {
           "label": "PR #632 — Pirate vitals relay",
           "owner": "Pocket parent shell",
-          "state": "VIOL",
-          "detail": "Candidate validates pirate-vitals/1, carries canonical HP/guard/energy/MP/death/respawn inside the original-world envelope, and relays it to the Pirate iframe. Exact-head Monster controls CI is red on a stale v7 protocol assertion.",
+          "state": "CANDIDATE",
+          "detail": "Candidate validates pirate-vitals/1, carries canonical HP/guard/energy/MP/death/respawn inside the original-world envelope, and relays it to the Pirate iframe. Exact-head Pocket PR #632 workflows are SAT; pair compatibility still requires the pinned cross-repo gate.",
           "evidence": {
             "path": "pirate-original-world-contract.mjs",
             "sha": "5f1e14920134458a6476fc1ba5f32f39501ea988"
@@ -374,7 +374,7 @@
           "domain": "Pirate player HP / guard / energy / MP",
           "owner": "Pirate server candidate",
           "state": "CANDIDATE",
-          "detail": "Pocket receives and validates the server snapshot but must not calculate or persist a competing vitals truth. Promotion is blocked while PR #632/#168 exact-head gates are red.",
+          "detail": "Pocket receives and validates the server snapshot but must not calculate or persist a competing vitals truth. Pocket #632 and Pirate #168 are individually SAT; authority promotion remains blocked until the pinned pair gate is SAT and the draft pair is integrated.",
           "evidence": {
             "path": "pirate-original-world-contract.mjs",
             "sha": "5f1e14920134458a6476fc1ba5f32f39501ea988"
@@ -393,12 +393,12 @@
         "INTEGRATION-MASTER-PLAN-V3.3.md is an architecture baseline / implementation plan, not proof that every planned authority transfer is live.",
         "combat-v91-server-authority.mjs explicitly has productionWritesEnabled=false and networkCreation=false.",
         "README still describes V8.1 live progression while newer V9.x integration code exists; version labels therefore describe different layers.",
-        "PocketMonster × Pirate Fruit candidate integration is currently unmerged: Pocket PR #632 and Pirate PR #168 are draft with exact-head CI VIOL."
+        "PocketMonster × Pirate Fruit candidate integration is still unmerged: Pocket PR #632 and Pirate PR #168 are draft with individual exact-head CI SAT; paired cross-repo compatibility is PENDING until the pinned contract gate passes."
       ],
       "crossProjectIntegration": {
         "id": "pocketmonster-pirate-fruit-vitals-economy-20260921",
         "partnerRepoId": "repo:pirate-fruit",
-        "status": "CANDIDATE",
+        "status": "CANDIDATE_PAIRED_INDIVIDUAL_SAT",
         "mergedBaseline": {
           "pocketHead": "cf902e7410e8d67efa5a004d085dd7b7c858d2df",
           "pirateHead": "d20096d1720ec25a4c219fdc0e44b8373684e369"
@@ -422,19 +422,19 @@
         "pirate": {
           "pullRequest": 168,
           "ref": "codex/pirate-vitals-economy-native-20260921",
-          "head": "6cfb6685776593d85f8629b68ad6e212a980d93c",
+          "head": "f08ed860162fb27d33332c8d31d1c1f3d4cbb32d",
           "draft": true,
-          "gateVerdict": "RUNNING",
+          "gateVerdict": "SAT",
           "runId": 35540739646,
-          "blocker": "Exact-head verification is still running after the deterministic remote-save smoke repair.",
+          "blocker": null,
           "gate": "Client and server gates + browser/audio/renderer",
           "runIds": [
-            36062739449,
-            36062739569,
-            36062739614
+            36063411261,
+            36063411283,
+            36063411353
           ]
         },
-        "rule": "Draft branch evidence is not merged/live proof. Both exact-head gates must pass before authority promotion.",
+        "rule": "Both draft exact heads are individually SAT. They remain unmerged and cross-repo compatibility stays PENDING until the pinned paired-contract gate passes.",
         "contractSchemaVersion": "1.0.0",
         "contracts": [
           {
@@ -584,7 +584,14 @@
               }
             }
           }
-        ]
+        ],
+        "pairedVerification": {
+          "verdict": "PENDING",
+          "pocketHead": "ba1347d8537519543669273c7964d8c6079c57b2",
+          "pirateHead": "f08ed860162fb27d33332c8d31d1c1f3d4cbb32d",
+          "workflow": "Pocket x Pirate Paired Contract Gate",
+          "rule": "Individual exact-head SAT is necessary but not sufficient. Cross-repo compatibility remains PENDING until the pinned pair gate passes."
+        }
       }
     },
     {
@@ -606,7 +613,7 @@
         "url": "https://github.com/nustanakritwithai/Pirate-fruit-/actions/runs/35534125384"
       },
       "productVision": "Three.js pirate action RPG evolving into a server-authoritative persistent multiplayer world with quests, combat, boats, monsters and a bounded living economy.",
-      "currentStage": "Pirate default branch has the merged central monster/PvE worker baseline. Draft PR #168 extends it with canonical HP/guard/energy/MP/respawn and central economy quote/execute, but exact-head CI is currently VIOL.",
+      "currentStage": "Pirate default branch keeps the merged central monster/PvE baseline. Draft PR #168 is exact-head SAT and extends it with canonical HP/guard/energy/MP/respawn plus central economy quote/execute; cross-repo paired verification is still pending.",
       "architecture": [
         {
           "label": "Client / Shared / Server separation",
@@ -661,8 +668,8 @@
         {
           "label": "PR #168 — canonical Pirate vitals",
           "owner": "Pirate server",
-          "state": "VIOL",
-          "detail": "Candidate server rules own HP/guard regeneration, hitstun, energy/MP, potion/skill resource costs and respawn receipts. Client local writers are disabled after server authority is claimed. Exact-head client/server CI currently fails TypeScript build.",
+          "state": "CANDIDATE",
+          "detail": "Candidate server rules own HP/guard regeneration, hitstun, energy/MP, potion/skill resource costs and respawn receipts. Exact-head Pirate PR #168 build/unit/extended/browser/renderer/audio gates are SAT; pair compatibility still requires the pinned cross-repo gate.",
           "evidence": {
             "path": "server/src/player/vitalsRules.ts",
             "sha": "21d65a8973c94c2660521c758cda99322ba26686"
@@ -783,12 +790,12 @@
         "The repository default branch is claude/blox-fruits-three-js-roadmap-1f2f5u rather than main; this profile follows the actual default branch.",
         "Several server-authoritative systems are feature-gated and may be absent at runtime when flags are disabled.",
         "Green client/server CI does not prove every optional Render/server deployment flag is enabled in production.",
-        "PocketMonster × Pirate Fruit candidate integration is currently unmerged: Pocket PR #632 and Pirate PR #168 are draft with exact-head CI VIOL."
+        "PocketMonster × Pirate Fruit candidate integration is still unmerged: Pocket PR #632 and Pirate PR #168 are draft with individual exact-head CI SAT; paired cross-repo compatibility is PENDING until the pinned contract gate passes."
       ],
       "crossProjectIntegration": {
         "id": "pocketmonster-pirate-fruit-vitals-economy-20260921",
         "partnerRepoId": "repo:pocketmonster",
-        "status": "CANDIDATE",
+        "status": "CANDIDATE_PAIRED_INDIVIDUAL_SAT",
         "mergedBaseline": {
           "pocketHead": "cf902e7410e8d67efa5a004d085dd7b7c858d2df",
           "pirateHead": "d20096d1720ec25a4c219fdc0e44b8373684e369"
@@ -812,19 +819,19 @@
         "pirate": {
           "pullRequest": 168,
           "ref": "codex/pirate-vitals-economy-native-20260921",
-          "head": "6cfb6685776593d85f8629b68ad6e212a980d93c",
+          "head": "f08ed860162fb27d33332c8d31d1c1f3d4cbb32d",
           "draft": true,
-          "gateVerdict": "RUNNING",
+          "gateVerdict": "SAT",
           "runId": 35540739646,
-          "blocker": "Exact-head verification is still running after the deterministic remote-save smoke repair.",
+          "blocker": null,
           "gate": "Client and server gates + browser/audio/renderer",
           "runIds": [
-            36062739449,
-            36062739569,
-            36062739614
+            36063411261,
+            36063411283,
+            36063411353
           ]
         },
-        "rule": "Draft branch evidence is not merged/live proof. Both exact-head gates must pass before authority promotion.",
+        "rule": "Both draft exact heads are individually SAT. They remain unmerged and cross-repo compatibility stays PENDING until the pinned paired-contract gate passes.",
         "contractSchemaVersion": "1.0.0",
         "contracts": [
           {
@@ -974,7 +981,14 @@
               }
             }
           }
-        ]
+        ],
+        "pairedVerification": {
+          "verdict": "PENDING",
+          "pocketHead": "ba1347d8537519543669273c7964d8c6079c57b2",
+          "pirateHead": "f08ed860162fb27d33332c8d31d1c1f3d4cbb32d",
+          "workflow": "Pocket x Pirate Paired Contract Gate",
+          "rule": "Individual exact-head SAT is necessary but not sufficient. Cross-repo compatibility remains PENDING until the pinned pair gate passes."
+        }
       }
     },
     {

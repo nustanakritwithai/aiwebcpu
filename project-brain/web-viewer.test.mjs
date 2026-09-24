@@ -556,7 +556,7 @@ test('Project Deep Profile V0.6.1 loads source-level project profiles without pr
 
 test('deep project profiles cover the major active cross-project systems',async()=>{
   const profiles=JSON.parse(await readFile(new URL('./deep-profiles/projects.json',import.meta.url),'utf8'));
-  assert.equal(profiles.schemaVersion,'1.3.0');
+  assert.equal(profiles.schemaVersion,'1.4.0');
   for(const repoId of ['repo:simclone','repo:testge','repo:pocketmonster','repo:pirate-fruit','repo:echonews','repo:astralife']){
     const row=profiles.projects.find(project=>project.repoId===repoId);
     assert.ok(row,repoId);
@@ -582,14 +582,14 @@ test('deep project profiles keep evidence SHA-bound and reuse-neutral',async()=>
 
 test('PocketMonster x Pirate Fruit V0.6.3 records paired draft heads and authority boundaries',async()=>{
   const profiles=JSON.parse(await readFile(new URL('./deep-profiles/projects.json',import.meta.url),'utf8'));
-  assert.equal(profiles.schemaVersion,'1.3.0');
+  assert.equal(profiles.schemaVersion,'1.4.0');
   const pocket=profiles.projects.find(project=>project.repoId==='repo:pocketmonster');
   const pirate=profiles.projects.find(project=>project.repoId==='repo:pirate-fruit');
   for(const row of [pocket,pirate])assert.ok(row);
   assert.equal(pocket.crossProjectIntegration.pocket.pullRequest,632);
   assert.equal(pocket.crossProjectIntegration.pirate.pullRequest,168);
   assert.equal(pocket.crossProjectIntegration.pocket.gateVerdict,'SAT');
-  assert.equal(pocket.crossProjectIntegration.pirate.gateVerdict,'RUNNING');
+  assert.equal(pocket.crossProjectIntegration.pirate.gateVerdict,'SAT');
   assert.match(pocket.crossProjectIntegration.pocket.head,/^[0-9a-f]{40}$/);
   assert.match(pirate.crossProjectIntegration.pirate.head,/^[0-9a-f]{40}$/);
   assert.ok(pocket.architecture.some(row=>row.label==='PR #632 — Pirate vitals relay'));
@@ -637,11 +637,27 @@ test('Contract Matrix V0.6.5 traces Pocket x Pirate request to render boundaries
     assert.match(contract.evidence.pirate.sha,/^[0-9a-f]{40}$/);
   }
   assert.equal(integration.pocket.gateVerdict,'SAT');
-  assert.equal(integration.pirate.gateVerdict,'RUNNING');
+  assert.equal(integration.pirate.gateVerdict,'SAT');
   assert.ok(integration.contracts.some(row=>row.id==='player-vitals'&&row.state==='CANDIDATE_PAIR'));
   assert.ok(integration.contracts.some(row=>row.id==='central-market'&&row.state==='CANDIDATE_PAIR'));
   assert.ok(integration.contracts.some(row=>row.id==='shared-monster-world'&&row.state==='MERGED_BASELINE'));
   assert.ok(integration.contracts.some(row=>row.id==='combat-v91-federation'&&row.state==='CONTRACT_ONLY'));
   assert.match(js,/Contract Matrix V0\.6\.5/);
   assert.match(css,/Contract Matrix V0\.6\.5/);
+});
+
+
+test('pinned paired-contract gate is declared separately from individual CI',async()=>{
+  const profiles=JSON.parse(await readFile(new URL('./deep-profiles/projects.json',import.meta.url),'utf8'));
+  const pocket=profiles.projects.find(project=>project.repoId==='repo:pocketmonster');
+  const pair=pocket.crossProjectIntegration.pairedVerification;
+  assert.equal(pair.verdict,'PENDING');
+  assert.equal(pair.pocketHead,'ba1347d8537519543669273c7964d8c6079c57b2');
+  assert.equal(pair.pirateHead,'f08ed860162fb27d33332c8d31d1c1f3d4cbb32d');
+  assert.match(pair.rule,/necessary but not sufficient/);
+  const verifier=await readFile(new URL('./cross-project/verify-pocket-pirate-pair.mjs',import.meta.url),'utf8');
+  assert.match(verifier,/POCKET_HEAD='ba1347d8537519543669273c7964d8c6079c57b2'/);
+  assert.match(verifier,/PIRATE_HEAD='f08ed860162fb27d33332c8d31d1c1f3d4cbb32d'/);
+  assert.match(verifier,/pirate-vitals\\\/1/);
+  assert.match(verifier,/SAT proves pinned structural contract compatibility only/);
 });

@@ -74,6 +74,7 @@ Viewer อ่าน canonical graph เดียวโดยตรง ไม่�
 - PocketMonster × Pirate Fruit V0.6.3 เจาะเส้นทางรวมเกมโดยตรง: merged original-world/state bridge, draft PR #632 + #168, server-owned vitals, parent-session transport, central market quote/execute และ exact-head CI blockers; ยังไม่ promote เข้า canonical reuse verdict
 - Cross Project Integration Lens V0.6.4 แสดงคู่ Pocket/Pirate ในหน้า PROJECT detail โดยตรง: partner navigation, merged baseline SHA, candidate PR heads, exact-head VIOL blocker และ authority state โดยยังเป็น read-only overlay
 - Contract Matrix V0.6.5 แตก PocketMonster × Pirate Fruit เป็นราย contract ด้วย pipeline Request → Validate → Compute → Commit → Render สำหรับ shared monsters, save/state, boats, quest/reward, vitals, central market และ Combat V9.1
+- Paired Contract Gate V0.6.6 ล็อก Pocket #632 @ `ba1347d8…` + Pirate #168 @ `f08ed860…` แล้ว checkout สอง repo พร้อมกันเพื่อตรวจ vitals/trade/monster/central-worker contracts; individual CI SAT ไม่ถูกนับเป็น paired SAT จน gate นี้ผ่าน
 
 ## Query Layer
 
