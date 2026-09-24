@@ -127,3 +127,25 @@ test('catalog UI omits private repository filter and states private details are 
   assert.doesNotMatch(html,/data-catalog-filter=["']private["']/);
   assert.match(html,/Private repository details ถูกซ่อนจาก public dataset/);
 });
+
+
+test('Capability inventory is exposed through the web-only interface',async()=>{
+  const cap=await readFile(new URL('../brain/capabilities.js',import.meta.url),'utf8');
+  for(const id of ['capability-section','capability-status','capability-search','capability-repositories','capability-count','capability-reuse'])assert.match(html,new RegExp(`id=["']${id}["']`));
+  assert.match(html,/src=["']\.\/capabilities\.js["']/);
+  assert.match(cap,/project-brain\/capability-inventory\/repositories\.json/);
+});
+
+test('capability web layer does not embed repository semantic data',async()=>{
+  const cap=await readFile(new URL('../brain/capabilities.js',import.meta.url),'utf8');
+  assert.doesNotMatch(cap,/Transactional authoritative world runtime/);
+  assert.doesNotMatch(cap,/nustanakritwithai\/PocketMonster/);
+  assert.doesNotMatch(cap,/const\s+capabilities\s*=\s*\[/);
+});
+
+test('capability UI preserves DOCUMENTED versus VERIFIED boundary',()=>{
+  assert.match(html,/DOCUMENTED ≠ VERIFIED REUSE/);
+  assert.match(html,/REUSE \/ ADAPT \/ BUILD ยังเป็น <b>UNKNOWN<\/b>/);
+  assert.match(css,/capability-badge\.documented/);
+  assert.match(css,/capability-reuse-state/);
+});
