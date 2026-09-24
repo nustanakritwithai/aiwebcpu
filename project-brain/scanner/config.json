@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1",
+  "policy": {
+    "autoGraphWrites": false,
+    "autoMerge": false,
+    "candidateVerdict": "UNKNOWN",
+    "requireVerification": true,
+    "scanIntervalHours": 6,
+    "principle": "Mechanical repository facts may be collected automatically. Capability meaning requires verification before entering the canonical graph."
+  },
+  "repositories": [
+    {
+      "id": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md",
+        "project-brain/graph/project-brain.json",
+        ".github/workflows/project-brain.yml"
+      ]
+    },
+    {
+      "id": "repo:testge",
+      "repo": "nustanakritwithai/TestGE",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md",
+        "src/twa-engine.js",
+        "src/twa-history.js"
+      ]
+    },
+    {
+      "id": "repo:astralife",
+      "repo": "nustanakritwithai/AstraLife",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md"
+      ]
+    },
+    {
+      "id": "repo:simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "branch": "main",
+      "evidencePaths": [
+        "AGENTS.md",
+        "docs/STATUS.md",
+        "GAME_PLAN.md",
+        "src/engine.mjs"
+      ]
+    }
+  ]
+}
