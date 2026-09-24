@@ -11,7 +11,7 @@ test('Project Brain exposes one web human interface',()=>{
   assert.equal(graph.interfaces.webPath,'/brain/');
   assert.equal(graph.interfaces.localVault,false);
   assert.equal(graph.interfaces.deviceSync,false);
-  assert.equal(graph.temporal.defaultCheckpoint,'pb-2026-09-25-graph-exploration-v058');
+  assert.equal(graph.temporal.defaultCheckpoint,'pb-2026-09-25-pocket-pirate-release-v068');
 });
 
 test('local vault sync executables are removed from the repository',async()=>{

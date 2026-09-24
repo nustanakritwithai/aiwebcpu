@@ -1,0 +1,288 @@
+{
+  "schemaVersion": "1.0.0",
+  "version": "0.6.8",
+  "status": "MERGED_CODE",
+  "capturedAt": "2026-09-24T23:37:43.664Z",
+  "reuseDecision": "UNKNOWN",
+  "repositories": {
+    "pocket": {
+      "repo": "nustanakritwithai/PocketMonster",
+      "pr": 632,
+      "head": "94ab7ba4cdae44da5cd23ad38369eb6a045fa53e",
+      "mergeSha": "f7f243d21906d9fa26127529313b441b4b938ce0",
+      "merged": true,
+      "mergedAt": "2026-09-24T23:31:36Z",
+      "branch": "main",
+      "title": "feat: relay authoritative Pirate vitals through the online shell",
+      "mergedGate": {
+        "name": "Deploy PocketMonster game assets to GitHub Pages",
+        "runId": 36073170000,
+        "verdict": "SAT",
+        "conclusion": "success"
+      },
+      "gates": [
+        {
+          "name": "Monster controls integration",
+          "runId": 36072779639,
+          "verdict": "SAT"
+        },
+        {
+          "name": "Studio character live integration CI",
+          "runId": 36072779403,
+          "verdict": "SAT"
+        },
+        {
+          "name": "World warp character continuity CI",
+          "runId": 36072779569,
+          "verdict": "SAT"
+        },
+        {
+          "name": "Studio real browser acceptance",
+          "runId": 36072779625,
+          "verdict": "SAT"
+        }
+      ]
+    },
+    "pirate": {
+      "repo": "nustanakritwithai/Pirate-fruit-",
+      "pr": 168,
+      "head": "c8c725e8a12e6723a8015e74566965ae18218ff2",
+      "mergeSha": "eeec6e626e7b542d2229ffd909ffb5c015c2f111",
+      "merged": true,
+      "mergedAt": "2026-09-24T23:16:16Z",
+      "branch": "claude/blox-fruits-three-js-roadmap-1f2f5u",
+      "title": "feat: connect original Pirate player vitals and central economy",
+      "mergedGate": {
+        "name": "Client and server gates",
+        "runId": 36071876211,
+        "verdict": "SAT",
+        "conclusion": "success"
+      },
+      "gates": [
+        {
+          "name": "Client and server gates",
+          "runId": 36070843568,
+          "verdict": "SAT"
+        },
+        {
+          "name": "Audio A1 browser smoke",
+          "runId": 36070843576,
+          "verdict": "SAT"
+        },
+        {
+          "name": "Pirate owned monster renderer",
+          "runId": 36070843569,
+          "verdict": "SAT"
+        }
+      ]
+    }
+  },
+  "proofs": [
+    {
+      "label": "PocketMonster merged code",
+      "scope": "PR #632 · f7f243d2",
+      "verdict": "SAT",
+      "runId": 36072779639,
+      "detail": "Merge confirmed; every selected current-head PR gate passed. This is not proof of external server activation."
+    },
+    {
+      "label": "Pirate-fruit- merged code",
+      "scope": "PR #168 · eeec6e62",
+      "verdict": "SAT",
+      "runId": 36070843568,
+      "detail": "Merge confirmed; every selected current-head PR gate passed. This is not proof of external server activation."
+    },
+    {
+      "label": "Behavioral + native artifact pair",
+      "scope": "Pinned 94ab7ba4 × c8c725e8",
+      "verdict": "SAT",
+      "runId": 36072889289,
+      "detail": "8 real-module behavior groups, native entry hash, full parent checks, Pirate player chain, V9.1 combat and deployment artifact gates passed. HTTP/SQL transaction host remains injected."
+    },
+    {
+      "label": "Backend health/version preflight",
+      "scope": "Read-only inherited compatibility check",
+      "verdict": "SAT",
+      "runId": 36072889289,
+      "detail": "This checks the configured backend health/version contract only, not authenticated gameplay writes."
+    },
+    {
+      "label": "Pocket GitHub Pages",
+      "scope": "Exact merged-release deployment job",
+      "verdict": "SAT",
+      "runId": 36073170000,
+      "detail": "Recorded deployment job status; unrelated historical deployments are not reused."
+    },
+    {
+      "label": "Firebase launcher",
+      "scope": "Exact merged-release deployment job",
+      "verdict": "SAT",
+      "runId": 36073170000,
+      "detail": "Recorded deployment job status; unrelated historical deployments are not reused."
+    },
+    {
+      "label": "Authenticated gameplay host",
+      "scope": "Live account / SQL / server activation",
+      "verdict": "UNKNOWN",
+      "detail": "No authenticated production game-session test was run by this review. No server feature flags, credentials or database settings were changed."
+    }
+  ],
+  "fields": [
+    {
+      "message": "pirate-vitals/1",
+      "direction": "Server → Pocket parent → Pirate scene",
+      "fields": [
+        "revision",
+        "serverTimeMs",
+        "hp",
+        "maxHp",
+        "guard",
+        "guardMax",
+        "guardBroken",
+        "hitstunUntil",
+        "energy",
+        "maxEnergy",
+        "mp",
+        "maxMp",
+        "dead"
+      ],
+      "writer": "Pirate canonical vitals rules",
+      "validator": "Pocket lifecycle/bounds validation; native monotonic-revision receiver",
+      "commit": "Authoritative host persists state; scene updates presentation only",
+      "limit": "A relay ACK is not permission for a local HP/MP or inventory debit."
+    },
+    {
+      "message": "respawn",
+      "direction": "Server result → scene presentation",
+      "fields": [
+        "spawnId",
+        "islandId",
+        "x",
+        "y",
+        "z",
+        "heading",
+        "atRevision"
+      ],
+      "writer": "Pirate server respawn operation",
+      "validator": "Nonempty identities, finite coordinates, atRevision ≤ snapshot revision",
+      "commit": "Server owns resource reset; receiver applies one teleport per new respawn revision",
+      "limit": "Malformed or old snapshots never restore a local authority writer."
+    },
+    {
+      "message": "vitalsInput",
+      "direction": "Native scene → session-bound parent → server",
+      "fields": [
+        "contract",
+        "blocking",
+        "mounted",
+        "sprinting"
+      ],
+      "writer": "Client authors input intentions, not canonical vitals",
+      "validator": "Pocket allowlist/boolean validation and session binding",
+      "commit": "Dedicated transient input route, outside save-operation queue",
+      "limit": "Input flags are not proof that the server accepted movement or granted resources."
+    },
+    {
+      "message": "vitalsPotion / vitalsSkill / vitalsBuff",
+      "direction": "Scene → parent → domain operation",
+      "fields": [
+        "type",
+        "potionId or skillId",
+        "idempotencyKey"
+      ],
+      "writer": "Client requests; Pirate server computes costs and effects",
+      "validator": "Pocket bounded request; Pirate trusted catalog, entitlement and cooldown",
+      "commit": "Canonical state plus receipt is returned for authoritative persistence",
+      "limit": "Retries replay the same receipt; neither HP nor MP quickslots consume locally under server authority."
+    },
+    {
+      "message": "pirate-original-state/1",
+      "direction": "Parent → authenticated API host",
+      "fields": [
+        "commandId",
+        "expectedRevision",
+        "operation"
+      ],
+      "writer": "Parent binds command identity and observed revision",
+      "validator": "Active session, operation allowlist, bounds and server revision/receipt checks",
+      "commit": "Outer authenticated transaction host; Pirate worker provides domain transitions",
+      "limit": "The standalone worker and injected HTTP/CAS tests do not prove a deployed SQL transaction."
+    },
+    {
+      "message": "tradeQuote",
+      "direction": "Scene → Pocket → Pirate EconomyEngine",
+      "fields": [
+        "schemaVersion",
+        "action",
+        "islandId",
+        "commodityId",
+        "quantity",
+        "quote",
+        "marketRevision"
+      ],
+      "writer": "Server computes unitPrice, stock and fee from canonical market",
+      "validator": "Pocket request shape; Pirate quote parser and real economy engine",
+      "commit": "Read-only quote; player and market unchanged",
+      "limit": "pirate-fruit is a transport zone, not a trade IslandId; use the actual island."
+    },
+    {
+      "message": "trade",
+      "direction": "Scene intent → canonical player/market transaction",
+      "fields": [
+        "idempotencyKey",
+        "expectedUnitPrice",
+        "quantity",
+        "coins",
+        "cargo",
+        "nextMarket",
+        "revision"
+      ],
+      "writer": "Server owns prices, stock, cargo and canonical coin results",
+      "validator": "Trusted quote, active boat capacity, funds, stock and duplicate receipt checks",
+      "commit": "Player aggregate and nextMarket must commit together in the outer host",
+      "limit": "expectedUnitPrice is a tolerance hint, not a client-authored price. Replay must not debit twice."
+    },
+    {
+      "message": "monster intent / original-world result",
+      "direction": "Client intent upstream; server world snapshot downstream",
+      "fields": [
+        "intentId",
+        "sequence",
+        "zone",
+        "kind",
+        "category",
+        "spawnIds",
+        "generation",
+        "messages"
+      ],
+      "writer": "Client authors intent; Pirate central worker authors monster outcomes",
+      "validator": "Bounded schemas, server combat/range rules and generation/sequence checks",
+      "commit": "World authority mutates monster state; parent only relays results",
+      "limit": "Do not conflate visual presence, transport zone and gameplay damage/HP authority."
+    },
+    {
+      "message": "player-hit-preview / player-hit-ack",
+      "direction": "Server internal IPC only",
+      "fields": [
+        "characterId",
+        "hitKey",
+        "state",
+        "resolved hit-frame"
+      ],
+      "writer": "Server monster hit queue and canonical damage adapter",
+      "validator": "Known hit, owner binding and frozen hit-frame context",
+      "commit": "ACK follows successful outer SQL/CAS commit",
+      "limit": "This ACK is not a public client operation and is not evidence of a live host deployment."
+    }
+  ],
+  "nativeArtifact": {
+    "source": "c8c725e8a12e6723a8015e74566965ae18218ff2",
+    "path": "pirate-fruit-offline/assets/index-D3UrpAn_.js",
+    "sha256": "1e79f3e0dae4c2b8865aae6393e30f43517ffe5982dd125d77beb4f2a9703f4e"
+  },
+  "limitations": [
+    "Merged source, per-repository CI, behavioral pair and deployment have separate evidence scopes.",
+    "Generic V9.1 federation contracts are not automatically production-enabled by this release.",
+    "Other goals require their own verifier; reuseDecision remains UNKNOWN."
+  ]
+}

@@ -262,3 +262,7 @@ node project-brain/graph/sync-catalog-inventory.mjs --check
 ```
 
 CI runs `--check` and fails if the canonical Graph drifts from Catalog/Inventory.
+
+## Release Evidence V0.6.8
+
+Pocket × Pirate now has a canonical integration node and a nine-message field map. The Release Evidence panel separates merged code, exact-head CI, behavioral/native artifact verification, Pages/Firebase deployment and the untested authenticated production host. Historical structural proof is retained with its original pins; no reuse verdict is promoted.

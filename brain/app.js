@@ -1,3 +1,4 @@
+import {renderReleaseEvidence} from './release-evidence.mjs';
 const TYPE_STYLE={
   PROJECT:{label:'Project',color:'#3694ff'},
   CAPABILITY:{label:'Verified Capability',color:'#3ee68b'},
@@ -80,6 +81,7 @@ const inventoryRow=node=>(capabilityInventory?.repositories??[]).find(row=>row.r
 const deepProfileRow=node=>(projectDeepProfiles?.projects??[]).find(row=>row.repoId===node?.id||row.repo===repoKey(node))??null;
 
 function projectDeepDive(node){
+  if(node?.id==='integration:pocketmonster-pirate-fruit')return renderReleaseEvidence(projectDeepProfiles?.projects?.find(row=>row.repoId==='repo:pocketmonster')?.crossProjectIntegration?.releaseEvidence);
   if(node?.type!=='PROJECT')return '';
 
   const catalog=catalogRow(node);
@@ -283,6 +285,7 @@ function projectDeepDive(node){
             <span>${esc(deepProfile.currentStage??'')}</span>
           </div>
           ${crossIntegrationHtml}
+          ${renderReleaseEvidence(crossIntegration?.releaseEvidence)}
           ${architectureRows?`
             <div class="project-deep-section">
               <div class="project-deep-title"><b>Architecture</b><span>owner + authority state</span></div>

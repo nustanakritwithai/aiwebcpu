@@ -638,8 +638,8 @@ test('Contract Matrix V0.6.5 traces Pocket x Pirate request to render boundaries
   }
   assert.equal(integration.pocket.gateVerdict,'SAT');
   assert.equal(integration.pirate.gateVerdict,'SAT');
-  assert.ok(integration.contracts.some(row=>row.id==='player-vitals'&&row.state==='CANDIDATE_PAIR'));
-  assert.ok(integration.contracts.some(row=>row.id==='central-market'&&row.state==='CANDIDATE_PAIR'));
+  assert.ok(integration.contracts.some(row=>row.id==='player-vitals'&&row.state==='MERGED_CODE'));
+  assert.ok(integration.contracts.some(row=>row.id==='central-market'&&row.state==='MERGED_CODE'));
   assert.ok(integration.contracts.some(row=>row.id==='shared-monster-world'&&row.state==='MERGED_BASELINE'));
   assert.ok(integration.contracts.some(row=>row.id==='combat-v91-federation'&&row.state==='CONTRACT_ONLY'));
   assert.match(js,/Contract Matrix V0\.6\.5/);
@@ -664,15 +664,15 @@ test('pinned paired-contract gate is declared separately from individual CI',asy
 });
 
 
-test('paired SAT remains candidate until merge',async()=>{
+test('merge evidence remains separate from runtime activation',async()=>{
   const profiles=JSON.parse(await readFile(new URL('./deep-profiles/projects.json',import.meta.url),'utf8'));
   const pocket=profiles.projects.find(project=>project.repoId==='repo:pocketmonster');
   const pirate=profiles.projects.find(project=>project.repoId==='repo:pirate-fruit');
-  assert.equal(pocket.crossProjectIntegration.status,'CANDIDATE_PAIRED_SAT');
-  assert.equal(pirate.crossProjectIntegration.status,'CANDIDATE_PAIRED_SAT');
+  assert.equal(pocket.crossProjectIntegration.status,'MERGED_CODE');
+  assert.equal(pirate.crossProjectIntegration.status,'MERGED_CODE');
   assert.equal(pocket.crossProjectIntegration.pairedVerification.verdict,'SAT');
   assert.equal(pocket.crossProjectIntegration.pairedVerification.runId,36064664181);
-  assert.equal(pocket.crossProjectIntegration.pocket.draft,true);
-  assert.equal(pocket.crossProjectIntegration.pirate.draft,true);
+  assert.equal(pocket.crossProjectIntegration.pocket.draft,false);
+  assert.equal(pocket.crossProjectIntegration.pirate.draft,false);
   assert.doesNotMatch(JSON.stringify(pocket.crossProjectIntegration),/"status":"MERGED"/);
 });

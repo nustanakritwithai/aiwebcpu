@@ -2689,3 +2689,6 @@ body.ux-focus .graph-inspection{
 @media(max-width:700px){
   .cross-contract-pipeline{grid-template-columns:1fr}
 }
+
+/* Release Evidence V0.6.8 */
+.release-evidence{font-size:.78rem;line-height:1.55}.release-evidence summary{cursor:pointer;overflow-wrap:anywhere}.release-evidence h3{font-size:.9rem}.release-evidence .state-sat{color:#76e2aa;border-color:#276b4d}.release-evidence .state-unknown{color:#f3cb75;border-color:#715b27}.cross-candidate-card .state-sat{color:#76e2aa;border-color:#276b4d}

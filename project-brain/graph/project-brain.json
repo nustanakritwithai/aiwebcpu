@@ -391,6 +391,140 @@
       "activeUntil": "pb-2026-09-25-graph-coverage-v053"
     },
     {
+      "id": "ev:project-brain-v053-coverage-ci",
+      "type": "EVIDENCE",
+      "name": "Project Brain V0.5.3 complete graph coverage CI",
+      "verdict": "SAT",
+      "scope": "PR #22 candidate head 8c91e78; deterministic catalog/inventory sync, 33 public repo coverage, 116 documented capability candidates, 42 documentation evidence files, query/UI coverage and graph drift guard",
+      "limitations": "Exact-main completed workflow for merge commit 760a3c6 was not observed at bookkeeping time. SAT verifies graph coverage/synchronization, not reuse compatibility of documented candidates.",
+      "source": "GitHub Actions run 36036814665",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "version:project-brain-v053",
+      "type": "VERSION",
+      "name": "Project Brain Complete Graph Coverage V0.5.3",
+      "status": "superseded",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053",
+      "activeUntil": "pb-2026-09-25-graph-focus-v054"
+    },
+    {
+      "id": "ev:project-brain-v054-ui-ci",
+      "type": "EVIDENCE",
+      "name": "Project Brain V0.5.4 Graph Focus UX contract CI",
+      "verdict": "SAT",
+      "scope": "PR #24 candidate head 775af27; Core-first defaults, opt-in relation labels, History-separated temporal controls, compact filters, overlay detail and portrait/coarse-pointer responsive behavior",
+      "limitations": "Exact-main completed workflow for merge commit ac42e6a was not observed at bookkeeping time. SAT applies to Graph Focus UI contract only.",
+      "source": "GitHub Actions run 36038482079",
+      "activeFrom": "pb-2026-09-25-graph-focus-v054"
+    },
+    {
+      "id": "version:project-brain-v054",
+      "type": "VERSION",
+      "name": "Project Brain Graph Focus UX V0.5.4",
+      "status": "superseded",
+      "activeFrom": "pb-2026-09-25-graph-focus-v054",
+      "activeUntil": "pb-2026-09-25-adaptive-layout-v055"
+    },
+    {
+      "id": "ev:project-brain-v055-ui-ci",
+      "type": "EVIDENCE",
+      "name": "Project Brain V0.5.5 adaptive graph layout CI",
+      "verdict": "SAT",
+      "scope": "PR #26 candidate head 50e79ee; visible-node layout, real canvas dimensions, bounding-box Fit, batched preset visibility and density-aware labels",
+      "limitations": "Exact-main completed workflow for merge commit aded650 was not observed at bookkeeping time. SAT applies to adaptive layout behavior only.",
+      "source": "GitHub Actions run 36039764147",
+      "activeFrom": "pb-2026-09-25-adaptive-layout-v055"
+    },
+    {
+      "id": "version:project-brain-v055",
+      "type": "VERSION",
+      "name": "Project Brain Adaptive Graph Layout V0.5.5",
+      "status": "superseded",
+      "activeFrom": "pb-2026-09-25-adaptive-layout-v055",
+      "activeUntil": "pb-2026-09-25-focus-inspection-v056"
+    },
+    {
+      "id": "ev:project-brain-v056-ui-ci",
+      "type": "EVIDENCE",
+      "name": "Project Brain V0.5.6 Focus inspection CI",
+      "verdict": "SAT",
+      "scope": "PR #28 candidate head c31f175; separate selectedId/focusRootId state, exit-focus selection persistence, recentering, context bar and focus-out isolation",
+      "limitations": "Exact-main completed workflow for merge commit 467bf5d was not observed at bookkeeping time. SAT applies to Focus inspection behavior only.",
+      "source": "GitHub Actions run 36041290562",
+      "activeFrom": "pb-2026-09-25-focus-inspection-v056"
+    },
+    {
+      "id": "version:project-brain-v056",
+      "type": "VERSION",
+      "name": "Project Brain Focus Inspection UX V0.5.6",
+      "status": "superseded",
+      "activeFrom": "pb-2026-09-25-focus-inspection-v056",
+      "activeUntil": "pb-2026-09-25-tap-detail-v057"
+    },
+    {
+      "id": "ev:project-brain-v057-ui-ci",
+      "type": "EVIDENCE",
+      "name": "Project Brain V0.5.7 tap-detail lifecycle CI",
+      "verdict": "SAT",
+      "scope": "PR #30 candidate head e02cb37; node-selected opens detail, selection-cleared closes detail, SVG capture detector removed, MutationObserver removed",
+      "limitations": "Exact-main completed workflow for merge commit 6af91b9 was not observed at bookkeeping time. SAT applies to tap/detail lifecycle only.",
+      "source": "GitHub Actions run 36042255640",
+      "activeFrom": "pb-2026-09-25-tap-detail-v057"
+    },
+    {
+      "id": "version:project-brain-v057",
+      "type": "VERSION",
+      "name": "Project Brain Tap Detail Reliability V0.5.7",
+      "status": "superseded",
+      "activeFrom": "pb-2026-09-25-tap-detail-v057",
+      "activeUntil": "pb-2026-09-25-graph-exploration-v058"
+    },
+    {
+      "id": "ev:project-brain-v058-ui-ci",
+      "type": "EVIDENCE",
+      "name": "Project Brain V0.5.8 graph exploration CI",
+      "verdict": "SAT",
+      "scope": "PR #32 candidate head 763767b; bounded history, Back/Forward engine navigation, focus-safe traversal, authoritative filtered-out selection clear and mobile detail controls",
+      "limitations": "Exact-main completed workflow for merge commit 3a3f0b4 was not observed at bookkeeping time. SAT applies to graph exploration behavior only.",
+      "source": "GitHub Actions run 36048081327",
+      "activeFrom": "pb-2026-09-25-graph-exploration-v058"
+    },
+    {
+      "id": "version:project-brain-v058",
+      "type": "VERSION",
+      "name": "Project Brain Graph Exploration UX V0.5.8",
+      "status": "superseded",
+      "activeFrom": "pb-2026-09-25-graph-exploration-v058",
+      "activeUntil": "pb-2026-09-25-pocket-pirate-release-v068"
+    },
+    {
+      "id": "version:project-brain-v068",
+      "type": "VERSION",
+      "name": "Project Brain Release Evidence V0.6.8",
+      "status": "current",
+      "activeFrom": "pb-2026-09-25-pocket-pirate-release-v068"
+    },
+    {
+      "id": "integration:pocketmonster-pirate-fruit",
+      "type": "INTEGRATION",
+      "name": "PocketMonster × Pirate Fruit",
+      "status": "MERGED_CODE",
+      "decision": "UNKNOWN",
+      "reuseDecision": "UNKNOWN",
+      "activeFrom": "pb-2026-09-25-pocket-pirate-release-v068"
+    },
+    {
+      "id": "evidence:pocket-pirate-release",
+      "type": "EVIDENCE",
+      "name": "Pocket × Pirate scoped release evidence",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "path": "project-brain/deep-profiles/pocket-pirate-release.json",
+      "sha": "982a0ff28316660feb079c6c62596b53e1c46da6",
+      "activeFrom": "pb-2026-09-25-pocket-pirate-release-v068"
+    },
+    {
       "id": "repo:3js-player-block-asset-engine",
       "type": "PROJECT",
       "name": "3JS-player-block-asset-engine-",
@@ -2975,113 +3109,6 @@
       ],
       "generatedBy": "catalog-inventory-sync-v1",
       "activeFrom": "pb-2026-09-25-graph-coverage-v053"
-    },
-    {
-      "id": "ev:project-brain-v053-coverage-ci",
-      "type": "EVIDENCE",
-      "name": "Project Brain V0.5.3 complete graph coverage CI",
-      "verdict": "SAT",
-      "scope": "PR #22 candidate head 8c91e78; deterministic catalog/inventory sync, 33 public repo coverage, 116 documented capability candidates, 42 documentation evidence files, query/UI coverage and graph drift guard",
-      "limitations": "Exact-main completed workflow for merge commit 760a3c6 was not observed at bookkeeping time. SAT verifies graph coverage/synchronization, not reuse compatibility of documented candidates.",
-      "source": "GitHub Actions run 36036814665",
-      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
-    },
-    {
-      "id": "version:project-brain-v053",
-      "type": "VERSION",
-      "name": "Project Brain Complete Graph Coverage V0.5.3",
-      "status": "superseded",
-      "activeFrom": "pb-2026-09-25-graph-coverage-v053",
-      "activeUntil": "pb-2026-09-25-graph-focus-v054"
-    },
-    {
-      "id": "ev:project-brain-v054-ui-ci",
-      "type": "EVIDENCE",
-      "name": "Project Brain V0.5.4 Graph Focus UX contract CI",
-      "verdict": "SAT",
-      "scope": "PR #24 candidate head 775af27; Core-first defaults, opt-in relation labels, History-separated temporal controls, compact filters, overlay detail and portrait/coarse-pointer responsive behavior",
-      "limitations": "Exact-main completed workflow for merge commit ac42e6a was not observed at bookkeeping time. SAT applies to Graph Focus UI contract only.",
-      "source": "GitHub Actions run 36038482079",
-      "activeFrom": "pb-2026-09-25-graph-focus-v054"
-    },
-    {
-      "id": "version:project-brain-v054",
-      "type": "VERSION",
-      "name": "Project Brain Graph Focus UX V0.5.4",
-      "status": "superseded",
-      "activeFrom": "pb-2026-09-25-graph-focus-v054",
-      "activeUntil": "pb-2026-09-25-adaptive-layout-v055"
-    },
-    {
-      "id": "ev:project-brain-v055-ui-ci",
-      "type": "EVIDENCE",
-      "name": "Project Brain V0.5.5 adaptive graph layout CI",
-      "verdict": "SAT",
-      "scope": "PR #26 candidate head 50e79ee; visible-node layout, real canvas dimensions, bounding-box Fit, batched preset visibility and density-aware labels",
-      "limitations": "Exact-main completed workflow for merge commit aded650 was not observed at bookkeeping time. SAT applies to adaptive layout behavior only.",
-      "source": "GitHub Actions run 36039764147",
-      "activeFrom": "pb-2026-09-25-adaptive-layout-v055"
-    },
-    {
-      "id": "version:project-brain-v055",
-      "type": "VERSION",
-      "name": "Project Brain Adaptive Graph Layout V0.5.5",
-      "status": "superseded",
-      "activeFrom": "pb-2026-09-25-adaptive-layout-v055",
-      "activeUntil": "pb-2026-09-25-focus-inspection-v056"
-    },
-    {
-      "id": "ev:project-brain-v056-ui-ci",
-      "type": "EVIDENCE",
-      "name": "Project Brain V0.5.6 Focus inspection CI",
-      "verdict": "SAT",
-      "scope": "PR #28 candidate head c31f175; separate selectedId/focusRootId state, exit-focus selection persistence, recentering, context bar and focus-out isolation",
-      "limitations": "Exact-main completed workflow for merge commit 467bf5d was not observed at bookkeeping time. SAT applies to Focus inspection behavior only.",
-      "source": "GitHub Actions run 36041290562",
-      "activeFrom": "pb-2026-09-25-focus-inspection-v056"
-    },
-    {
-      "id": "version:project-brain-v056",
-      "type": "VERSION",
-      "name": "Project Brain Focus Inspection UX V0.5.6",
-      "status": "superseded",
-      "activeFrom": "pb-2026-09-25-focus-inspection-v056",
-      "activeUntil": "pb-2026-09-25-tap-detail-v057"
-    },
-    {
-      "id": "ev:project-brain-v057-ui-ci",
-      "type": "EVIDENCE",
-      "name": "Project Brain V0.5.7 tap-detail lifecycle CI",
-      "verdict": "SAT",
-      "scope": "PR #30 candidate head e02cb37; node-selected opens detail, selection-cleared closes detail, SVG capture detector removed, MutationObserver removed",
-      "limitations": "Exact-main completed workflow for merge commit 6af91b9 was not observed at bookkeeping time. SAT applies to tap/detail lifecycle only.",
-      "source": "GitHub Actions run 36042255640",
-      "activeFrom": "pb-2026-09-25-tap-detail-v057"
-    },
-    {
-      "id": "version:project-brain-v057",
-      "type": "VERSION",
-      "name": "Project Brain Tap Detail Reliability V0.5.7",
-      "status": "superseded",
-      "activeFrom": "pb-2026-09-25-tap-detail-v057",
-      "activeUntil": "pb-2026-09-25-graph-exploration-v058"
-    },
-    {
-      "id": "ev:project-brain-v058-ui-ci",
-      "type": "EVIDENCE",
-      "name": "Project Brain V0.5.8 graph exploration CI",
-      "verdict": "SAT",
-      "scope": "PR #32 candidate head 763767b; bounded history, Back/Forward engine navigation, focus-safe traversal, authoritative filtered-out selection clear and mobile detail controls",
-      "limitations": "Exact-main completed workflow for merge commit 3a3f0b4 was not observed at bookkeeping time. SAT applies to graph exploration behavior only.",
-      "source": "GitHub Actions run 36048081327",
-      "activeFrom": "pb-2026-09-25-graph-exploration-v058"
-    },
-    {
-      "id": "version:project-brain-v058",
-      "type": "VERSION",
-      "name": "Project Brain Graph Exploration UX V0.5.8",
-      "status": "current",
-      "activeFrom": "pb-2026-09-25-graph-exploration-v058"
     }
   ],
   "edges": [
@@ -3338,6 +3365,66 @@
       "to": "version:project-brain-v051",
       "type": "SUPERSEDES",
       "activeFrom": "pb-2026-09-24-decision-workspace-v052"
+    },
+    {
+      "from": "version:project-brain-v053",
+      "to": "version:project-brain-v052",
+      "type": "SUPERSEDES",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "version:project-brain-v054",
+      "to": "version:project-brain-v053",
+      "type": "SUPERSEDES",
+      "activeFrom": "pb-2026-09-25-graph-focus-v054"
+    },
+    {
+      "from": "version:project-brain-v055",
+      "to": "version:project-brain-v054",
+      "type": "SUPERSEDES",
+      "activeFrom": "pb-2026-09-25-adaptive-layout-v055"
+    },
+    {
+      "from": "version:project-brain-v056",
+      "to": "version:project-brain-v055",
+      "type": "SUPERSEDES",
+      "activeFrom": "pb-2026-09-25-focus-inspection-v056"
+    },
+    {
+      "from": "version:project-brain-v057",
+      "to": "version:project-brain-v056",
+      "type": "SUPERSEDES",
+      "activeFrom": "pb-2026-09-25-tap-detail-v057"
+    },
+    {
+      "from": "version:project-brain-v058",
+      "to": "version:project-brain-v057",
+      "type": "SUPERSEDES",
+      "activeFrom": "pb-2026-09-25-graph-exploration-v058"
+    },
+    {
+      "from": "integration:pocketmonster-pirate-fruit",
+      "to": "repo:pocketmonster",
+      "type": "DEPENDS_ON",
+      "activeFrom": "pb-2026-09-25-pocket-pirate-release-v068"
+    },
+    {
+      "from": "integration:pocketmonster-pirate-fruit",
+      "to": "repo:pirate-fruit",
+      "type": "DEPENDS_ON",
+      "activeFrom": "pb-2026-09-25-pocket-pirate-release-v068"
+    },
+    {
+      "from": "integration:pocketmonster-pirate-fruit",
+      "to": "evidence:pocket-pirate-release",
+      "type": "DOCUMENTED_BY",
+      "activeFrom": "pb-2026-09-25-pocket-pirate-release-v068"
+    },
+    {
+      "from": "version:project-brain-v068",
+      "to": "version:project-brain-v058",
+      "type": "SUPERSEDES",
+      "activeFrom": "pb-2026-09-25-pocket-pirate-release-v068"
     },
     {
       "from": "repo:3js-player-block-asset-engine",
@@ -5078,42 +5165,6 @@
       "claim": "Dependencies include Supabase client and PostgreSQL session/storage packages.",
       "generatedBy": "catalog-inventory-sync-v1",
       "activeFrom": "pb-2026-09-25-graph-coverage-v053"
-    },
-    {
-      "from": "version:project-brain-v053",
-      "to": "version:project-brain-v052",
-      "type": "SUPERSEDES",
-      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
-    },
-    {
-      "from": "version:project-brain-v054",
-      "to": "version:project-brain-v053",
-      "type": "SUPERSEDES",
-      "activeFrom": "pb-2026-09-25-graph-focus-v054"
-    },
-    {
-      "from": "version:project-brain-v055",
-      "to": "version:project-brain-v054",
-      "type": "SUPERSEDES",
-      "activeFrom": "pb-2026-09-25-adaptive-layout-v055"
-    },
-    {
-      "from": "version:project-brain-v056",
-      "to": "version:project-brain-v055",
-      "type": "SUPERSEDES",
-      "activeFrom": "pb-2026-09-25-focus-inspection-v056"
-    },
-    {
-      "from": "version:project-brain-v057",
-      "to": "version:project-brain-v056",
-      "type": "SUPERSEDES",
-      "activeFrom": "pb-2026-09-25-tap-detail-v057"
-    },
-    {
-      "from": "version:project-brain-v058",
-      "to": "version:project-brain-v057",
-      "type": "SUPERSEDES",
-      "activeFrom": "pb-2026-09-25-graph-exploration-v058"
     }
   ],
   "timeline": [
@@ -5364,9 +5415,16 @@
         "label": "Graph Exploration UX V0.5.8",
         "description": "Verified bounded node navigation history, Back/Forward relation traversal, focus-safe exploration and authoritative selection invalidation.",
         "source": "nustanakritwithai/aiwebcpu@3a3f0b4"
+      },
+      {
+        "id": "pb-2026-09-25-pocket-pirate-release-v068",
+        "date": "2026-09-25",
+        "label": "Pocket × Pirate Release Evidence V0.6.8",
+        "description": "Merged code and scoped runtime/native/deployment evidence; no automatic reuse promotion.",
+        "source": "project-brain/deep-profiles/pocket-pirate-release.json"
       }
     ],
-    "defaultCheckpoint": "pb-2026-09-25-graph-exploration-v058"
+    "defaultCheckpoint": "pb-2026-09-25-pocket-pirate-release-v068"
   },
   "interfaces": {
     "human": "web",
@@ -5380,10 +5438,10 @@
     "sourceCatalog": "project-brain/catalog/repositories.json",
     "sourceInventory": "project-brain/capability-inventory/repositories.json",
     "syncVersion": "catalog-inventory-sync-v1",
+    "activeFrom": "pb-2026-09-25-graph-coverage-v053",
     "publicRepositories": 33,
     "documentedCapabilities": 116,
     "documentationEvidenceFiles": 42,
-    "semanticRule": "DOCUMENTED capability candidates remain reuseDecision=UNKNOWN until a goal-specific verifier contract resolves them.",
-    "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    "semanticRule": "DOCUMENTED capability candidates remain reuseDecision=UNKNOWN until a goal-specific verifier contract resolves them."
   }
 }
