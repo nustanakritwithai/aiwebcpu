@@ -97,3 +97,18 @@ pb-sync --ref main
 ```
 
 กฎ V0.1: sync เป็น **GitHub → Obsidian ทางเดียว** เพื่อไม่ให้การแก้โน้ตใน Vault ไปเขียนทับ source of truth โดยไม่ผ่าน Git review
+
+
+## Temporal Graph V0.3
+
+Project Brain รองรับ knowledge-state checkpoints แล้ว
+
+```bash
+node project-brain/query.mjs checkpoints
+node project-brain/query.mjs snapshot pb-2026-09-24-bootstrap
+node project-brain/query.mjs snapshot pb-2026-09-24-compat
+```
+
+อ่าน semantics และข้อจำกัดที่ [[Temporal-Graph]]
+
+สำคัญ: `activeFrom` / `activeUntil` บอกช่วงที่ความรู้นั้นมีผลใน Project Brain ไม่ได้อ้างว่าเป็นวันที่ capability ถูกสร้างจริง
