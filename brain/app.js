@@ -39,7 +39,7 @@ let positions=new Map();
 let transform={x:0,y:0,k:1};
 let draggingStage=false;
 let dragStart=null;
-let showEdgeLabels=true;
+let showEdgeLabels=false;
 
 let temporalCheckpointId=null;
 
