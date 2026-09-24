@@ -156,7 +156,7 @@ First semantic extraction pass:
 - 33 public repositories represented
 - 29 repositories with documented capabilities
 - 4 repositories remain UNKNOWN
-- 115 documented capability candidates
+- 116 documented capability candidates
 
 กฎสำคัญ:
 
