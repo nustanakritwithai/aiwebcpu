@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07111f">
+  <title>Project Brain — Knowledge Graph</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">PROJECT BRAIN V0.2</p>
+      <h1>Knowledge Graph</h1>
+      <p class="subtitle">ค้นหาของที่มีอยู่แล้ว ก่อนสร้างใหม่</p>
+    </div>
+    <div class="status">
+      <span id="graph-status" class="status-dot">กำลังโหลด</span>
+      <span id="graph-updated"></span>
+    </div>
+  </header>
+
+  <main>
+    <section class="controls card">
+      <label class="search">
+        <span>ค้นหา</span>
+        <input id="search" type="search" placeholder="เช่น rollback, Simclone, evidence">
+      </label>
+
+      <div class="filters" id="type-filters" aria-label="กรองประเภท node"></div>
+
+      <div class="toolbar">
+        <button id="fit" type="button">พอดีจอ</button>
+        <button id="zoom-out" type="button" aria-label="ซูมออก">−</button>
+        <button id="zoom-in" type="button" aria-label="ซูมเข้า">＋</button>
+        <label class="toggle">
+          <input id="edge-labels" type="checkbox" checked>
+          <span>ชื่อ relation</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <article class="graph-card card">
+        <div class="graph-head">
+          <div>
+            <h2>แผนที่ความรู้ปัจจุบัน</h2>
+            <p id="summary">—</p>
+          </div>
+          <button id="reset-selection" type="button">ล้างการเลือก</button>
+        </div>
+
+        <div class="legend" id="legend"></div>
+
+        <div class="svg-wrap" id="svg-wrap">
+          <svg id="graph" role="img" aria-label="Project Brain Knowledge Graph">
+            <defs>
+              <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z"/></marker>
+              <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z"/></marker>
+              <marker id="arrow-purple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z"/></marker>
+              <marker id="arrow-yellow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z"/></marker>
+              <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z"/></marker>
+              <marker id="arrow-cyan" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z"/></marker>
+              <marker id="arrow-gray" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z"/></marker>
+              <marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z"/></marker>
+              <marker id="arrow-pink" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z"/></marker>
+            </defs>
+            <g id="viewport">
+              <g id="edges"></g>
+              <g id="edge-label-layer"></g>
+              <g id="nodes"></g>
+            </g>
+          </svg>
+          <div class="empty" id="empty" hidden>ไม่พบ node ตามตัวกรองนี้</div>
+        </div>
+      </article>
+
+      <aside class="detail card" id="detail">
+        <div class="detail-placeholder">
+          <span class="big-icon">◎</span>
+          <h2>เลือก Node</h2>
+          <p>แตะ node ในกราฟเพื่อดู properties, ความสัมพันธ์, evidence และ reuse context</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="timeline card">
+      <div class="section-head">
+        <div>
+          <h2>Timeline</h2>
+          <p>เหตุการณ์ที่ทำให้ Project Brain เปลี่ยนแปลงตามเวลา</p>
+        </div>
+        <span class="limit-badge">V0.2: event timeline</span>
+      </div>
+      <div id="timeline-list" class="timeline-list"></div>
+      <p class="note">หมายเหตุ: V0.2 แสดง timeline ของเหตุการณ์ก่อน ส่วน historical graph replay ตาม valid_from / valid_to จะเป็น milestone ถัดไป</p>
+    </section>
+
+    <section class="rule card">
+      <h2>Decision Rule</h2>
+      <div class="rule-flow">
+        <span>NEED</span><b>→</b><span>SEARCH GRAPH</span><b>→</b><span class="reuse">REUSE</span><b>→</b><span class="adapt">ADAPT</span><b>→</b><span class="build">BUILD</span><b>→</b><span>VERIFY</span><b>→</b><span>UPDATE BRAIN</span>
+      </div>
+      <p>SAT / VIOL / UNKNOWN · UNKNOWN ไม่ใช่ PASS · Agent บอกว่าเสร็จไม่ถือเป็นหลักฐาน</p>
+    </section>
+  </main>
+
+  <template id="node-row-template">
+    <button class="relation-row" type="button">
+      <span class="relation-type"></span>
+      <span class="relation-target"></span>
+    </button>
+  </template>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
