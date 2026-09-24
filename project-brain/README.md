@@ -94,3 +94,34 @@ node project-brain/query.mjs snapshot pb-2026-09-24-compat
 ดู [Web-Only.md](Web-Only.md)
 
 Project Brain ใช้ **Web-only human interface** เพื่อให้มี UI เดียว, source เดียว และลดภาระ sync ระหว่างเครื่อง
+
+
+## GitHub Scanner V0.4
+
+Project Brain มี deterministic GitHub Scanner สำหรับจับการเปลี่ยนแปลงของ repo ที่ติดตาม
+
+```text
+GitHub repos
+   ↓
+Mechanical Scan
+   ↓
+Candidate = UNKNOWN
+   ↓
+Verify
+   ↓
+Accepted scanner PR
+   ↓
+Semantic graph update (separate verified step)
+```
+
+Scanner อ่านอัตโนมัติได้เฉพาะ:
+- HEAD SHA
+- commit metadata
+- tracked evidence-file SHA
+- exact-head GitHub Actions result
+
+Scanner **ห้าม** สรุป capability ใหม่, compatibility, REUSE/ADAPT/BUILD หรือ capability SAT จาก commit message/CI เพียงอย่างเดียว
+
+ดู implementation ที่ [scanner/README.md](scanner/README.md)
+
+Scheduled scan: ทุก 6 ชั่วโมง และเปิด/อัปเดต candidate PR เมื่อ state ต่างจาก accepted baseline

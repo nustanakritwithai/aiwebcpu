@@ -76,3 +76,25 @@ test('temporal UI states that checkpoint time is knowledge-state, not guessed so
   assert.match(html,/knowledge-state/);
   assert.match(html,/ไม่ใช่การเดาวันที่ซอฟต์แวร์หรือ capability ถูกสร้างจริง/);
 });
+
+
+test('Scanner V0.4 is visible in the web-only interface',async()=>{
+  const scanner=await readFile(new URL('../brain/scanner.js',import.meta.url),'utf8');
+  for(const id of ['scanner-section','scanner-status','scanner-monitored','scanner-baseline','scanner-pending','scanner-semantic','scanner-repos','scanner-candidates'])assert.match(html,new RegExp(`id=["']${id}["']`));
+  assert.match(html,/src=["']\.\/scanner\.js["']/);
+  assert.match(scanner,/project-brain\/scanner\/baseline\.json/);
+  assert.match(scanner,/automation\/project-brain-scan/);
+  assert.match(scanner,/pulls\?state=open/);
+});
+
+test('scanner inbox preserves UNKNOWN on pending API failure',async()=>{
+  const scanner=await readFile(new URL('../brain/scanner.js',import.meta.url),'utf8');
+  assert.match(scanner,/PENDING UNKNOWN/);
+  assert.match(scanner,/สถานะเป็น UNKNOWN ไม่ใช่ “ไม่มีการเปลี่ยนแปลง”/);
+  assert.match(scanner,/scanner-semantic'\)\.textContent='UNKNOWN'/);
+});
+
+test('scanner UI states mechanical evidence does not equal capability verification',()=>{
+  assert.match(html,/mechanical evidence เท่านั้น/);
+  assert.match(html,/ต้องผ่าน Verify ก่อนเสมอ/);
+});

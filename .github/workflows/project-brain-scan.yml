@@ -1,0 +1,93 @@
+name: Project Brain Scanner
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: project-brain-scanner
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Scan monitored repositories
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          node project-brain/scanner/scanner.mjs scan \
+            --config project-brain/scanner/config.json \
+            --baseline project-brain/scanner/baseline.json \
+            --out project-brain/scanner/latest.json \
+            --candidates project-brain/scanner/candidates.json \
+            --report project-brain/scanner/REPORT.md
+
+      - name: Count candidates
+        id: candidates
+        run: |
+          count="$(node -e "const x=require('./project-brain/scanner/candidates.json'); process.stdout.write(String(x.summary.candidates))")"
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "Scanner candidates: $count"
+
+      - name: Prepare accepted scanner baseline on candidate branch
+        if: steps.candidates.outputs.count != '0'
+        run: |
+          node project-brain/scanner/scanner.mjs promote \
+            --latest project-brain/scanner/latest.json \
+            --baseline project-brain/scanner/baseline.json
+
+      - name: Publish scanner candidate branch
+        if: steps.candidates.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "project-brain-scanner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C automation/project-brain-scan
+          git add \
+            project-brain/scanner/baseline.json \
+            project-brain/scanner/latest.json \
+            project-brain/scanner/candidates.json \
+            project-brain/scanner/REPORT.md
+          git commit -m "chore(project-brain): refresh scanner candidate"
+          git push --force origin HEAD:refs/heads/automation/project-brain-scan
+
+          pr="$(gh pr list \
+            --base main \
+            --head automation/project-brain-scan \
+            --state open \
+            --json number \
+            --jq '.[0].number // empty')"
+
+          if [ -z "$pr" ]; then
+            gh pr create \
+              --base main \
+              --head automation/project-brain-scan \
+              --title "chore(project-brain): scanner detected repository changes" \
+              --body-file project-brain/scanner/REPORT.md
+          else
+            gh pr edit "$pr" --body-file project-brain/scanner/REPORT.md
+          fi
+
+      - name: No semantic auto-write
+        if: steps.candidates.outputs.count != '0'
+        run: |
+          echo "Candidates remain UNKNOWN."
+          echo "Canonical project-brain.json was not modified by the scanner."
+          echo "PR review is required before accepted knowledge changes."

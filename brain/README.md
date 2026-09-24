@@ -1,4 +1,4 @@
-# Project Brain Web Viewer V0.3
+# Project Brain Web Viewer V0.4
 
 Interactive read-only Knowledge Graph viewer for Project Brain.
 
@@ -62,3 +62,17 @@ Time semantics are knowledge-state history, not inferred software creation dates
 The Web Viewer is the only human interface for Project Brain.
 
 Desktop and mobile browsers use the same responsive application. There is no separate local-vault or device-sync interface.
+
+
+## GitHub Scanner V0.4
+
+The Web Viewer includes a Repository Change Inbox.
+
+- accepted baseline for monitored repositories
+- tracked evidence-file count
+- exact-head CI evidence status
+- pending scanner PR discovery
+- pending candidates loaded from the scanner PR head
+- API failure is displayed as UNKNOWN, never as “no change”
+
+The scanner never writes semantic capability claims directly into the canonical graph.

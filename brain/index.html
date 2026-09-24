@@ -30,6 +30,7 @@
 
     <nav class="section-nav card" aria-label="Project Brain sections">
       <button type="button" data-scroll="graph-card" class="active">Graph</button>
+      <button type="button" data-scroll="scanner-section">Scanner</button>
       <button type="button" data-scroll="timeline-section">Timeline</button>
       <button type="button" data-scroll="rule-section">Decision Rule</button>
     </nav>
@@ -60,6 +61,55 @@
       <p class="time-semantics">
         เวลาใน V0.3 คือ <b>knowledge-state</b>: แสดงว่า Project Brain รู้/เชื่อมความสัมพันธ์นั้นตั้งแต่ checkpoint ใด
         ไม่ใช่การเดาวันที่ซอฟต์แวร์หรือ capability ถูกสร้างจริง
+      </p>
+    </section>
+
+
+    <section class="scanner-panel card" id="scanner-section" aria-label="Project Brain GitHub Scanner">
+      <div class="scanner-head">
+        <div>
+          <p class="eyebrow">GITHUB SCANNER V0.4</p>
+          <h2>Repository Change Inbox</h2>
+          <p>ตรวจ repo แบบ deterministic ก่อนส่งความหมายให้ Verify</p>
+        </div>
+        <div class="scanner-head-actions">
+          <span id="scanner-status" class="scanner-status">กำลังโหลด</span>
+          <button id="scanner-refresh" type="button">รีเฟรช</button>
+        </div>
+      </div>
+
+      <div class="scanner-metrics">
+        <article><small>MONITORED</small><b id="scanner-monitored">—</b><span>repositories</span></article>
+        <article><small>BASELINE</small><b id="scanner-baseline">—</b><span>accepted heads</span></article>
+        <article><small>PENDING</small><b id="scanner-pending">—</b><span>candidates</span></article>
+        <article><small>SEMANTIC</small><b id="scanner-semantic">UNKNOWN</b><span>until verified</span></article>
+      </div>
+
+      <div class="scanner-policy">
+        <span>Auto graph write: <b>OFF</b></span>
+        <span>Auto merge: <b>OFF</b></span>
+        <span>Candidate verdict: <b>UNKNOWN</b></span>
+      </div>
+
+      <div>
+        <h3>Accepted repository baseline</h3>
+        <div id="scanner-repos" class="scanner-repos"></div>
+      </div>
+
+      <div class="scanner-inbox">
+        <div class="scanner-inbox-head">
+          <div>
+            <h3>Pending candidate review</h3>
+            <p id="scanner-inbox-copy">กำลังตรวจ automation branch…</p>
+          </div>
+          <a id="scanner-pr-link" href="#" target="_blank" rel="noopener" hidden>เปิด Scanner PR ↗</a>
+        </div>
+        <div id="scanner-candidates" class="scanner-candidates"></div>
+      </div>
+
+      <p class="scanner-boundary">
+        HEAD SHA, file SHA และ exact-head CI เป็น mechanical evidence เท่านั้น
+        การสรุปว่าเกิด capability ใหม่หรือเลือก REUSE / ADAPT / BUILD ต้องผ่าน Verify ก่อนเสมอ
       </p>
     </section>
 
@@ -173,5 +223,6 @@
 
   <script type="module" src="./app.js"></script>
   <script type="module" src="./ux.js"></script>
+  <script type="module" src="./scanner.js"></script>
 </body>
 </html>
