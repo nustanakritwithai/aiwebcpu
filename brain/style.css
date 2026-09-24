@@ -282,3 +282,86 @@ body.detail-open .mobile-hint{display:none}
 
 body.ux-focus .node.dim,body.ux-focus .edge.dim,body.ux-focus .edge-label.dim{display:none}
 .detail-actions .detail-badge{display:grid;place-items:center;flex:.7}
+
+
+/* Temporal Graph V0.3 */
+.time-machine{
+  padding:13px 14px;
+  display:grid;
+  gap:11px;
+  background:
+    radial-gradient(circle at 85% 10%,#432b7d22 0,transparent 36%),
+    linear-gradient(180deg,rgba(13,28,46,.97),rgba(7,18,31,.97));
+}
+.time-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.time-head h2{margin:.15rem 0 .15rem;font-size:1.05rem}
+.time-head p{margin:.15rem 0;color:var(--muted);font-size:.77rem;line-height:1.45}
+.time-actions{display:flex;gap:7px;flex-shrink:0}
+.time-actions button{
+  min-height:40px;
+  border:1px solid var(--border);
+  border-radius:11px;
+  padding:8px 11px;
+  background:#091624;
+  color:var(--text);
+  cursor:pointer;
+}
+#time-play[aria-pressed="true"]{color:var(--purple);border-color:#654798;background:#23153b}
+.time-slider-wrap{display:grid;gap:5px}
+#time-slider{
+  width:100%;
+  accent-color:var(--purple);
+  min-height:32px;
+  cursor:pointer;
+}
+.time-scale{display:flex;justify-content:space-between;color:var(--muted);font-size:.68rem;font-variant-numeric:tabular-nums}
+.time-checkpoints{
+  display:flex;
+  gap:6px;
+  overflow-x:auto;
+  padding-bottom:2px;
+  scrollbar-width:none;
+}
+.time-checkpoints::-webkit-scrollbar{display:none}
+.time-checkpoint{
+  flex:0 0 auto;
+  min-height:34px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:#07121e;
+  color:var(--muted);
+  padding:6px 9px;
+  font-size:.68rem;
+  cursor:pointer;
+}
+.time-checkpoint.current{border-color:#6c4ca3;color:#e6d2ff;background:#211536}
+.time-checkpoint.past{opacity:.72}
+.time-semantics{
+  margin:0;
+  padding-top:8px;
+  border-top:1px solid #142a40;
+  color:var(--muted);
+  font-size:.7rem;
+  line-height:1.5;
+}
+.time-semantics b{color:var(--cyan)}
+body.temporal-past #graph-card{box-shadow:0 0 0 1px #7250a633,0 14px 50px rgba(0,0,0,.25)}
+body.temporal-past #graph-card .graph-head::after{
+  content:"HISTORICAL VIEW";
+  font-size:.58rem;
+  color:var(--purple);
+  border:1px solid #684894;
+  border-radius:999px;
+  padding:4px 7px;
+}
+
+@media(max-width:520px){
+  .time-machine{padding:10px}
+  .time-head{display:grid;grid-template-columns:1fr}
+  .time-actions{display:grid;grid-template-columns:1fr 1fr}
+  .time-actions button{width:100%}
+  .time-head h2{font-size:.95rem}
+  .time-checkpoint{font-size:.64rem}
+  .time-semantics{font-size:.65rem}
+  .svg-wrap{height:calc(100svh - 500px);min-height:360px}
+}

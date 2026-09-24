@@ -27,6 +27,12 @@ updated: 2026-09-24
 
 - [[Goals/Simclone-Time-Travel]]
 
+## Temporal Graph
+
+- [[Temporal-Graph]]
+
+Project Brain V0.3 สามารถย้อนดู knowledge state ตาม checkpoint ได้ โดยเวลาในกราฟหมายถึงเวลาที่ความรู้นั้นมีผลใน Project Brain ไม่ใช่การเดาวันสร้างจริงของระบบ
+
 ## First Cross-Repo Analysis
 
 - [[Integrations/Simclone-TestGE-TimeTravel]]

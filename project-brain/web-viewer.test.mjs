@@ -53,3 +53,26 @@ test('focus UX reuses the graph engine dimming contract instead of rebuilding la
   assert.match(css,/body\.ux-focus \.node\.dim/);
   assert.doesNotMatch(ux,/settle\(/);
 });
+
+
+test('Temporal V0.3 exposes a real checkpoint slider and playback controls',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  for(const id of ['time-machine','time-slider','time-play','time-now','time-checkpoints','time-label'])assert.match(html,new RegExp(`id=["']${id}["']`));
+  assert.match(ux,/project-brain:set-checkpoint/);
+  assert.match(ux,/setTemporalIndex/);
+  assert.match(ux,/playTemporal/);
+  assert.match(ux,/searchParams\.get\('at'\)/);
+  assert.match(css,/Temporal Graph V0\.3/);
+});
+
+test('graph engine filters temporal nodes and edges, not only timeline copy',()=>{
+  assert.match(js,/temporalActive\(n\)/);
+  assert.match(js,/temporalActive\(e\)/);
+  assert.match(js,/temporalMaterialize/);
+  assert.match(js,/project-brain:set-checkpoint/);
+});
+
+test('temporal UI states that checkpoint time is knowledge-state, not guessed software creation time',()=>{
+  assert.match(html,/knowledge-state/);
+  assert.match(html,/ไม่ใช่การเดาวันที่ซอฟต์แวร์หรือ capability ถูกสร้างจริง/);
+});
