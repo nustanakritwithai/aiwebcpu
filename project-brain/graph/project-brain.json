@@ -3044,8 +3044,26 @@
       "id": "version:project-brain-v056",
       "type": "VERSION",
       "name": "Project Brain Focus Inspection UX V0.5.6",
+      "status": "superseded",
+      "activeFrom": "pb-2026-09-25-focus-inspection-v056",
+      "activeUntil": "pb-2026-09-25-tap-detail-v057"
+    },
+    {
+      "id": "ev:project-brain-v057-ui-ci",
+      "type": "EVIDENCE",
+      "name": "Project Brain V0.5.7 tap-detail lifecycle CI",
+      "verdict": "SAT",
+      "scope": "PR #30 candidate head e02cb37; node-selected opens detail, selection-cleared closes detail, SVG capture detector removed, MutationObserver removed",
+      "limitations": "Exact-main completed workflow for merge commit 6af91b9 was not observed at bookkeeping time. SAT applies to tap/detail lifecycle only.",
+      "source": "GitHub Actions run 36042255640",
+      "activeFrom": "pb-2026-09-25-tap-detail-v057"
+    },
+    {
+      "id": "version:project-brain-v057",
+      "type": "VERSION",
+      "name": "Project Brain Tap Detail Reliability V0.5.7",
       "status": "current",
-      "activeFrom": "pb-2026-09-25-focus-inspection-v056"
+      "activeFrom": "pb-2026-09-25-tap-detail-v057"
     }
   ],
   "edges": [
@@ -5066,6 +5084,12 @@
       "to": "version:project-brain-v055",
       "type": "SUPERSEDES",
       "activeFrom": "pb-2026-09-25-focus-inspection-v056"
+    },
+    {
+      "from": "version:project-brain-v057",
+      "to": "version:project-brain-v056",
+      "type": "SUPERSEDES",
+      "activeFrom": "pb-2026-09-25-tap-detail-v057"
     }
   ],
   "timeline": [
@@ -5153,6 +5177,11 @@
       "date": "2026-09-25",
       "event": "Project Brain V0.5.6 turns Focus into persistent inspection: exiting Focus keeps selection/detail and recenters the inspected node",
       "source": "nustanakritwithai/aiwebcpu@467bf5d"
+    },
+    {
+      "date": "2026-09-25",
+      "event": "Project Brain V0.5.7 makes node-tap detail lifecycle event-driven and removes the mobile SVG capture race.",
+      "source": "nustanakritwithai/aiwebcpu@6af91b9"
     }
   ],
   "rules": {
@@ -5292,9 +5321,16 @@
         "label": "Focus Inspection UX V0.5.6",
         "description": "Verified Focus inspection separates selected node from focus root, preserves detail context on exit, and recenters the selected node.",
         "source": "nustanakritwithai/aiwebcpu@467bf5d"
+      },
+      {
+        "id": "pb-2026-09-25-tap-detail-v057",
+        "date": "2026-09-25",
+        "label": "Tap Detail Reliability V0.5.7",
+        "description": "Verified mobile node taps open detail through the authoritative node-selected event, eliminating SVG capture and MutationObserver close races.",
+        "source": "nustanakritwithai/aiwebcpu@6af91b9"
       }
     ],
-    "defaultCheckpoint": "pb-2026-09-25-focus-inspection-v056"
+    "defaultCheckpoint": "pb-2026-09-25-tap-detail-v057"
   },
   "interfaces": {
     "human": "web",
