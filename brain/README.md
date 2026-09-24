@@ -21,7 +21,7 @@ It does not maintain a second graph dataset.
 - pan / zoom / fit
 - detail panel with incoming/outgoing relations
 - timeline event cards
-- mobile layout
+- responsive web layout
 
 ## Deliberate limits
 
@@ -32,14 +32,14 @@ Next milestone: temporal edge validity + graph replay slider.
 
 ## UX/UI V0.2.1
 
-- mobile bottom-sheet detail inspector
+- responsive bottom-sheet detail inspector
 - quick presets: All / Core / Reuse / Problems / Evidence
 - one-hop visual Focus Mode using the existing graph dimming contract
 - deep-link selected nodes with `?node=<id>`
 - persisted preset/focus preferences in localStorage
 - compact Brain Pulse metrics
 - sticky section navigation
-- larger touch targets and mobile graph viewport
+- larger touch targets and responsive graph viewport
 
 The UX layer is kept in `brain/ux.js` so graph layout/rendering and interaction presentation remain separable.
 
@@ -55,3 +55,10 @@ The UX layer is kept in `brain/ux.js` so graph layout/rendering and interaction 
 - Brain Pulse metrics recalculate for the selected checkpoint
 
 Time semantics are knowledge-state history, not inferred software creation dates.
+
+
+## Interface Policy
+
+The Web Viewer is the only human interface for Project Brain.
+
+Desktop and mobile browsers use the same responsive application. There is no separate local-vault or device-sync interface.
