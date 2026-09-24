@@ -7,7 +7,6 @@ const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 function catalogMatch(row){
   const f=catalogState.filter;
   if(f==='public'&&row.visibility!=='public')return false;
-  if(f==='private'&&row.visibility!=='private')return false;
   if(f==='empty'&&row.catalogStatus!=='EMPTY')return false;
   if(['SAT','VIOL','UNKNOWN'].includes(f)&&row.exactHeadWorkflow?.verdict!==f)return false;
 
@@ -31,12 +30,12 @@ function renderCatalog(){
   if(!data)return;
   const rows=data.repositories.filter(catalogMatch);
 
-  $('#catalog-total').textContent=data.summary.total;
-  $('#catalog-nonempty').textContent=data.summary.nonEmpty;
-  $('#catalog-public').textContent=data.summary.public;
-  $('#catalog-private').textContent=data.summary.private;
+  $('#catalog-total').textContent=data.summary.discoveredTotal;
+  $('#catalog-nonempty').textContent=data.summary.nonEmptyPublic;
+  $('#catalog-public').textContent=data.summary.persistedPublic;
+  $('#catalog-private').textContent=data.summary.privateOmitted;
   $('#catalog-summary-line').textContent=
-    `แสดง ${rows.length}/${data.summary.total} · exact-head CI ${data.summary.exactHeadCI.SAT} SAT / ${data.summary.exactHeadCI.VIOL} VIOL / ${data.summary.exactHeadCI.UNKNOWN} UNKNOWN`;
+    `แสดง public ${rows.length}/${data.summary.persistedPublic} · discovered ${data.summary.discoveredTotal} · private hidden ${data.summary.privateOmitted} · exact-head CI ${data.summary.exactHeadCI.SAT} SAT / ${data.summary.exactHeadCI.VIOL} VIOL / ${data.summary.exactHeadCI.UNKNOWN} UNKNOWN`;
 
   $('#catalog-repos').innerHTML=rows.map(row=>{
     const ci=row.exactHeadWorkflow?.verdict??'UNKNOWN';
