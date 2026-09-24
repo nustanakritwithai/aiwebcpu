@@ -116,8 +116,14 @@ test('catalog web layer does not embed a second 37-repository dataset',async()=>
 });
 
 test('catalog UI keeps semantic UNKNOWN visible while showing mechanical CI',()=>{
-  assert.match(html,/ทุก repo ยังมี <b>semanticStatus = UNKNOWN<\/b>/);
+  assert.match(html,/ทุก persisted repo ยังมี <b>semanticStatus = UNKNOWN<\/b>/);
   assert.match(css,/catalog-badge\.ci-SAT/);
   assert.match(css,/catalog-badge\.ci-VIOL/);
   assert.match(css,/catalog-badge\.semantic/);
+});
+
+
+test('catalog UI omits private repository filter and states private details are hidden',()=>{
+  assert.doesNotMatch(html,/data-catalog-filter=["']private["']/);
+  assert.match(html,/Private repository details ถูกซ่อนจาก public dataset/);
 });

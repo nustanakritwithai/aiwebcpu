@@ -9,4 +9,4 @@ Candidates: **0**
 
 No repository changes detected against the full public-repository bootstrap baseline.
 
-Private catalog-only repositories: **4**. Scheduled scanning requires an explicit cross-repository credential.
+Private repositories discovered: **4**. Details are omitted from the public Project Brain dataset; no scheduled private scan is claimed.

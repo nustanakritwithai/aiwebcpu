@@ -82,14 +82,16 @@ The scanner never writes semantic capability claims directly into the canonical 
 
 The web-only interface exposes the full GitHub repository catalog.
 
-Current mechanical capture:
-- 37 repositories
-- 34 with commits
-- 3 empty
-- 33 public
-- 4 private
-- exact-head CI: 16 SAT / 2 VIOL / 19 UNKNOWN
+Current discovery boundary:
+- 37 repositories discovered by the connected account
+- 33 public repositories persisted and rendered
+- 30 public repositories with commits
+- 3 public empty repositories
+- 4 private repositories omitted from the public dataset
+- public exact-head CI: 16 SAT / 1 VIOL / 16 UNKNOWN
 
 The catalog UI reads `project-brain/catalog/repositories.json` directly. It does not maintain a second repository dataset.
 
-Every repository remains `semanticStatus = UNKNOWN` until capability verification.
+Every persisted public repository remains `semanticStatus = UNKNOWN` until capability verification.
+
+Private repository names, commits and evidence are intentionally not published by the public Web Viewer.

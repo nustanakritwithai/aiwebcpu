@@ -76,7 +76,7 @@ Repository discovery is stored in `../catalog/repositories.json`.
 Current capture:
 - 37 total repositories
 - 33 public repositories scheduled for automatic scanning
-- 4 private repositories cataloged as `MANUAL_PRIVATE`
+- 4 private repositories discovered by the connected account but omitted from the public Project Brain dataset
 - 3 empty repositories handled as a valid `EMPTY` state
 
-The scanner does not silently claim access to private repositories. Automatic private scanning requires an explicit cross-repository credential.
+The public scanner does not persist or expose private repository details. An authenticated private layer is required before private scanning or private catalog persistence.
