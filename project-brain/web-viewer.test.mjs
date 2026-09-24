@@ -612,3 +612,15 @@ test('Pocket x Pirate candidate evidence remains SHA-bound and unpromoted',async
   assert.match(css,/\.state-viol/);
   assert.doesNotMatch(JSON.stringify(profiles),/"reuseDecision"\s*:\s*"(?:REUSE|ADAPT|BUILD)"/);
 });
+
+test('Cross Project Integration Lens V0.6.4 exposes the paired candidate without promoting graph truth',()=>{
+  assert.match(js,/Cross Project Integration Lens V0\.6\.4/);
+  assert.match(js,/CROSS-PROJECT INTEGRATION · V0\.6\.4/);
+  assert.match(js,/crossIntegration\.pocket/);
+  assert.match(js,/crossIntegration\.pirate/);
+  assert.match(js,/crossPartner\.id/);
+  assert.match(js,/data-node=/);
+  assert.match(css,/Cross Project Integration Lens V0\.6\.4/);
+  assert.match(css,/\.cross-candidate-grid/);
+  assert.match(css,/\.cross-partner-button/);
+});

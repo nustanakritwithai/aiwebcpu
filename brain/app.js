@@ -159,6 +159,37 @@ function projectDeepDive(node){
   const deepLimitRows=(deepProfile?.limitations??[]).map(item=>`<li>${esc(item)}</li>`).join('');
   const sourceHead=deepProfile?.sourceHead??null;
   const deepCi=deepProfile?.exactHeadWorkflow?.verdict??'UNKNOWN';
+  /* Cross Project Integration Lens V0.6.4 */
+  const crossIntegration=deepProfile?.crossProjectIntegration??null;
+  const crossPartnerId=crossIntegration?.partnerRepoId??null;
+  const crossPartner=(graph?.nodes??[]).find(row=>row.id===crossPartnerId)??null;
+  const crossCandidateRows=crossIntegration?[
+    ['Pocket',crossIntegration.pocket],
+    ['Pirate',crossIntegration.pirate]
+  ].filter(([,row])=>row).map(([label,row])=>`
+    <article class="cross-candidate-card">
+      <div><b>${esc(label)}</b><span>PR #${esc(row.pullRequest??'—')}</span></div>
+      <small class="state-${esc(String(row.gateVerdict??'unknown').toLowerCase())}">${esc(row.gateVerdict??'UNKNOWN')}</small>
+      <code>${esc(String(row.head??'').slice(0,8)||'—')} · ${esc(row.ref??'—')}</code>
+      <p>${esc(row.blocker??'')}</p>
+    </article>
+  `).join(''):'';
+  const crossIntegrationHtml=crossIntegration?`
+    <section class="cross-integration-lens" aria-label="Cross Project Integration">
+      <div class="cross-integration-head">
+        <div><small>CROSS-PROJECT INTEGRATION · V0.6.4</small><b>PocketMonster × Pirate Fruit</b></div>
+        <span>${esc(crossIntegration.status??'UNKNOWN')}</span>
+      </div>
+      <p>${esc(crossIntegration.rule??'')}</p>
+      ${crossPartner?`<button class="cross-partner-button" data-node="${esc(crossPartner.id)}">เปิด ${esc(crossPartner.name)} →</button>`:''}
+      <div class="cross-merged-baseline">
+        <span>MERGED BASELINE</span>
+        <code>Pocket ${esc(String(crossIntegration.mergedBaseline?.pocketHead??'').slice(0,8)||'—')}</code>
+        <code>Pirate ${esc(String(crossIntegration.mergedBaseline?.pirateHead??'').slice(0,8)||'—')}</code>
+      </div>
+      <div class="cross-candidate-grid">${crossCandidateRows}</div>
+    </section>
+  `:'';
 
   return `
     <section class="project-deep-dive" aria-label="Project Deep Dive">
@@ -227,6 +258,7 @@ function projectDeepDive(node){
             <p>${esc(deepProfile.productVision??'')}</p>
             <span>${esc(deepProfile.currentStage??'')}</span>
           </div>
+          ${crossIntegrationHtml}
           ${architectureRows?`
             <div class="project-deep-section">
               <div class="project-deep-title"><b>Architecture</b><span>owner + authority state</span></div>

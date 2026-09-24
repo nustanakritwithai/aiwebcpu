@@ -2526,3 +2526,104 @@ body.ux-focus .graph-inspection{
 .project-authority-row .state-merged_baseline{color:#76e2aa;border-color:#276b4d}
 .project-architecture-row .state-transport,
 .project-authority-row .state-transport{color:#86d9f4;border-color:#2d6477}
+
+/* Cross Project Integration Lens V0.6.4 */
+.cross-integration-lens{
+  margin-top:10px;
+  padding:10px;
+  border:1px solid #315f78;
+  border-radius:11px;
+  background:linear-gradient(180deg,#071b29,#06131f);
+}
+.cross-integration-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:8px;
+}
+.cross-integration-head div{display:grid;gap:2px}
+.cross-integration-head small{
+  color:#6fcde8;
+  font-size:.5rem;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+.cross-integration-head b{color:#e8f7ff;font-size:.7rem}
+.cross-integration-head>span{
+  border:1px solid #735f2f;
+  border-radius:999px;
+  padding:3px 6px;
+  color:#f0ce79;
+  font-size:.49rem;
+}
+.cross-integration-lens>p{
+  margin:7px 0;
+  color:#91adbc;
+  font-size:.55rem;
+  line-height:1.45;
+}
+.cross-partner-button{
+  width:100%;
+  border:1px solid #2d6783;
+  border-radius:8px;
+  background:#082033;
+  color:#b8ecff;
+  padding:7px 9px;
+  text-align:left;
+  font-size:.58rem;
+  cursor:pointer;
+}
+.cross-partner-button:hover,
+.cross-partner-button:focus-visible{border-color:#56a8ce;outline:none}
+.cross-merged-baseline{
+  display:grid;
+  grid-template-columns:auto 1fr 1fr;
+  gap:5px;
+  align-items:center;
+  margin-top:8px;
+}
+.cross-merged-baseline span{
+  color:#70d9a2;
+  font-size:.48rem;
+  font-weight:900;
+}
+.cross-merged-baseline code{
+  color:#7294a8;
+  font-size:.48rem;
+  overflow-wrap:anywhere;
+}
+.cross-candidate-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:6px;
+  margin-top:8px;
+}
+.cross-candidate-card{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:3px 7px;
+  padding:8px;
+  border:1px solid #17384d;
+  border-radius:9px;
+  background:#06111b;
+}
+.cross-candidate-card div{display:grid;gap:1px}
+.cross-candidate-card b{color:#dbeef7;font-size:.6rem}
+.cross-candidate-card span{color:#738fa0;font-size:.49rem}
+.cross-candidate-card small{
+  align-self:start;
+  border:1px solid #74343c;
+  border-radius:999px;
+  padding:2px 5px;
+  color:#ff9299;
+  font-size:.47rem;
+}
+.cross-candidate-card code,
+.cross-candidate-card p{grid-column:1/-1}
+.cross-candidate-card code{color:#628398;font-size:.48rem;overflow-wrap:anywhere}
+.cross-candidate-card p{margin:2px 0 0;color:#9ab1bf;font-size:.53rem;line-height:1.4}
+@media(max-width:460px){
+  .cross-candidate-grid{grid-template-columns:1fr}
+  .cross-merged-baseline{grid-template-columns:1fr 1fr}
+  .cross-merged-baseline span{grid-column:1/-1}
+}
