@@ -1,4 +1,4 @@
-const UX_PREF='project-brain:ux:v057';
+const UX_PREF='project-brain:ux:v058';
 const PRESETS={
   all:['PROJECT','CAPABILITY','CAPABILITY_CANDIDATE','EVIDENCE','GOAL','ISSUE','INTEGRATION','VERSION'],
   core:['PROJECT','CAPABILITY','GOAL','INTEGRATION'],
@@ -14,6 +14,9 @@ let activePreset='core';
 let focusMode=false;
 let selectedNodeId=null;
 let focusRootId=null;
+let navigationHistory=[];
+let navigationIndex=-1;
+let replayingNavigation=false;
 let temporalTimer=null;
 let temporalSelectedIndex=0;
 let applyingPreset=false;
@@ -56,6 +59,67 @@ function nodeName(id){
   return nodeMap.get(id)?.name??id??'—';
 }
 
+function focusContains(id){
+  if(!focusRootId||id===focusRootId)return true;
+  return (graph?.edges??[]).some(edge=>
+    (edge.from===focusRootId&&edge.to===id)||
+    (edge.to===focusRootId&&edge.from===id)
+  );
+}
+
+function updateNavigationUI(){
+  const canBack=navigationIndex>0;
+  const canForward=navigationIndex>=0&&navigationIndex<navigationHistory.length-1;
+
+  for(const button of qsa('[data-inspection-action="back"], [data-detail-back]')){
+    button.disabled=!canBack;
+  }
+  for(const button of qsa('[data-inspection-action="forward"], [data-detail-forward]')){
+    button.disabled=!canForward;
+  }
+
+  const history=qs('#graph-inspection-history');
+  if(history){
+    history.textContent=navigationIndex>=0
+      ? `${navigationIndex+1}/${navigationHistory.length}`
+      : '';
+  }
+}
+
+function recordNavigation(id){
+  if(!id||replayingNavigation)return;
+  if(navigationHistory[navigationIndex]===id){
+    updateNavigationUI();
+    return;
+  }
+  navigationHistory=navigationHistory.slice(0,navigationIndex+1);
+  navigationHistory.push(id);
+  if(navigationHistory.length>24)navigationHistory.shift();
+  navigationIndex=navigationHistory.length-1;
+  updateNavigationUI();
+}
+
+function navigateHistory(delta){
+  const next=navigationIndex+delta;
+  if(next<0||next>=navigationHistory.length)return false;
+  navigationIndex=next;
+  const id=navigationHistory[navigationIndex];
+  replayingNavigation=true;
+  document.dispatchEvent(new CustomEvent('project-brain:select-node',{
+    detail:{id,source:'history',center:true,scale:1}
+  }));
+  replayingNavigation=false;
+  updateNavigationUI();
+  return true;
+}
+
+function resetNavigation(){
+  navigationHistory=[];
+  navigationIndex=-1;
+  replayingNavigation=false;
+  updateNavigationUI();
+}
+
 function updateInspectionUI(){
   const bar=qs('#graph-inspection');
   const topButton=qs('#focus-mode');
@@ -92,6 +156,7 @@ function updateInspectionUI(){
     barButton.disabled=!hasSelection&&!focusMode;
   }
 
+  updateNavigationUI();
   document.body.classList.toggle('ux-focus',focusMode);
 }
 
@@ -178,6 +243,20 @@ function enhanceDetailActions(){
     a.textContent='เปิด Repo ↗';
     actions.append(a);
   }
+
+  const back=document.createElement('button');
+  back.type='button';
+  back.dataset.detailBack='true';
+  back.textContent='← ย้อน';
+  back.addEventListener('click',()=>navigateHistory(-1));
+  actions.append(back);
+
+  const forward=document.createElement('button');
+  forward.type='button';
+  forward.dataset.detailForward='true';
+  forward.textContent='ถัดไป →';
+  forward.addEventListener('click',()=>navigateHistory(1));
+  actions.append(forward);
 
   const center=document.createElement('button');
   center.type='button';
@@ -383,7 +462,11 @@ function installGraphHooks(){
 
   qsa('[data-inspection-action]').forEach(button=>button.addEventListener('click',()=>{
     const action=button.dataset.inspectionAction;
-    if(action==='center'&&selectedNodeId){
+    if(action==='back'){
+      navigateHistory(-1);
+    }else if(action==='forward'){
+      navigateHistory(1);
+    }else if(action==='center'&&selectedNodeId){
       document.dispatchEvent(new CustomEvent('project-brain:center-node',{detail:{id:selectedNodeId,scale:1}}));
     }else if(action==='focus'){
       setFocus(!focusMode,{rootId:selectedNodeId});
@@ -413,7 +496,14 @@ function installGraphHooks(){
 function installSelectionEvents(){
   document.addEventListener('project-brain:node-selected',event=>{
     selectedNodeId=event.detail?.id??null;
-    if(!focusMode)focusRootId=null;
+    recordNavigation(selectedNodeId);
+
+    if(focusMode&&selectedNodeId&&!focusContains(selectedNodeId)){
+      setFocus(false,{persist:false});
+    }else if(!focusMode){
+      focusRootId=null;
+    }
+
     updateInspectionUI();
     openDetailSheet();
   });
@@ -422,6 +512,7 @@ function installSelectionEvents(){
     selectedNodeId=null;
     focusRootId=null;
     focusMode=false;
+    resetNavigation();
     updateInspectionUI();
     closeDetailSheet();
   });
@@ -454,6 +545,7 @@ async function bootUX(){
   focusMode=false;
   focusRootId=null;
   selectedNodeId=null;
+  resetNavigation();
   installSectionNav();
   installSelectionEvents();
   installSearchEnter();
