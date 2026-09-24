@@ -60,3 +60,40 @@ node project-brain/query.mjs node AstraLife
 ผลลัพธ์เป็น JSON เพื่อให้ Agent ใช้ต่อได้โดยไม่ต้อง scrape Obsidian Markdown
 
 หลักสำคัญ: Query layer อ่าน `graph/project-brain.json` ซึ่งเป็น machine view เดียวกับ Knowledge Graph ไม่สร้างฐานความจริงอีกชุด
+
+
+## Obsidian Sync บน Termux
+
+Vault ใน shared storage เป็นสำเนาสำหรับ Obsidian ส่วน GitHub `main` เป็น source of truth ของ Project Brain
+
+ติดตั้งคำสั่ง sync ครั้งเดียว:
+
+```bash
+cd ~/aiwebcpu
+git pull --ff-only
+bash project-brain/install-pb-sync.sh
+```
+
+หลังจากนั้นอัปเดต Obsidian ได้จากที่ไหนก็ได้ด้วย:
+
+```bash
+pb-sync
+```
+
+`pb-sync` จะ:
+
+1. fetch `origin/main`
+2. export เฉพาะ `project-brain/` จาก Git โดยไม่เปลี่ยน branch ที่กำลังใช้อยู่
+3. sync ไป `~/storage/shared/ProjectBrain`
+4. รักษา `.obsidian/` ไว้เสมอ จึงไม่ลบสี Groups / Graph settings ของผู้ใช้
+5. บันทึก source commit ไว้ที่ `.pb-sync-source`
+
+ตัวเลือก:
+
+```bash
+pb-sync --no-fetch
+pb-sync --vault ~/storage/shared/ProjectBrain
+pb-sync --ref main
+```
+
+กฎ V0.1: sync เป็น **GitHub → Obsidian ทางเดียว** เพื่อไม่ให้การแก้โน้ตใน Vault ไปเขียนทับ source of truth โดยไม่ผ่าน Git review
