@@ -282,7 +282,7 @@ test('Graph Focus UX V0.5.4 removes secondary dashboards from Graph view',async(
   assert.match(css,/\.graph-card \.legend\{display:none!important\}/);
   assert.match(css,/\.workspace\[data-pb-view="graph"\]\{\s*display:block/);
   assert.match(css,/\.workspace>\.detail\{\s*position:fixed/);
-  assert.match(ux,/const UX_PREF='project-brain:ux:v056'/);
+  assert.match(ux,/const UX_PREF='project-brain:ux:v057'/);
 });
 
 test('Graph Focus UX defaults to Core and keeps relation labels opt-in',async()=>{
