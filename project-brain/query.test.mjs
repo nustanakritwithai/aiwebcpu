@@ -79,3 +79,11 @@ test('unknown checkpoint is never treated as active',()=>{
   assert.equal(isActiveAt(graph,graph.nodes[0],'not-real'),false);
   assert.throws(()=>graphAtCheckpoint(graph,'not-real'),/Unknown Project Brain checkpoint/);
 });
+
+
+test('goal decision changes from UNKNOWN to ADAPT across compatibility checkpoint',()=>{
+  const before=graphAtCheckpoint(graph,'pb-2026-09-24-bootstrap');
+  const after=graphAtCheckpoint(graph,'pb-2026-09-24-compat');
+  assert.equal(before.nodes.find(n=>n.id==='goal:simclone-time-travel').decision,'UNKNOWN');
+  assert.equal(after.nodes.find(n=>n.id==='goal:simclone-time-travel').decision,'ADAPT');
+});
