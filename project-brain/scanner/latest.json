@@ -95,13 +95,18 @@
           "status": "present"
         },
         {
+          "path": "brain/decision.js",
+          "sha": "e99f8ee60a4c45ecafd88d978354f894d8558860",
+          "status": "present"
+        },
+        {
           "path": "brain/index.html",
-          "sha": "341737b3820b30dd6fd8e988b33fbd4c448e2f05",
+          "sha": "7fbd0983a13721c2506df32ab8ebae8383426c04",
           "status": "present"
         },
         {
           "path": "brain/README.md",
-          "sha": "f77899e0c8ad495ab3c244da1dbdd15f646e960c",
+          "sha": "afb2e5050aecdf5d9d2fed350300c7fd60104aa3",
           "status": "present"
         },
         {
@@ -111,12 +116,12 @@
         },
         {
           "path": "brain/shell.js",
-          "sha": "3137ae17a96e8e47e18844513466a7bec1c5134b",
+          "sha": "c28928b315d4eafcf7340c504c031af7fbae39d0",
           "status": "present"
         },
         {
           "path": "brain/style.css",
-          "sha": "4c2ee7cd4527bb9ccd7632c9875899d76883a5db",
+          "sha": "8205f22e6ea07e20f7cacce8b8700442b840b561",
           "status": "present"
         },
         {
@@ -151,7 +156,7 @@
         },
         {
           "path": "project-brain/scanner/config.json",
-          "sha": "d849d7b24924b6a8b3f79f85f23251bc5424eb15",
+          "sha": "02ef520e5c24ee5a9a600694ea6f650bd7b8ab89",
           "status": "present"
         },
         {
