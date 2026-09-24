@@ -212,3 +212,47 @@ test('Command Center has responsive rail and reduced-motion contract',()=>{
   assert.match(css,/\.mobile-view-nav/);
   assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
 });
+
+
+test('Decision Workspace V0.5.2 uses canonical goals and explicit verifier contracts',async()=>{
+  const decision=await readFile(new URL('../brain/decision.js',import.meta.url),'utf8');
+  for(const id of ['decision-section','decision-goal-select','decision-progress','decision-candidates','decision-recommendation','decision-evidence-list'])assert.match(html,new RegExp(`id=["']${id}["']`));
+  assert.match(html,/src=["']\.\/decision\.js["']/);
+  assert.match(decision,/project-brain\/graph\/project-brain\.json/);
+  assert.match(decision,/project-brain\/capability-inventory\/repositories\.json/);
+  assert.match(decision,/project-brain\/verifier\/index\.json/);
+  assert.match(decision,/bundle\.contract\?\.goalId===goalId/);
+});
+
+test('Decision Workspace candidates come only from verifier report or canonical relations',async()=>{
+  const decision=await readFile(new URL('../brain/decision.js',import.meta.url),'utf8');
+  assert.match(decision,/function canonicalCandidates/);
+  assert.match(decision,/function verifierCandidates/);
+  assert.match(decision,/outgoing\(goal\.id,'NEEDS'\)/);
+  assert.match(decision,/incoming\(capability\.id,'PROVIDES'\)/);
+  assert.doesNotMatch(decision,/similarity/i);
+  assert.doesNotMatch(decision,/fuzzy/i);
+  assert.doesNotMatch(decision,/keyword/i);
+});
+
+test('Decision Workspace fails closed when no verifier contract exists',async()=>{
+  const decision=await readFile(new URL('../brain/decision.js',import.meta.url),'utf8');
+  assert.match(decision,/ยังไม่มี verifier contract สำหรับ Goal นี้/);
+  assert.match(decision,/const verdict=bundle\?\.report\?\.overallVerdict\?\?'UNKNOWN'/);
+  assert.match(decision,/const recommendation=bundle\?\.report\?\.recommendation\?\?'UNKNOWN'/);
+});
+
+test('Decision Workspace is read-only and does not mutate graph or contracts',async()=>{
+  const decision=await readFile(new URL('../brain/decision.js',import.meta.url),'utf8');
+  assert.doesNotMatch(decision,/fetch\([^\n]+method\s*:/);
+  assert.doesNotMatch(decision,/project-brain\/graph\/project-brain\.json[^\n]+POST/);
+  assert.match(html,/UI นี้ไม่สร้าง verifier contract และไม่เปลี่ยน canonical graph/);
+});
+
+test('Decision view is part of reusable Command Center routing',async()=>{
+  const shell=await readFile(new URL('../brain/shell.js',import.meta.url),'utf8');
+  assert.match(html,/data-view-button=["']decision["']/);
+  assert.match(shell,/decision:'Decision'/);
+  assert.match(shell,/type:'Goal'/);
+  assert.match(shell,/view:'decision'/);
+});

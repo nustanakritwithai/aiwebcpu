@@ -17,6 +17,7 @@
 
       <nav class="rail-nav" aria-label="Primary views">
         <button type="button" data-view-button="overview" class="active"><span>⌂</span><b>Overview</b></button>
+        <button type="button" data-view-button="decision"><span>◎</span><b>Decision</b></button>
         <button type="button" data-view-button="graph"><span>◉</span><b>Graph</b></button>
         <button type="button" data-view-button="repositories"><span>▦</span><b>Repositories</b></button>
         <button type="button" data-view-button="capabilities"><span>◆</span><b>Capabilities</b></button>
@@ -67,6 +68,7 @@
 
     <nav class="section-nav card mobile-view-nav" aria-label="Project Brain views">
       <button type="button" data-view-button="overview" class="active">Overview</button>
+      <button type="button" data-view-button="decision">Decision</button>
       <button type="button" data-view-button="graph">Graph</button>
       <button type="button" data-view-button="repositories">Repos</button>
       <button type="button" data-view-button="capabilities">Caps</button>
@@ -116,7 +118,7 @@
       <div class="overview-flow card">
         <div class="overview-flow-head">
           <div><p class="eyebrow">DECISION PIPELINE</p><h3>จาก Goal ไปสู่การตัดสิน</h3></div>
-          <button type="button" data-jump-view="graph">เปิด Knowledge Graph</button>
+          <button type="button" data-jump-view="decision">เปิด Decision Workspace</button>
         </div>
         <div class="overview-steps">
           <span><b>1</b> Goal</span><i>→</i>
@@ -140,6 +142,85 @@
           <button type="button" data-jump-view="history">ย้อนดู Knowledge State</button>
         </article>
       </div>
+    </section>
+
+
+    <section class="decision-panel" id="decision-section" data-pb-view="decision" aria-label="Project Brain Decision Workspace">
+      <div class="decision-hero card">
+        <div>
+          <p class="eyebrow">DECISION WORKSPACE V0.5.2</p>
+          <h2>Goal → Evidence → Verify → Decision</h2>
+          <p>ดูเส้นทางตัดสินใจของ Goal เดียวในจอเดียว โดยไม่สร้าง semantic claim ใหม่จาก UI</p>
+        </div>
+        <label class="decision-goal-picker">
+          <span>GOAL</span>
+          <select id="decision-goal-select" aria-label="เลือก Project Brain goal"></select>
+        </label>
+      </div>
+
+      <div class="decision-progress card" id="decision-progress" aria-label="Decision progress">
+        <article data-decision-step="goal"><small>1 · GOAL</small><b id="decision-step-goal">—</b><span>canonical graph</span></article>
+        <i>→</i>
+        <article data-decision-step="search"><small>2 · SEARCH</small><b id="decision-step-search">—</b><span>candidate sources</span></article>
+        <i>→</i>
+        <article data-decision-step="evidence"><small>3 · EVIDENCE</small><b id="decision-step-evidence">—</b><span>DOCUMENTED</span></article>
+        <i>→</i>
+        <article data-decision-step="verify"><small>4 · VERIFY</small><b id="decision-step-verify">—</b><span>SAT / VIOL / UNKNOWN</span></article>
+        <i>→</i>
+        <article data-decision-step="decision"><small>5 · DECISION</small><b id="decision-step-decision">—</b><span>REUSE / ADAPT / BUILD</span></article>
+      </div>
+
+      <div class="decision-layout">
+        <article class="decision-main card">
+          <div class="decision-section-head">
+            <div>
+              <p class="eyebrow">ACTIVE GOAL</p>
+              <h3 id="decision-goal-name">—</h3>
+              <p id="decision-goal-meta">—</p>
+            </div>
+            <span id="decision-overall" class="decision-verdict UNKNOWN">UNKNOWN</span>
+          </div>
+
+          <div class="decision-needs">
+            <h4>Needs</h4>
+            <div id="decision-needs"></div>
+          </div>
+
+          <div class="decision-candidates-head">
+            <div><h4>Candidate capabilities</h4><p>เฉพาะ candidate ที่มาจาก canonical relation หรือ verifier report</p></div>
+            <span id="decision-candidate-count">0</span>
+          </div>
+          <div id="decision-candidates" class="decision-candidates"></div>
+        </article>
+
+        <aside class="decision-side">
+          <article class="decision-result card">
+            <p class="eyebrow">VERIFIED OUTCOME</p>
+            <b id="decision-recommendation">UNKNOWN</b>
+            <span id="decision-contract-status">ยังไม่มี verifier contract</span>
+            <div class="decision-result-actions">
+              <button type="button" data-decision-action="verifier">เปิด Verifier</button>
+              <button type="button" data-decision-action="graph">ดู Graph</button>
+            </div>
+          </article>
+
+          <article class="decision-evidence card">
+            <div class="decision-side-head"><h4>Evidence readiness</h4><span id="decision-evidence-status">UNKNOWN</span></div>
+            <div id="decision-evidence-list"></div>
+          </article>
+
+          <article class="decision-next card">
+            <div class="decision-side-head"><h4>Next action</h4><span>READ-ONLY</span></div>
+            <p id="decision-next-copy">เลือก Goal เพื่อดูสถานะ</p>
+            <button type="button" data-decision-action="capabilities">ค้นหา Capabilities</button>
+          </article>
+        </aside>
+      </div>
+
+      <p class="decision-boundary card">
+        <b>UI นี้ไม่สร้าง verifier contract และไม่เปลี่ยน canonical graph.</b>
+        ถ้ายังไม่มี explicit contract ผลต้องเป็น UNKNOWN และระบบจะแสดงเฉพาะหลักฐานที่มีอยู่จริง
+      </p>
     </section>
 
     <div class="global-search-results card" id="global-search-results" hidden></div>
@@ -453,5 +534,6 @@
   <script type="module" src="./capabilities.js"></script>
   <script type="module" src="./verifier.js"></script>
   <script type="module" src="./shell.js"></script>
+  <script type="module" src="./decision.js"></script>
 </body>
 </html>
