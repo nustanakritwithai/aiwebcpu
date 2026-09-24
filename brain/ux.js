@@ -14,6 +14,7 @@ let focusMode=false;
 let observer=null;
 let temporalTimer=null;
 let temporalSelectedIndex=0;
+let applyingPreset=false;
 
 const qs=s=>document.querySelector(s);
 const qsa=s=>[...document.querySelectorAll(s)];
@@ -29,6 +30,7 @@ function writePrefs(){
 function setPreset(name,{persist=true}={}){
   const wanted=new Set(PRESETS[name]||PRESETS.all);
   activePreset=PRESETS[name]?name:'all';
+  applyingPreset=true;
   qsa('[data-preset]').forEach(b=>b.classList.toggle('active',b.dataset.preset===activePreset));
   qsa('#type-filters .filter-chip').forEach(button=>{
     const type=button.dataset.type;
@@ -36,6 +38,7 @@ function setPreset(name,{persist=true}={}){
     const isOn=!button.classList.contains('off');
     if(shouldBeOn!==isOn)button.click();
   });
+  applyingPreset=false;
   updateFilterCount();
   if(persist)writePrefs();
 }
@@ -317,6 +320,7 @@ function installGraphHooks(){
   },true);
   const typeFilters=qs('#type-filters');
   typeFilters?.addEventListener('click',()=>setTimeout(()=>{
+    if(applyingPreset)return;
     activePreset='custom';
     qsa('[data-preset]').forEach(x=>x.classList.remove('active'));
     updateFilterCount();
