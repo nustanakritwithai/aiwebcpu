@@ -1,4 +1,4 @@
-# Project Brain Web Viewer V0.5.4
+# Project Brain Web Viewer V0.5.5
 
 Interactive read-only Knowledge Graph viewer for Project Brain.
 
@@ -229,3 +229,27 @@ V0.5.4 makes Graph view graph-first:
 - large complete graph remains available through Documented / All presets
 
 This preserves complete data while reducing simultaneous visual information.
+
+
+## Adaptive Graph Layout V0.5.5
+
+Fixes the remaining density issue after Graph Focus V0.5.4.
+
+Root cause:
+- the UI showed the Core preset
+- but graph positions had still been settled against the complete graph world
+- Fit used a fixed 900×650 box
+- the visible Core graph therefore occupied a narrow strip with large unused canvas space
+
+V0.5.5:
+- lays out only the currently visible node/edge set
+- recalculates when preset/type/temporal state changes
+- uses the real graph canvas width/height
+- distributes node types across vertical bands
+- gives public PROJECT nodes multiple columns over the full canvas height
+- increases collision spacing for Core-sized graphs
+- Fit uses the actual visible-node bounding box
+- preset changes are batched into one layout update
+- node label size adapts to visible graph density
+
+Complete data remains available through All/Documented presets.

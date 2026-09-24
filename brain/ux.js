@@ -33,11 +33,11 @@ function setPreset(name,{persist=true}={}){
   activePreset=PRESETS[name]?name:'all';
   applyingPreset=true;
   qsa('[data-preset]').forEach(b=>b.classList.toggle('active',b.dataset.preset===activePreset));
+  document.dispatchEvent(new CustomEvent('project-brain:set-visible-types',{
+    detail:{types:[...wanted]}
+  }));
   qsa('#type-filters .filter-chip').forEach(button=>{
-    const type=button.dataset.type;
-    const shouldBeOn=wanted.has(type);
-    const isOn=!button.classList.contains('off');
-    if(shouldBeOn!==isOn)button.click();
+    button.classList.toggle('off',!wanted.has(button.dataset.type));
   });
   applyingPreset=false;
   updateFilterCount();
