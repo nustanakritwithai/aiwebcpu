@@ -13,8 +13,11 @@
         "title": "Fix Blue Explorer floating cuffs"
       },
       "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy Character Studio V1.8.10.6 to Pages",
+        "runId": 34492777109,
+        "url": "https://github.com/nustanakritwithai/3JS-player-block-asset-engine-/actions/runs/34492777109"
       },
       "evidenceFiles": [
         {
@@ -35,8 +38,11 @@
         "title": "feat: Self-Reflection Trace MVP"
       },
       "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "CI",
+        "runId": 27714104910,
+        "url": "https://github.com/nustanakritwithai/agent-citta-console/actions/runs/27714104910"
       },
       "evidenceFiles": [
         {
@@ -70,7 +76,7 @@
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "reason": "exact-head-workflow-tracking-disabled-by-config"
       },
       "evidenceFiles": [
         {
@@ -137,8 +143,11 @@
         "title": "P6.11 — Snapshot Governor + Event Wakeups"
       },
       "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy AstraLife to GitHub Pages",
+        "runId": 34386152724,
+        "url": "https://github.com/nustanakritwithai/AstraLife/actions/runs/34386152724"
       },
       "evidenceFiles": [
         {
@@ -165,7 +174,7 @@
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "reason": "no-completed-workflow-run-for-head"
       },
       "evidenceFiles": [
         {
@@ -192,7 +201,7 @@
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "reason": "no-completed-workflow-run-for-head"
       },
       "evidenceFiles": [
         {
@@ -228,8 +237,11 @@
         "title": "Merge P2 pinned JWKS TLS dialer"
       },
       "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "P2.1c.2d.1 Transaction Fence Gate",
+        "runId": 36017092873,
+        "url": "https://github.com/nustanakritwithai/Echonews/actions/runs/36017092873"
       },
       "evidenceFiles": [
         {
@@ -255,8 +267,11 @@
         "title": "Add project snapshot for future reference"
       },
       "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy to GitHub Pages",
+        "runId": 24152498805,
+        "url": "https://github.com/nustanakritwithai/eldercare-website/actions/runs/24152498805"
       },
       "evidenceFiles": [
         {
@@ -288,7 +303,7 @@
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "reason": "no-completed-workflow-run-for-head"
       },
       "evidenceFiles": [
         {
@@ -336,7 +351,7 @@
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "reason": "no-completed-workflow-run-for-head"
       },
       "evidenceFiles": [
         {
@@ -367,8 +382,11 @@
         "title": "P3.2: Corner headers + wait for whistle set-piece realism"
       },
       "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy to GitHub Pages",
+        "runId": 27491073670,
+        "url": "https://github.com/nustanakritwithai/Football-Manager-8-sec/actions/runs/27491073670"
       },
       "evidenceFiles": [
         {
@@ -394,8 +412,11 @@
         "title": "fix(gacha): open Standard Banner for playtest"
       },
       "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "verdict": "VIOL",
+        "conclusion": "failure",
+        "name": "Security & Secret Scan",
+        "runId": 35953141775,
+        "url": "https://github.com/nustanakritwithai/GameTurnBase/actions/runs/35953141775"
       },
       "evidenceFiles": [
         {
@@ -432,7 +453,7 @@
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "reason": "no-completed-workflow-run-for-head"
       },
       "evidenceFiles": [
         {
@@ -469,7 +490,7 @@
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "reason": "no-completed-workflow-run-for-head"
       },
       "evidenceFiles": [
         {
@@ -505,8 +526,11 @@
         "title": "feat: add projectile collision damage and Cube respawn"
       },
       "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy Magiccube to Pages",
+        "runId": 35001697931,
+        "url": "https://github.com/nustanakritwithai/Magiccube/actions/runs/35001697931"
       },
       "evidenceFiles": [
         {
@@ -554,7 +578,7 @@
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "reason": "no-completed-workflow-run-for-head"
       },
       "evidenceFiles": [
         {
@@ -576,7 +600,7 @@
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "reason": "no-completed-workflow-run-for-head"
       },
       "evidenceFiles": [
         {
@@ -598,7 +622,7 @@
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "reason": "no-completed-workflow-run-for-head"
       },
       "evidenceFiles": [
         {
@@ -634,8 +658,11 @@
         "title": "เชื่อมระบบต่อสู้โจรสลัดเดิมผ่านเซิร์ฟเวอร์กลาง"
       },
       "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "github_actions in /. - Update #1588676204",
+        "runId": 35852430682,
+        "url": "https://github.com/nustanakritwithai/Pirate-fruit-/actions/runs/35852430682"
       },
       "evidenceFiles": [
         {
@@ -671,8 +698,11 @@
         "title": "เชื่อมผลต่อสู้และเซฟโจรสลัดจากระบบกลางเดิม"
       },
       "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy PocketMonster game assets to GitHub Pages",
+        "runId": 35534212847,
+        "url": "https://github.com/nustanakritwithai/PocketMonster/actions/runs/35534212847"
       },
       "evidenceFiles": [
         {
@@ -698,8 +728,11 @@
         "title": "fix(auth): call bindRoleUi in init and force PIN gate"
       },
       "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy Ramagan to GitHub Pages",
+        "runId": 35428666626,
+        "url": "https://github.com/nustanakritwithai/Ramagan/actions/runs/35428666626"
       },
       "evidenceFiles": [
         {
@@ -731,7 +764,7 @@
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "reason": "no-completed-workflow-run-for-head"
       },
       "evidenceFiles": [
         {
@@ -762,8 +795,11 @@
         "title": "ci: preserve full verification with a bounded 20-minute budget"
       },
       "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy Simclone to GitHub Pages",
+        "runId": 36007630124,
+        "url": "https://github.com/nustanakritwithai/Simclone/actions/runs/36007630124"
       },
       "evidenceFiles": [
         {
@@ -800,7 +836,7 @@
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "reason": "no-completed-workflow-run-for-head"
       },
       "evidenceFiles": [
         {
@@ -826,8 +862,11 @@
         "title": "R11.5c: add fully offline post-battle quality report"
       },
       "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy GitHub Pages",
+        "runId": 35067736936,
+        "url": "https://github.com/nustanakritwithai/TestGE/actions/runs/35067736936"
       },
       "evidenceFiles": [
         {
@@ -859,7 +898,7 @@
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "reason": "no-completed-workflow-run-for-head"
       },
       "evidenceFiles": [
         {
@@ -890,8 +929,11 @@
         "title": "fix: preserve latest browser agent follow-up commands"
       },
       "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "WebAi V0.1 CI",
+        "runId": 34222151803,
+        "url": "https://github.com/nustanakritwithai/WebAi/actions/runs/34222151803"
       },
       "evidenceFiles": [
         {
@@ -927,8 +969,11 @@
         "title": "fix: set chat input text color to dark"
       },
       "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy to GitHub Pages",
+        "runId": 24257524484,
+        "url": "https://github.com/nustanakritwithai/welcares/actions/runs/24257524484"
       },
       "evidenceFiles": [
         {
@@ -959,8 +1004,11 @@
         "title": "fix(v0.4.1): footer V0.4 + one-tap back from quick library"
       },
       "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy Yeb to GitHub Pages",
+        "runId": 35431811228,
+        "url": "https://github.com/nustanakritwithai/Yeb/actions/runs/35431811228"
       },
       "evidenceFiles": [
         {
@@ -987,7 +1035,7 @@
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
-        "reason": "no-pr-triggered-run-observed-during-catalog-bootstrap"
+        "reason": "no-completed-workflow-run-for-head"
       },
       "evidenceFiles": [
         {
