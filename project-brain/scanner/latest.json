@@ -86,7 +86,12 @@
         },
         {
           "path": ".github/workflows/project-brain.yml",
-          "sha": "7235297e7f58e9910e9ab862ecd20e8b7e9b2ca8",
+          "sha": "958f5200ec5f4075200df4cb4a3a2a64365beada",
+          "status": "present"
+        },
+        {
+          "path": "brain/app.js",
+          "sha": "1613bdd0c42f55bffa0cb2c73b4587b7db936c41",
           "status": "present"
         },
         {
@@ -101,12 +106,12 @@
         },
         {
           "path": "brain/index.html",
-          "sha": "7fbd0983a13721c2506df32ab8ebae8383426c04",
+          "sha": "c584bddaad2513d73f6b17edfebedb756ad7547d",
           "status": "present"
         },
         {
           "path": "brain/README.md",
-          "sha": "afb2e5050aecdf5d9d2fed350300c7fd60104aa3",
+          "sha": "ffce1d28694f4c2e3aee02956cf2fbd6c1dce475",
           "status": "present"
         },
         {
@@ -122,6 +127,11 @@
         {
           "path": "brain/style.css",
           "sha": "8205f22e6ea07e20f7cacce8b8700442b840b561",
+          "status": "present"
+        },
+        {
+          "path": "brain/ux.js",
+          "sha": "bbbdb52b585270009b5560d713bda9a65dd4a858",
           "status": "present"
         },
         {
@@ -146,17 +156,22 @@
         },
         {
           "path": "project-brain/graph/project-brain.json",
-          "sha": "c69c12bd27c06f0bb777aeb9f5f9dc77ee5d0071",
+          "sha": "e8f06e0f548fdfbff430b900149b5c96b5ea37ab",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/graph/sync-catalog-inventory.mjs",
+          "sha": "8ebddb17b04063ccb553d40d8b3bbc599be77bf2",
           "status": "present"
         },
         {
           "path": "project-brain/query.mjs",
-          "sha": "21123af6dcee5b776a11c476ca340474617ae7b0",
+          "sha": "35126cae5cf0a16eb6d1f3bb5827cc1c1e276303",
           "status": "present"
         },
         {
           "path": "project-brain/scanner/config.json",
-          "sha": "02ef520e5c24ee5a9a600694ea6f650bd7b8ab89",
+          "sha": "bb3278c21e8063e72a3824fc6bddecc98cea1acf",
           "status": "present"
         },
         {
