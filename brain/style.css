@@ -2445,3 +2445,77 @@ body.ux-focus .graph-inspection{
   .project-deep-head a{padding:5px 7px}
 }
 
+/* Project Deep Profile V0.6.1 */
+.project-deep-profile{
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid #1c4159;
+}
+.project-source-head{
+  display:grid;
+  gap:4px;
+  padding:9px 10px;
+  border:1px solid #1d465f;
+  border-radius:10px;
+  background:#071926;
+}
+.project-source-head small{color:#61bddf;font-size:.52rem}
+.project-source-head b{color:#e4f5ff;font-size:.68rem;line-height:1.35}
+.project-source-head p{margin:2px 0;color:#9db7c6;font-size:.58rem;line-height:1.45}
+.project-source-head span{color:#7898aa;font-size:.54rem}
+.project-architecture-list,
+.project-authority-list{display:grid;gap:6px}
+.project-architecture-row,
+.project-authority-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:4px 8px;
+  padding:8px;
+  border:1px solid #16384d;
+  border-radius:9px;
+  background:#06131f;
+}
+.project-architecture-row div,
+.project-authority-row div{display:grid;gap:1px}
+.project-architecture-row b,
+.project-authority-row b{color:#dceff8;font-size:.62rem}
+.project-architecture-row span,
+.project-authority-row span{color:#6f91a4;font-size:.51rem}
+.project-architecture-row small,
+.project-authority-row small{
+  align-self:start;
+  border:1px solid #2b4e61;
+  border-radius:999px;
+  padding:2px 5px;
+  font-size:.48rem;
+}
+.project-architecture-row p,
+.project-authority-row p{
+  grid-column:1/-1;
+  margin:2px 0 0;
+  color:#9bb3c1;
+  font-size:.56rem;
+  line-height:1.45;
+}
+.project-architecture-row code,
+.project-authority-row code{
+  grid-column:1/-1;
+  color:#5f8194;
+  font-size:.49rem;
+  overflow-wrap:anywhere;
+}
+.project-architecture-row .state-authoritative,
+.project-authority-row .state-authoritative{color:#76e2aa;border-color:#276b4d}
+.project-architecture-row .state-shadow,
+.project-authority-row .state-shadow{color:#dfc271;border-color:#66582e}
+.project-architecture-row .state-candidate,
+.project-authority-row .state-candidate{color:#9bcfff;border-color:#315f82}
+.project-next-gates ol,
+.project-deep-profile .project-cautions ul{
+  margin:5px 0 0;
+  padding-left:18px;
+  color:#9cb4c2;
+  font-size:.57rem;
+  line-height:1.5;
+}
+

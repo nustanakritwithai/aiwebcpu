@@ -35,6 +35,7 @@ const empty=document.querySelector('#empty');
 let graph=null;
 let projectCatalog=null;
 let capabilityInventory=null;
+let projectDeepProfiles=null;
 let visibleTypes=new Set();
 let selectedId=null;
 let focusRootId=null;
@@ -75,12 +76,14 @@ const el=(name,attrs={})=>{const x=document.createElementNS('http://www.w3.org/2
 const repoKey=node=>node?.repo??'';
 const catalogRow=node=>(projectCatalog?.repositories??[]).find(row=>row.id===node?.id||row.repo===repoKey(node))??null;
 const inventoryRow=node=>(capabilityInventory?.repositories??[]).find(row=>row.repoId===node?.id||row.repo===repoKey(node))??null;
+const deepProfileRow=node=>(projectDeepProfiles?.projects??[]).find(row=>row.repoId===node?.id||row.repo===repoKey(node))??null;
 
 function projectDeepDive(node){
   if(node?.type!=='PROJECT')return '';
 
   const catalog=catalogRow(node);
   const inventory=inventoryRow(node);
+  const deepProfile=deepProfileRow(node);
   const activeEdges=(graph?.edges??[]).filter(temporalActive);
   const graphNodes=new Map((graph?.nodes??[]).filter(temporalActive).map(row=>[row.id,row]));
   const documentedTargets=activeEdges
@@ -132,6 +135,29 @@ function projectDeepDive(node){
 
   const signalRows=signals.map(signal=>`<span class="project-signal">${esc(signal)}</span>`).join('');
   const cautionRows=[...limitations,...notes].map(item=>`<li>${esc(item)}</li>`).join('');
+
+
+  const deepSourceAhead=Boolean(deepProfile?.sourceHead?.sha&&catalog?.head?.sha&&deepProfile.sourceHead.sha!==catalog.head.sha);
+  const architectureRows=(deepProfile?.architecture??[]).map(row=>`
+    <article class="project-architecture-row">
+      <div><b>${esc(row.label)}</b><span>${esc(row.owner)}</span></div>
+      <small class="state-${esc(String(row.state??'unknown').toLowerCase())}">${esc(row.state??'UNKNOWN')}</small>
+      <p>${esc(row.detail)}</p>
+      <code>${esc(row.evidence?.path??'')}</code>
+    </article>
+  `).join('');
+  const authorityRows=(deepProfile?.authorityBoundaries??[]).map(row=>`
+    <article class="project-authority-row">
+      <div><b>${esc(row.domain)}</b><span>${esc(row.owner)}</span></div>
+      <small class="state-${esc(String(row.state??'unknown').toLowerCase())}">${esc(row.state??'UNKNOWN')}</small>
+      <p>${esc(row.detail)}</p>
+      <code>${esc(row.evidence?.path??'')}</code>
+    </article>
+  `).join('');
+  const nextGateRows=(deepProfile?.nextGates??[]).map(item=>`<li>${esc(item)}</li>`).join('');
+  const deepLimitRows=(deepProfile?.limitations??[]).map(item=>`<li>${esc(item)}</li>`).join('');
+  const sourceHead=deepProfile?.sourceHead??null;
+  const deepCi=deepProfile?.exactHeadWorkflow?.verdict??'UNKNOWN';
 
   return `
     <section class="project-deep-dive" aria-label="Project Deep Dive">
@@ -185,6 +211,45 @@ function projectDeepDive(node){
         <div class="project-deep-section project-cautions">
           <div class="project-deep-title"><b>Limitations / Notes</b><span>do not infer beyond evidence</span></div>
           <ul>${cautionRows}</ul>
+        </div>
+      `:''}
+
+      ${deepProfile?`
+        <div class="project-deep-profile">
+          <div class="project-deep-title">
+            <b>Source-level Deep Profile</b>
+            <span>${deepSourceAhead?'SOURCE AHEAD OF CATALOG':'source snapshot aligned/unknown'}</span>
+          </div>
+          <div class="project-source-head">
+            <small>DIRECT SOURCE HEAD · ${esc(String(sourceHead?.date??'').slice(0,10)||'—')} · ${esc(String(sourceHead?.sha??'').slice(0,8)||'—')} · CI ${esc(deepCi)}</small>
+            <b>${esc(sourceHead?.title??deepProfile.currentStage??'—')}</b>
+            <p>${esc(deepProfile.productVision??'')}</p>
+            <span>${esc(deepProfile.currentStage??'')}</span>
+          </div>
+          ${architectureRows?`
+            <div class="project-deep-section">
+              <div class="project-deep-title"><b>Architecture</b><span>owner + authority state</span></div>
+              <div class="project-architecture-list">${architectureRows}</div>
+            </div>
+          `:''}
+          ${authorityRows?`
+            <div class="project-deep-section">
+              <div class="project-deep-title"><b>Authority boundaries</b><span>who writes what now</span></div>
+              <div class="project-authority-list">${authorityRows}</div>
+            </div>
+          `:''}
+          ${nextGateRows?`
+            <div class="project-deep-section project-next-gates">
+              <div class="project-deep-title"><b>Next gates</b><span>intentions, not proof</span></div>
+              <ol>${nextGateRows}</ol>
+            </div>
+          `:''}
+          ${deepLimitRows?`
+            <div class="project-deep-section project-cautions">
+              <div class="project-deep-title"><b>Deep-profile limits</b><span>UNKNOWN stays UNKNOWN</span></div>
+              <ul>${deepLimitRows}</ul>
+            </div>
+          `:''}
         </div>
       `:''}
     </section>
@@ -628,15 +693,17 @@ function setupInteraction(){
 
 async function boot(){
   try{
-    const [response,catalogData,inventoryData]=await Promise.all([
+    const [response,catalogData,inventoryData,deepProfileData]=await Promise.all([
       fetch('../project-brain/graph/project-brain.json',{cache:'no-store'}),
       optionalJson('../project-brain/catalog/repositories.json'),
-      optionalJson('../project-brain/capability-inventory/repositories.json')
+      optionalJson('../project-brain/capability-inventory/repositories.json'),
+      optionalJson('../project-brain/deep-profiles/projects.json')
     ]);
     if(!response.ok)throw new Error(`HTTP ${response.status}`);
     graph=await response.json();
     projectCatalog=catalogData;
     capabilityInventory=inventoryData;
+    projectDeepProfiles=deepProfileData;
     const requestedCheckpoint=new URL(location.href).searchParams.get('at');
     const defaultCheckpoint=graph.temporal?.defaultCheckpoint??graph.temporal?.checkpoints?.at(-1)?.id??null;
     temporalCheckpointId=(requestedCheckpoint&&temporalIndex(requestedCheckpoint)>=0)?requestedCheckpoint:defaultCheckpoint;

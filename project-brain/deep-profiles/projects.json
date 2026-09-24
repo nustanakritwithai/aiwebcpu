@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "1.0.0",
+  "semantics": {
+    "status": "DOCUMENTED source-level project profile",
+    "rule": "Deep profile data adds source context but does not promote capability reuse decisions or overwrite canonical graph authority."
+  },
+  "projects": [
+    {
+      "repoId": "repo:simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "name": "Simclone",
+      "status": "DOCUMENTED",
+      "sourceHead": {
+        "sha": "97ba30dd5956c8489969c6e482a0b659daf0d39d",
+        "date": "2026-09-24T20:38:11Z",
+        "title": "Merge WM4.0 regeneration migration contract"
+      },
+      "exactHeadWorkflow": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy Simclone to GitHub Pages",
+        "runId": 36056205876,
+        "url": "https://github.com/nustanakritwithai/Simclone/actions/runs/36056205876"
+      },
+      "productVision": "Autonomous Society Simulation + Survival + Automation + Colony Sim + Emergent Narrative; the world must continue when the player stops issuing commands.",
+      "currentStage": "Knowledge + Memory 0.5.0 candidate with Kingdom shadow imports and staged WorldSim authority migration.",
+      "architecture": [
+        {
+          "label": "Authoritative simulation engine",
+          "owner": "Simclone src/engine.mjs",
+          "state": "AUTHORITATIVE",
+          "detail": "Simulation rules stay deterministic and isolated from DOM, wall-clock time, Math.random and external API calls.",
+          "evidence": {
+            "path": "AGENTS.md",
+            "sha": "859f9d971637fe818985fd2160d1797bcb030a63"
+          }
+        },
+        {
+          "label": "Personal knowledge + provenance",
+          "owner": "Simclone Knowledge 0.5.0",
+          "state": "CANDIDATE",
+          "detail": "Direct productive outcomes create CONFIRMED personal beliefs; explicit SHARE_KNOWLEDGE creates UNVERIFIED relayed beliefs with source provenance; collections are bounded.",
+          "evidence": {
+            "path": "docs/KNOWLEDGE_MEMORY_0.5.0.md",
+            "sha": "1fb4c61daad8faa44082077ba58cedb3b4b33831"
+          }
+        },
+        {
+          "label": "Kingdom donor migration",
+          "owner": "Simclone survival/task rules",
+          "state": "SHADOW",
+          "detail": "K1/K2/K3/K4/K6 expose scarcity, occupation, labor and market projections without taking authoritative mutation or task-ranking ownership.",
+          "evidence": {
+            "path": "docs/STATUS.md",
+            "sha": "53b55f3ca433ce3d6d10cfd696dd0cab653b131e"
+          }
+        }
+      ],
+      "authorityBoundaries": [
+        {
+          "domain": "World map",
+          "owner": "WorldSim WM1",
+          "state": "AUTHORITATIVE",
+          "detail": "worldMap is canonical terrain/environment; tiles is a derived compatibility projection.",
+          "evidence": {
+            "path": "docs/WORLDSIM_FULL_MAP_REPLACEMENT.md",
+            "sha": "48c607f8f8bbcd717b2e7708acf31083f77393ee"
+          }
+        },
+        {
+          "domain": "Path walkability",
+          "owner": "WorldSim WM2",
+          "state": "AUTHORITATIVE",
+          "detail": "Walkable/path topology authority moved from K6 while preserving legacy topology exactly; weighted movement cost is still out of scope.",
+          "evidence": {
+            "path": "docs/WORLDSIM_WM2_PATH_AUTHORITY.md",
+            "sha": "a468808ac954543a92b712ae8b86cbbf0dee5642"
+          }
+        },
+        {
+          "domain": "Resource ecology",
+          "owner": "WorldSim WM3.4 shadow",
+          "state": "SHADOW",
+          "detail": "Climate/soil/hydrology/vegetation evidence produces read-only ecology potentials; it owns no biomass store, scheduler, save state or resource mutation.",
+          "evidence": {
+            "path": "docs/WORLDSIM_WM3_4_SHADOW_VEGETATION.md",
+            "sha": "826dc2f6337b4e77f8f13883b2f16aa44d84339d"
+          }
+        },
+        {
+          "domain": "Resource regeneration",
+          "owner": "Simclone K6",
+          "state": "AUTHORITATIVE",
+          "detail": "WM4.0 records legacy +3 food/120 ticks, +1 wood/720 ticks and zero stone regeneration. WorldSim mutation remains none; the next gate moves the writer before changing behavior.",
+          "evidence": {
+            "path": "docs/WORLDSIM_WM4_0_REGEN_CONTRACT.md",
+            "sha": "478eba05c182611a09786236f433a4e28040872a"
+          }
+        }
+      ],
+      "nextGates": [
+        "V0.5.1 direct re-observation and belief revision",
+        "V0.5.2 local knowledge affects deterministic planning",
+        "WM4 Gate 1 moves regeneration writer while preserving legacy cadence",
+        "Only after boundary proof: multi-step goals, cooperation and later society imports"
+      ],
+      "limitations": [
+        "Knowledge + Memory 0.5.0 is an implementation contract/candidate; the document itself is not release proof.",
+        "Native public-browser behavior and physical Android performance remain separate claims.",
+        "WM4.0 does not yet move resource-regeneration authority to WorldSim.",
+        "DOCUMENTED deep-profile data does not imply reusable compatibility in another project."
+      ]
+    }
+  ]
+}

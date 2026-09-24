@@ -541,3 +541,14 @@ test('Project Deep Dive capability rows navigate through canonical graph node id
   assert.doesNotMatch(block,/reuseDecision=['"]REUSE/);
 });
 
+test('Project Deep Profile V0.6.1 loads source-level project profiles without promoting graph truth',async()=>{
+  assert.match(js,/Project Deep Profile V0\.6\.1/);
+  assert.match(js,/optionalJson\('\.\.\/project-brain\/deep-profiles\/projects\.json'\)/);
+  assert.match(js,/const deepProfileRow=/);
+  assert.match(js,/SOURCE AHEAD OF CATALOG/);
+  assert.match(js,/Authority boundaries/);
+  assert.match(js,/intentions, not proof/);
+  assert.match(css,/Project Deep Profile V0\.6\.1/);
+  assert.match(css,/\.project-authority-row/);
+});
+
