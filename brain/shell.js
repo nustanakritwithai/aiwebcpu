@@ -1,3 +1,4 @@
+import {initialProjectBrainView} from './view-route.mjs';
 const VIEW_LABELS={
   overview:'Overview',
   decision:'Decision',
@@ -51,7 +52,8 @@ function setView(next,{updateUrl=true}={}){
 
   if(updateUrl){
     const url=new URL(location.href);
-    if(view==='overview')url.searchParams.delete('view');
+    // Preserve an explicit Overview choice even while a node remains selected.
+    if(view==='overview'&&!url.searchParams.get('node'))url.searchParams.delete('view');
     else url.searchParams.set('view',view);
     history.replaceState(null,'',url);
   }
@@ -343,14 +345,14 @@ function installShellEvents(){
   });
 
   addEventListener('popstate',()=>{
-    const view=normalizeView(new URL(location.href).searchParams.get('view')||'overview');
+    const view=initialProjectBrainView(new URL(location.href).searchParams,VIEW_LABELS);
     setView(view,{updateUrl:false});
   });
 }
 
 function bootShell(){
   installShellEvents();
-  const requested=normalizeView(new URL(location.href).searchParams.get('view')||'overview');
+  const requested=initialProjectBrainView(new URL(location.href).searchParams,VIEW_LABELS);
   setView(requested,{updateUrl:false});
   loadShellData();
 }
