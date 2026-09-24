@@ -3026,8 +3026,26 @@
       "id": "version:project-brain-v055",
       "type": "VERSION",
       "name": "Project Brain Adaptive Graph Layout V0.5.5",
+      "status": "superseded",
+      "activeFrom": "pb-2026-09-25-adaptive-layout-v055",
+      "activeUntil": "pb-2026-09-25-focus-inspection-v056"
+    },
+    {
+      "id": "ev:project-brain-v056-ui-ci",
+      "type": "EVIDENCE",
+      "name": "Project Brain V0.5.6 Focus inspection CI",
+      "verdict": "SAT",
+      "scope": "PR #28 candidate head c31f175; separate selectedId/focusRootId state, exit-focus selection persistence, recentering, context bar and focus-out isolation",
+      "limitations": "Exact-main completed workflow for merge commit 467bf5d was not observed at bookkeeping time. SAT applies to Focus inspection behavior only.",
+      "source": "GitHub Actions run 36041290562",
+      "activeFrom": "pb-2026-09-25-focus-inspection-v056"
+    },
+    {
+      "id": "version:project-brain-v056",
+      "type": "VERSION",
+      "name": "Project Brain Focus Inspection UX V0.5.6",
       "status": "current",
-      "activeFrom": "pb-2026-09-25-adaptive-layout-v055"
+      "activeFrom": "pb-2026-09-25-focus-inspection-v056"
     }
   ],
   "edges": [
@@ -5042,6 +5060,12 @@
       "to": "version:project-brain-v054",
       "type": "SUPERSEDES",
       "activeFrom": "pb-2026-09-25-adaptive-layout-v055"
+    },
+    {
+      "from": "version:project-brain-v056",
+      "to": "version:project-brain-v055",
+      "type": "SUPERSEDES",
+      "activeFrom": "pb-2026-09-25-focus-inspection-v056"
     }
   ],
   "timeline": [
@@ -5124,6 +5148,11 @@
       "date": "2026-09-25",
       "event": "Project Brain V0.5.5 recalculates layout from the currently visible graph, fills the real canvas and fits to actual node bounds",
       "source": "nustanakritwithai/aiwebcpu@aded650"
+    },
+    {
+      "date": "2026-09-25",
+      "event": "Project Brain V0.5.6 turns Focus into persistent inspection: exiting Focus keeps selection/detail and recenters the inspected node",
+      "source": "nustanakritwithai/aiwebcpu@467bf5d"
     }
   ],
   "rules": {
@@ -5256,9 +5285,16 @@
         "label": "Adaptive Graph Layout V0.5.5",
         "description": "Verified visible-node adaptive layout uses the real canvas and bounding-box Fit so filtered graphs use available space instead of retaining complete-world positions.",
         "source": "nustanakritwithai/aiwebcpu@aded650"
+      },
+      {
+        "id": "pb-2026-09-25-focus-inspection-v056",
+        "date": "2026-09-25",
+        "label": "Focus Inspection UX V0.5.6",
+        "description": "Verified Focus inspection separates selected node from focus root, preserves detail context on exit, and recenters the selected node.",
+        "source": "nustanakritwithai/aiwebcpu@467bf5d"
       }
     ],
-    "defaultCheckpoint": "pb-2026-09-25-adaptive-layout-v055"
+    "defaultCheckpoint": "pb-2026-09-25-focus-inspection-v056"
   },
   "interfaces": {
     "human": "web",
