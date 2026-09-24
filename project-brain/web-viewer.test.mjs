@@ -98,3 +98,26 @@ test('scanner UI states mechanical evidence does not equal capability verificati
   assert.match(html,/mechanical evidence เท่านั้น/);
   assert.match(html,/ต้องผ่าน Verify ก่อนเสมอ/);
 });
+
+
+test('Full repository catalog is exposed through the web-only interface',async()=>{
+  const catalog=await readFile(new URL('../brain/catalog.js',import.meta.url),'utf8');
+  for(const id of ['catalog-section','catalog-status','catalog-search','catalog-repos','catalog-total','catalog-private'])assert.match(html,new RegExp(`id=["']${id}["']`));
+  assert.match(html,/src=["']\.\/catalog\.js["']/);
+  assert.match(catalog,/project-brain\/catalog\/repositories\.json/);
+  assert.match(catalog,/semanticStatus/);
+});
+
+test('catalog web layer does not embed a second 37-repository dataset',async()=>{
+  const catalog=await readFile(new URL('../brain/catalog.js',import.meta.url),'utf8');
+  assert.doesNotMatch(catalog,/nustanakritwithai\/PocketMonster/);
+  assert.doesNotMatch(catalog,/nustanakritwithai\/Simclone/);
+  assert.doesNotMatch(catalog,/const\s+repositories\s*=\s*\[/);
+});
+
+test('catalog UI keeps semantic UNKNOWN visible while showing mechanical CI',()=>{
+  assert.match(html,/ทุก repo ยังมี <b>semanticStatus = UNKNOWN<\/b>/);
+  assert.match(css,/catalog-badge\.ci-SAT/);
+  assert.match(css,/catalog-badge\.ci-VIOL/);
+  assert.match(css,/catalog-badge\.semantic/);
+});
