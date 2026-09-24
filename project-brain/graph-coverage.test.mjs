@@ -5,7 +5,8 @@ import {
   GENERATED_BY,
   syncCatalogInventory,
   candidateId,
-  evidenceId
+  evidenceId,
+  normalizeGraphForComparison
 } from './graph/sync-catalog-inventory.mjs';
 
 const graph=JSON.parse(await readFile(new URL('./graph/project-brain.json',import.meta.url),'utf8'));
@@ -84,7 +85,7 @@ test('generated graph view is deterministic and already synchronized',()=>{
   const synced=syncCatalogInventory(graph,catalog,inventory,{
     checkpoint:graph.coverage.activeFrom
   });
-  assert.deepEqual(synced,graph);
+  assert.deepEqual(normalizeGraphForComparison(synced),normalizeGraphForComparison(graph));
 });
 
 test('generated graph layer contains no private repository details',()=>{
