@@ -183,8 +183,19 @@ function canonical(value){
   return value;
 }
 
+export function normalizeGraphForComparison(graphInput){
+  const graph=JSON.parse(JSON.stringify(graphInput));
+  graph.nodes=(graph.nodes??[]).slice().sort((a,b)=>String(a.id).localeCompare(String(b.id)));
+  graph.edges=(graph.edges??[]).slice().sort((a,b)=>{
+    const ak=`${a.from}|${a.to}|${a.type}|${a.claim??''}`;
+    const bk=`${b.from}|${b.to}|${b.type}|${b.claim??''}`;
+    return ak.localeCompare(bk);
+  });
+  return canonical(graph);
+}
+
 function semanticJson(value){
-  return JSON.stringify(canonical(value));
+  return JSON.stringify(normalizeGraphForComparison(value));
 }
 
 function parseArgs(argv){
