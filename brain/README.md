@@ -1,4 +1,4 @@
-# Project Brain Web Viewer V0.5.2
+# Project Brain Web Viewer V0.5.3
 
 Interactive read-only Knowledge Graph viewer for Project Brain.
 
@@ -189,3 +189,23 @@ Rules:
 - a Goal without an explicit verifier contract remains UNKNOWN
 - the workspace never writes contracts, reports, patches or graph state
 - deep links preserve `?view=decision&goal=<goal-id>`
+
+
+## Complete Graph Coverage V0.5.3
+
+The Knowledge Graph now includes the complete public semantic inventory:
+
+- 33 public repository PROJECT nodes
+- 116 DOCUMENTED capability-candidate nodes
+- 42 documentation evidence-file nodes
+- DOCUMENTS and DOCUMENTED_BY relations
+
+Graph UI distinguishes:
+- Verified Capability
+- Documented Capability
+
+The Documented preset isolates repository → candidate → documentation evidence paths.
+
+Large graph layout uses bounded iterations for browser performance.
+
+CI verifies that Graph coverage remains synchronized with the Repository Catalog and Capability Inventory.
