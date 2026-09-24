@@ -76,6 +76,7 @@ const el=(name,attrs={})=>{const x=document.createElementNS('http://www.w3.org/2
 const repoKey=node=>node?.repo??'';
 const catalogRow=node=>(projectCatalog?.repositories??[]).find(row=>row.id===node?.id||row.repo===repoKey(node))??null;
 const inventoryRow=node=>(capabilityInventory?.repositories??[]).find(row=>row.repoId===node?.id||row.repo===repoKey(node))??null;
+/* Project Deep Profile V0.6.1 */
 const deepProfileRow=node=>(projectDeepProfiles?.projects??[]).find(row=>row.repoId===node?.id||row.repo===repoKey(node))??null;
 
 function projectDeepDive(node){
