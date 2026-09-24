@@ -45,7 +45,9 @@
         "project-brain/catalog/repositories.json",
         "project-brain/graph/project-brain.json",
         "project-brain/scanner/config.json",
-        "project-brain/scanner/scanner.mjs"
+        "project-brain/scanner/scanner.mjs",
+        "project-brain/capability-inventory/repositories.json",
+        "project-brain/capability-inventory/README.md"
       ]
     },
     {
