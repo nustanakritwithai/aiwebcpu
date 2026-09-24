@@ -308,3 +308,42 @@ test('Graph canvas takes the primary viewport on compact devices',()=>{
   assert.match(css,/body\.detail-open \.workspace>\.detail\{transform:translateY\(0\)\}/);
   assert.match(css,/\.graph-options-panel\{[\s\S]*position:fixed/);
 });
+
+
+test('Adaptive Graph Layout V0.5.5 lays out the visible graph, not the full 230-node world',()=>{
+  assert.match(js,/function ensureLayout\(nodes,edges\)/);
+  assert.match(js,/function renderGraph\(\)\{\s*const \{nodes,edges,matches,q\}=filtered\(\);\s*ensureLayout\(nodes,edges\)/);
+  assert.doesNotMatch(js,/settle\(graph\.nodes,graph\.edges\)/);
+  assert.match(js,/project-brain:set-visible-types/);
+});
+
+test('Adaptive Graph Layout uses actual canvas size and type-group distribution',()=>{
+  assert.match(js,/function layoutSize\(\)/);
+  assert.match(js,/getBoundingClientRect/);
+  assert.match(js,/function groupOrdinals\(nodes\)/);
+  assert.match(js,/PROJECT:\{x:\.14,y0:\.10,y1:\.90,cols:3\}/);
+  assert.match(js,/minDistance=nodes\.length<=60\?70/);
+});
+
+test('Fit uses visible-node bounding box instead of fixed 900x650 world',()=>{
+  assert.match(js,/function positionBounds\(nodes\)/);
+  assert.match(js,/const bounds=positionBounds\(nodes\)/);
+  assert.doesNotMatch(js,/const box=\{x:0,y:0,w:900,h:650\}/);
+});
+
+test('Preset changes are batched into one visible-type update',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  assert.match(ux,/project-brain:set-visible-types/);
+  const start=ux.indexOf('function setPreset');
+  const end=ux.indexOf('\nfunction updateFilterCount',start);
+  const block=ux.slice(start,end);
+  assert.doesNotMatch(block,/button\.click\(\)/);
+  assert.match(block,/detail:\{types:\[\.\.\.wanted\]\}/);
+});
+
+test('Graph labels scale with visible density',()=>{
+  assert.match(js,/svg\.dataset\.density=nodes\.length<=60\?'comfortable'/);
+  assert.match(css,/Adaptive Graph Layout V0\.5\.5/);
+  assert.match(css,/#graph\[data-density="comfortable"\] \.node text/);
+  assert.match(css,/#graph\[data-density="dense"\] \.node \.meta\{\s*display:none/);
+});
