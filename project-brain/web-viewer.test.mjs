@@ -256,3 +256,18 @@ test('Decision view is part of reusable Command Center routing',async()=>{
   assert.match(shell,/type:'Goal'/);
   assert.match(shell,/view:'decision'/);
 });
+
+
+test('Complete Graph Coverage V0.5.3 renders documented capability candidates',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  assert.match(js,/CAPABILITY_CANDIDATE/);
+  assert.match(js,/DOCUMENTS/);
+  assert.match(js,/DOCUMENTED_BY/);
+  assert.match(ux,/documented:\['PROJECT','CAPABILITY_CANDIDATE','EVIDENCE'\]/);
+  assert.match(html,/data-preset=["']documented["']/);
+});
+
+test('large complete graph uses bounded layout iterations',()=>{
+  assert.match(js,/nodes\.length>180\?130/);
+  assert.match(js,/const iterations=/);
+});
