@@ -29,9 +29,10 @@ function authHeaders(token){
   };
 }
 
-export async function githubJson(url,{token=process.env.GITHUB_TOKEN||process.env.GH_TOKEN,allow404=false}={}){
+export async function githubJson(url,{token=process.env.GITHUB_TOKEN||process.env.GH_TOKEN,allow404=false,allow409=false}={}){
   const response=await fetch(url,{headers:authHeaders(token)});
   if(allow404&&response.status===404)return null;
+  if(allow409&&response.status===409)return null;
   if(!response.ok)throw new Error(`GitHub API ${response.status}: ${url}`);
   return response.json();
 }
@@ -40,15 +41,24 @@ export async function collectRepository(entry,{token}={}){
   const base=`https://api.github.com/repos/${entry.repo}`;
   const trackHead=entry.trackHead!==false;
   const trackExactHeadWorkflow=entry.trackExactHeadWorkflow!==false;
-  const commit=await githubJson(`${base}/commits/${encodeURIComponent(entry.branch)}`,{token});
-  const head={
+  const commit=await githubJson(`${base}/commits/${encodeURIComponent(entry.branch)}`,{token,allow409:true});
+  const empty=!commit;
+  const head=commit?{
     sha:commit.sha,
     date:commit.commit?.committer?.date??commit.commit?.author?.date??null,
     message:commit.commit?.message??''
+  }:{
+    sha:null,
+    date:null,
+    message:''
   };
 
   const evidenceFiles=[];
   for(const path of entry.evidencePaths??[]){
+    if(empty){
+      evidenceFiles.push({path,sha:null,status:'missing'});
+      continue;
+    }
     const data=await githubJson(
       `${base}/contents/${path.split('/').map(encodeURIComponent).join('/')}?ref=${encodeURIComponent(head.sha)}`,
       {token,allow404:true}
@@ -59,7 +69,9 @@ export async function collectRepository(entry,{token}={}){
   }
 
   let exactHeadWorkflow;
-  if(!trackExactHeadWorkflow){
+  if(empty){
+    exactHeadWorkflow={verdict:'UNKNOWN',reason:'empty-repository'};
+  }else if(!trackExactHeadWorkflow){
     exactHeadWorkflow={verdict:'UNKNOWN',reason:'exact-head-workflow-tracking-disabled-by-config'};
   }else{
     const runs=await githubJson(
@@ -84,6 +96,7 @@ export async function collectRepository(entry,{token}={}){
     id:entry.id,
     repo:entry.repo,
     branch:entry.branch,
+    empty,
     trackHead,
     trackExactHeadWorkflow,
     head,
