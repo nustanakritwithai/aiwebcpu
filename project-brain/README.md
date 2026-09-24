@@ -133,14 +133,16 @@ Project Brain ดึง mechanical repository data ครบทั้งบั�
 
 [Catalog](catalog/README.md) · [repositories.json](catalog/repositories.json)
 
-Snapshot ปัจจุบัน:
-- 37 repositories
-- 34 non-empty
-- 3 empty
-- 33 public
-- 4 private
-- exact-head CI: 16 SAT / 2 VIOL / 19 UNKNOWN
+Discovery snapshot ปัจจุบัน:
+- 37 repositories discovered by the connected account
+- 33 public repositories persisted in Project Brain
+- 30 public non-empty
+- 3 public empty
+- 4 private repositories omitted from the public dataset
+- public exact-head CI: 16 SAT / 1 VIOL / 16 UNKNOWN
 
 ตัวเลข SAT/VIOL ด้านบนคือ **workflow evidence เท่านั้น** ไม่ใช่ capability verdict
 
-ทุก repo ใน Catalog เริ่มด้วย `semanticStatus = UNKNOWN` และต้องผ่าน Verifier ก่อน promote capability เข้ากราฟ
+ทุก public repo ใน Catalog เริ่มด้วย `semanticStatus = UNKNOWN` และต้องผ่าน Verifier ก่อน promote capability เข้ากราฟ
+
+Project Brain สาธารณะไม่ persist ชื่อ, commit metadata หรือ evidence ของ private repositories; ต้องมี authenticated private layer แยกต่างหากก่อน
