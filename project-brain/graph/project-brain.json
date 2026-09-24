@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.2",
-  "updated": "2026-09-24",
+  "updated": "2026-09-25",
   "purpose": "Machine-readable seed for Project Brain. GitHub repos remain source of truth for code.",
   "nodeTypes": [
     "PROJECT",
@@ -9,7 +9,8 @@
     "GOAL",
     "ISSUE",
     "INTEGRATION",
-    "VERSION"
+    "VERSION",
+    "CAPABILITY_CANDIDATE"
   ],
   "relationTypes": [
     "PROVIDES",
@@ -20,7 +21,9 @@
     "BLOCKED_BY",
     "ADAPTED_FROM",
     "SUPERSEDES",
-    "REUSE_CANDIDATE_FOR"
+    "REUSE_CANDIDATE_FOR",
+    "DOCUMENTS",
+    "DOCUMENTED_BY"
   ],
   "nodes": [
     {
@@ -29,7 +32,13 @@
       "name": "aiwebcpu",
       "repo": "nustanakritwithai/aiwebcpu",
       "status": "active",
-      "activeFrom": "pb-2026-09-03-ai-cpu"
+      "activeFrom": "pb-2026-09-03-ai-cpu",
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "13f2c7b33a0da9f9c7dc1af966b6fc8484ac2c21",
+      "cataloged": true
     },
     {
       "id": "repo:testge",
@@ -37,7 +46,13 @@
       "name": "TestGE",
       "repo": "nustanakritwithai/TestGE",
       "status": "v1",
-      "activeFrom": "pb-2026-09-24-bootstrap"
+      "activeFrom": "pb-2026-09-24-bootstrap",
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "0ca33d9655df31d69045e0a483465f3271928471",
+      "cataloged": true
     },
     {
       "id": "repo:astralife",
@@ -45,7 +60,13 @@
       "name": "AstraLife",
       "repo": "nustanakritwithai/AstraLife",
       "status": "v0.5",
-      "activeFrom": "pb-2026-09-24-bootstrap"
+      "activeFrom": "pb-2026-09-24-bootstrap",
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "21dcf780d6666732af2ef27500e478871864a6ac",
+      "cataloged": true
     },
     {
       "id": "repo:simclone",
@@ -53,7 +74,13 @@
       "name": "Simclone",
       "repo": "nustanakritwithai/Simclone",
       "status": "active-alpha",
-      "activeFrom": "pb-2026-09-23-simclone"
+      "activeFrom": "pb-2026-09-23-simclone",
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "c74319d431f300bed64aeba35dabc1d9b57e2568",
+      "cataloged": true
     },
     {
       "id": "cap:verification",
@@ -361,6 +388,2592 @@
       "name": "Project Brain Decision Workspace V0.5.2",
       "status": "current",
       "activeFrom": "pb-2026-09-24-decision-workspace-v052"
+    },
+    {
+      "id": "repo:3js-player-block-asset-engine",
+      "type": "PROJECT",
+      "name": "3JS-player-block-asset-engine-",
+      "repo": "nustanakritwithai/3JS-player-block-asset-engine-",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "1844e64e322a8ad0995262c4150bdc7c6fc2b71b",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:agent-citta-console",
+      "type": "PROJECT",
+      "name": "agent-citta-console",
+      "repo": "nustanakritwithai/agent-citta-console",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "062b14df34764f260140aad5b6fc88aab6ec9cae",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:apk-test",
+      "type": "PROJECT",
+      "name": "APK-Test",
+      "repo": "nustanakritwithai/APK-Test",
+      "status": "EMPTY",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": null,
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:clanwar",
+      "type": "PROJECT",
+      "name": "ClanWar",
+      "repo": "nustanakritwithai/ClanWar",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "claude/game-file-analysis-a20xup",
+      "headSha": "28f1d3d0ab7d0ff8fa3361037c0847d9e4230a18",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:ecc",
+      "type": "PROJECT",
+      "name": "ECC",
+      "repo": "nustanakritwithai/ECC",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "06c5e118c4d3e6c3b7f9445f973a2194c82de193",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:echonews",
+      "type": "PROJECT",
+      "name": "Echonews",
+      "repo": "nustanakritwithai/Echonews",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "7c020336b34765fecafdd9b89e3be82fe964e0fd",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:eldercare-website",
+      "type": "PROJECT",
+      "name": "eldercare-website",
+      "repo": "nustanakritwithai/eldercare-website",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "66b23e211eb1dc80d11666dd191f0941d0bb0143",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:empire-clash",
+      "type": "PROJECT",
+      "name": "empire-clash",
+      "repo": "nustanakritwithai/empire-clash",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "9525909752b4db59529d68a068ab1cc7f87da9e9",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:empire-war",
+      "type": "PROJECT",
+      "name": "Empire-war",
+      "repo": "nustanakritwithai/Empire-war",
+      "status": "EMPTY",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": null,
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:fcwar",
+      "type": "PROJECT",
+      "name": "fcwar",
+      "repo": "nustanakritwithai/fcwar",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "560c0f527ab413bacfb2322b4433329917a358c1",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:football-manager-8-sec",
+      "type": "PROJECT",
+      "name": "Football-Manager-8-sec",
+      "repo": "nustanakritwithai/Football-Manager-8-sec",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "claude/tactic-manager-lab-design-cvyqs9",
+      "headSha": "ade002d2bf4facf082ed8cc68cad4e63233e18f4",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:gameturnbase",
+      "type": "PROJECT",
+      "name": "GameTurnBase",
+      "repo": "nustanakritwithai/GameTurnBase",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "headSha": "5f420911e6a5888480c714a6d44664f8e1f62ed7",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:hih",
+      "type": "PROJECT",
+      "name": "Hih",
+      "repo": "nustanakritwithai/Hih",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "52e5537650c70fbe1fc9b21207032f0d31ac8745",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:kingdom-sandbox",
+      "type": "PROJECT",
+      "name": "Kingdom-sandbox",
+      "repo": "nustanakritwithai/Kingdom-sandbox",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "f1f0fd7e3c345640cbb3c9dd2d2aa7916503f483",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:magiccube",
+      "type": "PROJECT",
+      "name": "Magiccube",
+      "repo": "nustanakritwithai/Magiccube",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "a4fa4dc78313dd384ace33b921838755e2aee499",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:monkey-king",
+      "type": "PROJECT",
+      "name": "Monkey-king",
+      "repo": "nustanakritwithai/Monkey-king",
+      "status": "EMPTY",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": null,
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:my-oracle",
+      "type": "PROJECT",
+      "name": "my-oracle",
+      "repo": "nustanakritwithai/my-oracle",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "headSha": "9ad6cc020b91fabb080ddcb2fe56335e2df74ab1",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:news-nus",
+      "type": "PROJECT",
+      "name": "News-nus",
+      "repo": "nustanakritwithai/News-nus",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "cd9d55f75873fa8d271a45aaaad7111687e754b0",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:openclaw-runtime-dashboard-vercel",
+      "type": "PROJECT",
+      "name": "openclaw-runtime-dashboard-vercel",
+      "repo": "nustanakritwithai/openclaw-runtime-dashboard-vercel",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "headSha": "d6b6c4344014ddc0b2f85f6c07b66854727a43fe",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:pirate-fruit",
+      "type": "PROJECT",
+      "name": "Pirate-fruit-",
+      "repo": "nustanakritwithai/Pirate-fruit-",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "claude/blox-fruits-three-js-roadmap-1f2f5u",
+      "headSha": "d20096d1720ec25a4c219fdc0e44b8373684e369",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:pocketmonster",
+      "type": "PROJECT",
+      "name": "PocketMonster",
+      "repo": "nustanakritwithai/PocketMonster",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "cf902e7410e8d67efa5a004d085dd7b7c858d2df",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:ramagan",
+      "type": "PROJECT",
+      "name": "Ramagan",
+      "repo": "nustanakritwithai/Ramagan",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "693425f1ea788f7f9439dd2d6caa54eb5d00189c",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:rustislandsurvival",
+      "type": "PROJECT",
+      "name": "RustIslandSurvival-",
+      "repo": "nustanakritwithai/RustIslandSurvival-",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "claude/project-preparation-5vy1bg",
+      "headSha": "9ceb2651255b62bf930dd0eec9039308c7c428e6",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:testflysystem",
+      "type": "PROJECT",
+      "name": "Testflysystem",
+      "repo": "nustanakritwithai/Testflysystem",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "a5e0a727c3449311d574a3f2bdb200d3c09cc88f",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:udomsukflim",
+      "type": "PROJECT",
+      "name": "Udomsukflim",
+      "repo": "nustanakritwithai/Udomsukflim",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "claude/udomsuk-film-landing-page-i23304",
+      "headSha": "d9ed9175fc56b29599d6a0d38dcd34657133ce66",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:webai",
+      "type": "PROJECT",
+      "name": "WebAi",
+      "repo": "nustanakritwithai/WebAi",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "340bac4c805cda00abd2acd0dc747f58ef906fa1",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:welcares",
+      "type": "PROJECT",
+      "name": "welcares",
+      "repo": "nustanakritwithai/welcares",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "8d8d0a10a5e2c24960234cbcd27314887cf0b2bd",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:yeb",
+      "type": "PROJECT",
+      "name": "Yeb",
+      "repo": "nustanakritwithai/Yeb",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "458d90b92d234e35a681b987692284e54d635f3f",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "repo:zentra-ai-platform",
+      "type": "PROJECT",
+      "name": "zentra-ai-platform",
+      "repo": "nustanakritwithai/zentra-ai-platform",
+      "status": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "headSha": "a39bad467de6f6bff86accffbd718b83b5dcb7fa",
+      "cataloged": true,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:3js-player-block-asset-engine:procedural-three-js-character-rig-99c117",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Procedural Three.js character rig",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:3js-player-block-asset-engine",
+      "repo": "nustanakritwithai/3JS-player-block-asset-engine-",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:3js-player-block-asset-engine:readme-md-dadc7d",
+      "type": "EVIDENCE",
+      "name": "3JS-player-block-asset-engine- · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:3js-player-block-asset-engine",
+      "repo": "nustanakritwithai/3JS-player-block-asset-engine-",
+      "path": "README.md",
+      "sha": "c60eaedd52761d2d97c2c73c72699b8685dfe149",
+      "claims": [
+        "README documents procedural Three.js geometry, rigid pivot rig and articulated limb hierarchies.",
+        "README lists walk/run/sprint, jump/fall/land/crouch, dodge/hit/knockback/get-up/death/faint/interact.",
+        "README documents engine joint mapping and hand/foot/chest/back/head/root sockets.",
+        "README states CI reconstructs compressed source and verifies SHA-256 before Studio injection."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:3js-player-block-asset-engine:character-animation-runtime-e06f56",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Character animation runtime",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:3js-player-block-asset-engine",
+      "repo": "nustanakritwithai/3JS-player-block-asset-engine-",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:3js-player-block-asset-engine:character-sockets-and-rig-adapter-ea3bc6",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Character sockets and rig adapter",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:3js-player-block-asset-engine",
+      "repo": "nustanakritwithai/3JS-player-block-asset-engine-",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:3js-player-block-asset-engine:deterministic-asset-source-integrity-check-98d64e",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Deterministic asset-source integrity check",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:3js-player-block-asset-engine",
+      "repo": "nustanakritwithai/3JS-player-block-asset-engine-",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:agent-citta-console:agent-trace-observability-console-6aea7d",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Agent trace observability console",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:agent-citta-console",
+      "repo": "nustanakritwithai/agent-citta-console",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:agent-citta-console:readme-md-7c65d1",
+      "type": "EVIDENCE",
+      "name": "agent-citta-console · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:agent-citta-console",
+      "repo": "nustanakritwithai/agent-citta-console",
+      "path": "README.md",
+      "sha": "c90774d93d55918c20175f90917b810e4a8320a2",
+      "claims": [
+        "README documents JSONL trace ingestion, state analysis, risk detection and HTML dashboard.",
+        "README documents detected risks and recommended next actions from agent traces.",
+        "README states runtime-specific systems integrate through adapters into a common schema.",
+        "README documents action recording plus confirm/cancel routes."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:agent-citta-console:agent-risk-detection-and-next-action-recommendation-12fa3f",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Agent risk detection and next-action recommendation",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:agent-citta-console",
+      "repo": "nustanakritwithai/agent-citta-console",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:agent-citta-console:framework-agnostic-agent-adapter-boundary-4a403d",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Framework-agnostic agent adapter boundary",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:agent-citta-console",
+      "repo": "nustanakritwithai/agent-citta-console",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:agent-citta-console:local-action-dispatcher-with-confirmation-flow-93d2a2",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Local action dispatcher with confirmation flow",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:agent-citta-console",
+      "repo": "nustanakritwithai/agent-citta-console",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:aiwebcpu:cpu-first-skill-execution-4982ff",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "CPU-first skill execution",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:aiwebcpu:readme-md-cfd860",
+      "type": "EVIDENCE",
+      "name": "aiwebcpu · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "path": "README.md",
+      "sha": "4e5d46ada3ff7bf66759132b518088d723aaacd7",
+      "claims": [
+        "Repository README and Project Brain history document deterministic skill execution as the AI CPU direction."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:aiwebcpu:project-brain-knowledge-graph-9227a2",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Project Brain Knowledge Graph",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:aiwebcpu:project-brain-graph-project-brain-json-0d0430",
+      "type": "EVIDENCE",
+      "name": "aiwebcpu · project-brain/graph/project-brain.json",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "path": "project-brain/graph/project-brain.json",
+      "sha": "77d03fc7fefc2808c4f25ea0d0fc5d75cba1a68c",
+      "claims": [
+        "Canonical graph stores projects, capabilities, evidence, goals, issues, integrations and versions.",
+        "Canonical graph contains checkpoints, activeFrom/activeUntil and temporal state materialization."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:aiwebcpu:temporal-knowledge-graph-8e96b5",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Temporal Knowledge Graph",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:aiwebcpu:repository-change-scanner-727f0b",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Repository change scanner",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:aiwebcpu:project-brain-scanner-scanner-mjs-20bbb0",
+      "type": "EVIDENCE",
+      "name": "aiwebcpu · project-brain/scanner/scanner.mjs",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "path": "project-brain/scanner/scanner.mjs",
+      "sha": "31feb19bbe409177697bf334782ecd6832242f49",
+      "claims": [
+        "Scanner compares repository HEAD, exact-head CI and tracked evidence-file fingerprints."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:aiwebcpu:evidence-aware-web-knowledge-viewer-263219",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Evidence-aware web knowledge viewer",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:aiwebcpu:brain-scanner-js-16c8e3",
+      "type": "EVIDENCE",
+      "name": "aiwebcpu · brain/scanner.js",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "path": "brain/scanner.js",
+      "sha": "9f1a507f977cc2e4fe98fc142c44dc7de88c6c18",
+      "claims": [
+        "Web UI exposes scanner baseline/candidates while preserving UNKNOWN on unreadable pending state."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:aiwebcpu:goal-specific-contract-verification-eb748a",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Goal-specific contract verification",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:aiwebcpu:project-brain-verifier-verifier-mjs-05d7f8",
+      "type": "EVIDENCE",
+      "name": "aiwebcpu · project-brain/verifier/verifier.mjs",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "path": "project-brain/verifier/verifier.mjs",
+      "sha": "aff36f8b48207917c16df62a584864542603442a",
+      "claims": [
+        "Verifier V0.5 evaluates explicit goal contracts against documented capability evidence, freshness, CI policy and compatibility checks, then emits SAT/VIOL/UNKNOWN plus review-only patch candidates."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:astralife:multi-agent-survival-simulation-32c584",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Multi-agent survival simulation",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:astralife",
+      "repo": "nustanakritwithai/AstraLife",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:astralife:readme-md-879d3d",
+      "type": "EVIDENCE",
+      "name": "AstraLife · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:astralife",
+      "repo": "nustanakritwithai/AstraLife",
+      "path": "README.md",
+      "sha": "e9a3f6096108e8661e774bc4e872a16080a363ce",
+      "claims": [
+        "README defines an experimental multi-agent survival world.",
+        "README core loop is World Truth → Partial Observation → Individual World Model → Decision Provider → Validated Action → Consequence → Learning.",
+        "README documents independent skill experience, competency, preference, reputation and task history.",
+        "README states roles are derived from lived experience rather than assigned at spawn."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:astralife:partial-observation-agent-loop-c2ea79",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Partial-observation agent loop",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:astralife",
+      "repo": "nustanakritwithai/AstraLife",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:astralife:experience-derived-skill-learning-a7b347",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Experience-derived skill learning",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:astralife",
+      "repo": "nustanakritwithai/AstraLife",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:astralife:emergent-role-specialization-45ce61",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Emergent role specialization",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:astralife",
+      "repo": "nustanakritwithai/AstraLife",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:clanwar:three-js-3d-siege-match-runtime-5f5233",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Three.js 3D siege match runtime",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:clanwar",
+      "repo": "nustanakritwithai/ClanWar",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:clanwar:readme-md-ebc744",
+      "type": "EVIDENCE",
+      "name": "ClanWar · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:clanwar",
+      "repo": "nustanakritwithai/ClanWar",
+      "path": "README.md",
+      "sha": "056a588f11b0ffa8ece9860b84e16d5db6726aa3",
+      "claims": [
+        "README states Phase 6 is a full Three.js game with match loop.",
+        "README documents GTA-style third-person chase camera with classic-view toggle.",
+        "README documents AI bot enemies.",
+        "README documents quality tiers with an FPS watchdog.",
+        "README documents simultaneous joystick and action controls."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:clanwar:third-person-chase-camera-9fc627",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Third-person chase camera",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:clanwar",
+      "repo": "nustanakritwithai/ClanWar",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:clanwar:ai-bot-combatants-eef937",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "AI bot combatants",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:clanwar",
+      "repo": "nustanakritwithai/ClanWar",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:clanwar:adaptive-graphics-quality-watchdog-870b31",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Adaptive graphics quality watchdog",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:clanwar",
+      "repo": "nustanakritwithai/ClanWar",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:clanwar:mobile-multi-touch-controls-762fe2",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Mobile multi-touch controls",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:clanwar",
+      "repo": "nustanakritwithai/ClanWar",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:ecc:cross-agent-harness-package-219ee1",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Cross-agent harness package",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:ecc",
+      "repo": "nustanakritwithai/ECC",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:ecc:readme-md-6bc6db",
+      "type": "EVIDENCE",
+      "name": "ECC · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:ecc",
+      "repo": "nustanakritwithai/ECC",
+      "path": "README.md",
+      "sha": "0a18dbeeb59ffa51c641b832b126a5d3852bd21f",
+      "claims": [
+        "README describes ECC as an agent harness operating system with skills, agents, commands and hooks.",
+        "Repository exposes integrations/configs for multiple agent ecosystems and languages.",
+        "README exposes agent-shield/security packaging and official-source guidance."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:ecc:multi-environment-agent-configuration-3548e1",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Multi-environment agent configuration",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:ecc",
+      "repo": "nustanakritwithai/ECC",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:ecc:agent-security-hardening-surface-5c3e35",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Agent security/hardening surface",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:ecc",
+      "repo": "nustanakritwithai/ECC",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:echonews:event-centric-social-news-rooms-3af7eb",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Event-centric social news rooms",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:echonews",
+      "repo": "nustanakritwithai/Echonews",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:echonews:readme-md-f7c08c",
+      "type": "EVIDENCE",
+      "name": "Echonews · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:echonews",
+      "repo": "nustanakritwithai/Echonews",
+      "path": "README.md",
+      "sha": "79085fa621def1e889b322a289fab8997a0af519",
+      "claims": [
+        "README defines one event room containing voices, claims and references.",
+        "README states claims expose supporting and opposing references.",
+        "README states copies sharing a known evidence family do not increase independent-source counts.",
+        "README states local posts/new rooms/follows are browser-only and not published."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:echonews:claims-with-supporting-opposing-evidence-references-fa78b8",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Claims with supporting/opposing evidence references",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:echonews",
+      "repo": "nustanakritwithai/Echonews",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:echonews:evidence-family-independence-guard-18d421",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Evidence-family independence guard",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:echonews",
+      "repo": "nustanakritwithai/Echonews",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:echonews:local-only-voice-post-prototype-634bb8",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Local-only voice/post prototype",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:echonews",
+      "repo": "nustanakritwithai/Echonews",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:eldercare-website:responsive-react-landing-page-7f3651",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Responsive React landing page",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:eldercare-website",
+      "repo": "nustanakritwithai/eldercare-website",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:eldercare-website:readme-md-7d5218",
+      "type": "EVIDENCE",
+      "name": "eldercare-website · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:eldercare-website",
+      "repo": "nustanakritwithai/eldercare-website",
+      "path": "README.md",
+      "sha": "72ea02e06219f0069d0bacadcd5a923656bc60ab",
+      "claims": [
+        "README documents React/TypeScript/Vite/Tailwind responsive landing page.",
+        "README documents service and AI-agent architecture as showcased content."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:eldercare-website:healthcare-service-architecture-showcase-beab47",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Healthcare service architecture showcase",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:eldercare-website",
+      "repo": "nustanakritwithai/eldercare-website",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:empire-clash:three-js-browser-fps-da813e",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Three.js browser FPS",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:empire-clash",
+      "repo": "nustanakritwithai/empire-clash",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:empire-clash:readme-md-cf0bce",
+      "type": "EVIDENCE",
+      "name": "empire-clash · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:empire-clash",
+      "repo": "nustanakritwithai/empire-clash",
+      "path": "README.md",
+      "sha": "7e33ad5daaa97d2765f32a982a73a80234d5def6",
+      "claims": [
+        "README documents a 3D FPS with first/third-person views.",
+        "README documents real-time position sync over WebSocket.",
+        "README documents joystick, shooting, aim/look, jump/reload/sprint/zoom and melee touch controls.",
+        "README documents 4 classes, 3 weapons, health/respawn, hitmarker/headshot and kill feed."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:empire-clash:websocket-multiplayer-position-sync-7228bf",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "WebSocket multiplayer position sync",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:empire-clash",
+      "repo": "nustanakritwithai/empire-clash",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:empire-clash:touch-fps-control-layout-50d6f7",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Touch FPS control layout",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:empire-clash",
+      "repo": "nustanakritwithai/empire-clash",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:empire-clash:class-weapon-combat-framework-373c53",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Class/weapon combat framework",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:empire-clash",
+      "repo": "nustanakritwithai/empire-clash",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:fcwar:server-authoritative-browser-3d-game-runtime-c07017",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Server-authoritative browser 3D game runtime",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:fcwar",
+      "repo": "nustanakritwithai/fcwar",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:fcwar:readme-md-117f08",
+      "type": "EVIDENCE",
+      "name": "fcwar · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:fcwar",
+      "repo": "nustanakritwithai/fcwar",
+      "path": "README.md",
+      "sha": "2b91dfd31ca1165b37ff91cc143312e1eab9f46a",
+      "claims": [
+        "README states server owns movement, combat, factions, classes, objectives, resources, buildings, scoring, death, respawn and round reset.",
+        "README documents harvesting, warehouse deposits, faction stock, walls, rally flags and fort scoring."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:fcwar:faction-resource-build-objective-loop-e8757a",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Faction resource/build objective loop",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:fcwar",
+      "repo": "nustanakritwithai/fcwar",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:fcwar:websocket-input-action-protocol-064e33",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "WebSocket input/action protocol",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:fcwar",
+      "repo": "nustanakritwithai/fcwar",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:fcwar:package-json-94a4ff",
+      "type": "EVIDENCE",
+      "name": "fcwar · package.json",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:fcwar",
+      "repo": "nustanakritwithai/fcwar",
+      "path": "package.json",
+      "sha": "ad38309909286e5c8f12942bdcbfa7656fa98443",
+      "claims": [
+        "Package metadata and tests identify server/protocol/authority test suites over Express/ws."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:football-manager-8-sec:turn-based-tactical-football-simulation-4d3492",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Turn-based tactical football simulation",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:football-manager-8-sec",
+      "repo": "nustanakritwithai/Football-Manager-8-sec",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:football-manager-8-sec:readme-md-c3f64b",
+      "type": "EVIDENCE",
+      "name": "Football-Manager-8-sec · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:football-manager-8-sec",
+      "repo": "nustanakritwithai/Football-Manager-8-sec",
+      "path": "README.md",
+      "sha": "153fb4c2ee8a90da4737a9c8cec6a1a50959abd5",
+      "claims": [
+        "README defines each turn as an 8-second simulation committed to real state.",
+        "README documents rule-based analysis and tactical recommendations.",
+        "README documents preview on copied state without mutating the live match.",
+        "README documents hill-climbing defensive adjustment suggestions.",
+        "README documents similar-situation retrieval and per-turn dataset export.",
+        "README documents logistic-regression training from pass data in browser."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:football-manager-8-sec:rule-based-tactical-ai-assistant-4ace6d",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Rule-based tactical AI assistant",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:football-manager-8-sec",
+      "repo": "nustanakritwithai/Football-Manager-8-sec",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:football-manager-8-sec:counterfactual-8-second-preview-7d571c",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Counterfactual 8-second preview",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:football-manager-8-sec",
+      "repo": "nustanakritwithai/Football-Manager-8-sec",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:football-manager-8-sec:tactical-guided-refinement-optimizer-d01570",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Tactical guided refinement optimizer",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:football-manager-8-sec",
+      "repo": "nustanakritwithai/Football-Manager-8-sec",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:football-manager-8-sec:similarity-retrieval-and-turn-dataset-export-16fd46",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Similarity retrieval and turn dataset export",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:football-manager-8-sec",
+      "repo": "nustanakritwithai/Football-Manager-8-sec",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:football-manager-8-sec:browser-trained-pass-model-7938c3",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Browser-trained pass model",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:football-manager-8-sec",
+      "repo": "nustanakritwithai/Football-Manager-8-sec",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:gameturnbase:2-5d-action-rpg-web-client-d88c00",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "2.5D action RPG web client",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:gameturnbase",
+      "repo": "nustanakritwithai/GameTurnBase",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:gameturnbase:readme-md-3adc39",
+      "type": "EVIDENCE",
+      "name": "GameTurnBase · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:gameturnbase",
+      "repo": "nustanakritwithai/GameTurnBase",
+      "path": "README.md",
+      "sha": "ff993edf384c2cb528735144caa2b4124cdcee4d",
+      "claims": [
+        "README identifies a React/TypeScript/Vite 2.5D hero collection action RPG.",
+        "README documents WebGPU initialization with clean WebGLRenderer fallback.",
+        "README documents DPR caps based on detected display refresh rate.",
+        "README documents JWT-derived identity, atomic debit, idempotency and currency transaction audit.",
+        "README documents authoritative version files, release gating, build/deploy and SBOM release artifact."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:gameturnbase:webgpu-first-rendering-with-webgl-fallback-71f0e4",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "WebGPU-first rendering with WebGL fallback",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:gameturnbase",
+      "repo": "nustanakritwithai/GameTurnBase",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:gameturnbase:refresh-rate-aware-dpr-control-eb5bbc",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Refresh-rate-aware DPR control",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:gameturnbase",
+      "repo": "nustanakritwithai/GameTurnBase",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:gameturnbase:audited-server-side-currency-rpc-boundary-cc1fc4",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Audited server-side currency RPC boundary",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:gameturnbase",
+      "repo": "nustanakritwithai/GameTurnBase",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:gameturnbase:version-gated-release-pipeline-0dbebf",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Version-gated release pipeline",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:gameturnbase",
+      "repo": "nustanakritwithai/GameTurnBase",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:hih:agent-life-cycle-harness-c6fc72",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Agent life-cycle harness",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:hih",
+      "repo": "nustanakritwithai/Hih",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:hih:readme-md-28f927",
+      "type": "EVIDENCE",
+      "name": "Hih · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:hih",
+      "repo": "nustanakritwithai/Hih",
+      "path": "README.md",
+      "sha": "fcf8940105459179b6d63a2b0b52f474be119e79",
+      "claims": [
+        "README defines awaken → think → act → reflect → grow lifecycle.",
+        "README documents mood, growth level and episodic memories.",
+        "README documents R01–R10 pre-tool guardrails.",
+        "README documents identity, continuity, memory, relationship and goals in state/dioo.db."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:hih:persistent-agent-vitals-and-episodic-memory-10434b",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Persistent agent vitals and episodic memory",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:hih",
+      "repo": "nustanakritwithai/Hih",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:hih:pre-tool-safety-reflexes-a3b81c",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Pre-tool safety reflexes",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:hih",
+      "repo": "nustanakritwithai/Hih",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:hih:agent-continuity-life-engine-ce1314",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Agent continuity Life Engine",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:hih",
+      "repo": "nustanakritwithai/Hih",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:kingdom-sandbox:autonomous-kingdom-simulation-bdde66",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Autonomous kingdom simulation",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:kingdom-sandbox",
+      "repo": "nustanakritwithai/Kingdom-sandbox",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:kingdom-sandbox:readme-md-505424",
+      "type": "EVIDENCE",
+      "name": "Kingdom-sandbox · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:kingdom-sandbox",
+      "repo": "nustanakritwithai/Kingdom-sandbox",
+      "path": "README.md",
+      "sha": "71b01e5b6a541e1e87acfc5f60a100bd674948fc",
+      "claims": [
+        "README defines an AI Economy + War + Governance simulator where agents act autonomously.",
+        "README documents benefit − risk − cost utility scoring for jobs, migration, army joining and banditry.",
+        "README documents physical stock, scarcity/danger/tax price formation and merchant profit calculation.",
+        "README documents armies built from agents plus taxation, governors, corruption, rebellion and independence.",
+        "README documents hunger, wealth, danger, trade, food price, loyalty, unrest and faction influence heatmaps."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:kingdom-sandbox:utility-ai-decision-scoring-b7aaca",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Utility-AI decision scoring",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:kingdom-sandbox",
+      "repo": "nustanakritwithai/Kingdom-sandbox",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:kingdom-sandbox:stock-flow-economy-and-dynamic-pricing-b50f2d",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Stock-flow economy and dynamic pricing",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:kingdom-sandbox",
+      "repo": "nustanakritwithai/Kingdom-sandbox",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:kingdom-sandbox:agent-based-military-and-governance-simulation-dcfa40",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Agent-based military and governance simulation",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:kingdom-sandbox",
+      "repo": "nustanakritwithai/Kingdom-sandbox",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:kingdom-sandbox:sandbox-observability-heatmaps-20643c",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Sandbox observability heatmaps",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:kingdom-sandbox",
+      "repo": "nustanakritwithai/Kingdom-sandbox",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:magiccube:three-js-mobile-combat-sandbox-c5d95b",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Three.js mobile combat sandbox",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:magiccube",
+      "repo": "nustanakritwithai/Magiccube",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:magiccube:game-js-ff86b1",
+      "type": "EVIDENCE",
+      "name": "Magiccube · game.js",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:magiccube",
+      "repo": "nustanakritwithai/Magiccube",
+      "path": "game.js",
+      "sha": "f94c4d25ea4ea021a8d7e526cea9a9a5debc1ab6",
+      "claims": [
+        "Code creates Three.js scene, player, targets, HP state and projectile-oriented runtime."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:magiccube:sandboxed-generated-object-runtime-contract-6a2829",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Sandboxed generated-object runtime contract",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:magiccube",
+      "repo": "nustanakritwithai/Magiccube",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:magiccube:agent-runtime-js-1bb622",
+      "type": "EVIDENCE",
+      "name": "Magiccube · agent-runtime.js",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:magiccube",
+      "repo": "nustanakritwithai/Magiccube",
+      "path": "agent-runtime.js",
+      "sha": "2f0c7384ec0f3fd12a6f04e94242cfd59b778364",
+      "claims": [
+        "Runtime compiles generated JavaScript against restricted THREE/root/world bindings and rejects host rendering APIs.",
+        "Runtime validates generated code in a temporary root and requires an attached visible object."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:magiccube:generated-object-validation-before-install-1719f4",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Generated object validation before install",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:magiccube",
+      "repo": "nustanakritwithai/Magiccube",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:my-oracle:personal-agent-memory-convention-df10ae",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Personal agent memory convention",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:my-oracle",
+      "repo": "nustanakritwithai/my-oracle",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:my-oracle:claude-md-7d6b8c",
+      "type": "EVIDENCE",
+      "name": "my-oracle · CLAUDE.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:my-oracle",
+      "repo": "nustanakritwithai/my-oracle",
+      "path": "CLAUDE.md",
+      "sha": "76fa2002cf250f3a5c757e863bf9d84f3f9503d5",
+      "claims": [
+        "CLAUDE.md documents MEMORY path, session startup reading and automatic important-memory recording.",
+        "CLAUDE.md documents the algorithm-mode lifecycle.",
+        "CLAUDE.md requires focused fixes, verification before claims and confirmation before destructive actions."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:my-oracle:observe-think-plan-execute-verify-learn-workflow-7ed4d5",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Observe-Think-Plan-Execute-Verify-Learn workflow",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:my-oracle",
+      "repo": "nustanakritwithai/my-oracle",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:my-oracle:surgical-change-safety-rules-ae4f2c",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Surgical-change safety rules",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:my-oracle",
+      "repo": "nustanakritwithai/my-oracle",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:openclaw-runtime-dashboard-vercel:static-runtime-metrics-dashboard-278efa",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Static runtime metrics dashboard",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:openclaw-runtime-dashboard-vercel",
+      "repo": "nustanakritwithai/openclaw-runtime-dashboard-vercel",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:openclaw-runtime-dashboard-vercel:readme-md-a197b6",
+      "type": "EVIDENCE",
+      "name": "openclaw-runtime-dashboard-vercel · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:openclaw-runtime-dashboard-vercel",
+      "repo": "nustanakritwithai/openclaw-runtime-dashboard-vercel",
+      "path": "README.md",
+      "sha": "64615e60284311550d60c6caeba832ef6bb639b7",
+      "claims": [
+        "README documents a static Next.js dashboard reading public/metrics.json.",
+        "README documents editing metrics.json and redeploying through Vercel."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:openclaw-runtime-dashboard-vercel:git-driven-metric-refresh-workflow-12aac0",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Git-driven metric refresh workflow",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:openclaw-runtime-dashboard-vercel",
+      "repo": "nustanakritwithai/openclaw-runtime-dashboard-vercel",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:openclaw-runtime-dashboard-vercel:scheduled-metrics-update-tooling-8f406f",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Scheduled metrics update tooling",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:openclaw-runtime-dashboard-vercel",
+      "repo": "nustanakritwithai/openclaw-runtime-dashboard-vercel",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:openclaw-runtime-dashboard-vercel:cron-setup-md-b0fef8",
+      "type": "EVIDENCE",
+      "name": "openclaw-runtime-dashboard-vercel · CRON_SETUP.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:openclaw-runtime-dashboard-vercel",
+      "repo": "nustanakritwithai/openclaw-runtime-dashboard-vercel",
+      "path": "CRON_SETUP.md",
+      "sha": "ac6e24a8c67926f0099bf4839068f56027371863",
+      "claims": [
+        "Repository includes cron setup for automated metric updates."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:pirate-fruit:modular-authoritative-game-server-boundary-87fe4f",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Modular authoritative game server boundary",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:pirate-fruit",
+      "repo": "nustanakritwithai/Pirate-fruit-",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:pirate-fruit:server-architecture-md-ffd0ce",
+      "type": "EVIDENCE",
+      "name": "Pirate-fruit- · SERVER_ARCHITECTURE.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:pirate-fruit",
+      "repo": "nustanakritwithai/Pirate-fruit-",
+      "path": "SERVER_ARCHITECTURE.md",
+      "sha": "205116460e0df1a8144ce24918b15264e4d799c2",
+      "claims": [
+        "Architecture selects Fastify modular monolith with server-owned authoritative state and persistence.",
+        "Architecture explicitly separates presentation client, browser-free shared contracts, server authority and PostgreSQL.",
+        "Architecture documents request IDs, CORS, rate limits, dependency injection, structured errors and runtime counters.",
+        "Architecture documents typed schema, immutable forward SQL, schema checksums and pre-listener migrations."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:pirate-fruit:client-shared-server-domain-separation-fdbf65",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Client/shared/server domain separation",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:pirate-fruit",
+      "repo": "nustanakritwithai/Pirate-fruit-",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:pirate-fruit:versioned-safe-request-lifecycle-b9086b",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Versioned safe request lifecycle",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:pirate-fruit",
+      "repo": "nustanakritwithai/Pirate-fruit-",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:pirate-fruit:forward-migration-database-boundary-1f8e4d",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Forward migration database boundary",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:pirate-fruit",
+      "repo": "nustanakritwithai/Pirate-fruit-",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:pirate-fruit:action-combat-client-framework-c8e824",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Action-combat client framework",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:pirate-fruit",
+      "repo": "nustanakritwithai/Pirate-fruit-",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:pirate-fruit:readme-md-e7fc78",
+      "type": "EVIDENCE",
+      "name": "Pirate-fruit- · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:pirate-fruit",
+      "repo": "nustanakritwithai/Pirate-fruit-",
+      "path": "README.md",
+      "sha": "ee2c5eb126da48d06a130ec2f2aa1312c524b3f6",
+      "claims": [
+        "README documents state-machine combat, combo, blocking/guard, skill sets and movement/combat controls."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:pocketmonster:monster-progression-core-6b3617",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Monster progression core",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:pocketmonster",
+      "repo": "nustanakritwithai/PocketMonster",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:pocketmonster:readme-md-912c1b",
+      "type": "EVIDENCE",
+      "name": "PocketMonster · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:pocketmonster",
+      "repo": "nustanakritwithai/PocketMonster",
+      "path": "README.md",
+      "sha": "edb591d0917225fdc492412261b62947e0d589b5",
+      "claims": [
+        "README documents stats, training, nutrition, equipment, genes, evolution and condition.",
+        "README documents capture rules, evolution branches, raising events and breeding.",
+        "README documents CR plus DPS/EHP preview and contribution breakdown."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:pocketmonster:capture-evolution-breeding-gameplay-systems-6e876e",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Capture/evolution/breeding gameplay systems",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:pocketmonster",
+      "repo": "nustanakritwithai/PocketMonster",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:pocketmonster:combat-rating-debug-projection-f72544",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Combat rating/debug projection",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:pocketmonster",
+      "repo": "nustanakritwithai/PocketMonster",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:pocketmonster:federation-of-authorities-architecture-af9641",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Federation-of-authorities architecture",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:pocketmonster",
+      "repo": "nustanakritwithai/PocketMonster",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:pocketmonster:integration-master-plan-v3-3-md-e25783",
+      "type": "EVIDENCE",
+      "name": "PocketMonster · INTEGRATION-MASTER-PLAN-V3.3.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:pocketmonster",
+      "repo": "nustanakritwithai/PocketMonster",
+      "path": "INTEGRATION-MASTER-PLAN-V3.3.md",
+      "sha": "fa81ab11b76a254fb436ed8753f491154307808e",
+      "claims": [
+        "Plan defines separate Pirate, Pocket, World and Shared Core authorities.",
+        "Plan defines canonical CombatStats vocabulary, single-writer HP and authoritative world/server computation."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:pocketmonster:canonical-shared-combat-stat-contract-8f2730",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Canonical shared combat stat contract",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:pocketmonster",
+      "repo": "nustanakritwithai/PocketMonster",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:ramagan:immutable-append-only-stock-ledger-e959ea",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Immutable append-only stock ledger",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:ramagan",
+      "repo": "nustanakritwithai/Ramagan",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:ramagan:readme-md-00dc02",
+      "type": "EVIDENCE",
+      "name": "Ramagan · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:ramagan",
+      "repo": "nustanakritwithai/Ramagan",
+      "path": "README.md",
+      "sha": "3aa5a0ec3d8de69b3e6185ae2684120c54191000",
+      "claims": [
+        "README locks events as immutable and requires compensating events instead of edit/delete.",
+        "README defines balance at time T as sum of quantity deltas up to occurred_at.",
+        "README locks rule that sale cannot exceed remaining lot balance.",
+        "README documents Google Drive OAuth plus append-only auto-sync/conflict UI."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:ramagan:as-of-inventory-balance-reconstruction-dcc01a",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "As-of inventory balance reconstruction",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:ramagan",
+      "repo": "nustanakritwithai/Ramagan",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:ramagan:inventory-oversell-validation-7946d8",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Inventory oversell validation",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:ramagan",
+      "repo": "nustanakritwithai/Ramagan",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:ramagan:append-only-browser-drive-sync-prototype-b40e81",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Append-only browser/Drive sync prototype",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:ramagan",
+      "repo": "nustanakritwithai/Ramagan",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:rustislandsurvival:authoritative-websocket-round-runtime-8371ae",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Authoritative WebSocket round runtime",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:rustislandsurvival",
+      "repo": "nustanakritwithai/RustIslandSurvival-",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:rustislandsurvival:readme-md-e65795",
+      "type": "EVIDENCE",
+      "name": "RustIslandSurvival- · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:rustislandsurvival",
+      "repo": "nustanakritwithai/RustIslandSurvival-",
+      "path": "README.md",
+      "sha": "bdeffba099e018c83d1f153ca85738909b8a4bcb",
+      "claims": [
+        "README documents authoritative GameRoom tick loop, shared round clock, player positions, beacon and winner.",
+        "README states client falls back to original single-player/local-bot game when disconnected.",
+        "Roadmap marks shared per-round server seed complete.",
+        "README roadmap marks shared resources, walls/doors and server-owned monsters/beacon siege implemented."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:rustislandsurvival:graceful-offline-fallback-fa25b0",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Graceful offline fallback",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:rustislandsurvival",
+      "repo": "nustanakritwithai/RustIslandSurvival-",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:rustislandsurvival:deterministic-shared-island-seed-c622fa",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Deterministic shared island seed",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:rustislandsurvival",
+      "repo": "nustanakritwithai/RustIslandSurvival-",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:rustislandsurvival:shared-resource-building-monster-authority-f4cfa6",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Shared resource/building/monster authority",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:rustislandsurvival",
+      "repo": "nustanakritwithai/RustIslandSurvival-",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:simclone:deterministic-authoritative-colony-simulation-a27c55",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Deterministic authoritative colony simulation",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:simclone:agents-md-584f93",
+      "type": "EVIDENCE",
+      "name": "Simclone · AGENTS.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "path": "AGENTS.md",
+      "sha": "859f9d971637fe818985fd2160d1797bcb030a63",
+      "claims": [
+        "AGENTS.md defines src/engine.mjs as authoritative with no DOM, Date, Math.random or external API calls.",
+        "AGENTS.md documents simulation-time lifecycle, birth pacing, deterministic lifespan and shared death cleanup.",
+        "AGENTS.md documents 35% XP inheritance and explicit limits around mentor/archive/culture."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:simclone:lifecycle-autonomous-birth-and-age-death-49877d",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Lifecycle, autonomous birth and age death",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:simclone:historical-identity-archive-c4095b",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Historical identity archive",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:simclone:readme-md-881782",
+      "type": "EVIDENCE",
+      "name": "Simclone · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "path": "README.md",
+      "sha": "7fa04020a6984bbd30e665a7662e40904e4d8ad5",
+      "claims": [
+        "README documents bounded archive preserving lineage, death facts, skills and retained memories.",
+        "README documents save migrations and long-run continuity suites with UNKNOWN rules."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:simclone:skill-inheritance-with-provenance-boundaries-8feacf",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Skill inheritance with provenance boundaries",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:simclone:deterministic-save-migration-and-continuation-verifica-3c307a",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Deterministic save migration and continuation verification",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:testflysystem:executable-connectome-pipeline-82f1d6",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Executable connectome pipeline",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:testflysystem",
+      "repo": "nustanakritwithai/Testflysystem",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:testflysystem:readme-md-fcccf4",
+      "type": "EVIDENCE",
+      "name": "Testflysystem · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:testflysystem",
+      "repo": "nustanakritwithai/Testflysystem",
+      "path": "README.md",
+      "sha": "31c866f1395813a02bc25dee0e074685ceb0b069",
+      "claims": [
+        "README target pipeline converts MaleCNS data into executable connectome and neural dynamics.",
+        "README defines MEASURED/ANNOTATED/PREDICTED/INFERRED/ASSUMED/EXPERIMENTAL classes.",
+        "README target connects sensory stimulation through neural dynamics to motor decoder and environment feedback."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:testflysystem:scientific-provenance-classification-961296",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Scientific provenance classification",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:testflysystem",
+      "repo": "nustanakritwithai/Testflysystem",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:testflysystem:closed-loop-neural-sensorimotor-research-architecture-b225dd",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Closed-loop neural sensorimotor research architecture",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:testflysystem",
+      "repo": "nustanakritwithai/Testflysystem",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:testge:transactional-authoritative-world-runtime-227b55",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Transactional authoritative world runtime",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:testge",
+      "repo": "nustanakritwithai/TestGE",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:testge:readme-md-67cdee",
+      "type": "EVIDENCE",
+      "name": "TestGE · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:testge",
+      "repo": "nustanakritwithai/TestGE",
+      "path": "README.md",
+      "sha": "260bfde1d4ce4cdfc2ea77876f3fec5ca36a485a",
+      "claims": [
+        "README defines deterministic data-oriented transactional authoritative runtime.",
+        "README states compute cannot mutate canonical world directly.",
+        "README marks checkpoint/multi-step rollback/replay/time-travel audit complete.",
+        "README marks delta replication + interest filtering complete.",
+        "README marks client prediction/reconciliation demo complete."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:testge:proposal-verify-atomic-commit-architecture-898bc4",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Proposal → Verify → Atomic Commit architecture",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:testge",
+      "repo": "nustanakritwithai/TestGE",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:testge:checkpoint-rollback-replay-and-time-travel-0aef06",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Checkpoint rollback replay and time travel",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:testge",
+      "repo": "nustanakritwithai/TestGE",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:testge:delta-replication-and-interest-filtering-73583a",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Delta replication and interest filtering",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:testge",
+      "repo": "nustanakritwithai/TestGE",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:testge:client-prediction-reconciliation-demo-491d6c",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Client prediction/reconciliation demo",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:testge",
+      "repo": "nustanakritwithai/TestGE",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:udomsukflim:local-seo-landing-page-architecture-e2d3cc",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Local SEO landing-page architecture",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:udomsukflim",
+      "repo": "nustanakritwithai/Udomsukflim",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:udomsukflim:readme-md-2a9bd0",
+      "type": "EVIDENCE",
+      "name": "Udomsukflim · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:udomsukflim",
+      "repo": "nustanakritwithai/Udomsukflim",
+      "path": "README.md",
+      "sha": "bcfb356f81bf63b705ac6350efad5fb10629adc6",
+      "claims": [
+        "README documents one-page local SEO structure, canonical, sitemap and conversion CTAs.",
+        "README documents LocalBusiness/AutoRepair, FAQPage, WebSite, WebPage and BreadcrumbList JSON-LD.",
+        "README documents robots rules for AI crawlers and llms.txt.",
+        "README documents image loading/decoding, hero priority and non-blocking fonts."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:udomsukflim:structured-data-seo-pack-d89064",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Structured-data SEO pack",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:udomsukflim",
+      "repo": "nustanakritwithai/Udomsukflim",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:udomsukflim:ai-crawler-discovery-surface-514ec2",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "AI-crawler discovery surface",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:udomsukflim",
+      "repo": "nustanakritwithai/Udomsukflim",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:udomsukflim:core-web-vitals-oriented-static-delivery-e5bd54",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Core Web Vitals-oriented static delivery",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:udomsukflim",
+      "repo": "nustanakritwithai/Udomsukflim",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:webai:supervised-browser-coding-agent-60e3df",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Supervised browser coding agent",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:webai",
+      "repo": "nustanakritwithai/WebAi",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:webai:readme-md-02b913",
+      "type": "EVIDENCE",
+      "name": "WebAi · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:webai",
+      "repo": "nustanakritwithai/WebAi",
+      "path": "README.md",
+      "sha": "8d041c225bfd64928c3605989e21f5c2a5825934",
+      "claims": [
+        "README describes WebAi architecture and supervised agent execution."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:webai:protected-multi-gate-verification-engine-89a566",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Protected multi-gate verification engine",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:webai",
+      "repo": "nustanakritwithai/WebAi",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:webai:verification-engine-md-646cbf",
+      "type": "EVIDENCE",
+      "name": "WebAi · VERIFICATION_ENGINE.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:webai",
+      "repo": "nustanakritwithai/WebAi",
+      "path": "VERIFICATION_ENGINE.md",
+      "sha": "221f98bd8a032dbab5fecfb78415f783e592c4c8",
+      "claims": [
+        "Verification doc defines file safety, security, build, unit, integration and regression gates.",
+        "Verification doc states the model never returns verifier shell commands and protected policy owns commands.",
+        "Verification doc rejects npm verification when the same execution modified package.json."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:webai:verifier-command-ownership-boundary-05511a",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Verifier command ownership boundary",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:webai",
+      "repo": "nustanakritwithai/WebAi",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:webai:fail-closed-verifier-source-protection-28382e",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Fail-closed verifier-source protection",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:webai",
+      "repo": "nustanakritwithai/WebAi",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:welcares:multi-agent-healthcare-coordination-architecture-a6ee39",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Multi-agent healthcare coordination architecture",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:welcares",
+      "repo": "nustanakritwithai/welcares",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:welcares:readme-md-9c1c59",
+      "type": "EVIDENCE",
+      "name": "welcares · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:welcares",
+      "repo": "nustanakritwithai/welcares",
+      "path": "README.md",
+      "sha": "1288a9115196b00b6d8676e89f6ccfde6084e719",
+      "claims": [
+        "README describes 7 specialized agents coordinating healthcare services.",
+        "README links responsibility matrix, workflow state machine, data-access policy and routing policy.",
+        "README documents LLM gateway with cost optimization and routing policy."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:welcares:agent-responsibility-workflow-policy-documentation-150f47",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Agent responsibility/workflow policy documentation",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:welcares",
+      "repo": "nustanakritwithai/welcares",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:welcares:llm-routing-and-cost-optimization-design-2a2875",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "LLM routing and cost-optimization design",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:welcares",
+      "repo": "nustanakritwithai/welcares",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:yeb:step-by-step-home-repair-wizard-87073e",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Step-by-step home repair wizard",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:yeb",
+      "repo": "nustanakritwithai/Yeb",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:yeb:readme-md-bb6990",
+      "type": "EVIDENCE",
+      "name": "Yeb · README.md",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:yeb",
+      "repo": "nustanakritwithai/Yeb",
+      "path": "README.md",
+      "sha": "330c97c9a10652f562a1bea5718cc0fa091646cc",
+      "claims": [
+        "README documents object → problem → step wizard flow.",
+        "README documents repair history under yeb.repairs.v1.",
+        "README documents diagnosis for buttons, zippers, bedding and curtains."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:yeb:local-repair-history-e0b1d1",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Local repair history",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:yeb",
+      "repo": "nustanakritwithai/Yeb",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:yeb:repair-diagnosis-library-d638ba",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Repair diagnosis library",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:yeb",
+      "repo": "nustanakritwithai/Yeb",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:zentra-ai-platform:full-stack-express-react-commerce-platform-shell-76b073",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Full-stack Express/React commerce platform shell",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:zentra-ai-platform",
+      "repo": "nustanakritwithai/zentra-ai-platform",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:zentra-ai-platform:server-index-ts-9c0c9d",
+      "type": "EVIDENCE",
+      "name": "zentra-ai-platform · server/index.ts",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:zentra-ai-platform",
+      "repo": "nustanakritwithai/zentra-ai-platform",
+      "path": "server/index.ts",
+      "sha": "c0d18dbedbdf7cf0b607de0a488e52a2cd448cb6",
+      "claims": [
+        "Server code uses Express HTTP server and client App routes cover stores, products, orders, customers, POS, marketplace and checkout."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:zentra-ai-platform:ai-commerce-ui-surfaces-810352",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "AI commerce UI surfaces",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:zentra-ai-platform",
+      "repo": "nustanakritwithai/zentra-ai-platform",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:zentra-ai-platform:client-src-app-tsx-a29e5b",
+      "type": "EVIDENCE",
+      "name": "zentra-ai-platform · client/src/App.tsx",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:zentra-ai-platform",
+      "repo": "nustanakritwithai/zentra-ai-platform",
+      "path": "client/src/App.tsx",
+      "sha": "a0238c5554fa09267be4426adde8cb62b41352c5",
+      "claims": [
+        "Client routes include AI Agents, AI Chat, Knowledge Base and AI Generate."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "capdoc:zentra-ai-platform:supabase-postgresql-integration-stack-87428e",
+      "type": "CAPABILITY_CANDIDATE",
+      "name": "Supabase/PostgreSQL integration stack",
+      "status": "DOCUMENTED",
+      "reuseDecision": "UNKNOWN",
+      "repoId": "repo:zentra-ai-platform",
+      "repo": "nustanakritwithai/zentra-ai-platform",
+      "evidenceCount": 1,
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "evdoc:zentra-ai-platform:package-json-cfac72",
+      "type": "EVIDENCE",
+      "name": "zentra-ai-platform · package.json",
+      "status": "DOCUMENTED",
+      "verdict": "UNKNOWN",
+      "evidenceStatus": "DOCUMENTED",
+      "repoId": "repo:zentra-ai-platform",
+      "repo": "nustanakritwithai/zentra-ai-platform",
+      "path": "package.json",
+      "sha": "02d3ebd197c827d063e7949ac6cb3cca780320fb",
+      "claims": [
+        "Dependencies include Supabase client and PostgreSQL session/storage packages."
+      ],
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
     }
   ],
   "edges": [
@@ -617,6 +3230,1746 @@
       "to": "version:project-brain-v051",
       "type": "SUPERSEDES",
       "activeFrom": "pb-2026-09-24-decision-workspace-v052"
+    },
+    {
+      "from": "repo:3js-player-block-asset-engine",
+      "to": "capdoc:3js-player-block-asset-engine:procedural-three-js-character-rig-99c117",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:3js-player-block-asset-engine:procedural-three-js-character-rig-99c117",
+      "to": "evdoc:3js-player-block-asset-engine:readme-md-dadc7d",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents procedural Three.js geometry, rigid pivot rig and articulated limb hierarchies.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:3js-player-block-asset-engine",
+      "to": "capdoc:3js-player-block-asset-engine:character-animation-runtime-e06f56",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:3js-player-block-asset-engine:character-animation-runtime-e06f56",
+      "to": "evdoc:3js-player-block-asset-engine:readme-md-dadc7d",
+      "type": "DOCUMENTED_BY",
+      "claim": "README lists walk/run/sprint, jump/fall/land/crouch, dodge/hit/knockback/get-up/death/faint/interact.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:3js-player-block-asset-engine",
+      "to": "capdoc:3js-player-block-asset-engine:character-sockets-and-rig-adapter-ea3bc6",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:3js-player-block-asset-engine:character-sockets-and-rig-adapter-ea3bc6",
+      "to": "evdoc:3js-player-block-asset-engine:readme-md-dadc7d",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents engine joint mapping and hand/foot/chest/back/head/root sockets.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:3js-player-block-asset-engine",
+      "to": "capdoc:3js-player-block-asset-engine:deterministic-asset-source-integrity-check-98d64e",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:3js-player-block-asset-engine:deterministic-asset-source-integrity-check-98d64e",
+      "to": "evdoc:3js-player-block-asset-engine:readme-md-dadc7d",
+      "type": "DOCUMENTED_BY",
+      "claim": "README states CI reconstructs compressed source and verifies SHA-256 before Studio injection.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:agent-citta-console",
+      "to": "capdoc:agent-citta-console:agent-trace-observability-console-6aea7d",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:agent-citta-console:agent-trace-observability-console-6aea7d",
+      "to": "evdoc:agent-citta-console:readme-md-7c65d1",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents JSONL trace ingestion, state analysis, risk detection and HTML dashboard.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:agent-citta-console",
+      "to": "capdoc:agent-citta-console:agent-risk-detection-and-next-action-recommendation-12fa3f",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:agent-citta-console:agent-risk-detection-and-next-action-recommendation-12fa3f",
+      "to": "evdoc:agent-citta-console:readme-md-7c65d1",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents detected risks and recommended next actions from agent traces.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:agent-citta-console",
+      "to": "capdoc:agent-citta-console:framework-agnostic-agent-adapter-boundary-4a403d",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:agent-citta-console:framework-agnostic-agent-adapter-boundary-4a403d",
+      "to": "evdoc:agent-citta-console:readme-md-7c65d1",
+      "type": "DOCUMENTED_BY",
+      "claim": "README states runtime-specific systems integrate through adapters into a common schema.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:agent-citta-console",
+      "to": "capdoc:agent-citta-console:local-action-dispatcher-with-confirmation-flow-93d2a2",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:agent-citta-console:local-action-dispatcher-with-confirmation-flow-93d2a2",
+      "to": "evdoc:agent-citta-console:readme-md-7c65d1",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents action recording plus confirm/cancel routes.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:aiwebcpu",
+      "to": "capdoc:aiwebcpu:cpu-first-skill-execution-4982ff",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:aiwebcpu:cpu-first-skill-execution-4982ff",
+      "to": "evdoc:aiwebcpu:readme-md-cfd860",
+      "type": "DOCUMENTED_BY",
+      "claim": "Repository README and Project Brain history document deterministic skill execution as the AI CPU direction.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:aiwebcpu",
+      "to": "capdoc:aiwebcpu:project-brain-knowledge-graph-9227a2",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:aiwebcpu:project-brain-knowledge-graph-9227a2",
+      "to": "evdoc:aiwebcpu:project-brain-graph-project-brain-json-0d0430",
+      "type": "DOCUMENTED_BY",
+      "claim": "Canonical graph stores projects, capabilities, evidence, goals, issues, integrations and versions.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:aiwebcpu",
+      "to": "capdoc:aiwebcpu:temporal-knowledge-graph-8e96b5",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:aiwebcpu:temporal-knowledge-graph-8e96b5",
+      "to": "evdoc:aiwebcpu:project-brain-graph-project-brain-json-0d0430",
+      "type": "DOCUMENTED_BY",
+      "claim": "Canonical graph contains checkpoints, activeFrom/activeUntil and temporal state materialization.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:aiwebcpu",
+      "to": "capdoc:aiwebcpu:repository-change-scanner-727f0b",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:aiwebcpu:repository-change-scanner-727f0b",
+      "to": "evdoc:aiwebcpu:project-brain-scanner-scanner-mjs-20bbb0",
+      "type": "DOCUMENTED_BY",
+      "claim": "Scanner compares repository HEAD, exact-head CI and tracked evidence-file fingerprints.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:aiwebcpu",
+      "to": "capdoc:aiwebcpu:evidence-aware-web-knowledge-viewer-263219",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:aiwebcpu:evidence-aware-web-knowledge-viewer-263219",
+      "to": "evdoc:aiwebcpu:brain-scanner-js-16c8e3",
+      "type": "DOCUMENTED_BY",
+      "claim": "Web UI exposes scanner baseline/candidates while preserving UNKNOWN on unreadable pending state.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:aiwebcpu",
+      "to": "capdoc:aiwebcpu:goal-specific-contract-verification-eb748a",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:aiwebcpu:goal-specific-contract-verification-eb748a",
+      "to": "evdoc:aiwebcpu:project-brain-verifier-verifier-mjs-05d7f8",
+      "type": "DOCUMENTED_BY",
+      "claim": "Verifier V0.5 evaluates explicit goal contracts against documented capability evidence, freshness, CI policy and compatibility checks, then emits SAT/VIOL/UNKNOWN plus review-only patch candidates.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:astralife",
+      "to": "capdoc:astralife:multi-agent-survival-simulation-32c584",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:astralife:multi-agent-survival-simulation-32c584",
+      "to": "evdoc:astralife:readme-md-879d3d",
+      "type": "DOCUMENTED_BY",
+      "claim": "README defines an experimental multi-agent survival world.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:astralife",
+      "to": "capdoc:astralife:partial-observation-agent-loop-c2ea79",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:astralife:partial-observation-agent-loop-c2ea79",
+      "to": "evdoc:astralife:readme-md-879d3d",
+      "type": "DOCUMENTED_BY",
+      "claim": "README core loop is World Truth → Partial Observation → Individual World Model → Decision Provider → Validated Action → Consequence → Learning.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:astralife",
+      "to": "capdoc:astralife:experience-derived-skill-learning-a7b347",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:astralife:experience-derived-skill-learning-a7b347",
+      "to": "evdoc:astralife:readme-md-879d3d",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents independent skill experience, competency, preference, reputation and task history.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:astralife",
+      "to": "capdoc:astralife:emergent-role-specialization-45ce61",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:astralife:emergent-role-specialization-45ce61",
+      "to": "evdoc:astralife:readme-md-879d3d",
+      "type": "DOCUMENTED_BY",
+      "claim": "README states roles are derived from lived experience rather than assigned at spawn.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:clanwar",
+      "to": "capdoc:clanwar:three-js-3d-siege-match-runtime-5f5233",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:clanwar:three-js-3d-siege-match-runtime-5f5233",
+      "to": "evdoc:clanwar:readme-md-ebc744",
+      "type": "DOCUMENTED_BY",
+      "claim": "README states Phase 6 is a full Three.js game with match loop.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:clanwar",
+      "to": "capdoc:clanwar:third-person-chase-camera-9fc627",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:clanwar:third-person-chase-camera-9fc627",
+      "to": "evdoc:clanwar:readme-md-ebc744",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents GTA-style third-person chase camera with classic-view toggle.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:clanwar",
+      "to": "capdoc:clanwar:ai-bot-combatants-eef937",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:clanwar:ai-bot-combatants-eef937",
+      "to": "evdoc:clanwar:readme-md-ebc744",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents AI bot enemies.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:clanwar",
+      "to": "capdoc:clanwar:adaptive-graphics-quality-watchdog-870b31",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:clanwar:adaptive-graphics-quality-watchdog-870b31",
+      "to": "evdoc:clanwar:readme-md-ebc744",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents quality tiers with an FPS watchdog.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:clanwar",
+      "to": "capdoc:clanwar:mobile-multi-touch-controls-762fe2",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:clanwar:mobile-multi-touch-controls-762fe2",
+      "to": "evdoc:clanwar:readme-md-ebc744",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents simultaneous joystick and action controls.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:ecc",
+      "to": "capdoc:ecc:cross-agent-harness-package-219ee1",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:ecc:cross-agent-harness-package-219ee1",
+      "to": "evdoc:ecc:readme-md-6bc6db",
+      "type": "DOCUMENTED_BY",
+      "claim": "README describes ECC as an agent harness operating system with skills, agents, commands and hooks.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:ecc",
+      "to": "capdoc:ecc:multi-environment-agent-configuration-3548e1",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:ecc:multi-environment-agent-configuration-3548e1",
+      "to": "evdoc:ecc:readme-md-6bc6db",
+      "type": "DOCUMENTED_BY",
+      "claim": "Repository exposes integrations/configs for multiple agent ecosystems and languages.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:ecc",
+      "to": "capdoc:ecc:agent-security-hardening-surface-5c3e35",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:ecc:agent-security-hardening-surface-5c3e35",
+      "to": "evdoc:ecc:readme-md-6bc6db",
+      "type": "DOCUMENTED_BY",
+      "claim": "README exposes agent-shield/security packaging and official-source guidance.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:echonews",
+      "to": "capdoc:echonews:event-centric-social-news-rooms-3af7eb",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:echonews:event-centric-social-news-rooms-3af7eb",
+      "to": "evdoc:echonews:readme-md-f7c08c",
+      "type": "DOCUMENTED_BY",
+      "claim": "README defines one event room containing voices, claims and references.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:echonews",
+      "to": "capdoc:echonews:claims-with-supporting-opposing-evidence-references-fa78b8",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:echonews:claims-with-supporting-opposing-evidence-references-fa78b8",
+      "to": "evdoc:echonews:readme-md-f7c08c",
+      "type": "DOCUMENTED_BY",
+      "claim": "README states claims expose supporting and opposing references.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:echonews",
+      "to": "capdoc:echonews:evidence-family-independence-guard-18d421",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:echonews:evidence-family-independence-guard-18d421",
+      "to": "evdoc:echonews:readme-md-f7c08c",
+      "type": "DOCUMENTED_BY",
+      "claim": "README states copies sharing a known evidence family do not increase independent-source counts.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:echonews",
+      "to": "capdoc:echonews:local-only-voice-post-prototype-634bb8",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:echonews:local-only-voice-post-prototype-634bb8",
+      "to": "evdoc:echonews:readme-md-f7c08c",
+      "type": "DOCUMENTED_BY",
+      "claim": "README states local posts/new rooms/follows are browser-only and not published.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:eldercare-website",
+      "to": "capdoc:eldercare-website:responsive-react-landing-page-7f3651",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:eldercare-website:responsive-react-landing-page-7f3651",
+      "to": "evdoc:eldercare-website:readme-md-7d5218",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents React/TypeScript/Vite/Tailwind responsive landing page.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:eldercare-website",
+      "to": "capdoc:eldercare-website:healthcare-service-architecture-showcase-beab47",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:eldercare-website:healthcare-service-architecture-showcase-beab47",
+      "to": "evdoc:eldercare-website:readme-md-7d5218",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents service and AI-agent architecture as showcased content.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:empire-clash",
+      "to": "capdoc:empire-clash:three-js-browser-fps-da813e",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:empire-clash:three-js-browser-fps-da813e",
+      "to": "evdoc:empire-clash:readme-md-cf0bce",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents a 3D FPS with first/third-person views.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:empire-clash",
+      "to": "capdoc:empire-clash:websocket-multiplayer-position-sync-7228bf",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:empire-clash:websocket-multiplayer-position-sync-7228bf",
+      "to": "evdoc:empire-clash:readme-md-cf0bce",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents real-time position sync over WebSocket.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:empire-clash",
+      "to": "capdoc:empire-clash:touch-fps-control-layout-50d6f7",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:empire-clash:touch-fps-control-layout-50d6f7",
+      "to": "evdoc:empire-clash:readme-md-cf0bce",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents joystick, shooting, aim/look, jump/reload/sprint/zoom and melee touch controls.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:empire-clash",
+      "to": "capdoc:empire-clash:class-weapon-combat-framework-373c53",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:empire-clash:class-weapon-combat-framework-373c53",
+      "to": "evdoc:empire-clash:readme-md-cf0bce",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents 4 classes, 3 weapons, health/respawn, hitmarker/headshot and kill feed.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:fcwar",
+      "to": "capdoc:fcwar:server-authoritative-browser-3d-game-runtime-c07017",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:fcwar:server-authoritative-browser-3d-game-runtime-c07017",
+      "to": "evdoc:fcwar:readme-md-117f08",
+      "type": "DOCUMENTED_BY",
+      "claim": "README states server owns movement, combat, factions, classes, objectives, resources, buildings, scoring, death, respawn and round reset.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:fcwar",
+      "to": "capdoc:fcwar:faction-resource-build-objective-loop-e8757a",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:fcwar:faction-resource-build-objective-loop-e8757a",
+      "to": "evdoc:fcwar:readme-md-117f08",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents harvesting, warehouse deposits, faction stock, walls, rally flags and fort scoring.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:fcwar",
+      "to": "capdoc:fcwar:websocket-input-action-protocol-064e33",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:fcwar:websocket-input-action-protocol-064e33",
+      "to": "evdoc:fcwar:package-json-94a4ff",
+      "type": "DOCUMENTED_BY",
+      "claim": "Package metadata and tests identify server/protocol/authority test suites over Express/ws.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:football-manager-8-sec",
+      "to": "capdoc:football-manager-8-sec:turn-based-tactical-football-simulation-4d3492",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:football-manager-8-sec:turn-based-tactical-football-simulation-4d3492",
+      "to": "evdoc:football-manager-8-sec:readme-md-c3f64b",
+      "type": "DOCUMENTED_BY",
+      "claim": "README defines each turn as an 8-second simulation committed to real state.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:football-manager-8-sec",
+      "to": "capdoc:football-manager-8-sec:rule-based-tactical-ai-assistant-4ace6d",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:football-manager-8-sec:rule-based-tactical-ai-assistant-4ace6d",
+      "to": "evdoc:football-manager-8-sec:readme-md-c3f64b",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents rule-based analysis and tactical recommendations.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:football-manager-8-sec",
+      "to": "capdoc:football-manager-8-sec:counterfactual-8-second-preview-7d571c",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:football-manager-8-sec:counterfactual-8-second-preview-7d571c",
+      "to": "evdoc:football-manager-8-sec:readme-md-c3f64b",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents preview on copied state without mutating the live match.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:football-manager-8-sec",
+      "to": "capdoc:football-manager-8-sec:tactical-guided-refinement-optimizer-d01570",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:football-manager-8-sec:tactical-guided-refinement-optimizer-d01570",
+      "to": "evdoc:football-manager-8-sec:readme-md-c3f64b",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents hill-climbing defensive adjustment suggestions.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:football-manager-8-sec",
+      "to": "capdoc:football-manager-8-sec:similarity-retrieval-and-turn-dataset-export-16fd46",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:football-manager-8-sec:similarity-retrieval-and-turn-dataset-export-16fd46",
+      "to": "evdoc:football-manager-8-sec:readme-md-c3f64b",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents similar-situation retrieval and per-turn dataset export.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:football-manager-8-sec",
+      "to": "capdoc:football-manager-8-sec:browser-trained-pass-model-7938c3",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:football-manager-8-sec:browser-trained-pass-model-7938c3",
+      "to": "evdoc:football-manager-8-sec:readme-md-c3f64b",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents logistic-regression training from pass data in browser.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:gameturnbase",
+      "to": "capdoc:gameturnbase:2-5d-action-rpg-web-client-d88c00",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:gameturnbase:2-5d-action-rpg-web-client-d88c00",
+      "to": "evdoc:gameturnbase:readme-md-3adc39",
+      "type": "DOCUMENTED_BY",
+      "claim": "README identifies a React/TypeScript/Vite 2.5D hero collection action RPG.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:gameturnbase",
+      "to": "capdoc:gameturnbase:webgpu-first-rendering-with-webgl-fallback-71f0e4",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:gameturnbase:webgpu-first-rendering-with-webgl-fallback-71f0e4",
+      "to": "evdoc:gameturnbase:readme-md-3adc39",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents WebGPU initialization with clean WebGLRenderer fallback.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:gameturnbase",
+      "to": "capdoc:gameturnbase:refresh-rate-aware-dpr-control-eb5bbc",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:gameturnbase:refresh-rate-aware-dpr-control-eb5bbc",
+      "to": "evdoc:gameturnbase:readme-md-3adc39",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents DPR caps based on detected display refresh rate.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:gameturnbase",
+      "to": "capdoc:gameturnbase:audited-server-side-currency-rpc-boundary-cc1fc4",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:gameturnbase:audited-server-side-currency-rpc-boundary-cc1fc4",
+      "to": "evdoc:gameturnbase:readme-md-3adc39",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents JWT-derived identity, atomic debit, idempotency and currency transaction audit.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:gameturnbase",
+      "to": "capdoc:gameturnbase:version-gated-release-pipeline-0dbebf",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:gameturnbase:version-gated-release-pipeline-0dbebf",
+      "to": "evdoc:gameturnbase:readme-md-3adc39",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents authoritative version files, release gating, build/deploy and SBOM release artifact.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:hih",
+      "to": "capdoc:hih:agent-life-cycle-harness-c6fc72",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:hih:agent-life-cycle-harness-c6fc72",
+      "to": "evdoc:hih:readme-md-28f927",
+      "type": "DOCUMENTED_BY",
+      "claim": "README defines awaken → think → act → reflect → grow lifecycle.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:hih",
+      "to": "capdoc:hih:persistent-agent-vitals-and-episodic-memory-10434b",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:hih:persistent-agent-vitals-and-episodic-memory-10434b",
+      "to": "evdoc:hih:readme-md-28f927",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents mood, growth level and episodic memories.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:hih",
+      "to": "capdoc:hih:pre-tool-safety-reflexes-a3b81c",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:hih:pre-tool-safety-reflexes-a3b81c",
+      "to": "evdoc:hih:readme-md-28f927",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents R01–R10 pre-tool guardrails.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:hih",
+      "to": "capdoc:hih:agent-continuity-life-engine-ce1314",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:hih:agent-continuity-life-engine-ce1314",
+      "to": "evdoc:hih:readme-md-28f927",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents identity, continuity, memory, relationship and goals in state/dioo.db.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:kingdom-sandbox",
+      "to": "capdoc:kingdom-sandbox:autonomous-kingdom-simulation-bdde66",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:kingdom-sandbox:autonomous-kingdom-simulation-bdde66",
+      "to": "evdoc:kingdom-sandbox:readme-md-505424",
+      "type": "DOCUMENTED_BY",
+      "claim": "README defines an AI Economy + War + Governance simulator where agents act autonomously.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:kingdom-sandbox",
+      "to": "capdoc:kingdom-sandbox:utility-ai-decision-scoring-b7aaca",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:kingdom-sandbox:utility-ai-decision-scoring-b7aaca",
+      "to": "evdoc:kingdom-sandbox:readme-md-505424",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents benefit − risk − cost utility scoring for jobs, migration, army joining and banditry.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:kingdom-sandbox",
+      "to": "capdoc:kingdom-sandbox:stock-flow-economy-and-dynamic-pricing-b50f2d",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:kingdom-sandbox:stock-flow-economy-and-dynamic-pricing-b50f2d",
+      "to": "evdoc:kingdom-sandbox:readme-md-505424",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents physical stock, scarcity/danger/tax price formation and merchant profit calculation.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:kingdom-sandbox",
+      "to": "capdoc:kingdom-sandbox:agent-based-military-and-governance-simulation-dcfa40",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:kingdom-sandbox:agent-based-military-and-governance-simulation-dcfa40",
+      "to": "evdoc:kingdom-sandbox:readme-md-505424",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents armies built from agents plus taxation, governors, corruption, rebellion and independence.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:kingdom-sandbox",
+      "to": "capdoc:kingdom-sandbox:sandbox-observability-heatmaps-20643c",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:kingdom-sandbox:sandbox-observability-heatmaps-20643c",
+      "to": "evdoc:kingdom-sandbox:readme-md-505424",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents hunger, wealth, danger, trade, food price, loyalty, unrest and faction influence heatmaps.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:magiccube",
+      "to": "capdoc:magiccube:three-js-mobile-combat-sandbox-c5d95b",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:magiccube:three-js-mobile-combat-sandbox-c5d95b",
+      "to": "evdoc:magiccube:game-js-ff86b1",
+      "type": "DOCUMENTED_BY",
+      "claim": "Code creates Three.js scene, player, targets, HP state and projectile-oriented runtime.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:magiccube",
+      "to": "capdoc:magiccube:sandboxed-generated-object-runtime-contract-6a2829",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:magiccube:sandboxed-generated-object-runtime-contract-6a2829",
+      "to": "evdoc:magiccube:agent-runtime-js-1bb622",
+      "type": "DOCUMENTED_BY",
+      "claim": "Runtime compiles generated JavaScript against restricted THREE/root/world bindings and rejects host rendering APIs.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:magiccube",
+      "to": "capdoc:magiccube:generated-object-validation-before-install-1719f4",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:magiccube:generated-object-validation-before-install-1719f4",
+      "to": "evdoc:magiccube:agent-runtime-js-1bb622",
+      "type": "DOCUMENTED_BY",
+      "claim": "Runtime validates generated code in a temporary root and requires an attached visible object.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:my-oracle",
+      "to": "capdoc:my-oracle:personal-agent-memory-convention-df10ae",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:my-oracle:personal-agent-memory-convention-df10ae",
+      "to": "evdoc:my-oracle:claude-md-7d6b8c",
+      "type": "DOCUMENTED_BY",
+      "claim": "CLAUDE.md documents MEMORY path, session startup reading and automatic important-memory recording.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:my-oracle",
+      "to": "capdoc:my-oracle:observe-think-plan-execute-verify-learn-workflow-7ed4d5",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:my-oracle:observe-think-plan-execute-verify-learn-workflow-7ed4d5",
+      "to": "evdoc:my-oracle:claude-md-7d6b8c",
+      "type": "DOCUMENTED_BY",
+      "claim": "CLAUDE.md documents the algorithm-mode lifecycle.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:my-oracle",
+      "to": "capdoc:my-oracle:surgical-change-safety-rules-ae4f2c",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:my-oracle:surgical-change-safety-rules-ae4f2c",
+      "to": "evdoc:my-oracle:claude-md-7d6b8c",
+      "type": "DOCUMENTED_BY",
+      "claim": "CLAUDE.md requires focused fixes, verification before claims and confirmation before destructive actions.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:openclaw-runtime-dashboard-vercel",
+      "to": "capdoc:openclaw-runtime-dashboard-vercel:static-runtime-metrics-dashboard-278efa",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:openclaw-runtime-dashboard-vercel:static-runtime-metrics-dashboard-278efa",
+      "to": "evdoc:openclaw-runtime-dashboard-vercel:readme-md-a197b6",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents a static Next.js dashboard reading public/metrics.json.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:openclaw-runtime-dashboard-vercel",
+      "to": "capdoc:openclaw-runtime-dashboard-vercel:git-driven-metric-refresh-workflow-12aac0",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:openclaw-runtime-dashboard-vercel:git-driven-metric-refresh-workflow-12aac0",
+      "to": "evdoc:openclaw-runtime-dashboard-vercel:readme-md-a197b6",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents editing metrics.json and redeploying through Vercel.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:openclaw-runtime-dashboard-vercel",
+      "to": "capdoc:openclaw-runtime-dashboard-vercel:scheduled-metrics-update-tooling-8f406f",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:openclaw-runtime-dashboard-vercel:scheduled-metrics-update-tooling-8f406f",
+      "to": "evdoc:openclaw-runtime-dashboard-vercel:cron-setup-md-b0fef8",
+      "type": "DOCUMENTED_BY",
+      "claim": "Repository includes cron setup for automated metric updates.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:pirate-fruit",
+      "to": "capdoc:pirate-fruit:modular-authoritative-game-server-boundary-87fe4f",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:pirate-fruit:modular-authoritative-game-server-boundary-87fe4f",
+      "to": "evdoc:pirate-fruit:server-architecture-md-ffd0ce",
+      "type": "DOCUMENTED_BY",
+      "claim": "Architecture selects Fastify modular monolith with server-owned authoritative state and persistence.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:pirate-fruit",
+      "to": "capdoc:pirate-fruit:client-shared-server-domain-separation-fdbf65",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:pirate-fruit:client-shared-server-domain-separation-fdbf65",
+      "to": "evdoc:pirate-fruit:server-architecture-md-ffd0ce",
+      "type": "DOCUMENTED_BY",
+      "claim": "Architecture explicitly separates presentation client, browser-free shared contracts, server authority and PostgreSQL.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:pirate-fruit",
+      "to": "capdoc:pirate-fruit:versioned-safe-request-lifecycle-b9086b",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:pirate-fruit:versioned-safe-request-lifecycle-b9086b",
+      "to": "evdoc:pirate-fruit:server-architecture-md-ffd0ce",
+      "type": "DOCUMENTED_BY",
+      "claim": "Architecture documents request IDs, CORS, rate limits, dependency injection, structured errors and runtime counters.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:pirate-fruit",
+      "to": "capdoc:pirate-fruit:forward-migration-database-boundary-1f8e4d",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:pirate-fruit:forward-migration-database-boundary-1f8e4d",
+      "to": "evdoc:pirate-fruit:server-architecture-md-ffd0ce",
+      "type": "DOCUMENTED_BY",
+      "claim": "Architecture documents typed schema, immutable forward SQL, schema checksums and pre-listener migrations.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:pirate-fruit",
+      "to": "capdoc:pirate-fruit:action-combat-client-framework-c8e824",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:pirate-fruit:action-combat-client-framework-c8e824",
+      "to": "evdoc:pirate-fruit:readme-md-e7fc78",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents state-machine combat, combo, blocking/guard, skill sets and movement/combat controls.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:pocketmonster",
+      "to": "capdoc:pocketmonster:monster-progression-core-6b3617",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:pocketmonster:monster-progression-core-6b3617",
+      "to": "evdoc:pocketmonster:readme-md-912c1b",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents stats, training, nutrition, equipment, genes, evolution and condition.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:pocketmonster",
+      "to": "capdoc:pocketmonster:capture-evolution-breeding-gameplay-systems-6e876e",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:pocketmonster:capture-evolution-breeding-gameplay-systems-6e876e",
+      "to": "evdoc:pocketmonster:readme-md-912c1b",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents capture rules, evolution branches, raising events and breeding.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:pocketmonster",
+      "to": "capdoc:pocketmonster:combat-rating-debug-projection-f72544",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:pocketmonster:combat-rating-debug-projection-f72544",
+      "to": "evdoc:pocketmonster:readme-md-912c1b",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents CR plus DPS/EHP preview and contribution breakdown.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:pocketmonster",
+      "to": "capdoc:pocketmonster:federation-of-authorities-architecture-af9641",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:pocketmonster:federation-of-authorities-architecture-af9641",
+      "to": "evdoc:pocketmonster:integration-master-plan-v3-3-md-e25783",
+      "type": "DOCUMENTED_BY",
+      "claim": "Plan defines separate Pirate, Pocket, World and Shared Core authorities.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:pocketmonster",
+      "to": "capdoc:pocketmonster:canonical-shared-combat-stat-contract-8f2730",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:pocketmonster:canonical-shared-combat-stat-contract-8f2730",
+      "to": "evdoc:pocketmonster:integration-master-plan-v3-3-md-e25783",
+      "type": "DOCUMENTED_BY",
+      "claim": "Plan defines canonical CombatStats vocabulary, single-writer HP and authoritative world/server computation.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:ramagan",
+      "to": "capdoc:ramagan:immutable-append-only-stock-ledger-e959ea",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:ramagan:immutable-append-only-stock-ledger-e959ea",
+      "to": "evdoc:ramagan:readme-md-00dc02",
+      "type": "DOCUMENTED_BY",
+      "claim": "README locks events as immutable and requires compensating events instead of edit/delete.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:ramagan",
+      "to": "capdoc:ramagan:as-of-inventory-balance-reconstruction-dcc01a",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:ramagan:as-of-inventory-balance-reconstruction-dcc01a",
+      "to": "evdoc:ramagan:readme-md-00dc02",
+      "type": "DOCUMENTED_BY",
+      "claim": "README defines balance at time T as sum of quantity deltas up to occurred_at.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:ramagan",
+      "to": "capdoc:ramagan:inventory-oversell-validation-7946d8",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:ramagan:inventory-oversell-validation-7946d8",
+      "to": "evdoc:ramagan:readme-md-00dc02",
+      "type": "DOCUMENTED_BY",
+      "claim": "README locks rule that sale cannot exceed remaining lot balance.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:ramagan",
+      "to": "capdoc:ramagan:append-only-browser-drive-sync-prototype-b40e81",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:ramagan:append-only-browser-drive-sync-prototype-b40e81",
+      "to": "evdoc:ramagan:readme-md-00dc02",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents Google Drive OAuth plus append-only auto-sync/conflict UI.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:rustislandsurvival",
+      "to": "capdoc:rustislandsurvival:authoritative-websocket-round-runtime-8371ae",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:rustislandsurvival:authoritative-websocket-round-runtime-8371ae",
+      "to": "evdoc:rustislandsurvival:readme-md-e65795",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents authoritative GameRoom tick loop, shared round clock, player positions, beacon and winner.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:rustislandsurvival",
+      "to": "capdoc:rustislandsurvival:graceful-offline-fallback-fa25b0",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:rustislandsurvival:graceful-offline-fallback-fa25b0",
+      "to": "evdoc:rustislandsurvival:readme-md-e65795",
+      "type": "DOCUMENTED_BY",
+      "claim": "README states client falls back to original single-player/local-bot game when disconnected.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:rustislandsurvival",
+      "to": "capdoc:rustislandsurvival:deterministic-shared-island-seed-c622fa",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:rustislandsurvival:deterministic-shared-island-seed-c622fa",
+      "to": "evdoc:rustislandsurvival:readme-md-e65795",
+      "type": "DOCUMENTED_BY",
+      "claim": "Roadmap marks shared per-round server seed complete.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:rustislandsurvival",
+      "to": "capdoc:rustislandsurvival:shared-resource-building-monster-authority-f4cfa6",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:rustislandsurvival:shared-resource-building-monster-authority-f4cfa6",
+      "to": "evdoc:rustislandsurvival:readme-md-e65795",
+      "type": "DOCUMENTED_BY",
+      "claim": "README roadmap marks shared resources, walls/doors and server-owned monsters/beacon siege implemented.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:simclone",
+      "to": "capdoc:simclone:deterministic-authoritative-colony-simulation-a27c55",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:simclone:deterministic-authoritative-colony-simulation-a27c55",
+      "to": "evdoc:simclone:agents-md-584f93",
+      "type": "DOCUMENTED_BY",
+      "claim": "AGENTS.md defines src/engine.mjs as authoritative with no DOM, Date, Math.random or external API calls.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:simclone",
+      "to": "capdoc:simclone:lifecycle-autonomous-birth-and-age-death-49877d",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:simclone:lifecycle-autonomous-birth-and-age-death-49877d",
+      "to": "evdoc:simclone:agents-md-584f93",
+      "type": "DOCUMENTED_BY",
+      "claim": "AGENTS.md documents simulation-time lifecycle, birth pacing, deterministic lifespan and shared death cleanup.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:simclone",
+      "to": "capdoc:simclone:historical-identity-archive-c4095b",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:simclone:historical-identity-archive-c4095b",
+      "to": "evdoc:simclone:readme-md-881782",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents bounded archive preserving lineage, death facts, skills and retained memories.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:simclone",
+      "to": "capdoc:simclone:skill-inheritance-with-provenance-boundaries-8feacf",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:simclone:skill-inheritance-with-provenance-boundaries-8feacf",
+      "to": "evdoc:simclone:agents-md-584f93",
+      "type": "DOCUMENTED_BY",
+      "claim": "AGENTS.md documents 35% XP inheritance and explicit limits around mentor/archive/culture.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:simclone",
+      "to": "capdoc:simclone:deterministic-save-migration-and-continuation-verifica-3c307a",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:simclone:deterministic-save-migration-and-continuation-verifica-3c307a",
+      "to": "evdoc:simclone:readme-md-881782",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents save migrations and long-run continuity suites with UNKNOWN rules.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:testflysystem",
+      "to": "capdoc:testflysystem:executable-connectome-pipeline-82f1d6",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:testflysystem:executable-connectome-pipeline-82f1d6",
+      "to": "evdoc:testflysystem:readme-md-fcccf4",
+      "type": "DOCUMENTED_BY",
+      "claim": "README target pipeline converts MaleCNS data into executable connectome and neural dynamics.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:testflysystem",
+      "to": "capdoc:testflysystem:scientific-provenance-classification-961296",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:testflysystem:scientific-provenance-classification-961296",
+      "to": "evdoc:testflysystem:readme-md-fcccf4",
+      "type": "DOCUMENTED_BY",
+      "claim": "README defines MEASURED/ANNOTATED/PREDICTED/INFERRED/ASSUMED/EXPERIMENTAL classes.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:testflysystem",
+      "to": "capdoc:testflysystem:closed-loop-neural-sensorimotor-research-architecture-b225dd",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:testflysystem:closed-loop-neural-sensorimotor-research-architecture-b225dd",
+      "to": "evdoc:testflysystem:readme-md-fcccf4",
+      "type": "DOCUMENTED_BY",
+      "claim": "README target connects sensory stimulation through neural dynamics to motor decoder and environment feedback.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:testge",
+      "to": "capdoc:testge:transactional-authoritative-world-runtime-227b55",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:testge:transactional-authoritative-world-runtime-227b55",
+      "to": "evdoc:testge:readme-md-67cdee",
+      "type": "DOCUMENTED_BY",
+      "claim": "README defines deterministic data-oriented transactional authoritative runtime.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:testge",
+      "to": "capdoc:testge:proposal-verify-atomic-commit-architecture-898bc4",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:testge:proposal-verify-atomic-commit-architecture-898bc4",
+      "to": "evdoc:testge:readme-md-67cdee",
+      "type": "DOCUMENTED_BY",
+      "claim": "README states compute cannot mutate canonical world directly.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:testge",
+      "to": "capdoc:testge:checkpoint-rollback-replay-and-time-travel-0aef06",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:testge:checkpoint-rollback-replay-and-time-travel-0aef06",
+      "to": "evdoc:testge:readme-md-67cdee",
+      "type": "DOCUMENTED_BY",
+      "claim": "README marks checkpoint/multi-step rollback/replay/time-travel audit complete.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:testge",
+      "to": "capdoc:testge:delta-replication-and-interest-filtering-73583a",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:testge:delta-replication-and-interest-filtering-73583a",
+      "to": "evdoc:testge:readme-md-67cdee",
+      "type": "DOCUMENTED_BY",
+      "claim": "README marks delta replication + interest filtering complete.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:testge",
+      "to": "capdoc:testge:client-prediction-reconciliation-demo-491d6c",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:testge:client-prediction-reconciliation-demo-491d6c",
+      "to": "evdoc:testge:readme-md-67cdee",
+      "type": "DOCUMENTED_BY",
+      "claim": "README marks client prediction/reconciliation demo complete.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:udomsukflim",
+      "to": "capdoc:udomsukflim:local-seo-landing-page-architecture-e2d3cc",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:udomsukflim:local-seo-landing-page-architecture-e2d3cc",
+      "to": "evdoc:udomsukflim:readme-md-2a9bd0",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents one-page local SEO structure, canonical, sitemap and conversion CTAs.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:udomsukflim",
+      "to": "capdoc:udomsukflim:structured-data-seo-pack-d89064",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:udomsukflim:structured-data-seo-pack-d89064",
+      "to": "evdoc:udomsukflim:readme-md-2a9bd0",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents LocalBusiness/AutoRepair, FAQPage, WebSite, WebPage and BreadcrumbList JSON-LD.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:udomsukflim",
+      "to": "capdoc:udomsukflim:ai-crawler-discovery-surface-514ec2",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:udomsukflim:ai-crawler-discovery-surface-514ec2",
+      "to": "evdoc:udomsukflim:readme-md-2a9bd0",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents robots rules for AI crawlers and llms.txt.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:udomsukflim",
+      "to": "capdoc:udomsukflim:core-web-vitals-oriented-static-delivery-e5bd54",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:udomsukflim:core-web-vitals-oriented-static-delivery-e5bd54",
+      "to": "evdoc:udomsukflim:readme-md-2a9bd0",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents image loading/decoding, hero priority and non-blocking fonts.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:webai",
+      "to": "capdoc:webai:supervised-browser-coding-agent-60e3df",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:webai:supervised-browser-coding-agent-60e3df",
+      "to": "evdoc:webai:readme-md-02b913",
+      "type": "DOCUMENTED_BY",
+      "claim": "README describes WebAi architecture and supervised agent execution.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:webai",
+      "to": "capdoc:webai:protected-multi-gate-verification-engine-89a566",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:webai:protected-multi-gate-verification-engine-89a566",
+      "to": "evdoc:webai:verification-engine-md-646cbf",
+      "type": "DOCUMENTED_BY",
+      "claim": "Verification doc defines file safety, security, build, unit, integration and regression gates.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:webai",
+      "to": "capdoc:webai:verifier-command-ownership-boundary-05511a",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:webai:verifier-command-ownership-boundary-05511a",
+      "to": "evdoc:webai:verification-engine-md-646cbf",
+      "type": "DOCUMENTED_BY",
+      "claim": "Verification doc states the model never returns verifier shell commands and protected policy owns commands.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:webai",
+      "to": "capdoc:webai:fail-closed-verifier-source-protection-28382e",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:webai:fail-closed-verifier-source-protection-28382e",
+      "to": "evdoc:webai:verification-engine-md-646cbf",
+      "type": "DOCUMENTED_BY",
+      "claim": "Verification doc rejects npm verification when the same execution modified package.json.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:welcares",
+      "to": "capdoc:welcares:multi-agent-healthcare-coordination-architecture-a6ee39",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:welcares:multi-agent-healthcare-coordination-architecture-a6ee39",
+      "to": "evdoc:welcares:readme-md-9c1c59",
+      "type": "DOCUMENTED_BY",
+      "claim": "README describes 7 specialized agents coordinating healthcare services.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:welcares",
+      "to": "capdoc:welcares:agent-responsibility-workflow-policy-documentation-150f47",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:welcares:agent-responsibility-workflow-policy-documentation-150f47",
+      "to": "evdoc:welcares:readme-md-9c1c59",
+      "type": "DOCUMENTED_BY",
+      "claim": "README links responsibility matrix, workflow state machine, data-access policy and routing policy.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:welcares",
+      "to": "capdoc:welcares:llm-routing-and-cost-optimization-design-2a2875",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:welcares:llm-routing-and-cost-optimization-design-2a2875",
+      "to": "evdoc:welcares:readme-md-9c1c59",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents LLM gateway with cost optimization and routing policy.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:yeb",
+      "to": "capdoc:yeb:step-by-step-home-repair-wizard-87073e",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:yeb:step-by-step-home-repair-wizard-87073e",
+      "to": "evdoc:yeb:readme-md-bb6990",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents object → problem → step wizard flow.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:yeb",
+      "to": "capdoc:yeb:local-repair-history-e0b1d1",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:yeb:local-repair-history-e0b1d1",
+      "to": "evdoc:yeb:readme-md-bb6990",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents repair history under yeb.repairs.v1.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:yeb",
+      "to": "capdoc:yeb:repair-diagnosis-library-d638ba",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:yeb:repair-diagnosis-library-d638ba",
+      "to": "evdoc:yeb:readme-md-bb6990",
+      "type": "DOCUMENTED_BY",
+      "claim": "README documents diagnosis for buttons, zippers, bedding and curtains.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:zentra-ai-platform",
+      "to": "capdoc:zentra-ai-platform:full-stack-express-react-commerce-platform-shell-76b073",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:zentra-ai-platform:full-stack-express-react-commerce-platform-shell-76b073",
+      "to": "evdoc:zentra-ai-platform:server-index-ts-9c0c9d",
+      "type": "DOCUMENTED_BY",
+      "claim": "Server code uses Express HTTP server and client App routes cover stores, products, orders, customers, POS, marketplace and checkout.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:zentra-ai-platform",
+      "to": "capdoc:zentra-ai-platform:ai-commerce-ui-surfaces-810352",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:zentra-ai-platform:ai-commerce-ui-surfaces-810352",
+      "to": "evdoc:zentra-ai-platform:client-src-app-tsx-a29e5b",
+      "type": "DOCUMENTED_BY",
+      "claim": "Client routes include AI Agents, AI Chat, Knowledge Base and AI Generate.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "repo:zentra-ai-platform",
+      "to": "capdoc:zentra-ai-platform:supabase-postgresql-integration-stack-87428e",
+      "type": "DOCUMENTS",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "capdoc:zentra-ai-platform:supabase-postgresql-integration-stack-87428e",
+      "to": "evdoc:zentra-ai-platform:package-json-cfac72",
+      "type": "DOCUMENTED_BY",
+      "claim": "Dependencies include Supabase client and PostgreSQL session/storage packages.",
+      "generatedBy": "catalog-inventory-sync-v1",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
     }
   ],
   "timeline": [
@@ -795,9 +5148,16 @@
         "label": "Decision Workspace V0.5.2",
         "description": "Verified goal-centered read-only decision flow connects canonical NEEDS, documented evidence and explicit verifier outcomes without browser-side semantic inference.",
         "source": "nustanakritwithai/aiwebcpu@3d46e1e"
+      },
+      {
+        "id": "pb-2026-09-25-graph-coverage-v053",
+        "date": "2026-09-25",
+        "label": "Complete Graph Coverage V0.5.3",
+        "description": "Canonical graph is deterministically synchronized with 33 public repositories and 116 documented capability candidates.",
+        "source": "project-brain/graph/sync-catalog-inventory.mjs"
       }
     ],
-    "defaultCheckpoint": "pb-2026-09-24-decision-workspace-v052"
+    "defaultCheckpoint": "pb-2026-09-25-graph-coverage-v053"
   },
   "interfaces": {
     "human": "web",
@@ -806,5 +5166,14 @@
     "localVault": false,
     "deviceSync": false,
     "canonicalGraph": "project-brain/graph/project-brain.json"
+  },
+  "coverage": {
+    "sourceCatalog": "project-brain/catalog/repositories.json",
+    "sourceInventory": "project-brain/capability-inventory/repositories.json",
+    "syncVersion": "catalog-inventory-sync-v1",
+    "publicRepositories": 33,
+    "documentedCapabilities": 116,
+    "documentationEvidenceFiles": 42,
+    "semanticRule": "DOCUMENTED capability candidates remain reuseDecision=UNKNOWN until a goal-specific verifier contract resolves them."
   }
 }
