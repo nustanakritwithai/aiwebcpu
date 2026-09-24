@@ -34,6 +34,35 @@
       <button type="button" data-scroll="rule-section">Decision Rule</button>
     </nav>
 
+    <section class="time-machine card" id="time-machine" aria-label="Temporal Knowledge Graph">
+      <div class="time-head">
+        <div>
+          <p class="eyebrow">TEMPORAL KNOWLEDGE GRAPH</p>
+          <h2 id="time-label">ช่วงเวลาปัจจุบัน</h2>
+          <p id="time-description">กำลังโหลด checkpoint…</p>
+        </div>
+        <div class="time-actions">
+          <button id="time-play" type="button" aria-pressed="false">▶ เล่น</button>
+          <button id="time-now" type="button">ปัจจุบัน</button>
+        </div>
+      </div>
+
+      <div class="time-slider-wrap">
+        <input id="time-slider" type="range" min="0" max="0" step="1" value="0" aria-label="เลือก Project Brain checkpoint">
+        <div class="time-scale">
+          <span id="time-date">—</span>
+          <span id="time-position">0 / 0</span>
+        </div>
+      </div>
+
+      <div id="time-checkpoints" class="time-checkpoints" aria-label="Project Brain checkpoints"></div>
+
+      <p class="time-semantics">
+        เวลาใน V0.3 คือ <b>knowledge-state</b>: แสดงว่า Project Brain รู้/เชื่อมความสัมพันธ์นั้นตั้งแต่ checkpoint ใด
+        ไม่ใช่การเดาวันที่ซอฟต์แวร์หรือ capability ถูกสร้างจริง
+      </p>
+    </section>
+
     <section class="controls card">
       <label class="search">
         <span>ค้นหา</span>
