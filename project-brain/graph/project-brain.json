@@ -154,7 +154,24 @@
       "name": "Simclone ย้อนเวลาได้",
       "status": "compatibility-analyzed",
       "decision": "ADAPT",
-      "activeFrom": "pb-2026-09-24-bootstrap"
+      "activeFrom": "pb-2026-09-24-bootstrap",
+      "temporalStates": [
+        {
+          "activeFrom": "pb-2026-09-24-bootstrap",
+          "activeUntil": "pb-2026-09-24-compat",
+          "values": {
+            "status": "proposed",
+            "decision": "UNKNOWN"
+          }
+        },
+        {
+          "activeFrom": "pb-2026-09-24-compat",
+          "values": {
+            "status": "compatibility-analyzed",
+            "decision": "ADAPT"
+          }
+        }
+      ]
     },
     {
       "id": "ev:testge-history-source",
