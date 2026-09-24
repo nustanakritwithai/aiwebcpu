@@ -1729,3 +1729,335 @@ body:not([data-active-view="graph"]) .mobile-hint{display:none!important}
   .decision-progress i{display:block;flex:0 0 auto}
   .decision-side{grid-template-columns:1fr}
 }
+
+
+/* Graph Focus UX V0.5.4
+   Graph view is intentionally graph-first. Metrics live in Overview;
+   temporal controls live in History; node detail is an overlay drawer. */
+body[data-active-view="graph"] .brain-pulse{display:none!important}
+
+.graph-controls{
+  padding:7px;
+  position:sticky;
+  top:70px;
+  z-index:23;
+  backdrop-filter:blur(16px);
+  background:#081522ed;
+}
+.graph-control-main{
+  display:grid;
+  grid-template-columns:minmax(260px,1fr) auto;
+  gap:7px;
+  align-items:center;
+}
+.graph-controls .search{
+  min-height:40px;
+  grid-template-columns:24px 1fr;
+  gap:6px;
+  border:1px solid #1d3d57;
+  border-radius:10px;
+  background:#06101b;
+  padding:0 9px;
+}
+.graph-controls .search>span{
+  display:block;
+  color:var(--cyan);
+  font-size:.95rem;
+}
+.graph-controls .search input{
+  min-height:38px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  padding:0;
+  box-shadow:none;
+}
+.graph-quick-actions{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  flex-wrap:nowrap;
+}
+.graph-quick-actions>button,
+.graph-options>summary{
+  min-height:40px;
+  display:grid;
+  place-items:center;
+  border:1px solid #1c3b54;
+  border-radius:10px;
+  background:#07131f;
+  color:#c7dbe8;
+  padding:7px 10px;
+  font-size:.68rem;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.graph-options{position:relative}
+.graph-options>summary{
+  list-style:none;
+  display:flex;
+  gap:6px;
+  align-items:center;
+}
+.graph-options>summary::-webkit-details-marker{display:none}
+.graph-options>summary span{
+  min-width:24px;
+  border-radius:999px;
+  padding:2px 5px;
+  background:#0d2940;
+  color:var(--cyan);
+  font-size:.56rem;
+  text-align:center;
+}
+.graph-options[open]>summary{
+  border-color:#2b6487;
+  background:#0b2335;
+}
+.graph-options-panel{
+  position:absolute;
+  right:0;
+  top:calc(100% + 7px);
+  z-index:90;
+  width:min(660px,78vw);
+  max-height:min(70vh,560px);
+  overflow:auto;
+  display:grid;
+  gap:10px;
+  padding:11px;
+  border:1px solid #24465e;
+  border-radius:14px;
+  background:#07131ff8;
+  box-shadow:0 24px 70px #000b;
+  backdrop-filter:blur(18px);
+}
+.graph-options-panel .preset-row{
+  padding:0;
+  flex-wrap:wrap;
+  overflow:visible;
+}
+.graph-options-panel .filters{padding:0}
+.graph-option-footer{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:6px;
+  padding-top:8px;
+  border-top:1px solid #153149;
+}
+.graph-option-footer button{
+  width:38px;height:36px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  background:#091827;
+}
+.graph-option-footer .toggle{margin-left:4px}
+
+.workspace[data-pb-view="graph"]{
+  display:block;
+}
+.graph-card{
+  min-height:0;
+}
+.graph-card .legend{display:none!important}
+.graph-card .graph-head{
+  min-height:42px;
+  padding:7px 10px;
+}
+.graph-card .graph-head h2{font-size:.82rem}
+.graph-card .graph-head p{font-size:.64rem}
+.graph-card #reset-selection{
+  min-height:32px;
+  padding:5px 8px;
+  font-size:.62rem;
+}
+.graph-card .svg-wrap{
+  height:calc(100svh - 176px);
+  min-height:600px;
+  max-height:none;
+}
+
+/* Detail is never allowed to reserve a permanent graph column. */
+.workspace>.detail{
+  position:fixed;
+  z-index:85;
+  top:78px;
+  right:18px;
+  bottom:18px;
+  left:auto;
+  width:min(420px,calc(100vw - 36px));
+  max-height:none;
+  min-height:0;
+  border-radius:18px;
+  transform:translateX(calc(100% + 42px));
+  transition:transform .2s ease;
+  box-shadow:-22px 0 70px #000b;
+}
+body.detail-open .workspace>.detail{transform:translateX(0)}
+.workspace>.detail::before{display:none}
+.detail-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:80;
+  background:#02060b7d;
+  backdrop-filter:blur(2px);
+}
+body.detail-open .detail-backdrop{display:block}
+
+/* Keep relation text opt-in on the complete graph. */
+.edge-label{font-size:8px}
+
+/* Portrait/tablet/coarse-pointer fallback.
+   This catches browser desktop-mode-like viewports on phones too. */
+@media (max-width:1180px), (pointer:coarse) and (orientation:portrait){
+  .app-shell{display:block}
+
+  .app-rail{
+    position:fixed;
+    left:0;
+    top:0;
+    width:min(82vw,280px);
+    height:100dvh;
+    transform:translateX(-105%);
+    transition:transform .2s ease;
+    box-shadow:20px 0 70px #000b;
+  }
+  body.rail-open .app-rail{transform:translateX(0)}
+  body.rail-open::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:35;
+    background:#02070cb3;
+    backdrop-filter:blur(2px);
+  }
+
+  .app-stage>.topbar{
+    padding:8px 9px 4px;
+  }
+  body[data-active-view="graph"] .app-stage>.topbar{
+    display:none;
+  }
+
+  .command-bar{
+    top:max(5px,env(safe-area-inset-top));
+    margin:5px 7px 7px;
+    grid-template-columns:40px minmax(0,1fr);
+  }
+  .rail-toggle{display:grid;place-items:center}
+  .global-search{grid-column:2}
+  .command-context{display:none}
+
+  .app-stage>main{padding:0 7px 76px}
+
+  .mobile-view-nav{
+    display:flex;
+    position:sticky;
+    top:56px;
+    z-index:24;
+    overflow-x:auto;
+    gap:4px;
+    padding:4px;
+    scrollbar-width:none;
+  }
+  .mobile-view-nav::-webkit-scrollbar{display:none}
+  .mobile-view-nav button{
+    flex:0 0 auto;
+    min-width:70px;
+    min-height:36px;
+    padding:6px 8px;
+    font-size:.64rem;
+  }
+
+  body[data-active-view="graph"] .mobile-view-nav{
+    top:57px;
+  }
+
+  .global-search-results{
+    top:62px;
+    left:7px;
+    right:7px;
+    width:auto;
+  }
+
+  .graph-controls{
+    position:relative;
+    top:auto;
+    padding:5px;
+    margin-bottom:6px;
+  }
+  .graph-control-main{
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:5px;
+  }
+  .graph-controls .search{min-height:38px}
+  .graph-controls .search input{
+    min-height:36px;
+    font-size:16px;
+  }
+  .graph-quick-actions{gap:4px}
+  .graph-quick-actions>button,
+  .graph-options>summary{
+    min-height:38px;
+    padding:6px 8px;
+    font-size:.62rem;
+  }
+  .graph-options>summary span{display:none}
+
+  .graph-options-panel{
+    position:fixed;
+    left:7px;
+    right:7px;
+    bottom:calc(8px + env(safe-area-inset-bottom));
+    top:auto;
+    width:auto;
+    max-height:58dvh;
+    border-radius:18px;
+    z-index:100;
+  }
+
+  .graph-card .graph-head{
+    min-height:34px;
+    padding:5px 8px;
+  }
+  .graph-card .graph-head h2{display:none}
+  .graph-card .graph-head p{margin:0}
+  .graph-card #reset-selection{min-height:28px}
+
+  .graph-card .svg-wrap{
+    height:calc(100dvh - 170px);
+    min-height:520px;
+  }
+
+  .workspace>.detail{
+    left:7px;
+    right:7px;
+    top:auto;
+    bottom:calc(7px + env(safe-area-inset-bottom));
+    width:auto;
+    max-height:min(72dvh,650px);
+    border-radius:20px;
+    transform:translateY(calc(100% + 34px));
+    box-shadow:0 -22px 70px #000b;
+  }
+  body.detail-open .workspace>.detail{transform:translateY(0)}
+  .workspace>.detail::before{
+    content:"";
+    display:block;
+    width:42px;
+    height:4px;
+    border-radius:999px;
+    background:#36546a;
+    margin:0 auto 10px;
+  }
+
+  body[data-active-view="graph"] .mobile-hint{display:none!important}
+}
+
+/* Very narrow phones: Fit + Focus + Filters stay, zoom lives inside filter sheet. */
+@media(max-width:560px){
+  .graph-quick-actions #focus-mode{display:none}
+  .graph-card .svg-wrap{
+    height:calc(100dvh - 156px);
+    min-height:500px;
+  }
+}
