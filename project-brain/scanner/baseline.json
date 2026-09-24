@@ -1,19 +1,19 @@
 {
   "schemaVersion": "0.1",
-  "acceptedSource": "Project Brain V0.4 verified merge bookkeeping",
+  "acceptedSource": "Project Brain V0.4 self-monitoring stabilization",
   "repositories": {
     "repo:aiwebcpu": {
       "id": "repo:aiwebcpu",
       "repo": "nustanakritwithai/aiwebcpu",
       "branch": "main",
       "head": {
-        "sha": "aab1a88f247dcb8972c87309a2eeba6bcba9b6a7",
-        "date": "2026-09-24T15:10:48Z",
-        "message": "feat: add Project Brain GitHub Scanner V0.4"
+        "sha": "5ceeeee3e776d0cf084e5ce606531a9bc5455f9e",
+        "date": "2026-09-24T15:13:35Z",
+        "message": "docs: record verified Project Brain Scanner V0.4"
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
-        "reason": "exact-main completed workflow not observed at V0.4 bookkeeping time"
+        "reason": "exact-head-workflow-tracking-disabled-by-config"
       },
       "evidenceFiles": [
         {
@@ -23,7 +23,7 @@
         },
         {
           "path": "project-brain/graph/project-brain.json",
-          "sha": "42ba272fd58454508c8b62856c480a3c04369947",
+          "sha": "77d03fc7fefc2808c4f25ea0d0fc5d75cba1a68c",
           "status": "present"
         },
         {
@@ -32,8 +32,13 @@
           "status": "present"
         },
         {
+          "path": "project-brain/scanner/config.json",
+          "sha": "01972efecf31dd43752e5a4cf6e12a82f76c51a3",
+          "status": "present"
+        },
+        {
           "path": "project-brain/scanner/scanner.mjs",
-          "sha": "94d7bfe8c04e7928205a3ddbdd9a3990bc896252",
+          "sha": "31feb19bbe409177697bf334782ecd6832242f49",
           "status": "present"
         },
         {
@@ -46,7 +51,9 @@
           "sha": "9f1a507f977cc2e4fe98fc142c44dc7de88c6c18",
           "status": "present"
         }
-      ]
+      ],
+      "trackHead": false,
+      "trackExactHeadWorkflow": false
     },
     "repo:testge": {
       "id": "repo:testge",

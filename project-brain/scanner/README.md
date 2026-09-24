@@ -50,3 +50,20 @@ node project-brain/scanner/scanner.mjs promote \
 ```
 
 The scheduled workflow opens/updates a PR. It never auto-merges and never edits the canonical Knowledge Graph.
+
+
+## Self-monitoring rule
+
+The scanner lives inside `aiwebcpu`, so tracking that repository's HEAD would create an acceptance loop:
+
+```text
+accept scanner baseline → new aiwebcpu HEAD → scanner detects itself → accept again → ...
+```
+
+V0.4 prevents this by using path-only monitoring for `repo:aiwebcpu`:
+
+- `trackHead: false`
+- `trackExactHeadWorkflow: false`
+- scanner/config/workflow/web-controller/canonical-graph files remain tracked by blob SHA
+
+Other repositories keep HEAD + exact-head CI tracking.
