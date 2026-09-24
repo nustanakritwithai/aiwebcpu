@@ -38,6 +38,8 @@ export async function githubJson(url,{token=process.env.GITHUB_TOKEN||process.en
 
 export async function collectRepository(entry,{token}={}){
   const base=`https://api.github.com/repos/${entry.repo}`;
+  const trackHead=entry.trackHead!==false;
+  const trackExactHeadWorkflow=entry.trackExactHeadWorkflow!==false;
   const commit=await githubJson(`${base}/commits/${encodeURIComponent(entry.branch)}`,{token});
   const head={
     sha:commit.sha,
@@ -56,28 +58,34 @@ export async function collectRepository(entry,{token}={}){
       : {path,sha:null,status:'missing'});
   }
 
-  const runs=await githubJson(
-    `${base}/actions/runs?branch=${encodeURIComponent(entry.branch)}&status=completed&per_page=30`,
-    {token}
-  );
-  const exact=(runs.workflow_runs??[]).find(run=>run.head_sha===head.sha)??null;
   let exactHeadWorkflow;
-  if(!exact){
-    exactHeadWorkflow={verdict:'UNKNOWN',reason:'no-completed-workflow-run-for-head'};
+  if(!trackExactHeadWorkflow){
+    exactHeadWorkflow={verdict:'UNKNOWN',reason:'exact-head-workflow-tracking-disabled-by-config'};
   }else{
-    exactHeadWorkflow={
-      verdict:exact.conclusion==='success'?'SAT':'VIOL',
-      conclusion:exact.conclusion,
-      name:exact.name,
-      runId:exact.id,
-      url:exact.html_url
-    };
+    const runs=await githubJson(
+      `${base}/actions/runs?branch=${encodeURIComponent(entry.branch)}&status=completed&per_page=30`,
+      {token}
+    );
+    const exact=(runs.workflow_runs??[]).find(run=>run.head_sha===head.sha)??null;
+    if(!exact){
+      exactHeadWorkflow={verdict:'UNKNOWN',reason:'no-completed-workflow-run-for-head'};
+    }else{
+      exactHeadWorkflow={
+        verdict:exact.conclusion==='success'?'SAT':'VIOL',
+        conclusion:exact.conclusion,
+        name:exact.name,
+        runId:exact.id,
+        url:exact.html_url
+      };
+    }
   }
 
   return {
     id:entry.id,
     repo:entry.repo,
     branch:entry.branch,
+    trackHead,
+    trackExactHeadWorkflow,
     head,
     exactHeadWorkflow,
     evidenceFiles
@@ -127,7 +135,7 @@ export function compareStates(baseline,latest){
     }
     if(!before||!after)continue;
 
-    if(before.head?.sha!==after.head?.sha){
+    if(after.trackHead!==false&&before.head?.sha!==after.head?.sha){
       candidates.push({
         id:candidateId([id,'HEAD_CHANGED',before.head?.sha,after.head?.sha]),
         repoId:id,repo:after.repo,kind:'HEAD_CHANGED',verdict:'UNKNOWN',
@@ -137,7 +145,7 @@ export function compareStates(baseline,latest){
       });
     }
 
-    if(!same(before.exactHeadWorkflow,after.exactHeadWorkflow)){
+    if(after.trackExactHeadWorkflow!==false&&!same(before.exactHeadWorkflow,after.exactHeadWorkflow)){
       candidates.push({
         id:candidateId([id,'CI_CHANGED',after.head?.sha,after.exactHeadWorkflow?.verdict,after.exactHeadWorkflow?.runId]),
         repoId:id,repo:after.repo,kind:'CI_CHANGED',verdict:'UNKNOWN',
