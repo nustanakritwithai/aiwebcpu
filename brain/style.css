@@ -523,3 +523,149 @@ body.temporal-past #graph-card .graph-head::after{
   .scanner-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
   .scanner-repos,.scanner-candidates{grid-template-columns:1fr}
 }
+
+
+/* Full Repository Catalog */
+.catalog-panel{
+  padding:14px;
+  display:grid;
+  gap:12px;
+  scroll-margin-top:64px;
+  background:
+    radial-gradient(circle at 86% 0,#245b8a22 0,transparent 32%),
+    linear-gradient(180deg,rgba(13,28,46,.97),rgba(7,18,31,.97));
+}
+.catalog-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+}
+.catalog-head h2{margin:.15rem 0;font-size:1.05rem}
+.catalog-head p{margin:.2rem 0;color:var(--muted);font-size:.76rem}
+.catalog-status{
+  min-height:30px;
+  display:grid;
+  place-items:center;
+  padding:5px 9px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  color:var(--muted);
+  font-size:.64rem;
+  font-weight:800;
+}
+.catalog-status.ok{color:var(--green);border-color:#28654c;background:#0b291e}
+.catalog-status.bad{color:var(--red);border-color:#71333b;background:#2c1116}
+.catalog-metrics{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+}
+.catalog-metrics article{
+  min-height:76px;
+  padding:10px;
+  display:grid;
+  align-content:center;
+  border:1px solid #18344c;
+  border-radius:13px;
+  background:#07131f;
+}
+.catalog-metrics small{font-size:.58rem;letter-spacing:.1em;color:var(--muted);font-weight:800}
+.catalog-metrics b{font-size:1.25rem;color:var(--cyan)}
+.catalog-metrics span{font-size:.64rem;color:var(--muted)}
+.catalog-controls{display:grid;gap:8px}
+#catalog-search{
+  width:100%;
+  min-height:42px;
+  border:1px solid var(--border);
+  border-radius:11px;
+  background:#06101d;
+  color:var(--text);
+  padding:9px 11px;
+  outline:none;
+}
+#catalog-search:focus{border-color:var(--cyan);box-shadow:0 0 0 2px #32d6ff1d}
+.catalog-filters{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.catalog-filters::-webkit-scrollbar{display:none}
+.catalog-filters button{
+  flex:0 0 auto;
+  min-height:34px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:#07121e;
+  color:var(--muted);
+  padding:6px 9px;
+  font-size:.68rem;
+  cursor:pointer;
+}
+.catalog-filters button.active{color:#dff8ff;border-color:#2a6784;background:#0c2740}
+.catalog-summary-line{color:var(--muted);font-size:.7rem;font-variant-numeric:tabular-nums}
+.catalog-repos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:8px;
+}
+.catalog-repo{
+  min-width:0;
+  border:1px solid #173149;
+  border-radius:13px;
+  background:#07131f;
+  padding:10px;
+}
+.catalog-repo-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:8px;
+}
+.catalog-repo-title a{
+  display:block;
+  color:var(--text);
+  text-decoration:none;
+  font-size:.8rem;
+  font-weight:800;
+  overflow-wrap:anywhere;
+}
+.catalog-repo-title small{display:block;color:var(--muted);font-size:.62rem;margin-top:3px}
+.catalog-badges,.catalog-signals{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.catalog-badge{
+  border:1px solid #203c54;
+  border-radius:999px;
+  padding:4px 6px;
+  color:var(--muted);
+  font-size:.58rem;
+  font-weight:700;
+}
+.catalog-badge.ci-SAT{color:var(--green);border-color:#28654c}
+.catalog-badge.ci-VIOL{color:var(--red);border-color:#71333b}
+.catalog-badge.ci-UNKNOWN,.catalog-badge.semantic{color:var(--yellow);border-color:#655426}
+.catalog-badge.private,.catalog-badge.manual{color:var(--purple)}
+.catalog-badge.empty{color:var(--orange)}
+.catalog-badge.signal{color:var(--cyan)}
+.catalog-headline{display:flex;justify-content:space-between;gap:8px;margin-top:9px;color:var(--muted);font-size:.64rem}
+.catalog-headline code{color:#c1ebff}
+.catalog-repo p{margin:.4rem 0;color:var(--muted);font-size:.7rem;line-height:1.42}
+.catalog-files,.catalog-muted{color:#718b9d;font-size:.6rem}
+.catalog-boundary{
+  margin:0;
+  padding-top:9px;
+  border-top:1px solid #153049;
+  color:var(--muted);
+  font-size:.68rem;
+  line-height:1.5;
+}
+.catalog-boundary b{color:var(--yellow)}
+.catalog-empty{
+  grid-column:1/-1;
+  border:1px dashed #26445c;
+  border-radius:12px;
+  padding:18px;
+  text-align:center;
+  color:var(--muted);
+  font-size:.72rem;
+}
+@media(max-width:620px){
+  .catalog-head{display:grid}
+  .catalog-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .catalog-repos{grid-template-columns:1fr}
+}
