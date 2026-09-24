@@ -8,7 +8,7 @@
     "scanIntervalHours": 6,
     "principle": "Mechanical repository facts may be collected automatically. Capability meaning requires verification before entering the canonical graph.",
     "catalogPath": "project-brain/catalog/repositories.json",
-    "privateRepositories": "catalog-only-until-cross-repo-credential",
+    "privateRepositories": "omitted-from-public-dataset-until-authenticated-private-layer",
     "totalCatalogRepositories": 37
   },
   "repositories": [
