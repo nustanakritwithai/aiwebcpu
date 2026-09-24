@@ -1,7 +1,7 @@
 ---
 type: project-brain-architecture
 version: 0.3
-status: candidate
+status: verified
 updated: 2026-09-24
 ---
 
@@ -86,3 +86,11 @@ node project-brain/query.mjs snapshot pb-2026-09-24-compat
 - interval ต้องอ้าง checkpoint ที่มีจริง
 - `activeUntil` เป็น exclusive และต้องอยู่หลัง `activeFrom`
 - temporal property ranges ห้าม overlap
+
+
+## Verified release
+
+- Merge commit: `d4e41bbf071a86f0f34d9e4e3675ade9e2526fd1`
+- Project Brain CI: SAT
+- Temporal schema/query/viewer contract: SAT
+- Current checkpoint: `pb-2026-09-24-temporal-v03`
