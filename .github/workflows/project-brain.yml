@@ -7,12 +7,14 @@ on:
       - "project-brain/**"
       - "brain/**"
       - ".github/workflows/project-brain.yml"
+      - ".github/workflows/project-brain-scan.yml"
   push:
     branches: [main]
     paths:
       - "project-brain/**"
       - "brain/**"
       - ".github/workflows/project-brain.yml"
+      - ".github/workflows/project-brain-scan.yml"
 
 permissions:
   contents: read
