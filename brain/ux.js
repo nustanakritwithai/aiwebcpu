@@ -1,10 +1,11 @@
 const UX_PREF='project-brain:ux:v021';
 const PRESETS={
-  all:['PROJECT','CAPABILITY','EVIDENCE','GOAL','ISSUE','INTEGRATION','VERSION'],
+  all:['PROJECT','CAPABILITY','CAPABILITY_CANDIDATE','EVIDENCE','GOAL','ISSUE','INTEGRATION','VERSION'],
   core:['PROJECT','CAPABILITY','GOAL','INTEGRATION'],
-  reuse:['PROJECT','CAPABILITY','GOAL','INTEGRATION','EVIDENCE'],
+  documented:['PROJECT','CAPABILITY_CANDIDATE','EVIDENCE'],
+  reuse:['PROJECT','CAPABILITY','CAPABILITY_CANDIDATE','GOAL','INTEGRATION','EVIDENCE'],
   problems:['PROJECT','GOAL','INTEGRATION','ISSUE','EVIDENCE'],
-  evidence:['PROJECT','CAPABILITY','EVIDENCE','ISSUE']
+  evidence:['PROJECT','CAPABILITY','CAPABILITY_CANDIDATE','EVIDENCE','ISSUE']
 };
 
 let graph=null;
@@ -110,7 +111,7 @@ function enhanceDetailActions(){
   if(!node||detail.querySelector('.detail-actions'))return;
   const outgoing=(graph?.edges||[]).filter(e=>e.from===id);
   const incoming=(graph?.edges||[]).filter(e=>e.to===id);
-  const evidence=[...outgoing,...incoming].filter(e=>e.type==='VERIFIED_BY').length;
+  const evidence=[...outgoing,...incoming].filter(e=>e.type==='VERIFIED_BY'||e.type==='DOCUMENTED_BY').length;
   const actions=document.createElement('div');
   actions.className='detail-actions';
   if(node.repo){
