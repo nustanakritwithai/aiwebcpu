@@ -30,3 +30,26 @@ test('viewer discloses V0.2 timeline limitation',()=>{
   assert.match(html,/historical graph replay/);
   assert.match(html,/V0\.2: event timeline/);
 });
+
+
+test('UX V0.2.1 exposes quick presets, focus mode and mobile detail sheet',()=>{
+  for(const id of ['metric-nodes','metric-relations','metric-evidence','focus-mode','detail-backdrop'])assert.match(html,new RegExp(`id=[\"']${id}[\"']`));
+  for(const preset of ['all','core','reuse','problems','evidence'])assert.match(html,new RegExp(`data-preset=[\"']${preset}[\"']`));
+  assert.match(css,/body\.detail-open \.detail/);
+  assert.match(css,/\.brain-pulse/);
+});
+
+test('viewer loads a reusable UX layer with deep links and persisted presets',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  assert.match(html,/src=[\"']\.\/ux\.js[\"']/);
+  assert.match(ux,/searchParams\.get\('node'\)/);
+  assert.match(ux,/localStorage\.setItem\(UX_PREF/);
+  assert.match(ux,/PRESETS/);
+  assert.match(ux,/fetch\('\.\.\/project-brain\/graph\/project-brain\.json'/);
+});
+
+test('focus UX reuses the graph engine dimming contract instead of rebuilding layout',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  assert.match(css,/body\.ux-focus \.node\.dim/);
+  assert.doesNotMatch(ux,/settle\(/);
+});
