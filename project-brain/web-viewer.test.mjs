@@ -267,9 +267,10 @@ test('Complete Graph Coverage V0.5.3 renders documented capability candidates',a
   assert.match(html,/data-preset=["']documented["']/);
 });
 
-test('large complete graph uses bounded layout iterations',()=>{
-  assert.match(js,/nodes\.length>180\?130/);
+test('large complete graph uses bounded adaptive layout iterations',()=>{
+  assert.match(js,/nodes\.length>180\?110:nodes\.length>100\?170:nodes\.length>60\?240:320/);
   assert.match(js,/const iterations=/);
+  assert.match(js,/const minDistance=nodes\.length<=60\?70/);
 });
 
 
