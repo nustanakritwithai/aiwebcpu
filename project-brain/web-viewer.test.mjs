@@ -116,7 +116,7 @@ test('catalog web layer does not embed a second 37-repository dataset',async()=>
 });
 
 test('catalog UI keeps semantic UNKNOWN visible while showing mechanical CI',()=>{
-  assert.match(html,/ทุก repo ยังมี <b>semanticStatus = UNKNOWN<\/b>/);
+  assert.match(html,/ทุก persisted repo ยังมี <b>semanticStatus = UNKNOWN<\/b>/);
   assert.match(css,/catalog-badge\.ci-SAT/);
   assert.match(css,/catalog-badge\.ci-VIOL/);
   assert.match(css,/catalog-badge\.semantic/);
