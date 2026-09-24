@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: nustanakritwithai/PocketMonster
-          ref: f0a776449a0ef9b917fb0bcbaee952a44c343816
+          ref: ca663c5ccd6411ec2db9d9b8a4825e2c5fff9cc0
           path: .qa/pocket
           persist-credentials: false
       - uses: actions/checkout@v4
@@ -30,7 +30,7 @@ jobs:
           persist-credentials: false
       - name: Verify pinned pair identities
         run: |
-          test "$(git -C .qa/pocket rev-parse HEAD)" = 'f0a776449a0ef9b917fb0bcbaee952a44c343816'
+          test "$(git -C .qa/pocket rev-parse HEAD)" = 'ca663c5ccd6411ec2db9d9b8a4825e2c5fff9cc0'
           test "$(git -C .qa/pirate rev-parse HEAD)" = 'c8c725e8a12e6723a8015e74566965ae18218ff2'
       - uses: actions/setup-node@v4
         with:
@@ -45,6 +45,14 @@ jobs:
         env:
           PAIR_REPORT_PATH: runtime-pair-report.json
         run: node project-brain/cross-project/runtime-pocket-pirate.mjs .qa/pocket .qa/pirate
+      - name: Verify the shipped native entry and complete parent regression chain
+        working-directory: .qa/pocket
+        run: |
+          node -e "const fs=require('fs'),crypto=require('crypto'); const p='pirate-fruit-offline/assets/index-D3UrpAn_.js'; if(crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex')!=='1e79f3e0dae4c2b8865aae6393e30f43517ffe5982dd125d77beb4f2a9703f4e') throw new Error('native byte mismatch');"
+          node scripts/build-github-pages.mjs --write-root-manifest
+          npm run check
+          npm run test:v90:pirate-player
+          node tests/v90-unified-pages-artifact.mjs
       - name: Preserve exact pair and runtime evidence
         if: always()
         run: |
@@ -57,3 +65,20 @@ jobs:
           path: runtime-pair-*
           if-no-files-found: error
           retention-days: 14
+  backend-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: nustanakritwithai/PocketMonster
+          ref: ca663c5ccd6411ec2db9d9b8a4825e2c5fff9cc0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Read-only inherited backend compatibility preflight
+        env:
+          MONSTERLIFE_EXPECTED_SHA: ca663c5ccd6411ec2db9d9b8a4825e2c5fff9cc0
+          MONSTERLIFE_EXPECTED_API_BASE_URL: 'https://157.85.96.139'
+        run: node scripts/verify-live-v9-deployment.mjs backend
