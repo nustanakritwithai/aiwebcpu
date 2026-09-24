@@ -2061,3 +2061,25 @@ body.detail-open .detail-backdrop{display:block}
     min-height:500px;
   }
 }
+
+
+/* Adaptive Graph Layout V0.5.5 */
+#graph[data-density="comfortable"] .node text{
+  font-size:11px;
+  stroke-width:3.5px;
+}
+#graph[data-density="comfortable"] .node .meta{
+  font-size:8px;
+}
+#graph[data-density="compact"] .node text{
+  font-size:9px;
+}
+#graph[data-density="compact"] .node .meta{
+  font-size:7px;
+}
+#graph[data-density="dense"] .node text{
+  font-size:7.5px;
+}
+#graph[data-density="dense"] .node .meta{
+  display:none;
+}
