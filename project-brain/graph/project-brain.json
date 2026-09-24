@@ -5174,6 +5174,7 @@
     "publicRepositories": 33,
     "documentedCapabilities": 116,
     "documentationEvidenceFiles": 42,
-    "semanticRule": "DOCUMENTED capability candidates remain reuseDecision=UNKNOWN until a goal-specific verifier contract resolves them."
+    "semanticRule": "DOCUMENTED capability candidates remain reuseDecision=UNKNOWN until a goal-specific verifier contract resolves them.",
+    "activeFrom": "pb-2026-09-25-graph-coverage-v053"
   }
 }
