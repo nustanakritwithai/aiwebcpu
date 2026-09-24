@@ -311,7 +311,12 @@ function installSearchEnter(){
 
 function installGraphHooks(){
   qs('#focus-mode')?.addEventListener('click',()=>setFocus(!focusMode));
-  qsa('[data-preset]').forEach(b=>b.addEventListener('click',()=>setPreset(b.dataset.preset)));
+  qsa('[data-preset]').forEach(b=>b.addEventListener('click',()=>{
+    setPreset(b.dataset.preset);
+    if(matchMedia('(max-width:1180px), (pointer:coarse) and (orientation:portrait)').matches){
+      b.closest('.graph-options')?.removeAttribute('open');
+    }
+  }));
   qs('#detail-backdrop')?.addEventListener('click',()=>qs('#reset-selection')?.click());
   qs('#reset-selection')?.addEventListener('click',()=>queueMicrotask(closeDetailSheet));
   qs('#graph')?.addEventListener('click',event=>{
@@ -320,13 +325,15 @@ function installGraphHooks(){
     setTimeout(closeDetailSheet,0);
   },true);
   const typeFilters=qs('#type-filters');
-  typeFilters?.addEventListener('click',()=>setTimeout(()=>{
+  typeFilters?.addEventListener('click',()=>{
     if(applyingPreset)return;
-    activePreset='custom';
-    qsa('[data-preset]').forEach(x=>x.classList.remove('active'));
-    updateFilterCount();
-    writePrefs();
-  },0));
+    setTimeout(()=>{
+      activePreset='custom';
+      qsa('[data-preset]').forEach(x=>x.classList.remove('active'));
+      updateFilterCount();
+      writePrefs();
+    },0);
+  });
 }
 
 function installDetailObserver(){
