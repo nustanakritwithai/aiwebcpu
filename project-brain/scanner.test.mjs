@@ -69,3 +69,34 @@ test('scanner monitors the four V0.4 bootstrap repositories',()=>{
     ['repo:aiwebcpu','repo:testge','repo:astralife','repo:simclone']
   );
 });
+
+
+test('self repo HEAD-only change does not create scanner churn',()=>{
+  const next=structuredClone(baseline);
+  next.repositories['repo:aiwebcpu'].head={
+    ...next.repositories['repo:aiwebcpu'].head,
+    sha:'ffffffffffffffffffffffffffffffffffffffff'
+  };
+  const rows=compareStates(baseline,next);
+  assert.equal(rows.some(x=>x.repoId==='repo:aiwebcpu'&&x.kind==='HEAD_CHANGED'),false);
+  assert.equal(rows.length,0);
+});
+
+test('self repo tracked file change still creates an UNKNOWN candidate',()=>{
+  const next=structuredClone(baseline);
+  const file=next.repositories['repo:aiwebcpu'].evidenceFiles.find(x=>x.path==='project-brain/scanner/scanner.mjs');
+  file.sha='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
+  const rows=compareStates(baseline,next);
+  assert.equal(rows.length,1);
+  assert.equal(rows[0].kind,'EVIDENCE_FILE_CHANGED');
+  assert.equal(rows[0].verdict,'UNKNOWN');
+});
+
+test('self repo disables exact-head workflow tracking while other repos retain it',()=>{
+  const selfConfig=config.repositories.find(x=>x.id==='repo:aiwebcpu');
+  const simcloneConfig=config.repositories.find(x=>x.id==='repo:simclone');
+  assert.equal(selfConfig.trackHead,false);
+  assert.equal(selfConfig.trackExactHeadWorkflow,false);
+  assert.notEqual(simcloneConfig.trackHead,false);
+  assert.notEqual(simcloneConfig.trackExactHeadWorkflow,false);
+});
