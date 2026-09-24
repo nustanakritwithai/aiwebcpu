@@ -282,7 +282,7 @@ test('Graph Focus UX V0.5.4 removes secondary dashboards from Graph view',async(
   assert.match(css,/\.graph-card \.legend\{display:none!important\}/);
   assert.match(css,/\.workspace\[data-pb-view="graph"\]\{\s*display:block/);
   assert.match(css,/\.workspace>\.detail\{\s*position:fixed/);
-  assert.match(ux,/const UX_PREF='project-brain:ux:v057'/);
+  assert.match(ux,/const UX_PREF='project-brain:ux:v058'/);
 });
 
 test('Graph Focus UX defaults to Core and keeps relation labels opt-in',async()=>{
@@ -425,7 +425,7 @@ test('Tap Detail Reliability V0.5.7 opens the menu from node-selected only',asyn
 });
 
 test('node selection event is emitted only after detail content is rendered',()=>{
-  const selectStart=js.indexOf('function selectNode(id)');
+  const selectStart=js.indexOf('function selectNode(id,');
   const selectEnd=js.indexOf('\nfunction setupFilters',selectStart);
   const block=js.slice(selectStart,selectEnd);
   const detailIndex=block.indexOf('detail.innerHTML=');
