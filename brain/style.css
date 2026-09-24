@@ -365,3 +365,161 @@ body.temporal-past #graph-card .graph-head::after{
   .time-semantics{font-size:.65rem}
   .svg-wrap{height:calc(100svh - 500px);min-height:360px}
 }
+
+
+/* GitHub Scanner V0.4 */
+.scanner-panel{
+  padding:14px;
+  display:grid;
+  gap:13px;
+  scroll-margin-top:64px;
+  background:
+    radial-gradient(circle at 88% 0,#174d3a22 0,transparent 34%),
+    linear-gradient(180deg,rgba(13,28,46,.97),rgba(7,18,31,.97));
+}
+.scanner-head,.scanner-inbox-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+}
+.scanner-head h2,.scanner-inbox h3,.scanner-panel h3{margin:.15rem 0;font-size:1rem}
+.scanner-head p,.scanner-inbox-head p{margin:.2rem 0;color:var(--muted);font-size:.76rem}
+.scanner-head-actions{display:flex;align-items:center;gap:7px;flex-shrink:0}
+#scanner-refresh,#scanner-pr-link{
+  min-height:38px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:8px 10px;
+  background:#081725;
+  color:var(--text);
+  text-decoration:none;
+  cursor:pointer;
+  font-size:.73rem;
+}
+.scanner-status{
+  min-height:30px;
+  display:grid;
+  place-items:center;
+  padding:5px 9px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  color:var(--muted);
+  font-size:.66rem;
+  font-weight:800;
+  white-space:nowrap;
+}
+.scanner-status.ok{color:var(--green);border-color:#28654c;background:#0b291e}
+.scanner-status.warn{color:var(--yellow);border-color:#6d5923;background:#2a230d}
+.scanner-status.unknown{color:var(--yellow);border-color:#6d5923}
+.scanner-status.bad{color:var(--red);border-color:#71333b;background:#2c1116}
+.scanner-metrics{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+}
+.scanner-metrics article{
+  min-height:78px;
+  border:1px solid #19334b;
+  border-radius:13px;
+  background:#07131f;
+  padding:10px;
+  display:grid;
+  align-content:center;
+}
+.scanner-metrics small{font-size:.58rem;letter-spacing:.1em;color:var(--muted);font-weight:800}
+.scanner-metrics b{font-size:1.25rem;color:var(--cyan)}
+.scanner-metrics span{font-size:.65rem;color:var(--muted)}
+#scanner-semantic{color:var(--yellow);font-size:.95rem}
+.scanner-policy{display:flex;gap:7px;flex-wrap:wrap}
+.scanner-policy span{
+  border:1px solid #1a344d;
+  background:#07121e;
+  color:var(--muted);
+  border-radius:999px;
+  padding:6px 9px;
+  font-size:.67rem;
+}
+.scanner-policy b{color:var(--yellow)}
+.scanner-repos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:8px;
+  margin-top:8px;
+}
+.scanner-repo,.scanner-candidate{
+  border:1px solid #173149;
+  border-radius:13px;
+  background:#07131f;
+  padding:10px;
+  min-width:0;
+}
+.scanner-repo-top,.scanner-candidate-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+}
+.scanner-repo strong,.scanner-candidate strong{font-size:.78rem;overflow-wrap:anywhere}
+.scanner-repo code,.scanner-candidate code{
+  display:block;
+  margin-top:7px;
+  color:#bfe8ff;
+  font-size:.68rem;
+  overflow-wrap:anywhere;
+}
+.scanner-repo p,.scanner-candidate p{
+  margin:.42rem 0;
+  color:var(--muted);
+  font-size:.7rem;
+  line-height:1.45;
+}
+.scanner-repo small{color:#718b9d;font-size:.63rem}
+.scanner-verdict{
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:4px 7px;
+  font-size:.6rem;
+  font-weight:800;
+}
+.scanner-verdict.SAT,.scanner-candidate .SAT{color:var(--green)}
+.scanner-verdict.VIOL,.scanner-candidate .VIOL{color:var(--red)}
+.scanner-verdict.UNKNOWN{color:var(--yellow)}
+.scanner-kind{
+  color:var(--cyan);
+  font-size:.62rem;
+  font-weight:800;
+  letter-spacing:.04em;
+}
+.scanner-inbox{
+  border-top:1px solid #153049;
+  padding-top:11px;
+}
+.scanner-candidates{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:8px;
+  margin-top:8px;
+}
+.scanner-empty{
+  border:1px dashed #26445c;
+  border-radius:12px;
+  padding:18px;
+  color:var(--muted);
+  font-size:.72rem;
+  text-align:center;
+}
+.scanner-boundary{
+  margin:0;
+  padding-top:9px;
+  border-top:1px solid #153049;
+  color:var(--muted);
+  font-size:.68rem;
+  line-height:1.5;
+}
+@media(max-width:620px){
+  .scanner-head,.scanner-inbox-head{display:grid}
+  .scanner-head-actions{justify-content:space-between}
+  .scanner-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .scanner-repos,.scanner-candidates{grid-template-columns:1fr}
+}
