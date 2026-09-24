@@ -588,8 +588,8 @@ test('PocketMonster x Pirate Fruit V0.6.3 records paired draft heads and authori
   for(const row of [pocket,pirate])assert.ok(row);
   assert.equal(pocket.crossProjectIntegration.pocket.pullRequest,632);
   assert.equal(pocket.crossProjectIntegration.pirate.pullRequest,168);
-  assert.equal(pocket.crossProjectIntegration.pocket.gateVerdict,'VIOL');
-  assert.equal(pocket.crossProjectIntegration.pirate.gateVerdict,'VIOL');
+  assert.equal(pocket.crossProjectIntegration.pocket.gateVerdict,'SAT');
+  assert.equal(pocket.crossProjectIntegration.pirate.gateVerdict,'RUNNING');
   assert.match(pocket.crossProjectIntegration.pocket.head,/^[0-9a-f]{40}$/);
   assert.match(pirate.crossProjectIntegration.pirate.head,/^[0-9a-f]{40}$/);
   assert.ok(pocket.architecture.some(row=>row.label==='PR #632 — Pirate vitals relay'));
