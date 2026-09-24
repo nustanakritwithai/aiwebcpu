@@ -1,0 +1,62 @@
+name: Pocket Pirate Runtime Review Assets
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/project-brain-runtime-review.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  review-assets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: nustanakritwithai/PocketMonster
+          ref: ba1347d8537519543669273c7964d8c6079c57b2
+          path: .qa/pocket
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: nustanakritwithai/Pirate-fruit-
+          ref: f08ed860162fb27d33332c8d31d1c1f3d4cbb32d
+          path: .qa/pirate
+          persist-credentials: false
+      - name: Capture only tracked source and exact identities
+        run: |
+          mkdir -p review-assets
+          git rev-parse HEAD > review-assets/brain-sha.txt
+          git -C .qa/pocket rev-parse HEAD > review-assets/pocket-sha.txt
+          git -C .qa/pirate rev-parse HEAD > review-assets/pirate-sha.txt
+          git archive HEAD | gzip > review-assets/brain-source.tar.gz
+          git -C .qa/pocket archive HEAD | gzip > review-assets/pocket-source.tar.gz
+          git -C .qa/pirate archive HEAD | gzip > review-assets/pirate-source.tar.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pinned-runtime-review-sources
+          path: review-assets/
+          retention-days: 7
+          if-no-files-found: error
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build pinned native Pirate and central worker
+        working-directory: .qa/pirate
+        run: |
+          npm ci --include=dev
+          npm run build
+          npm run build:central-worker --workspace=pirate-fruit-server
+      - name: Preserve build and bundler for reproducible offline review
+        run: |
+          tar -czf review-assets/pirate-build.tar.gz -C .qa/pirate client/dist server/dist shared/dist node_modules/esbuild node_modules/@esbuild
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pinned-runtime-review-build
+          path: review-assets/pirate-build.tar.gz
+          retention-days: 7
+          if-no-files-found: error
