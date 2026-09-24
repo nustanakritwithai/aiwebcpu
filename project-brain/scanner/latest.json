@@ -80,13 +80,8 @@
       },
       "evidenceFiles": [
         {
-          "path": "README.md",
-          "sha": "4e5d46ada3ff7bf66759132b518088d723aaacd7",
-          "status": "present"
-        },
-        {
-          "path": "project-brain/graph/project-brain.json",
-          "sha": "77d03fc7fefc2808c4f25ea0d0fc5d75cba1a68c",
+          "path": ".github/workflows/project-brain-scan.yml",
+          "sha": "0ed31f7823f1ffe159baabe81e5e6d537ffbd819",
           "status": "present"
         },
         {
@@ -95,23 +90,33 @@
           "status": "present"
         },
         {
+          "path": "brain/scanner.js",
+          "sha": "9f1a507f977cc2e4fe98fc142c44dc7de88c6c18",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/catalog/repositories.json",
+          "sha": "9bb2fbbce17723c0d826c7da6ee9f1de3418dcbc",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/graph/project-brain.json",
+          "sha": "77d03fc7fefc2808c4f25ea0d0fc5d75cba1a68c",
+          "status": "present"
+        },
+        {
           "path": "project-brain/scanner/config.json",
-          "sha": "01972efecf31dd43752e5a4cf6e12a82f76c51a3",
+          "sha": "ea384147b420a86b0fafb6270a68e4626ac7e3b3",
           "status": "present"
         },
         {
           "path": "project-brain/scanner/scanner.mjs",
-          "sha": "31feb19bbe409177697bf334782ecd6832242f49",
+          "sha": "a13c9712f7ebfa77381436ecdf27dbcdc54eb4f6",
           "status": "present"
         },
         {
-          "path": ".github/workflows/project-brain-scan.yml",
-          "sha": "0ed31f7823f1ffe159baabe81e5e6d537ffbd819",
-          "status": "present"
-        },
-        {
-          "path": "brain/scanner.js",
-          "sha": "9f1a507f977cc2e4fe98fc142c44dc7de88c6c18",
+          "path": "README.md",
+          "sha": "4e5d46ada3ff7bf66759132b518088d723aaacd7",
           "status": "present"
         }
       ]
