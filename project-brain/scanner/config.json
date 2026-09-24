@@ -48,7 +48,15 @@
         "project-brain/scanner/scanner.mjs",
         "project-brain/capability-inventory/repositories.json",
         "project-brain/capability-inventory/README.md",
-        "brain/capabilities.js"
+        "brain/capabilities.js",
+        "project-brain/verifier/verifier.mjs",
+        "project-brain/verifier/README.md",
+        "project-brain/verifier/index.json",
+        "project-brain/verifier/contracts/simclone-time-travel.json",
+        "project-brain/verifier/reports/simclone-time-travel.json",
+        "project-brain/verifier/patches/simclone-time-travel.json",
+        "brain/verifier.js",
+        "project-brain/query.mjs"
       ]
     },
     {

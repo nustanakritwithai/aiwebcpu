@@ -167,3 +167,49 @@ reuseDecision = UNKNOWN
 ```
 
 Capability จะเข้า canonical graph เมื่อมี goal จริงแล้วผ่าน compatibility + verification เท่านั้น
+
+
+## Verifier V0.5
+
+[Verifier](verifier/README.md)
+
+Goal-specific verification now sits between the Capability Inventory and canonical graph:
+
+```text
+Capability Inventory (DOCUMENTED)
+        ↓
+Goal Contract
+        ↓
+Verifier
+        ↓
+SAT / VIOL / UNKNOWN
+        ↓
+REUSE / ADAPT / BUILD
+        ↓
+Graph Patch Candidate
+        ↓
+Review
+        ↓
+Canonical Graph
+```
+
+Current proof:
+
+```bash
+node project-brain/verifier/verifier.mjs verify \
+  --contract project-brain/verifier/contracts/simclone-time-travel.json
+```
+
+Agent query:
+
+```bash
+node project-brain/query.mjs verification simclone-time-travel
+```
+
+Rules:
+- UNKNOWN is never PASS
+- DOCUMENTED is not VERIFIED
+- exact-head CI is not semantic proof by itself
+- stale evidence SHA is VIOL
+- missing capability is UNKNOWN
+- graph patches are never auto-applied or auto-merged

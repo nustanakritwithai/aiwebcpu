@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "0.1",
+  "id": "simclone-time-travel",
+  "goalId": "goal:simclone-time-travel",
+  "goal": "Simclone ย้อนเวลาได้โดยคง deterministic authoritative engine เดิม",
+  "defaults": {
+    "ciPolicy": "ignore"
+  },
+  "requiredCandidates": [
+    "testge-rollback",
+    "testge-replay",
+    "simclone-deterministic-engine"
+  ],
+  "candidates": [
+    {
+      "id": "testge-rollback",
+      "repoId": "repo:testge",
+      "capability": "Checkpoint rollback replay and time travel",
+      "decision": "ADAPT",
+      "adaptations": [
+        "Use TestGE history contract around Simclone serialized checkpoints instead of direct ARRAY_FIELDS history reuse."
+      ],
+      "checks": [
+        {
+          "id": "history-contract-exists",
+          "verdict": "SAT",
+          "reason": "Prior compatibility analysis verified TestGE rollback/replay capability exists.",
+          "evidence": [
+            "ev:testge-history-source"
+          ]
+        },
+        {
+          "id": "direct-module-compatible",
+          "verdict": "VIOL",
+          "required": false,
+          "reason": "Direct TestGE history module reuse is incompatible with Simclone whole-world state model; this is why ADAPT is required.",
+          "evidence": [
+            "ev:direct-history-compatibility"
+          ]
+        },
+        {
+          "id": "adapter-path-defined",
+          "verdict": "SAT",
+          "reason": "Compatibility analysis selected serialized-state adapter boundary.",
+          "evidence": [
+            "integration:simclone-testge-time-travel"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "testge-replay",
+      "repoId": "repo:testge",
+      "capability": "Checkpoint rollback replay and time travel",
+      "decision": "ADAPT",
+      "adaptations": [
+        "Replay through Simclone command/step contracts after checkpoint restore."
+      ],
+      "checks": [
+        {
+          "id": "replay-contract-exists",
+          "verdict": "SAT",
+          "reason": "TestGE replay/time-travel behavior is explicitly documented and source-inspected.",
+          "evidence": [
+            "ev:testge-history-source"
+          ]
+        },
+        {
+          "id": "simclone-event-list-is-replay",
+          "verdict": "VIOL",
+          "required": false,
+          "reason": "Simclone AGENTS explicitly says the event list is not a replay system."
+        },
+        {
+          "id": "command-journal-needed",
+          "verdict": "SAT",
+          "reason": "Adapter design requires successful command journal plus deterministic step continuation."
+        }
+      ]
+    },
+    {
+      "id": "simclone-deterministic-engine",
+      "repoId": "repo:simclone",
+      "capability": "Deterministic authoritative colony simulation",
+      "decision": "ADAPT",
+      "adaptations": [
+        "History wrapper must call existing serialize/restore/validate/step/command contracts without moving rules into the wrapper."
+      ],
+      "checks": [
+        {
+          "id": "authoritative-engine-boundary",
+          "verdict": "SAT",
+          "reason": "Simclone AGENTS documents src/engine.mjs as authoritative and deterministic."
+        },
+        {
+          "id": "preserve-save-contract",
+          "verdict": "SAT",
+          "reason": "Compatibility design keeps temporal history outside engine rule ownership and restores through existing persistence contracts."
+        }
+      ]
+    }
+  ]
+}

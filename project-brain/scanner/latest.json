@@ -100,6 +100,11 @@
           "status": "present"
         },
         {
+          "path": "brain/verifier.js",
+          "sha": "4af68e7e780d75cbce80a8bf17c8576884c68259",
+          "status": "present"
+        },
+        {
           "path": "project-brain/capability-inventory/README.md",
           "sha": "ddc1638b749d55ef641434e56ef241c286dfdb7a",
           "status": "present"
@@ -120,13 +125,48 @@
           "status": "present"
         },
         {
+          "path": "project-brain/query.mjs",
+          "sha": "21123af6dcee5b776a11c476ca340474617ae7b0",
+          "status": "present"
+        },
+        {
           "path": "project-brain/scanner/config.json",
-          "sha": "01c9506f000fa92ecbc1e895edd6387a1aca6a65",
+          "sha": "03bdd7d5b28fa36d2ddd44545bce89af47ea88be",
           "status": "present"
         },
         {
           "path": "project-brain/scanner/scanner.mjs",
           "sha": "a13c9712f7ebfa77381436ecdf27dbcdc54eb4f6",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/verifier/contracts/simclone-time-travel.json",
+          "sha": "cbbcba4caa853901149ad305d58949c37431f9dd",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/verifier/index.json",
+          "sha": "332799853e9078e3679b6889f5f014fbf1dd92a2",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/verifier/patches/simclone-time-travel.json",
+          "sha": "2fd3871eb824480ae509ba2477f855552599899a",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/verifier/README.md",
+          "sha": "86ad3c0b34133b5fc7d304b365ecea19c2524f08",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/verifier/reports/simclone-time-travel.json",
+          "sha": "a177851a67aec175eeaab6c65640378f08889efd",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/verifier/verifier.mjs",
+          "sha": "aff36f8b48207917c16df62a584864542603442a",
           "status": "present"
         },
         {

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "0.1",
+  "reports": [
+    {
+      "id": "simclone-time-travel",
+      "goal": "Simclone ย้อนเวลาได้โดยคง deterministic authoritative engine เดิม",
+      "contract": "contracts/simclone-time-travel.json",
+      "report": "reports/simclone-time-travel.json",
+      "patch": "patches/simclone-time-travel.json",
+      "overallVerdict": "SAT",
+      "recommendation": "ADAPT",
+      "proof": "CI executes verifier.mjs against current contract + inventory + catalog"
+    }
+  ]
+}
