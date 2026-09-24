@@ -386,8 +386,9 @@
       "id": "version:project-brain-v052",
       "type": "VERSION",
       "name": "Project Brain Decision Workspace V0.5.2",
-      "status": "current",
-      "activeFrom": "pb-2026-09-24-decision-workspace-v052"
+      "status": "superseded",
+      "activeFrom": "pb-2026-09-24-decision-workspace-v052",
+      "activeUntil": "pb-2026-09-25-graph-coverage-v053"
     },
     {
       "id": "repo:3js-player-block-asset-engine",
@@ -2974,6 +2975,23 @@
       ],
       "generatedBy": "catalog-inventory-sync-v1",
       "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "ev:project-brain-v053-coverage-ci",
+      "type": "EVIDENCE",
+      "name": "Project Brain V0.5.3 complete graph coverage CI",
+      "verdict": "SAT",
+      "scope": "PR #22 candidate head 8c91e78; deterministic catalog/inventory sync, 33 public repo coverage, 116 documented capability candidates, 42 documentation evidence files, query/UI coverage and graph drift guard",
+      "limitations": "Exact-main completed workflow for merge commit 760a3c6 was not observed at bookkeeping time. SAT verifies graph coverage/synchronization, not reuse compatibility of documented candidates.",
+      "source": "GitHub Actions run 36036814665",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "id": "version:project-brain-v053",
+      "type": "VERSION",
+      "name": "Project Brain Complete Graph Coverage V0.5.3",
+      "status": "current",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
     }
   ],
   "edges": [
@@ -4970,6 +4988,12 @@
       "claim": "Dependencies include Supabase client and PostgreSQL session/storage packages.",
       "generatedBy": "catalog-inventory-sync-v1",
       "activeFrom": "pb-2026-09-25-graph-coverage-v053"
+    },
+    {
+      "from": "version:project-brain-v053",
+      "to": "version:project-brain-v052",
+      "type": "SUPERSEDES",
+      "activeFrom": "pb-2026-09-25-graph-coverage-v053"
     }
   ],
   "timeline": [
@@ -5037,6 +5061,11 @@
       "date": "2026-09-24",
       "event": "Project Brain V0.5.2 adds a verified Goal-centered Decision Workspace that links canonical needs, documented evidence and explicit verifier outcomes without browser-side semantic inference",
       "source": "nustanakritwithai/aiwebcpu@3d46e1e"
+    },
+    {
+      "date": "2026-09-25",
+      "event": "Project Brain V0.5.3 synchronizes the canonical Knowledge Graph with all 33 public repositories, 116 documented capability candidates and their documentation evidence while preserving UNKNOWN reuse semantics",
+      "source": "nustanakritwithai/aiwebcpu@760a3c6"
     }
   ],
   "rules": {
