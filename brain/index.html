@@ -225,7 +225,7 @@
 
     <div class="global-search-results card" id="global-search-results" hidden></div>
 
-    <section class="time-machine card" id="time-machine" data-pb-view="graph" aria-label="Temporal Knowledge Graph">
+    <section class="time-machine card" id="time-machine" data-pb-view="history" aria-label="Temporal Knowledge Graph">
       <div class="time-head">
         <div>
           <p class="eyebrow">TEMPORAL KNOWLEDGE GRAPH</p>
@@ -417,36 +417,42 @@
       </p>
     </section>
 
-    <section class="controls card" data-pb-view="graph">
-      <label class="search">
-        <span>ค้นหา</span>
-        <input id="search" type="search" placeholder="เช่น rollback, Simclone, evidence">
-      </label>
-
-      <div class="preset-row" aria-label="มุมมองด่วน">
-        <span>มุมมองด่วน</span>
-        <button class="preset-chip active" data-preset="all" type="button">ทั้งหมด</button>
-        <button class="preset-chip" data-preset="core" type="button">Core</button>
-        <button class="preset-chip" data-preset="documented" type="button">Documented</button>
-        <button class="preset-chip" data-preset="reuse" type="button">Reuse</button>
-        <button class="preset-chip" data-preset="problems" type="button">Problems</button>
-        <button class="preset-chip" data-preset="evidence" type="button">Evidence</button>
-      </div>
-
-      <details class="filter-drawer">
-        <summary>ตัวกรองประเภท Node <span id="filter-count">ทั้งหมด</span></summary>
-        <div class="filters" id="type-filters" aria-label="กรองประเภท node"></div>
-      </details>
-
-      <div class="toolbar">
-        <button id="fit" type="button">พอดีจอ</button>
-        <button id="zoom-out" type="button" aria-label="ซูมออก">−</button>
-        <button id="zoom-in" type="button" aria-label="ซูมเข้า">＋</button>
-        <button id="focus-mode" type="button" aria-pressed="false">โฟกัสความสัมพันธ์</button>
-        <label class="toggle">
-          <input id="edge-labels" type="checkbox" checked>
-          <span>ชื่อ relation</span>
+    <section class="controls graph-controls card" data-pb-view="graph">
+      <div class="graph-control-main">
+        <label class="search">
+          <span>⌕</span>
+          <input id="search" type="search" placeholder="ค้นหา node ในกราฟ…">
         </label>
+
+        <div class="toolbar graph-quick-actions">
+          <button id="fit" type="button">พอดีจอ</button>
+          <button id="focus-mode" type="button" aria-pressed="false">Focus</button>
+          <details class="graph-options">
+            <summary>ตัวกรอง <span id="filter-count">ทั้งหมด</span></summary>
+            <div class="graph-options-panel">
+              <div class="preset-row" aria-label="มุมมองด่วน">
+                <span>มุมมอง</span>
+                <button class="preset-chip" data-preset="all" type="button">ทั้งหมด</button>
+                <button class="preset-chip active" data-preset="core" type="button">Core</button>
+                <button class="preset-chip" data-preset="documented" type="button">Documented</button>
+                <button class="preset-chip" data-preset="reuse" type="button">Reuse</button>
+                <button class="preset-chip" data-preset="problems" type="button">Problems</button>
+                <button class="preset-chip" data-preset="evidence" type="button">Evidence</button>
+              </div>
+
+              <div class="filters" id="type-filters" aria-label="กรองประเภท node"></div>
+
+              <div class="graph-option-footer">
+                <button id="zoom-out" type="button" aria-label="ซูมออก">−</button>
+                <button id="zoom-in" type="button" aria-label="ซูมเข้า">＋</button>
+                <label class="toggle">
+                  <input id="edge-labels" type="checkbox">
+                  <span>ชื่อ relation</span>
+                </label>
+              </div>
+            </div>
+          </details>
+        </div>
       </div>
     </section>
 
