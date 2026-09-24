@@ -76,3 +76,20 @@ The Web Viewer includes a Repository Change Inbox.
 - API failure is displayed as UNKNOWN, never as “no change”
 
 The scanner never writes semantic capability claims directly into the canonical graph.
+
+
+## Repository Catalog
+
+The web-only interface exposes the full GitHub repository catalog.
+
+Current mechanical capture:
+- 37 repositories
+- 34 with commits
+- 3 empty
+- 33 public
+- 4 private
+- exact-head CI: 16 SAT / 2 VIOL / 19 UNKNOWN
+
+The catalog UI reads `project-brain/catalog/repositories.json` directly. It does not maintain a second repository dataset.
+
+Every repository remains `semanticStatus = UNKNOWN` until capability verification.
