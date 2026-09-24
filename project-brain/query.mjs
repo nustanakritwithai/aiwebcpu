@@ -17,6 +17,53 @@ export function nodeById(graph,id){
   return graph.nodes.find(n=>n.id===id)??null;
 }
 
+export function checkpointById(graph,id){
+  return graph.temporal?.checkpoints?.find(cp=>cp.id===id)??null;
+}
+
+export function checkpointIndex(graph,id){
+  const rows=graph.temporal?.checkpoints??[];
+  return rows.findIndex(cp=>cp.id===id);
+}
+
+export function isActiveAt(graph,item,checkpointId){
+  const at=checkpointIndex(graph,checkpointId);
+  if(at<0)return false;
+  const from=item.activeFrom?checkpointIndex(graph,item.activeFrom):0;
+  const until=item.activeUntil?checkpointIndex(graph,item.activeUntil):Infinity;
+  if(from<0||until===-1)return false;
+  return at>=from&&at<until;
+}
+
+export function graphAtCheckpoint(graph,checkpointId){
+  const checkpoint=checkpointById(graph,checkpointId);
+  if(!checkpoint)throw new Error('Unknown Project Brain checkpoint: '+checkpointId);
+  const nodes=graph.nodes.filter(n=>isActiveAt(graph,n,checkpointId));
+  const ids=new Set(nodes.map(n=>n.id));
+  const edges=graph.edges.filter(e=>ids.has(e.from)&&ids.has(e.to)&&isActiveAt(graph,e,checkpointId));
+  return {
+    ...graph,
+    nodes,
+    edges,
+    temporal:{
+      ...graph.temporal,
+      selectedCheckpoint:checkpointId
+    }
+  };
+}
+
+export function snapshotSummary(graph,checkpointId){
+  const snap=graphAtCheckpoint(graph,checkpointId);
+  const checkpoint=checkpointById(graph,checkpointId);
+  const byType=Object.fromEntries((graph.nodeTypes??[]).map(type=>[type,snap.nodes.filter(n=>n.type===type).length]));
+  return {
+    checkpoint,
+    nodes:snap.nodes.length,
+    edges:snap.edges.length,
+    byType
+  };
+}
+
 export function findNodes(graph,query,{type=null}={}){
   const q=norm(query);
   return graph.nodes.filter(n=>(!type||n.type===type)&&(
@@ -106,19 +153,27 @@ function compact(value){
 
 async function main(argv=process.argv.slice(2)){
   const [command,...rest]=argv;
+  const graph=await loadGraph();
+
+  if(command==='checkpoints'){
+    console.log(JSON.stringify(compact(graph.temporal?.checkpoints??[]),null,2));
+    return;
+  }
+
   const query=rest.join(' ').trim();
   if(!command||!query){
-    console.error('Usage: node project-brain/query.mjs <capability|providers|goal|integration|node> <query>');
+    console.error('Usage: node project-brain/query.mjs <capability|providers|goal|integration|node|snapshot> <query-or-checkpoint>\n       node project-brain/query.mjs checkpoints');
     process.exitCode=2;
     return;
   }
-  const graph=await loadGraph();
+
   let result;
   if(command==='capability')result=capabilitySummary(graph,query);
   else if(command==='providers')result=providersFor(graph,query);
   else if(command==='goal')result=inspectGoal(graph,query);
   else if(command==='integration')result=inspectIntegration(graph,query);
   else if(command==='node')result=findNodes(graph,query);
+  else if(command==='snapshot')result=snapshotSummary(graph,query);
   else throw new Error('Unknown command: '+command);
   console.log(JSON.stringify(compact(result),null,2));
 }
