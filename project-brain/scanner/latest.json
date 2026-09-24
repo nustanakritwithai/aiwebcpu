@@ -91,7 +91,7 @@
         },
         {
           "path": "brain/app.js",
-          "sha": "0db807a432eceb0b4664d5cc103b104e47e86676",
+          "sha": "93b5df1958d237459b4c820130bb39020d55aa5a",
           "status": "present"
         },
         {
@@ -106,12 +106,12 @@
         },
         {
           "path": "brain/index.html",
-          "sha": "5e79547868fe73eabb8c5097aa4210972f9e1bcf",
+          "sha": "9e63a34191b919eeba0cda8e4fe6b52cdc8eab03",
           "status": "present"
         },
         {
           "path": "brain/README.md",
-          "sha": "1dd7bbb1d25afb8ba304c1166660c87ea6f9a0d3",
+          "sha": "ecbca3a5ba064fe4b73cb9a5b72f9254d5db6bfa",
           "status": "present"
         },
         {
@@ -126,12 +126,12 @@
         },
         {
           "path": "brain/style.css",
-          "sha": "758e2bd76903e39b8fcd16b06d4d94a123a64a10",
+          "sha": "b41798ca63b07d87ebd9ee80996bfb817a5c003a",
           "status": "present"
         },
         {
           "path": "brain/ux.js",
-          "sha": "3ddf88a3bbaa85ec146c39cb845cf43be5549bee",
+          "sha": "092ba9c4e6fe3849c805d3d1a9a7ec117fcd3298",
           "status": "present"
         },
         {
