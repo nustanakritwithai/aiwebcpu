@@ -286,7 +286,7 @@ test('Graph Focus UX V0.5.4 removes secondary dashboards from Graph view',async(
 test('Graph Focus UX defaults to Core and keeps relation labels opt-in',async()=>{
   const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
   assert.match(ux,/let activePreset='core'/);
-  assert.match(ux,/prefs\.activePreset\?prefs\.activePreset:'core'/);
+  assert.match(ux,/activePreset=PRESETS\[prefs\.activePreset\]\?prefs\.activePreset:'core'/);
   assert.match(js,/let showEdgeLabels=false/);
   assert.match(html,/data-preset=["']core["'][^>]+class=["'][^"']*active/);
   assert.match(html,/id=["']edge-labels["'][^>]*type=["']checkbox["'](?![^>]*checked)/);
