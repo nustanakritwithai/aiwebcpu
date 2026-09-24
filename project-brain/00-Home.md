@@ -1,7 +1,7 @@
 ---
 type: project-brain-home
 version: 0.1
-status: bootstrap
+status: compatibility-analyzed
 updated: 2026-09-24
 ---
 
@@ -27,6 +27,28 @@ updated: 2026-09-24
 
 - [[Goals/Simclone-Time-Travel]]
 
+## First Cross-Repo Analysis
+
+- [[Integrations/Simclone-TestGE-TimeTravel]]
+- [[Issues/Simclone-TestGE-State-Model-Mismatch]]
+
+Result:
+
+```text
+Need: Simclone time travel
+↓
+Found: TestGE rollback / replay
+↓
+Direct reuse: VIOL
+Architecture reuse: SAT
+↓
+Decision: ADAPT
+↓
+Next: TemporalHistory adapter
+```
+
+นี่คือหลักฐานแรกว่า Project Brain ไม่ได้ตอบว่า "มีของเดิม = copy มาใช้" แต่ตรวจ compatibility ก่อนเลือกวิธี reuse
+
 ## Decision Rule
 
 ```text
@@ -37,6 +59,8 @@ Need Capability
 Search Graph
 ↓
 REUSE / ADAPT / BUILD
+↓
+Compatibility Check
 ↓
 Verify
 ↓
