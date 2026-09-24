@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "0.1",
+  "acceptedSource": "V0.4 bootstrap from verified GitHub reads",
+  "repositories": {
+    "repo:aiwebcpu": {
+      "id": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "branch": "main",
+      "head": {
+        "sha": "fdb7e2b05d42f99c53662afbfef2a38543859b50",
+        "date": "2026-09-24T15:00:02Z",
+        "message": "refactor: make Project Brain web-only and retire Obsidian sync"
+      },
+      "exactHeadWorkflow": {
+        "verdict": "UNKNOWN",
+        "reason": "no-completed-workflow-run-for-head"
+      },
+      "evidenceFiles": [
+        {
+          "path": "README.md",
+          "sha": "4e5d46ada3ff7bf66759132b518088d723aaacd7",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/graph/project-brain.json",
+          "sha": "42ba272fd58454508c8b62856c480a3c04369947",
+          "status": "present"
+        },
+        {
+          "path": ".github/workflows/project-brain.yml",
+          "sha": "d76c561640bbb669b6c2b5d8f46f9a75268d9408",
+          "status": "present"
+        }
+      ]
+    },
+    "repo:testge": {
+      "id": "repo:testge",
+      "repo": "nustanakritwithai/TestGE",
+      "branch": "main",
+      "head": {
+        "sha": "0ca33d9655df31d69045e0a483465f3271928471",
+        "date": "2026-09-16T07:16:58Z",
+        "message": "Merge pull request #83 from nustanakritwithai/jrpg-r11-offline-quality\n\nR11.5c: add fully offline post-battle quality report"
+      },
+      "exactHeadWorkflow": {
+        "verdict": "UNKNOWN",
+        "reason": "no-completed-workflow-run-for-head"
+      },
+      "evidenceFiles": [
+        {
+          "path": "README.md",
+          "sha": "260bfde1d4ce4cdfc2ea77876f3fec5ca36a485a",
+          "status": "present"
+        },
+        {
+          "path": "src/twa-engine.js",
+          "sha": "26aaa90b71633c61c8c01ccde34772963e21c890",
+          "status": "present"
+        },
+        {
+          "path": "src/twa-history.js",
+          "sha": "bed50c45a65cd4ec51d5dac0bc970cafcb6baead",
+          "status": "present"
+        }
+      ]
+    },
+    "repo:astralife": {
+      "id": "repo:astralife",
+      "repo": "nustanakritwithai/AstraLife",
+      "branch": "main",
+      "head": {
+        "sha": "21dcf780d6666732af2ef27500e478871864a6ac",
+        "date": "2026-09-09T17:58:13Z",
+        "message": "Merge pull request #43 from nustanakritwithai/p6-11-snapshot-governor\n\nP6.11 — Snapshot Governor + Event Wakeups"
+      },
+      "exactHeadWorkflow": {
+        "verdict": "UNKNOWN",
+        "reason": "no-completed-workflow-run-for-head"
+      },
+      "evidenceFiles": [
+        {
+          "path": "README.md",
+          "sha": "e9a3f6096108e8661e774bc4e872a16080a363ce",
+          "status": "present"
+        }
+      ]
+    },
+    "repo:simclone": {
+      "id": "repo:simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "branch": "main",
+      "head": {
+        "sha": "c74319d431f300bed64aeba35dabc1d9b57e2568",
+        "date": "2026-09-24T13:43:26Z",
+        "message": "ci: preserve full verification with a bounded 20-minute budget\n\nSame verified head/base as successful run #170 (36006607690). Raises only verify job timeout from 10 to 20 minutes; all test commands and gates remain unchanged."
+      },
+      "exactHeadWorkflow": {
+        "verdict": "UNKNOWN",
+        "reason": "no-completed-workflow-run-for-head"
+      },
+      "evidenceFiles": [
+        {
+          "path": "AGENTS.md",
+          "sha": "859f9d971637fe818985fd2160d1797bcb030a63",
+          "status": "present"
+        },
+        {
+          "path": "docs/STATUS.md",
+          "sha": "a26bb709a9eb4ca7463322f27d826f531a42bb2c",
+          "status": "present"
+        },
+        {
+          "path": "GAME_PLAN.md",
+          "sha": "0b3b456baf1741eb6b6fca3624f739ff3763586b",
+          "status": "present"
+        },
+        {
+          "path": "src/engine.mjs",
+          "sha": "81e211d7e04d2761b46d4ef3e38be52b505ebf0d",
+          "status": "present"
+        }
+      ]
+    }
+  }
+}
