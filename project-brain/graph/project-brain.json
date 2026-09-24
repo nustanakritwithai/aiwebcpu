@@ -3008,8 +3008,26 @@
       "id": "version:project-brain-v054",
       "type": "VERSION",
       "name": "Project Brain Graph Focus UX V0.5.4",
+      "status": "superseded",
+      "activeFrom": "pb-2026-09-25-graph-focus-v054",
+      "activeUntil": "pb-2026-09-25-adaptive-layout-v055"
+    },
+    {
+      "id": "ev:project-brain-v055-ui-ci",
+      "type": "EVIDENCE",
+      "name": "Project Brain V0.5.5 adaptive graph layout CI",
+      "verdict": "SAT",
+      "scope": "PR #26 candidate head 50e79ee; visible-node layout, real canvas dimensions, bounding-box Fit, batched preset visibility and density-aware labels",
+      "limitations": "Exact-main completed workflow for merge commit aded650 was not observed at bookkeeping time. SAT applies to adaptive layout behavior only.",
+      "source": "GitHub Actions run 36039764147",
+      "activeFrom": "pb-2026-09-25-adaptive-layout-v055"
+    },
+    {
+      "id": "version:project-brain-v055",
+      "type": "VERSION",
+      "name": "Project Brain Adaptive Graph Layout V0.5.5",
       "status": "current",
-      "activeFrom": "pb-2026-09-25-graph-focus-v054"
+      "activeFrom": "pb-2026-09-25-adaptive-layout-v055"
     }
   ],
   "edges": [
@@ -5018,6 +5036,12 @@
       "to": "version:project-brain-v053",
       "type": "SUPERSEDES",
       "activeFrom": "pb-2026-09-25-graph-focus-v054"
+    },
+    {
+      "from": "version:project-brain-v055",
+      "to": "version:project-brain-v054",
+      "type": "SUPERSEDES",
+      "activeFrom": "pb-2026-09-25-adaptive-layout-v055"
     }
   ],
   "timeline": [
@@ -5095,6 +5119,11 @@
       "date": "2026-09-25",
       "event": "Project Brain V0.5.4 makes the complete Knowledge Graph graph-first with Core defaults, compact controls, overlay detail and mobile/portrait rail fallback",
       "source": "nustanakritwithai/aiwebcpu@ac42e6a"
+    },
+    {
+      "date": "2026-09-25",
+      "event": "Project Brain V0.5.5 recalculates layout from the currently visible graph, fills the real canvas and fits to actual node bounds",
+      "source": "nustanakritwithai/aiwebcpu@aded650"
     }
   ],
   "rules": {
@@ -5220,9 +5249,16 @@
         "label": "Graph Focus UX V0.5.4",
         "description": "Verified graph-first UX reduces simultaneous chrome while preserving complete graph access through Core, Documented and All views.",
         "source": "nustanakritwithai/aiwebcpu@ac42e6a"
+      },
+      {
+        "id": "pb-2026-09-25-adaptive-layout-v055",
+        "date": "2026-09-25",
+        "label": "Adaptive Graph Layout V0.5.5",
+        "description": "Verified visible-node adaptive layout uses the real canvas and bounding-box Fit so filtered graphs use available space instead of retaining complete-world positions.",
+        "source": "nustanakritwithai/aiwebcpu@aded650"
       }
     ],
-    "defaultCheckpoint": "pb-2026-09-25-graph-focus-v054"
+    "defaultCheckpoint": "pb-2026-09-25-adaptive-layout-v055"
   },
   "interfaces": {
     "human": "web",
