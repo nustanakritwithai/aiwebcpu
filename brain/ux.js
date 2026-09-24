@@ -12,6 +12,8 @@ let nodeMap=new Map();
 let activePreset='all';
 let focusMode=false;
 let observer=null;
+let temporalTimer=null;
+let temporalSelectedIndex=0;
 
 const qs=s=>document.querySelector(s);
 const qsa=s=>[...document.querySelectorAll(s)];
@@ -143,6 +145,150 @@ function populateMetrics(){
   for(const [sel,value] of Object.entries(values)){const el=qs(sel);if(el)el.textContent=value}
 }
 
+
+
+function temporalCheckpointIndex(id){
+  return (graph?.temporal?.checkpoints??[]).findIndex(cp=>cp.id===id);
+}
+
+function temporalActiveAt(item,checkpointId){
+  const at=temporalCheckpointIndex(checkpointId);
+  if(at<0)return false;
+  const from=item.activeFrom?temporalCheckpointIndex(item.activeFrom):0;
+  const until=item.activeUntil?temporalCheckpointIndex(item.activeUntil):Infinity;
+  if(from<0||until===-1)return false;
+  return at>=from&&at<until;
+}
+
+function temporalMaterializeAt(item,checkpointId){
+  const state=(item.temporalStates??[]).find(row=>temporalActiveAt(row,checkpointId));
+  return state?{...item,...(state.values??{})}:item;
+}
+
+function temporalSnapshot(checkpointId){
+  if(!graph)return {nodes:[],edges:[]};
+  const nodes=graph.nodes
+    .filter(n=>temporalActiveAt(n,checkpointId))
+    .map(n=>temporalMaterializeAt(n,checkpointId));
+  const ids=new Set(nodes.map(n=>n.id));
+  const edges=graph.edges
+    .filter(e=>ids.has(e.from)&&ids.has(e.to)&&temporalActiveAt(e,checkpointId));
+  return {nodes,edges};
+}
+
+function updateTemporalMetrics(checkpointId){
+  const snap=temporalSnapshot(checkpointId);
+  const evidence=snap.nodes.filter(n=>n.type==='EVIDENCE');
+  const sat=evidence.filter(n=>n.verdict==='SAT').length;
+  const goal=snap.nodes.find(n=>n.type==='GOAL');
+  const values={
+    '#metric-nodes':snap.nodes.length,
+    '#metric-relations':snap.edges.length,
+    '#metric-evidence':`${sat}/${evidence.length}`,
+    '#metric-decision':goal?.decision||'—'
+  };
+  for(const [sel,value] of Object.entries(values)){const el=qs(sel);if(el)el.textContent=value}
+}
+
+function dispatchTemporalCheckpoint(id){
+  document.dispatchEvent(new CustomEvent('project-brain:set-checkpoint',{detail:{id}}));
+}
+
+function stopTemporalPlayback(){
+  if(temporalTimer){clearInterval(temporalTimer);temporalTimer=null}
+  const play=qs('#time-play');
+  if(play){play.setAttribute('aria-pressed','false');play.textContent='▶ เล่น'}
+}
+
+function setTemporalIndex(index,{updateUrl=true,dispatch=true}={}){
+  const checkpoints=graph?.temporal?.checkpoints??[];
+  if(!checkpoints.length)return;
+  temporalSelectedIndex=Math.max(0,Math.min(checkpoints.length-1,Number(index)||0));
+  const cp=checkpoints[temporalSelectedIndex];
+  const latest=graph.temporal?.defaultCheckpoint??checkpoints.at(-1)?.id;
+
+  const slider=qs('#time-slider');
+  if(slider){slider.max=String(checkpoints.length-1);slider.value=String(temporalSelectedIndex)}
+  const label=qs('#time-label');if(label)label.textContent=cp.label;
+  const desc=qs('#time-description');if(desc)desc.textContent=cp.description||'';
+  const date=qs('#time-date');if(date)date.textContent=cp.date||'—';
+  const pos=qs('#time-position');if(pos)pos.textContent=`${temporalSelectedIndex+1} / ${checkpoints.length}`;
+
+  qsa('.time-checkpoint').forEach((button,i)=>{
+    button.classList.toggle('current',i===temporalSelectedIndex);
+    button.classList.toggle('past',i<temporalSelectedIndex);
+    button.setAttribute('aria-current',i===temporalSelectedIndex?'step':'false');
+  });
+
+  document.body.classList.toggle('temporal-past',cp.id!==latest);
+  updateTemporalMetrics(cp.id);
+
+  if(updateUrl){
+    const url=new URL(location.href);
+    if(cp.id===latest)url.searchParams.delete('at');
+    else url.searchParams.set('at',cp.id);
+    history.replaceState(null,'',url);
+  }
+  if(dispatch)dispatchTemporalCheckpoint(cp.id);
+}
+
+function playTemporal(){
+  const checkpoints=graph?.temporal?.checkpoints??[];
+  if(!checkpoints.length)return;
+  if(temporalTimer){stopTemporalPlayback();return}
+  if(temporalSelectedIndex>=checkpoints.length-1)setTemporalIndex(0);
+  const play=qs('#time-play');
+  if(play){play.setAttribute('aria-pressed','true');play.textContent='Ⅱ หยุด'}
+  temporalTimer=setInterval(()=>{
+    if(temporalSelectedIndex>=checkpoints.length-1){stopTemporalPlayback();return}
+    setTemporalIndex(temporalSelectedIndex+1);
+  },1150);
+}
+
+function installTemporal(){
+  const checkpoints=graph?.temporal?.checkpoints??[];
+  const box=qs('#time-machine');
+  if(!checkpoints.length){if(box)box.hidden=true;return}
+
+  const holder=qs('#time-checkpoints');
+  if(holder){
+    holder.replaceChildren();
+    checkpoints.forEach((cp,index)=>{
+      const button=document.createElement('button');
+      button.type='button';
+      button.className='time-checkpoint';
+      button.textContent=cp.label;
+      button.title=`${cp.date} · ${cp.description||''}`;
+      button.addEventListener('click',()=>{stopTemporalPlayback();setTemporalIndex(index)});
+      holder.append(button);
+    });
+  }
+
+  const slider=qs('#time-slider');
+  if(slider){
+    slider.min='0';slider.max=String(checkpoints.length-1);slider.step='1';
+    slider.addEventListener('input',()=>{stopTemporalPlayback();setTemporalIndex(Number(slider.value))});
+  }
+  qs('#time-now')?.addEventListener('click',()=>{
+    stopTemporalPlayback();
+    const latest=graph.temporal?.defaultCheckpoint??checkpoints.at(-1)?.id;
+    const index=temporalCheckpointIndex(latest);
+    setTemporalIndex(index<0?checkpoints.length-1:index);
+  });
+  qs('#time-play')?.addEventListener('click',playTemporal);
+
+  const requested=new URL(location.href).searchParams.get('at');
+  const defaultId=graph.temporal?.defaultCheckpoint??checkpoints.at(-1)?.id;
+  const requestedIndex=temporalCheckpointIndex(requested);
+  const defaultIndex=temporalCheckpointIndex(defaultId);
+  setTemporalIndex(requestedIndex>=0?requestedIndex:(defaultIndex>=0?defaultIndex:checkpoints.length-1),{updateUrl:false});
+
+  document.addEventListener('project-brain:graph-ready',()=>{
+    const cp=checkpoints[temporalSelectedIndex];
+    if(cp)dispatchTemporalCheckpoint(cp.id);
+  });
+}
+
 function installSectionNav(){
   qsa('[data-scroll]').forEach(button=>button.addEventListener('click',()=>{
     qsa('[data-scroll]').forEach(x=>x.classList.toggle('active',x===button));
@@ -202,7 +348,7 @@ function openDeepLink(){
 async function bootUX(){
   try{
     const response=await fetch('../project-brain/graph/project-brain.json',{cache:'no-store'});
-    if(response.ok){graph=await response.json();nodeMap=new Map(graph.nodes.map(n=>[n.id,n]));populateMetrics()}
+    if(response.ok){graph=await response.json();nodeMap=new Map(graph.nodes.map(n=>[n.id,n]));populateMetrics();installTemporal()}
   }catch{}
   const prefs=readPrefs();
   activePreset=PRESETS[prefs.activePreset]?prefs.activePreset:'all';
