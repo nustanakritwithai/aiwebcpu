@@ -1,5 +1,6 @@
 const VIEW_LABELS={
   overview:'Overview',
+  decision:'Decision',
   graph:'Knowledge Graph',
   repositories:'Repositories',
   capabilities:'Capabilities',
@@ -168,6 +169,15 @@ function searchItems(){
   const items=[];
 
   for(const node of d.graph.nodes??[]){
+    if(node.type==='GOAL'){
+      items.push({
+        type:'Goal',
+        title:node.name,
+        subtitle:`${node.status??'UNKNOWN'} · ${node.decision??'UNKNOWN'} · ${node.id}`,
+        view:'decision',
+        query:node.id
+      });
+    }
     items.push({
       type:'Graph',
       title:node.name,
@@ -220,6 +230,12 @@ function activateSearchResult(item){
   }else if(item.view==='capabilities'){
     const input=q('#capability-search');
     if(input){input.value=item.query;input.dispatchEvent(new Event('input',{bubbles:true}))}
+  }else if(item.view==='decision'){
+    const select=q('#decision-goal-select');
+    if(select&&[...select.options].some(o=>o.value===item.query)){
+      select.value=item.query;
+      select.dispatchEvent(new Event('change',{bubbles:true}));
+    }
   }else if(item.view==='graph'){
     const input=q('#search');
     if(input){input.value=item.query;input.dispatchEvent(new Event('input',{bubbles:true}))}
