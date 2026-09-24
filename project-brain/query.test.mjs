@@ -8,7 +8,8 @@ import {
   capabilitySummary,
   graphAtCheckpoint,
   snapshotSummary,
-  isActiveAt
+  isActiveAt,
+  loadVerificationReport
 } from './query.mjs';
 
 const graph=await loadGraph();
@@ -86,4 +87,17 @@ test('goal decision changes from UNKNOWN to ADAPT across compatibility checkpoin
   const after=graphAtCheckpoint(graph,'pb-2026-09-24-compat');
   assert.equal(before.nodes.find(n=>n.id==='goal:simclone-time-travel').decision,'UNKNOWN');
   assert.equal(after.nodes.find(n=>n.id==='goal:simclone-time-travel').decision,'ADAPT');
+});
+
+
+test('Agent query can load a checked-in verification report',async()=>{
+  const report=await loadVerificationReport('simclone-time-travel');
+  assert.equal(report.contractId,'simclone-time-travel');
+  assert.equal(report.overallVerdict,'SAT');
+  assert.equal(report.recommendation,'ADAPT');
+  assert.equal(report.policy.autoGraphWrite,false);
+});
+
+test('verification report loader rejects path traversal',async()=>{
+  await assert.rejects(()=>loadVerificationReport('../graph/project-brain'),/Invalid verification report id/);
 });
