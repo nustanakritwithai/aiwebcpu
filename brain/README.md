@@ -1,4 +1,4 @@
-# Project Brain Web Viewer V0.5.7
+# Project Brain Web Viewer V0.5.8
 
 Interactive read-only Knowledge Graph viewer for Project Brain.
 
@@ -303,3 +303,37 @@ project-brain:selection-cleared
 The graph click capture detector and detail MutationObserver are removed.
 
 This gives one authoritative open/close path and preserves Focus Inspection V0.5.6 state behavior.
+
+
+## Graph Exploration UX V0.5.8
+
+Adds continuous relationship exploration on top of Focus Inspection.
+
+### Navigation history
+
+Every selected node enters a bounded in-memory history:
+
+```text
+Project A
+  → Capability
+  → Evidence
+  → Project B
+```
+
+The inspection bar and detail sheet expose Back / Forward navigation.
+
+History replay uses the graph-engine `project-brain:select-node` event. It does not simulate SVG/DOM clicks.
+
+### Focus-safe traversal
+
+`focusRootId` remains independent from the current selection.
+
+- navigate to a node inside the focus root's 1-hop neighborhood → Focus remains active
+- navigate to a node outside that neighborhood → Focus exits automatically
+- the new selected node remains selected and centered
+
+### Context invalidation
+
+If a preset/type filter hides the currently selected node, the graph engine emits the authoritative `selection-cleared` event. UX then closes detail and resets exploration history.
+
+History is intentionally session-only and is not written to localStorage or the canonical graph.
