@@ -556,7 +556,7 @@ test('Project Deep Profile V0.6.1 loads source-level project profiles without pr
 
 test('deep project profiles cover the major active cross-project systems',async()=>{
   const profiles=JSON.parse(await readFile(new URL('./deep-profiles/projects.json',import.meta.url),'utf8'));
-  assert.equal(profiles.schemaVersion,'1.1.0');
+  assert.equal(profiles.schemaVersion,'1.2.0');
   for(const repoId of ['repo:simclone','repo:testge','repo:pocketmonster','repo:pirate-fruit','repo:echonews','repo:astralife']){
     const row=profiles.projects.find(project=>project.repoId===repoId);
     assert.ok(row,repoId);
