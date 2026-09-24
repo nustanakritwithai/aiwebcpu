@@ -1,13 +1,13 @@
 {
-  "schemaVersion": "0.1",
+  "schemaVersion": "0.2",
   "capturedAt": "2026-09-24",
   "owner": "nustanakritwithai",
-  "totalRepositories": 37,
   "policy": {
     "catalogIsMechanicalDiscovery": true,
     "semanticClaimsRequireVerification": true,
     "emptyRepositoryIsNotError": true,
-    "privateRepositoriesRequireCrossRepoCredentialForScheduledScan": true
+    "privateRepositoryDetailsPersisted": false,
+    "privateRepositoryDetailsRequireAuthenticatedPrivateLayer": true
   },
   "repositories": [
     {
@@ -37,35 +37,6 @@
         {
           "path": "README.md",
           "sha": "c60eaedd52761d2d97c2c73c72699b8685dfe149",
-          "status": "present"
-        }
-      ],
-      "detectedSignals": []
-    },
-    {
-      "id": "repo:a2a-blackboard",
-      "name": "A2A-blackboard",
-      "repo": "nustanakritwithai/A2A-blackboard",
-      "visibility": "private",
-      "defaultBranch": "main",
-      "sizeKB": 1,
-      "archived": false,
-      "catalogStatus": "DISCOVERED",
-      "semanticStatus": "UNKNOWN",
-      "scheduledScan": "MANUAL_PRIVATE",
-      "head": {
-        "sha": "11aa5f71faf74bf1d6e61d245356a7b08cf4be30",
-        "date": "2026-04-02T14:36:19Z",
-        "title": "Initial commit"
-      },
-      "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-completed-workflow-run-for-head"
-      },
-      "evidenceFiles": [
-        {
-          "path": "README.md",
-          "sha": "2241000802112f1409325030f8b587152b14e459",
           "status": "present"
         }
       ],
@@ -113,45 +84,6 @@
       ],
       "detectedSignals": [
         "python"
-      ]
-    },
-    {
-      "id": "repo:ai-game",
-      "name": "Ai-game",
-      "repo": "nustanakritwithai/Ai-game",
-      "visibility": "private",
-      "defaultBranch": "main",
-      "sizeKB": 208,
-      "archived": false,
-      "catalogStatus": "DISCOVERED",
-      "semanticStatus": "UNKNOWN",
-      "scheduledScan": "MANUAL_PRIVATE",
-      "head": {
-        "sha": "7b784124c4b1417a9da4f31901b2a16060e63a92",
-        "date": "2026-06-09T21:13:59Z",
-        "title": "Fix Render deploy: generate AIWorldWar publish directory"
-      },
-      "exactHeadWorkflow": {
-        "verdict": "VIOL",
-        "conclusion": "failure",
-        "name": "Deploy static site to GitHub Pages",
-        "runId": 27236243128,
-        "url": "https://github.com/nustanakritwithai/Ai-game/actions/runs/27236243128"
-      },
-      "evidenceFiles": [
-        {
-          "path": "README.md",
-          "sha": "80456a71cdca54ba7da547424baba3ff96d0793b",
-          "status": "present"
-        },
-        {
-          "path": "package.json",
-          "sha": "1253daabb724028018eb2f49d87eb56554d9924b",
-          "status": "present"
-        }
-      ],
-      "detectedSignals": [
-        "node"
       ]
     },
     {
@@ -798,78 +730,6 @@
       "detectedSignals": []
     },
     {
-      "id": "repo:monsterlifeserver",
-      "name": "MonsterLifeServer",
-      "repo": "nustanakritwithai/MonsterLifeServer",
-      "visibility": "private",
-      "defaultBranch": "main",
-      "sizeKB": 2012,
-      "archived": false,
-      "catalogStatus": "DISCOVERED",
-      "semanticStatus": "UNKNOWN",
-      "scheduledScan": "MANUAL_PRIVATE",
-      "head": {
-        "sha": "ac5f40b25f66af64e572578e64de403d2ec48384",
-        "date": "2026-09-20T20:00:33Z",
-        "title": "เชื่อมระบบต่อสู้ Pirate เดิมกับ central server"
-      },
-      "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-completed-workflow-run-for-head"
-      },
-      "evidenceFiles": [
-        {
-          "path": "AGENT_HANDOFF.md",
-          "sha": "471b61f59a8dad383b2186189ebd0b28fa6ae090",
-          "status": "present"
-        }
-      ],
-      "detectedSignals": [
-        "agent-instructions"
-      ]
-    },
-    {
-      "id": "repo:mulitagentwork",
-      "name": "MulitAgentWork",
-      "repo": "nustanakritwithai/MulitAgentWork",
-      "visibility": "private",
-      "defaultBranch": "main",
-      "sizeKB": 231,
-      "archived": false,
-      "catalogStatus": "DISCOVERED",
-      "semanticStatus": "UNKNOWN",
-      "scheduledScan": "MANUAL_PRIVATE",
-      "head": {
-        "sha": "809307ac3f62de675243aa31dae4d19fb8e75ceb",
-        "date": "2026-04-05T17:58:37Z",
-        "title": "Expand to 4 specialist teams with sub-agents"
-      },
-      "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "no-completed-workflow-run-for-head"
-      },
-      "evidenceFiles": [
-        {
-          "path": "README.md",
-          "sha": "54777c9c36b51b349c9747a84335ee4ecb1e69cf",
-          "status": "present"
-        },
-        {
-          "path": "package.json",
-          "sha": "02cc7db30c28f2a0a84d347184f4a705d796ec16",
-          "status": "present"
-        },
-        {
-          "path": "metadata.json",
-          "sha": "f110c0d6fb1ed3a6b61f945bd8d8e3613ca51fb3",
-          "status": "present"
-        }
-      ],
-      "detectedSignals": [
-        "node"
-      ]
-    },
-    {
       "id": "repo:my-oracle",
       "name": "my-oracle",
       "repo": "nustanakritwithai/my-oracle",
@@ -1494,15 +1354,18 @@
     }
   ],
   "summary": {
-    "total": 37,
-    "nonEmpty": 34,
-    "empty": 3,
-    "public": 33,
-    "private": 4,
+    "discoveredTotal": 37,
+    "persistedPublic": 33,
+    "nonEmptyPublic": 30,
+    "emptyPublic": 3,
+    "privateOmitted": 4,
     "exactHeadCI": {
       "SAT": 16,
-      "VIOL": 2,
-      "UNKNOWN": 19
+      "VIOL": 1,
+      "UNKNOWN": 16
     }
-  }
+  },
+  "totalRepositoriesDiscovered": 37,
+  "publicRepositoriesPersisted": 33,
+  "privateRepositoriesOmitted": 4
 }
