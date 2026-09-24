@@ -233,8 +233,16 @@
       "id": "version:project-brain-v021",
       "type": "VERSION",
       "name": "Project Brain UX V0.2.1",
+      "status": "superseded",
+      "activeFrom": "pb-2026-09-24-mobile-ux",
+      "activeUntil": "pb-2026-09-24-temporal-v03"
+    },
+    {
+      "id": "version:project-brain-v03",
+      "type": "VERSION",
+      "name": "Project Brain Temporal V0.3",
       "status": "current",
-      "activeFrom": "pb-2026-09-24-mobile-ux"
+      "activeFrom": "pb-2026-09-24-temporal-v03"
     }
   ],
   "edges": [
@@ -407,6 +415,12 @@
       "to": "version:project-brain-v02",
       "type": "SUPERSEDES",
       "activeFrom": "pb-2026-09-24-mobile-ux"
+    },
+    {
+      "from": "version:project-brain-v03",
+      "to": "version:project-brain-v021",
+      "type": "SUPERSEDES",
+      "activeFrom": "pb-2026-09-24-temporal-v03"
     }
   ],
   "timeline": [
@@ -439,6 +453,11 @@
       "date": "2026-09-24",
       "event": "Project Brain mobile UX V0.2.1 verified and merged",
       "source": "nustanakritwithai/aiwebcpu@79be91b"
+    },
+    {
+      "date": "2026-09-24",
+      "event": "Project Brain Temporal Knowledge Graph V0.3 verified and merged",
+      "source": "nustanakritwithai/aiwebcpu@d4e41bb"
     }
   ],
   "rules": {
@@ -501,8 +520,15 @@
         "label": "Mobile UX V0.2.1",
         "description": "Presets, focus mode, deep links and mobile bottom-sheet inspection are verified.",
         "source": "nustanakritwithai/aiwebcpu@79be91b"
+      },
+      {
+        "id": "pb-2026-09-24-temporal-v03",
+        "date": "2026-09-24",
+        "label": "Temporal Graph V0.3",
+        "description": "Verified temporal knowledge-state replay, historical snapshot query and time-machine viewer are merged.",
+        "source": "nustanakritwithai/aiwebcpu@d4e41bb"
       }
     ],
-    "defaultCheckpoint": "pb-2026-09-24-mobile-ux"
+    "defaultCheckpoint": "pb-2026-09-24-temporal-v03"
   }
 }
