@@ -95,3 +95,16 @@ The catalog UI reads `project-brain/catalog/repositories.json` directly. It does
 Every persisted public repository remains `semanticStatus = UNKNOWN` until capability verification.
 
 Private repository names, commits and evidence are intentionally not published by the public Web Viewer.
+
+
+## Capability Inventory
+
+The Web Viewer reads `project-brain/capability-inventory/repositories.json` directly.
+
+Current first semantic pass:
+- 33 public repositories represented
+- 29 repositories with DOCUMENTED extraction
+- 4 repositories remain UNKNOWN
+- 115 documented capability candidates
+
+`DOCUMENTED` means the repository documentation or inspected source explicitly supports the statement. It is not a reuse verdict. REUSE / ADAPT / BUILD remains UNKNOWN until goal-specific compatibility verification.

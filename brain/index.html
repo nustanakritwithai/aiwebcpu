@@ -31,6 +31,7 @@
     <nav class="section-nav card" aria-label="Project Brain sections">
       <button type="button" data-scroll="graph-card" class="active">Graph</button>
       <button type="button" data-scroll="catalog-section">Repositories</button>
+      <button type="button" data-scroll="capability-section">Capabilities</button>
       <button type="button" data-scroll="scanner-section">Scanner</button>
       <button type="button" data-scroll="timeline-section">Timeline</button>
       <button type="button" data-scroll="rule-section">Decision Rule</button>
@@ -102,6 +103,43 @@
       <p class="catalog-boundary">
         Public Catalog = repository metadata / HEAD / evidence-file SHA / exact-head CI ของ public repos เท่านั้น.
         Private repository details ถูกซ่อนจาก public dataset และทุก persisted repo ยังมี <b>semanticStatus = UNKNOWN</b> จนกว่า Verifier จะตรวจ
+      </p>
+    </section>
+
+
+    <section class="capability-panel card" id="capability-section" aria-label="Repository Capability Inventory">
+      <div class="capability-head">
+        <div>
+          <p class="eyebrow">CAPABILITY INVENTORY</p>
+          <h2>Documented capabilities</h2>
+          <p>อ่านจาก repo evidence ก่อนตัดสิน REUSE / ADAPT / BUILD</p>
+        </div>
+        <span id="capability-status" class="capability-status">กำลังโหลด</span>
+      </div>
+
+      <div class="capability-metrics">
+        <article><small>REPOSITORIES</small><b id="capability-repos">—</b><span>public repos</span></article>
+        <article><small>DOCUMENTED</small><b id="capability-documented">—</b><span>repos extracted</span></article>
+        <article><small>CAPABILITIES</small><b id="capability-count">—</b><span>documented candidates</span></article>
+        <article><small>REUSE</small><b id="capability-reuse">UNKNOWN</b><span>until compatibility check</span></article>
+      </div>
+
+      <div class="capability-controls">
+        <input id="capability-search" type="search" placeholder="ค้นหา capability / repo / evidence path">
+        <div class="capability-filters">
+          <button type="button" data-capability-filter="all" class="active">All</button>
+          <button type="button" data-capability-filter="DOCUMENTED">Documented</button>
+          <button type="button" data-capability-filter="UNKNOWN">Unknown repos</button>
+        </div>
+      </div>
+
+      <div id="capability-summary-line" class="capability-summary-line">—</div>
+      <div id="capability-repositories" class="capability-repositories"></div>
+
+      <p class="capability-boundary">
+        <b>DOCUMENTED ≠ VERIFIED REUSE.</b>
+        Inventory ยืนยันเพียงว่า repo มีหลักฐานรองรับข้อความนี้ ส่วน compatibility, safety และการเลือก
+        REUSE / ADAPT / BUILD ยังเป็น <b>UNKNOWN</b> จนกว่าจะตรวจตาม goal จริง
       </p>
     </section>
 
@@ -265,5 +303,6 @@
   <script type="module" src="./ux.js"></script>
   <script type="module" src="./scanner.js"></script>
   <script type="module" src="./catalog.js"></script>
+  <script type="module" src="./capabilities.js"></script>
 </body>
 </html>
