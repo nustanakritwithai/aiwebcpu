@@ -1,19 +1,19 @@
 {
   "schemaVersion": "0.1",
-  "acceptedSource": "V0.4 bootstrap from verified GitHub reads",
+  "acceptedSource": "Project Brain V0.4 self-monitoring stabilization",
   "repositories": {
     "repo:aiwebcpu": {
       "id": "repo:aiwebcpu",
       "repo": "nustanakritwithai/aiwebcpu",
       "branch": "main",
       "head": {
-        "sha": "fdb7e2b05d42f99c53662afbfef2a38543859b50",
-        "date": "2026-09-24T15:00:02Z",
-        "message": "refactor: make Project Brain web-only and retire Obsidian sync"
+        "sha": "5ceeeee3e776d0cf084e5ce606531a9bc5455f9e",
+        "date": "2026-09-24T15:13:35Z",
+        "message": "docs: record verified Project Brain Scanner V0.4"
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
-        "reason": "no-completed-workflow-run-for-head"
+        "reason": "exact-head-workflow-tracking-disabled-by-config"
       },
       "evidenceFiles": [
         {
@@ -23,15 +23,37 @@
         },
         {
           "path": "project-brain/graph/project-brain.json",
-          "sha": "42ba272fd58454508c8b62856c480a3c04369947",
+          "sha": "77d03fc7fefc2808c4f25ea0d0fc5d75cba1a68c",
           "status": "present"
         },
         {
           "path": ".github/workflows/project-brain.yml",
-          "sha": "d76c561640bbb669b6c2b5d8f46f9a75268d9408",
+          "sha": "7235297e7f58e9910e9ab862ecd20e8b7e9b2ca8",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/scanner/config.json",
+          "sha": "01972efecf31dd43752e5a4cf6e12a82f76c51a3",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/scanner/scanner.mjs",
+          "sha": "31feb19bbe409177697bf334782ecd6832242f49",
+          "status": "present"
+        },
+        {
+          "path": ".github/workflows/project-brain-scan.yml",
+          "sha": "0ed31f7823f1ffe159baabe81e5e6d537ffbd819",
+          "status": "present"
+        },
+        {
+          "path": "brain/scanner.js",
+          "sha": "9f1a507f977cc2e4fe98fc142c44dc7de88c6c18",
           "status": "present"
         }
-      ]
+      ],
+      "trackHead": false,
+      "trackExactHeadWorkflow": false
     },
     "repo:testge": {
       "id": "repo:testge",
