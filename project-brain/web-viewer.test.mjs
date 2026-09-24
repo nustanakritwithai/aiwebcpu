@@ -48,9 +48,10 @@ test('viewer loads a reusable UX layer with deep links and persisted presets',as
   assert.match(ux,/fetch\('\.\.\/project-brain\/graph\/project-brain\.json'/);
 });
 
-test('focus UX reuses the graph engine dimming contract instead of rebuilding layout',async()=>{
+test('focus UX delegates isolation to the graph-engine focus-root contract',async()=>{
   const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
-  assert.match(css,/body\.ux-focus \.node\.dim/);
+  assert.match(css,/body\.ux-focus \.node\.focus-out/);
+  assert.match(ux,/project-brain:set-focus-root/);
   assert.doesNotMatch(ux,/settle\(/);
 });
 
@@ -281,7 +282,7 @@ test('Graph Focus UX V0.5.4 removes secondary dashboards from Graph view',async(
   assert.match(css,/\.graph-card \.legend\{display:none!important\}/);
   assert.match(css,/\.workspace\[data-pb-view="graph"\]\{\s*display:block/);
   assert.match(css,/\.workspace>\.detail\{\s*position:fixed/);
-  assert.match(ux,/const UX_PREF='project-brain:ux:v054'/);
+  assert.match(ux,/const UX_PREF='project-brain:ux:v056'/);
 });
 
 test('Graph Focus UX defaults to Core and keeps relation labels opt-in',async()=>{
