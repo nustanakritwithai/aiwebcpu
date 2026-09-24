@@ -71,6 +71,7 @@ Viewer อ่าน canonical graph เดียวโดยตรง ไม่�
 - Project Deep Dive V0.6.0 สำหรับ PROJECT node: repository HEAD/CI, semantic capability inventory, evidence files และ drill-through เข้า documented capability โดยยังคง boundary `DOCUMENTED ≠ VERIFIED REUSE`
 - Project Deep Profile V0.6.1 เริ่ม source-level drill-down แยกจาก canonical graph โดยบันทึก architecture, authority boundaries, source HEAD, exact-head CI, next gates และ limitations; pilot แรกคือ Simclone
 - Project Deep Profiles V0.6.2 ขยาย source-level drill-down ไปยัง TestGE, PocketMonster, Pirate Fruit, Echonews และ AstraLife พร้อม direct source HEAD, exact-head workflow, architecture/authority state, next gates และ limitations โดยยังไม่เปลี่ยน reuse verdict
+- PocketMonster × Pirate Fruit V0.6.3 เจาะเส้นทางรวมเกมโดยตรง: merged original-world/state bridge, draft PR #632 + #168, server-owned vitals, parent-session transport, central market quote/execute และ exact-head CI blockers; ยังไม่ promote เข้า canonical reuse verdict
 
 ## Query Layer
 

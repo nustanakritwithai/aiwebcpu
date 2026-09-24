@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "1.1.0",
+  "schemaVersion": "1.2.0",
   "semantics": {
-    "status": "DOCUMENTED source-level multi-project profile",
+    "status": "DOCUMENTED source-level multi-project + cross-project profile",
     "rule": "Deep profile data adds source context, authority boundaries and exact-head verification signals but does not promote capability reuse decisions or overwrite canonical graph authority."
   },
   "projects": [
@@ -236,7 +236,7 @@
         "url": "https://github.com/nustanakritwithai/PocketMonster/actions/runs/35534212847"
       },
       "productVision": "Monster Life RPG domain integrated into a federation where Pocket owns monster identity/progression while shared world/server layers execute combined authoritative gameplay.",
-      "currentStage": "PocketMonster main contains V8 live progression plus V9.x federation/server-authority contracts and a current Pirate original-world/save bridge; the architecture plan remains an implementation baseline rather than proof that every server write is production-live.",
+      "currentStage": "Pocket main has the merged Pirate original-world/save bridge. Draft PR #632 extends it with server-owned Pirate vitals relay, transient vitals input and central trade operation transport, but exact-head CI is currently VIOL.",
       "architecture": [
         {
           "label": "Monster progression domain",
@@ -276,6 +276,46 @@
           "evidence": {
             "path": "pirate-original-world-contract.mjs",
             "sha": "e4bcc5c9c1b0f0681f7b7bbcc2a503849379502f"
+          }
+        },
+        {
+          "label": "Pocket × Pirate merged original-world bridge",
+          "owner": "Pocket parent shell + Pirate central server",
+          "state": "MERGED_BASELINE",
+          "detail": "Merged main transports Pirate original-world monster results through Pocket while keeping Pocket as an authenticated parent/transport boundary rather than a second gameplay authority.",
+          "evidence": {
+            "path": "pirate-original-world-contract.mjs",
+            "sha": "e4bcc5c9c1b0f0681f7b7bbcc2a503849379502f"
+          }
+        },
+        {
+          "label": "PR #632 — Pirate vitals relay",
+          "owner": "Pocket parent shell",
+          "state": "VIOL",
+          "detail": "Candidate validates pirate-vitals/1, carries canonical HP/guard/energy/MP/death/respawn inside the original-world envelope, and relays it to the Pirate iframe. Exact-head Monster controls CI is red on a stale v7 protocol assertion.",
+          "evidence": {
+            "path": "pirate-original-world-contract.mjs",
+            "sha": "5f1e14920134458a6476fc1ba5f32f39501ea988"
+          }
+        },
+        {
+          "label": "PR #632 — session-bound operation bridge",
+          "owner": "Pocket parent shell",
+          "state": "CANDIDATE",
+          "detail": "Candidate sanitizes tradeQuote/trade and vitals operations. Transient block/mounted/sprinting input uses a dedicated endpoint and is intentionally excluded from the persistent save revision queue.",
+          "evidence": {
+            "path": "pirate-central-state-client.mjs",
+            "sha": "f9b98d9b5857caf03d2f0f30bdc462d1ae1bd27b"
+          }
+        },
+        {
+          "label": "Pirate iframe bootstrap isolation",
+          "owner": "Pocket parent",
+          "state": "CANDIDATE",
+          "detail": "The parent bootstraps server-backed Pirate state into memory storage before starting the child iframe and keeps account/session authority outside the sandboxed game frame.",
+          "evidence": {
+            "path": "boot-pirate-fruit-v900.mjs",
+            "sha": "e3a103c2b9b783dc8fffda0224702672891cb907"
           }
         }
       ],
@@ -319,18 +359,70 @@
             "path": "pirate-central-state-client.mjs",
             "sha": "86d982d474fc15024c355327ca1a79d754114de9"
           }
+        },
+        {
+          "domain": "Pocket ↔ Pirate session / operation transport",
+          "owner": "Pocket parent shell",
+          "state": "TRANSPORT",
+          "detail": "Pocket binds requests to the active launch session, validates bounded operation envelopes and routes them; it does not own Pirate progression/vitals/economy rules.",
+          "evidence": {
+            "path": "pirate-central-state-client.mjs",
+            "sha": "f9b98d9b5857caf03d2f0f30bdc462d1ae1bd27b"
+          }
+        },
+        {
+          "domain": "Pirate player HP / guard / energy / MP",
+          "owner": "Pirate server candidate",
+          "state": "CANDIDATE",
+          "detail": "Pocket receives and validates the server snapshot but must not calculate or persist a competing vitals truth. Promotion is blocked while PR #632/#168 exact-head gates are red.",
+          "evidence": {
+            "path": "pirate-original-world-contract.mjs",
+            "sha": "5f1e14920134458a6476fc1ba5f32f39501ea988"
+          }
         }
       ],
       "nextGates": [
         "Move execution only after server authority gates are proven; do not transfer Pocket ownership of monster formulas/definitions.",
         "Keep HP single-writer semantics and immutable effective-stat snapshots through combat integration.",
-        "Promote V9.1 production writes only with explicit server/persistence gates; client prediction must remain non-authoritative."
+        "Promote V9.1 production writes only with explicit server/persistence gates; client prediction must remain non-authoritative.",
+        "Pocket PR #632: update the stale world-presence protocol regression to the intentional v8 contract, then rerun the exact head.",
+        "Pair Pocket #632 with Pirate #168 in a composed test pinned to both SHAs before claiming vitals/economy compatibility.",
+        "Verify session change, stale revision, duplicate idempotency, reconnect and respawn retry fail closed across the parent/iframe boundary."
       ],
       "limitations": [
         "INTEGRATION-MASTER-PLAN-V3.3.md is an architecture baseline / implementation plan, not proof that every planned authority transfer is live.",
         "combat-v91-server-authority.mjs explicitly has productionWritesEnabled=false and networkCreation=false.",
-        "README still describes V8.1 live progression while newer V9.x integration code exists; version labels therefore describe different layers."
-      ]
+        "README still describes V8.1 live progression while newer V9.x integration code exists; version labels therefore describe different layers.",
+        "PocketMonster × Pirate Fruit candidate integration is currently unmerged: Pocket PR #632 and Pirate PR #168 are draft with exact-head CI VIOL."
+      ],
+      "crossProjectIntegration": {
+        "id": "pocketmonster-pirate-fruit-vitals-economy-20260921",
+        "partnerRepoId": "repo:pirate-fruit",
+        "status": "CANDIDATE",
+        "mergedBaseline": {
+          "pocketHead": "cf902e7410e8d67efa5a004d085dd7b7c858d2df",
+          "pirateHead": "d20096d1720ec25a4c219fdc0e44b8373684e369"
+        },
+        "pocket": {
+          "pullRequest": 632,
+          "ref": "codex/pirate-vitals-economy-client-20260921",
+          "head": "ef84398e78471cad61c597dd4211d4f8dd7d128e",
+          "draft": true,
+          "gateVerdict": "VIOL",
+          "runId": 35540443000,
+          "blocker": "Monster controls integration stops on a regression assertion that still expects world-presence-protocol.mjs?v=7 while the candidate imports v8."
+        },
+        "pirate": {
+          "pullRequest": 168,
+          "ref": "codex/pirate-vitals-economy-native-20260921",
+          "head": "8842f808b3ac1aadf633f0f975812c7a800b8384",
+          "draft": true,
+          "gateVerdict": "VIOL",
+          "runId": 35540739646,
+          "blocker": "Client/server gate stops at TypeScript build: PlayerVitalsSkillAuthority callback signature mismatch plus remoteTrade fixtures using invalid IslandId 'pirate-fruit'."
+        },
+        "rule": "Draft branch evidence is not merged/live proof. Both exact-head gates must pass before authority promotion."
+      }
     },
     {
       "repoId": "repo:pirate-fruit",
@@ -351,7 +443,7 @@
         "url": "https://github.com/nustanakritwithai/Pirate-fruit-/actions/runs/35534125384"
       },
       "productVision": "Three.js pirate action RPG evolving into a server-authoritative persistent multiplayer world with quests, combat, boats, monsters and a bounded living economy.",
-      "currentStage": "Current default branch contains the S-series server/persistence stack plus central original-world worker integration for shared monster/PvE outcomes; authority is split by feature gate and domain rather than handed wholesale to the client.",
+      "currentStage": "Pirate default branch has the merged central monster/PvE worker baseline. Draft PR #168 extends it with canonical HP/guard/energy/MP/respawn and central economy quote/execute, but exact-head CI is currently VIOL.",
       "architecture": [
         {
           "label": "Client / Shared / Server separation",
@@ -391,6 +483,56 @@
           "evidence": {
             "path": "server/src/world/centralPlayerHits.ts",
             "sha": "e07c7da7ad8cb11598e927a5c3a21d6ef94a5a61"
+          }
+        },
+        {
+          "label": "Pocket × Pirate merged central world baseline",
+          "owner": "Pirate central worker + Pocket transport",
+          "state": "MERGED_BASELINE",
+          "detail": "The merged worker already composes shared monster stepping, player-hit preview/ack, rewards and state operations while Pocket carries the original-world results back to the embedded Pirate scene.",
+          "evidence": {
+            "path": "server/src/world/centralWorker.ts",
+            "sha": "826618bf3c00380a18abaec47155f1d821d65b16"
+          }
+        },
+        {
+          "label": "PR #168 — canonical Pirate vitals",
+          "owner": "Pirate server",
+          "state": "VIOL",
+          "detail": "Candidate server rules own HP/guard regeneration, hitstun, energy/MP, potion/skill resource costs and respawn receipts. Client local writers are disabled after server authority is claimed. Exact-head client/server CI currently fails TypeScript build.",
+          "evidence": {
+            "path": "server/src/player/vitalsRules.ts",
+            "sha": "21d65a8973c94c2660521c758cda99322ba26686"
+          }
+        },
+        {
+          "label": "PR #168 — vitals fail-closed client receiver",
+          "owner": "Pirate client presentation",
+          "state": "CANDIDATE",
+          "detail": "The receiver accepts only monotonic pirate-vitals/1 revisions. Once claimed, malformed/stale packets never restore local authority; the client applies canonical snapshots to presentation and server-respawn positioning.",
+          "evidence": {
+            "path": "client/src/realtime/PirateVitalsAuthority.ts",
+            "sha": "0bf3fa7c2a3c0149baa63e9e305844553ce754c4"
+          }
+        },
+        {
+          "label": "PR #168 — central market quote / execute",
+          "owner": "Pirate central server market",
+          "state": "CANDIDATE",
+          "detail": "Trade quotes come from the bundled EconomyEngine loaded from the canonical market snapshot. Execute mutates player + market projections with idempotency receipts and returns nextMarket for the outer transaction.",
+          "evidence": {
+            "path": "server/src/trade/centralOriginalTradeOperation.ts",
+            "sha": "b16589e3adfe24b5c1a2fb99d20402fe1379b9f3"
+          }
+        },
+        {
+          "label": "PR #168 — composed central worker",
+          "owner": "Pirate central server worker",
+          "state": "CANDIDATE",
+          "detail": "The candidate worker adds economy tick, vitals tick/snapshot and trade state-operation paths beside monster stepping and PvE hit CAS boundaries under pirate-original-world/1.",
+          "evidence": {
+            "path": "server/src/world/centralWorker.ts",
+            "sha": "6040d1aff149dd67c58d1ed9c8e1539b4a8d8f34"
           }
         }
       ],
@@ -434,18 +576,80 @@
             "path": "API_PROTOCOL.md",
             "sha": "936c1cd54289faf073df6fc44a63e24dcdbfc326"
           }
+        },
+        {
+          "domain": "Pirate player vitals",
+          "owner": "Pirate server candidate",
+          "state": "CANDIDATE",
+          "detail": "Server derives canonical HP/guard/energy/MP/death/respawn and the client becomes presentation-only after authority claim.",
+          "evidence": {
+            "path": "server/src/player/vitalsRules.ts",
+            "sha": "21d65a8973c94c2660521c758cda99322ba26686"
+          }
+        },
+        {
+          "domain": "Pirate vitals transport through Pocket",
+          "owner": "Pocket parent shell",
+          "state": "TRANSPORT",
+          "detail": "Pocket validates and relays the snapshot/session-bound input but is not the HP writer or rule owner.",
+          "evidence": {
+            "path": "client/src/realtime/PocketMonsterParentPresence.ts",
+            "sha": "82c1f300c9073a5311fab8568d5d25f92470105b"
+          }
+        },
+        {
+          "domain": "Pirate central market mutation",
+          "owner": "Pirate server candidate",
+          "state": "CANDIDATE",
+          "detail": "Trusted quote and market mutation happen server-side; Pocket transports sanitized quote/execute operations and must not supply prices or market truth.",
+          "evidence": {
+            "path": "server/src/trade/centralOriginalTradeOperation.ts",
+            "sha": "b16589e3adfe24b5c1a2fb99d20402fe1379b9f3"
+          }
         }
       ],
       "nextGates": [
         "Preserve intent-only client contracts as more combat/world authority moves into the central server worker.",
         "Keep account, progression, reward and world commits revisioned/idempotent through cross-repo Pocket integration.",
-        "Treat feature flags as part of the authority boundary; disabled server gates must not be described as live production ownership."
+        "Treat feature flags as part of the authority boundary; disabled server gates must not be described as live production ownership.",
+        "Pirate PR #168: fix the PlayerVitalsSkillAuthority callback type and RemoteTrade IslandId fixture without weakening runtime contracts.",
+        "Run the full client/server suite after TypeScript build passes, then run a composed test pinned to Pocket PR #632 head.",
+        "Promote server vitals/market ownership only after both candidate heads are SAT; draft/VIOL remains unverified."
       ],
       "limitations": [
         "The repository default branch is claude/blox-fruits-three-js-roadmap-1f2f5u rather than main; this profile follows the actual default branch.",
         "Several server-authoritative systems are feature-gated and may be absent at runtime when flags are disabled.",
-        "Green client/server CI does not prove every optional Render/server deployment flag is enabled in production."
-      ]
+        "Green client/server CI does not prove every optional Render/server deployment flag is enabled in production.",
+        "PocketMonster × Pirate Fruit candidate integration is currently unmerged: Pocket PR #632 and Pirate PR #168 are draft with exact-head CI VIOL."
+      ],
+      "crossProjectIntegration": {
+        "id": "pocketmonster-pirate-fruit-vitals-economy-20260921",
+        "partnerRepoId": "repo:pocketmonster",
+        "status": "CANDIDATE",
+        "mergedBaseline": {
+          "pocketHead": "cf902e7410e8d67efa5a004d085dd7b7c858d2df",
+          "pirateHead": "d20096d1720ec25a4c219fdc0e44b8373684e369"
+        },
+        "pocket": {
+          "pullRequest": 632,
+          "ref": "codex/pirate-vitals-economy-client-20260921",
+          "head": "ef84398e78471cad61c597dd4211d4f8dd7d128e",
+          "draft": true,
+          "gateVerdict": "VIOL",
+          "runId": 35540443000,
+          "blocker": "Monster controls integration stops on a regression assertion that still expects world-presence-protocol.mjs?v=7 while the candidate imports v8."
+        },
+        "pirate": {
+          "pullRequest": 168,
+          "ref": "codex/pirate-vitals-economy-native-20260921",
+          "head": "8842f808b3ac1aadf633f0f975812c7a800b8384",
+          "draft": true,
+          "gateVerdict": "VIOL",
+          "runId": 35540739646,
+          "blocker": "Client/server gate stops at TypeScript build: PlayerVitalsSkillAuthority callback signature mismatch plus remoteTrade fixtures using invalid IslandId 'pirate-fruit'."
+        },
+        "rule": "Draft branch evidence is not merged/live proof. Both exact-head gates must pass before authority promotion."
+      }
     },
     {
       "repoId": "repo:echonews",
@@ -651,6 +855,7 @@
   "summary": {
     "profiledProjects": 6,
     "sourceHeadsCaptured": 6,
-    "rule": "Profiles are source evidence overlays. Canonical graph and goal-specific verifier remain the authority for reuse decisions."
+    "rule": "Profiles are source evidence overlays. Canonical graph and goal-specific verifier remain the authority for reuse decisions.",
+    "crossProjectIntegrations": 1
   }
 }

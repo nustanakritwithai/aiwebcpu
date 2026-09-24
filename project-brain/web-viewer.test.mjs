@@ -579,3 +579,36 @@ test('deep project profiles keep evidence SHA-bound and reuse-neutral',async()=>
   assert.match(profiles.semantics.rule,/does not promote capability reuse decisions/);
   assert.doesNotMatch(JSON.stringify(profiles),/\"reuseDecision\"\s*:\s*\"(?:REUSE|ADAPT|BUILD)\"/);
 });
+
+test('PocketMonster x Pirate Fruit V0.6.3 records paired draft heads and authority boundaries',async()=>{
+  const profiles=JSON.parse(await readFile(new URL('./deep-profiles/projects.json',import.meta.url),'utf8'));
+  assert.equal(profiles.schemaVersion,'1.2.0');
+  const pocket=profiles.projects.find(project=>project.repoId==='repo:pocketmonster');
+  const pirate=profiles.projects.find(project=>project.repoId==='repo:pirate-fruit');
+  for(const row of [pocket,pirate])assert.ok(row);
+  assert.equal(pocket.crossProjectIntegration.pocket.pullRequest,632);
+  assert.equal(pocket.crossProjectIntegration.pirate.pullRequest,168);
+  assert.equal(pocket.crossProjectIntegration.pocket.gateVerdict,'VIOL');
+  assert.equal(pocket.crossProjectIntegration.pirate.gateVerdict,'VIOL');
+  assert.match(pocket.crossProjectIntegration.pocket.head,/^[0-9a-f]{40}$/);
+  assert.match(pirate.crossProjectIntegration.pirate.head,/^[0-9a-f]{40}$/);
+  assert.ok(pocket.architecture.some(row=>row.label==='PR #632 — Pirate vitals relay'));
+  assert.ok(pirate.architecture.some(row=>row.label==='PR #168 — canonical Pirate vitals'));
+  assert.ok(pirate.architecture.some(row=>row.label==='PR #168 — central market quote / execute'));
+  assert.ok(pocket.authorityBoundaries.some(row=>row.domain==='Pocket ↔ Pirate session / operation transport'));
+  assert.ok(pirate.authorityBoundaries.some(row=>row.domain==='Pirate central market mutation'));
+});
+
+test('Pocket x Pirate candidate evidence remains SHA-bound and unpromoted',async()=>{
+  const profiles=JSON.parse(await readFile(new URL('./deep-profiles/projects.json',import.meta.url),'utf8'));
+  for(const repoId of ['repo:pocketmonster','repo:pirate-fruit']){
+    const project=profiles.projects.find(row=>row.repoId===repoId);
+    for(const row of [...project.architecture,...project.authorityBoundaries]){
+      assert.ok(row.evidence?.path);
+      assert.match(row.evidence.sha,/^[0-9a-f]{40}$/);
+    }
+  }
+  assert.match(css,/Pocket x Pirate integration states V0\.6\.3/);
+  assert.match(css,/\.state-viol/);
+  assert.doesNotMatch(JSON.stringify(profiles),/"reuseDecision"\s*:\s*"(?:REUSE|ADAPT|BUILD)"/);
+});

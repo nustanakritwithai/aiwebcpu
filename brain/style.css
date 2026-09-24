@@ -2518,4 +2518,11 @@ body.ux-focus .graph-inspection{
   font-size:.57rem;
   line-height:1.5;
 }
-
+  
+/* Pocket x Pirate integration states V0.6.3 */
+.project-architecture-row .state-viol,
+.project-authority-row .state-viol{color:#ff9299;border-color:#74343c}
+.project-architecture-row .state-merged_baseline,
+.project-authority-row .state-merged_baseline{color:#76e2aa;border-color:#276b4d}
+.project-architecture-row .state-transport,
+.project-authority-row .state-transport{color:#86d9f4;border-color:#2d6477}
