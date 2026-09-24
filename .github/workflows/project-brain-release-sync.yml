@@ -1,0 +1,57 @@
+name: Materialize Pocket Pirate Release Evidence
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/project-brain-release-sync.yml'
+      - 'project-brain/cross-project/sync-pocket-pirate-release.mjs'
+      - 'project-brain/cross-project/release-evidence.test.template'
+      - 'brain/release-evidence.mjs'
+permissions:
+  contents: read
+jobs:
+  materialize:
+    if: github.repository == 'nustanakritwithai/aiwebcpu'
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Guard against concurrent main changes
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Capture only actual merged-source and current workflow evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          test -z "${RELEASE_FIXTURE:-}"
+          node project-brain/cross-project/sync-pocket-pirate-release.mjs
+          node --check brain/app.js
+          node --check brain/release-evidence.mjs
+          node project-brain/graph/sync-catalog-inventory.mjs --check
+          node --test project-brain/*.test.mjs
+      - name: Commit only generated Project Brain evidence after verification
+        run: |
+          git add project-brain/deep-profiles/projects.json project-brain/deep-profiles/pocket-pirate-release.json project-brain/graph/project-brain.json brain/app.js brain/style.css project-brain/web-viewer.test.mjs project-brain/temporal.test.mjs project-brain/web-only.test.mjs project-brain/release-evidence.test.mjs project-brain/README.md
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'feat: publish actual Pocket Pirate merged release evidence V0.6.8'
+          git push origin HEAD:main
+      - name: Preserve checked generated source for independent UI review
+        run: |
+          mkdir -p release-review
+          git rev-parse HEAD > release-review/brain-sha.txt
+          git archive HEAD | gzip > release-review/brain-source.tar.gz
+          cp project-brain/deep-profiles/pocket-pirate-release.json release-review/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: project-brain-release-review
+          path: release-review/
+          retention-days: 7
+          if-no-files-found: error

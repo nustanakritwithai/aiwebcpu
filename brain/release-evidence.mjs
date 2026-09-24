@@ -1,0 +1,8 @@
+/* Release Evidence V0.6.8 — read-only, scoped proof; never a gameplay writer. */
+const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+export function renderReleaseEvidence(release){
+  if(!release||release.schemaVersion!=='1.0.0'||!Array.isArray(release.proofs)||!Array.isArray(release.fields)||!Array.isArray(release.limitations))return '';
+  const evidence=(release.proofs??[]).map(row=>`<article class="project-authority-row"><div><b>${esc(row.label)}</b><span>${esc(row.scope)}</span></div><small class="state-${esc(String(row.verdict??'UNKNOWN').toLowerCase())}">${esc(row.verdict??'UNKNOWN')}</small><p>${esc(row.detail)}</p>${Number.isSafeInteger(row.runId)?`<code>GitHub Actions #${row.runId}</code>`:''}</article>`).join('');
+  const fields=(release.fields??[]).map(row=>`<details class="project-deep-section"><summary><b>${esc(row.message)}</b> · ${esc(row.direction)}</summary><dl class="properties"><div class="prop"><dt>Fields</dt><dd>${esc(row.fields.join(', '))}</dd></div><div class="prop"><dt>Writer</dt><dd>${esc(row.writer)}</dd></div><div class="prop"><dt>Validator / relay</dt><dd>${esc(row.validator)}</dd></div><div class="prop"><dt>Commit</dt><dd>${esc(row.commit)}</dd></div></dl><p>${esc(row.limit)}</p></details>`).join('');
+  return `<section class="project-deep-profile release-evidence" aria-label="Release Evidence"><h3>Pocket × Pirate · หลักฐานการรวมงาน V0.6.8</h3><p>โค้ดรวมแล้ว ≠ เซิร์ฟเวอร์เปิดใช้ครบ · UNKNOWN ไม่ใช่ PASS</p><div class="project-authority-list">${evidence}</div><h3>Field / Message Map</h3>${fields}<p class="note">${esc(release.limitations.join(' '))}</p></section>`;
+}
