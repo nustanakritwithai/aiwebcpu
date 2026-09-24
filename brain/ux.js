@@ -1,4 +1,4 @@
-const UX_PREF='project-brain:ux:v021';
+const UX_PREF='project-brain:ux:v054';
 const PRESETS={
   all:['PROJECT','CAPABILITY','CAPABILITY_CANDIDATE','EVIDENCE','GOAL','ISSUE','INTEGRATION','VERSION'],
   core:['PROJECT','CAPABILITY','GOAL','INTEGRATION'],
@@ -10,7 +10,7 @@ const PRESETS={
 
 let graph=null;
 let nodeMap=new Map();
-let activePreset='all';
+let activePreset='core';
 let focusMode=false;
 let observer=null;
 let temporalTimer=null;
@@ -356,7 +356,7 @@ async function bootUX(){
     if(response.ok){graph=await response.json();nodeMap=new Map(graph.nodes.map(n=>[n.id,n]));populateMetrics();installTemporal()}
   }catch{}
   const prefs=readPrefs();
-  activePreset=PRESETS[prefs.activePreset]?prefs.activePreset:'all';
+  activePreset=PRESETS[prefs.activePreset]?prefs.activePreset:'core';
   focusMode=prefs.focusMode===true;
   installSectionNav();
   installSearchEnter();
