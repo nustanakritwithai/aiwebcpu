@@ -5,11 +5,14 @@ on:
     branches: [main]
     paths:
       - "project-brain/**"
+      - "brain/**"
       - ".github/workflows/project-brain.yml"
   push:
     branches: [main]
     paths:
       - "project-brain/**"
+      - "brain/**"
+      - ".github/workflows/project-brain.yml"
 
 permissions:
   contents: read
@@ -25,7 +28,7 @@ jobs:
           node-version: "24"
       - name: Validate graph JSON
         run: node -e "JSON.parse(require('fs').readFileSync('project-brain/graph/project-brain.json','utf8')); console.log('graph json ok')"
-      - name: Run Project Brain query tests
-        run: node --test project-brain/query.test.mjs
+      - name: Run Project Brain tests
+        run: node --test project-brain/*.test.mjs
       - name: Smoke query CLI
         run: node project-brain/query.mjs providers rollback
