@@ -71,17 +71,17 @@
       <div class="catalog-head">
         <div>
           <p class="eyebrow">FULL REPOSITORY CATALOG</p>
-          <h2>37 repositories</h2>
+          <h2>Repository Catalog</h2>
           <p>Mechanical discovery ก่อน promote เป็น capability</p>
         </div>
         <span class="catalog-status" id="catalog-status">กำลังโหลด</span>
       </div>
 
       <div class="catalog-metrics">
-        <article><small>TOTAL</small><b id="catalog-total">—</b><span>repositories</span></article>
-        <article><small>NON-EMPTY</small><b id="catalog-nonempty">—</b><span>with commits</span></article>
+        <article><small>DISCOVERED</small><b id="catalog-total">—</b><span>account total</span></article>
+        <article><small>PUBLIC DATA</small><b id="catalog-nonempty">—</b><span>non-empty persisted</span></article>
         <article><small>PUBLIC</small><b id="catalog-public">—</b><span>auto-scan eligible</span></article>
-        <article><small>PRIVATE</small><b id="catalog-private">—</b><span>manual private scan</span></article>
+        <article><small>PRIVATE</small><b id="catalog-private">—</b><span>details hidden</span></article>
       </div>
 
       <div class="catalog-controls">
@@ -89,7 +89,6 @@
         <div id="catalog-filters" class="catalog-filters">
           <button type="button" data-catalog-filter="all" class="active">All</button>
           <button type="button" data-catalog-filter="public">Public</button>
-          <button type="button" data-catalog-filter="private">Private</button>
           <button type="button" data-catalog-filter="empty">Empty</button>
           <button type="button" data-catalog-filter="SAT">CI SAT</button>
           <button type="button" data-catalog-filter="VIOL">CI VIOL</button>
@@ -101,8 +100,8 @@
       <div id="catalog-repos" class="catalog-repos"></div>
 
       <p class="catalog-boundary">
-        Catalog = repository metadata / HEAD / evidence-file SHA / exact-head CI.
-        ทุก repo ยังมี <b>semanticStatus = UNKNOWN</b> จนกว่า Verifier จะตรวจความหมายและ compatibility
+        Public Catalog = repository metadata / HEAD / evidence-file SHA / exact-head CI ของ public repos เท่านั้น.
+        Private repository details ถูกซ่อนจาก public dataset และทุก persisted repo ยังมี <b>semanticStatus = UNKNOWN</b> จนกว่า Verifier จะตรวจ
       </p>
     </section>
 
