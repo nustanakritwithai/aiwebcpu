@@ -282,7 +282,7 @@ test('Graph Focus UX V0.5.4 removes secondary dashboards from Graph view',async(
   assert.match(css,/\.graph-card \.legend\{display:none!important\}/);
   assert.match(css,/\.workspace\[data-pb-view="graph"\]\{\s*display:block/);
   assert.match(css,/\.workspace>\.detail\{\s*position:fixed/);
-  assert.match(ux,/const UX_PREF='project-brain:ux:v056'/);
+  assert.match(ux,/const UX_PREF='project-brain:ux:v057'/);
 });
 
 test('Graph Focus UX defaults to Core and keeps relation labels opt-in',async()=>{
@@ -412,4 +412,30 @@ test('only explicit clear/background actions clear graph selection',()=>{
   assert.match(js,/function clearSelection\(\{clearFocus=true\}=\{\}\)/);
   assert.match(js,/reset-selection[^\n]*addEventListener/);
   assert.match(js,/svg\.addEventListener\('click',\(\)=>clearSelection/);
+});
+
+
+test('Tap Detail Reliability V0.5.7 opens the menu from node-selected only',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  assert.match(ux,/project-brain:node-selected'[\s\S]*openDetailSheet\(\)/);
+  assert.match(ux,/project-brain:selection-cleared'[\s\S]*closeDetailSheet\(\)/);
+  assert.doesNotMatch(ux,/#graph'\)\?\.addEventListener\('click',[\s\S]*closest\?\.\('\.node'\)/);
+  assert.doesNotMatch(ux,/new MutationObserver/);
+  assert.doesNotMatch(ux,/installDetailObserver/);
+});
+
+test('node selection event is emitted only after detail content is rendered',()=>{
+  const selectStart=js.indexOf('function selectNode(id)');
+  const selectEnd=js.indexOf('\nfunction setupFilters',selectStart);
+  const block=js.slice(selectStart,selectEnd);
+  const detailIndex=block.indexOf('detail.innerHTML=');
+  const eventIndex=block.indexOf("project-brain:node-selected");
+  assert.ok(detailIndex>=0);
+  assert.ok(eventIndex>detailIndex);
+});
+
+test('detail backdrop clears selection through engine contract instead of directly hiding menu',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  assert.match(ux,/#detail-backdrop'\)\?\.addEventListener\('click',\(\)=>qs\('#reset-selection'\)\?\.click\(\)\)/);
+  assert.doesNotMatch(ux,/#reset-selection'\)\?\.addEventListener\('click',[\s\S]*closeDetailSheet/);
 });

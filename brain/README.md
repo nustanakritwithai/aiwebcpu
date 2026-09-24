@@ -1,4 +1,4 @@
-# Project Brain Web Viewer V0.5.6
+# Project Brain Web Viewer V0.5.7
 
 Interactive read-only Knowledge Graph viewer for Project Brain.
 
@@ -277,3 +277,29 @@ Behavior:
 - only explicit Clear or background click clears selection
 
 Focus state is not restored from localStorage on reload; node deep-link selection remains the durable context.
+
+
+## Tap Detail Reliability V0.5.7
+
+Fixes a mobile race where tapping an SVG node could render detail and then immediately hide it.
+
+Root cause:
+- a capture-phase graph click listener tried to detect `.node` with `SVGElement.closest()`
+- on some mobile browser paths that detection could fail
+- the listener scheduled `closeDetailSheet()`
+- meanwhile the engine selected the node and opened detail
+- the delayed close then hid the menu
+
+V0.5.7 makes lifecycle event-driven:
+
+```text
+project-brain:node-selected
+  -> open detail
+
+project-brain:selection-cleared
+  -> close detail
+```
+
+The graph click capture detector and detail MutationObserver are removed.
+
+This gives one authoritative open/close path and preserves Focus Inspection V0.5.6 state behavior.

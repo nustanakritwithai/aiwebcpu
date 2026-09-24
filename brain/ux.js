@@ -1,4 +1,4 @@
-const UX_PREF='project-brain:ux:v056';
+const UX_PREF='project-brain:ux:v057';
 const PRESETS={
   all:['PROJECT','CAPABILITY','CAPABILITY_CANDIDATE','EVIDENCE','GOAL','ISSUE','INTEGRATION','VERSION'],
   core:['PROJECT','CAPABILITY','GOAL','INTEGRATION'],
@@ -14,7 +14,6 @@ let activePreset='core';
 let focusMode=false;
 let selectedNodeId=null;
 let focusRootId=null;
-let observer=null;
 let temporalTimer=null;
 let temporalSelectedIndex=0;
 let applyingPreset=false;
@@ -399,12 +398,6 @@ function installGraphHooks(){
     }
   }));
   qs('#detail-backdrop')?.addEventListener('click',()=>qs('#reset-selection')?.click());
-  qs('#reset-selection')?.addEventListener('click',()=>queueMicrotask(closeDetailSheet));
-  qs('#graph')?.addEventListener('click',event=>{
-    const node=event.target.closest?.('.node');
-    if(node){setTimeout(openDetailSheet,0);return}
-    setTimeout(closeDetailSheet,0);
-  },true);
   const typeFilters=qs('#type-filters');
   typeFilters?.addEventListener('click',()=>{
     if(applyingPreset)return;
@@ -422,6 +415,7 @@ function installSelectionEvents(){
     selectedNodeId=event.detail?.id??null;
     if(!focusMode)focusRootId=null;
     updateInspectionUI();
+    openDetailSheet();
   });
 
   document.addEventListener('project-brain:selection-cleared',()=>{
@@ -429,6 +423,7 @@ function installSelectionEvents(){
     focusRootId=null;
     focusMode=false;
     updateInspectionUI();
+    closeDetailSheet();
   });
 
   document.addEventListener('project-brain:focus-root-changed',event=>{
@@ -436,16 +431,6 @@ function installSelectionEvents(){
     focusMode=Boolean(focusRootId);
     updateInspectionUI();
   });
-}
-
-function installDetailObserver(){
-  const detail=qs('#detail');
-  if(!detail)return;
-  observer=new MutationObserver(()=>{
-    if(detail.querySelector('.detail-placeholder'))closeDetailSheet();
-    else openDetailSheet();
-  });
-  observer.observe(detail,{childList:true,subtree:true});
 }
 
 function openDeepLink(){
@@ -473,7 +458,6 @@ async function bootUX(){
   installSelectionEvents();
   installSearchEnter();
   installGraphHooks();
-  installDetailObserver();
   const wait=setInterval(()=>{
     if(!qs('#type-filters .filter-chip'))return;
     clearInterval(wait);
