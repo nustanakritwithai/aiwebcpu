@@ -149,3 +149,29 @@ test('capability UI preserves DOCUMENTED versus VERIFIED boundary',()=>{
   assert.match(css,/capability-badge\.documented/);
   assert.match(css,/capability-reuse-state/);
 });
+
+
+test('Verifier V0.5 is exposed through the web-only interface',async()=>{
+  const verifier=await readFile(new URL('../brain/verifier.js',import.meta.url),'utf8');
+  for(const id of ['verifier-section','verifier-status','verifier-contract','verifier-verdict','verifier-decision','verifier-select','verifier-results','verifier-patch'])assert.match(html,new RegExp(`id=["']${id}["']`));
+  assert.match(html,/src=["']\.\/verifier\.js["']/);
+  assert.match(verifier,/project-brain\/verifier\/index\.json/);
+  assert.match(verifier,/verifier\/reports/);
+  assert.match(verifier,/verifier\/patches/);
+});
+
+test('Verifier UI keeps auto apply off and preserves UNKNOWN semantics',()=>{
+  assert.match(html,/AUTO APPLY/);
+  assert.match(html,/Graph patch เป็น candidate เท่านั้นและห้าม auto-merge/);
+  assert.match(html,/UNKNOWN ไม่ใช่ PASS/);
+  assert.match(css,/verifier-badge\.SAT/);
+  assert.match(css,/verifier-badge\.VIOL/);
+  assert.match(css,/verifier-badge\.UNKNOWN/);
+});
+
+test('Verifier web layer does not duplicate verifier engine logic',async()=>{
+  const verifier=await readFile(new URL('../brain/verifier.js',import.meta.url),'utf8');
+  assert.doesNotMatch(verifier,/evidenceFreshnessChecks/);
+  assert.doesNotMatch(verifier,/verifyContract/);
+  assert.doesNotMatch(verifier,/decisionFor/);
+});
