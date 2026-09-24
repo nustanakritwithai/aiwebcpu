@@ -235,7 +235,7 @@ function selectNode(id){
   const nodeMap=new Map(current.nodes.map(n=>[n.id,n]));
 
   const properties=Object.entries(node)
-    .filter(([k])=>!['name'].includes(k))
+    .filter(([k])=>!['name','temporalStates'].includes(k))
     .map(([k,v])=>`<div class="prop"><dt>${esc(k)}</dt><dd class="${k==='verdict'?'verdict '+esc(v):''}">${esc(Array.isArray(v)?v.join(', '):v)}</dd></div>`).join('');
 
   const relationRows=[...outgoing.map(e=>({edge:e,target:nodeMap.get(e.to),dir:'→'})),...incoming.map(e=>({edge:e,target:nodeMap.get(e.from),dir:'←'}))]
@@ -330,7 +330,9 @@ async function boot(){
     const response=await fetch('../project-brain/graph/project-brain.json',{cache:'no-store'});
     if(!response.ok)throw new Error(`HTTP ${response.status}`);
     graph=await response.json();
-    temporalCheckpointId=graph.temporal?.defaultCheckpoint??graph.temporal?.checkpoints?.at(-1)?.id??null;
+    const requestedCheckpoint=new URL(location.href).searchParams.get('at');
+    const defaultCheckpoint=graph.temporal?.defaultCheckpoint??graph.temporal?.checkpoints?.at(-1)?.id??null;
+    temporalCheckpointId=(requestedCheckpoint&&temporalIndex(requestedCheckpoint)>=0)?requestedCheckpoint:defaultCheckpoint;
     settle(graph.nodes,graph.edges);
     setupFilters();
     renderTimeline();
