@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.4.0",
+  "schemaVersion": "1.4.1",
   "semantics": {
     "status": "DOCUMENTED source-level multi-project + cross-project profile",
     "rule": "Deep profile data adds source context, authority boundaries and exact-head verification signals but does not promote capability reuse decisions or overwrite canonical graph authority."
@@ -236,7 +236,7 @@
         "url": "https://github.com/nustanakritwithai/PocketMonster/actions/runs/35534212847"
       },
       "productVision": "Monster Life RPG domain integrated into a federation where Pocket owns monster identity/progression while shared world/server layers execute combined authoritative gameplay.",
-      "currentStage": "Pocket main keeps the merged Pirate original-world/save bridge. Draft PR #632 is exact-head SAT and extends it with server-owned Pirate vitals relay, transient vitals input and central trade operation transport; cross-repo paired verification is still pending.",
+      "currentStage": "Pocket main keeps the merged Pirate original-world/save bridge. Draft PR #632 is exact-head SAT and the pinned Pocket × Pirate structural pair gate is SAT; the vitals/trade extension remains candidate because the PR pair is still draft/unmerged.",
       "architecture": [
         {
           "label": "Monster progression domain",
@@ -393,12 +393,12 @@
         "INTEGRATION-MASTER-PLAN-V3.3.md is an architecture baseline / implementation plan, not proof that every planned authority transfer is live.",
         "combat-v91-server-authority.mjs explicitly has productionWritesEnabled=false and networkCreation=false.",
         "README still describes V8.1 live progression while newer V9.x integration code exists; version labels therefore describe different layers.",
-        "PocketMonster × Pirate Fruit candidate integration is still unmerged: Pocket PR #632 and Pirate PR #168 are draft with individual exact-head CI SAT; paired cross-repo compatibility is PENDING until the pinned contract gate passes."
+        "PocketMonster × Pirate Fruit candidate integration is still unmerged: Pocket PR #632 and Pirate PR #168 are draft. Individual exact-head CI and the pinned structural pair gate are SAT, but this is not merged/live proof."
       ],
       "crossProjectIntegration": {
         "id": "pocketmonster-pirate-fruit-vitals-economy-20260921",
         "partnerRepoId": "repo:pirate-fruit",
-        "status": "CANDIDATE_PAIRED_INDIVIDUAL_SAT",
+        "status": "CANDIDATE_PAIRED_SAT",
         "mergedBaseline": {
           "pocketHead": "cf902e7410e8d67efa5a004d085dd7b7c858d2df",
           "pirateHead": "d20096d1720ec25a4c219fdc0e44b8373684e369"
@@ -434,7 +434,7 @@
             36063411353
           ]
         },
-        "rule": "Both draft exact heads are individually SAT. They remain unmerged and cross-repo compatibility stays PENDING until the pinned paired-contract gate passes.",
+        "rule": "Pocket #632 and Pirate #168 exact heads are individually SAT and the pinned cross-repo structural contract gate is SAT. Both PRs remain draft/unmerged, so candidate authority remains non-canonical until integration review and merge.",
         "contractSchemaVersion": "1.0.0",
         "contracts": [
           {
@@ -586,11 +586,14 @@
           }
         ],
         "pairedVerification": {
-          "verdict": "PENDING",
+          "verdict": "SAT",
           "pocketHead": "ba1347d8537519543669273c7964d8c6079c57b2",
           "pirateHead": "f08ed860162fb27d33332c8d31d1c1f3d4cbb32d",
           "workflow": "Pocket x Pirate Paired Contract Gate",
-          "rule": "Individual exact-head SAT is necessary but not sufficient. Cross-repo compatibility remains PENDING until the pinned pair gate passes."
+          "rule": "Pinned structural cross-repo contracts are SAT for these exact draft heads. This does not merge, deploy or promote the draft authority changes into canonical current truth.",
+          "runId": 36064664181,
+          "runUrl": "https://github.com/nustanakritwithai/aiwebcpu/actions/runs/36064664181",
+          "verifiedAt": "2026-09-24T21:57:54Z"
         }
       }
     },
@@ -613,7 +616,7 @@
         "url": "https://github.com/nustanakritwithai/Pirate-fruit-/actions/runs/35534125384"
       },
       "productVision": "Three.js pirate action RPG evolving into a server-authoritative persistent multiplayer world with quests, combat, boats, monsters and a bounded living economy.",
-      "currentStage": "Pirate default branch keeps the merged central monster/PvE baseline. Draft PR #168 is exact-head SAT and extends it with canonical HP/guard/energy/MP/respawn plus central economy quote/execute; cross-repo paired verification is still pending.",
+      "currentStage": "Pirate default branch keeps the merged central monster/PvE baseline. Draft PR #168 is exact-head SAT and the pinned Pocket × Pirate structural pair gate is SAT; canonical vitals/central economy changes remain candidate because the PR pair is still draft/unmerged.",
       "architecture": [
         {
           "label": "Client / Shared / Server separation",
@@ -790,12 +793,12 @@
         "The repository default branch is claude/blox-fruits-three-js-roadmap-1f2f5u rather than main; this profile follows the actual default branch.",
         "Several server-authoritative systems are feature-gated and may be absent at runtime when flags are disabled.",
         "Green client/server CI does not prove every optional Render/server deployment flag is enabled in production.",
-        "PocketMonster × Pirate Fruit candidate integration is still unmerged: Pocket PR #632 and Pirate PR #168 are draft with individual exact-head CI SAT; paired cross-repo compatibility is PENDING until the pinned contract gate passes."
+        "PocketMonster × Pirate Fruit candidate integration is still unmerged: Pocket PR #632 and Pirate PR #168 are draft. Individual exact-head CI and the pinned structural pair gate are SAT, but this is not merged/live proof."
       ],
       "crossProjectIntegration": {
         "id": "pocketmonster-pirate-fruit-vitals-economy-20260921",
         "partnerRepoId": "repo:pocketmonster",
-        "status": "CANDIDATE_PAIRED_INDIVIDUAL_SAT",
+        "status": "CANDIDATE_PAIRED_SAT",
         "mergedBaseline": {
           "pocketHead": "cf902e7410e8d67efa5a004d085dd7b7c858d2df",
           "pirateHead": "d20096d1720ec25a4c219fdc0e44b8373684e369"
@@ -831,7 +834,7 @@
             36063411353
           ]
         },
-        "rule": "Both draft exact heads are individually SAT. They remain unmerged and cross-repo compatibility stays PENDING until the pinned paired-contract gate passes.",
+        "rule": "Pocket #632 and Pirate #168 exact heads are individually SAT and the pinned cross-repo structural contract gate is SAT. Both PRs remain draft/unmerged, so candidate authority remains non-canonical until integration review and merge.",
         "contractSchemaVersion": "1.0.0",
         "contracts": [
           {
@@ -983,11 +986,14 @@
           }
         ],
         "pairedVerification": {
-          "verdict": "PENDING",
+          "verdict": "SAT",
           "pocketHead": "ba1347d8537519543669273c7964d8c6079c57b2",
           "pirateHead": "f08ed860162fb27d33332c8d31d1c1f3d4cbb32d",
           "workflow": "Pocket x Pirate Paired Contract Gate",
-          "rule": "Individual exact-head SAT is necessary but not sufficient. Cross-repo compatibility remains PENDING until the pinned pair gate passes."
+          "rule": "Pinned structural cross-repo contracts are SAT for these exact draft heads. This does not merge, deploy or promote the draft authority changes into canonical current truth.",
+          "runId": 36064664181,
+          "runUrl": "https://github.com/nustanakritwithai/aiwebcpu/actions/runs/36064664181",
+          "verifiedAt": "2026-09-24T21:57:54Z"
         }
       }
     },

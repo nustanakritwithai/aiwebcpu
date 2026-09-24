@@ -1,6 +1,6 @@
 # PocketMonster × Pirate Fruit — Cross-Project Deep Dive V0.6.3
 
-Status: **CANDIDATE / individual exact-head gates SAT / paired gate PENDING**
+Status: **CANDIDATE / individual exact-head SAT / pinned paired-contract SAT**
 
 This report is a source-evidence overlay. It does not declare the draft pair merged, deployed or reusable.
 
@@ -68,9 +68,24 @@ Pocket sanitizes `tradeQuote` / `trade` operations. Pirate loads the bundled Eco
 ## Promotion gates
 
 1. Individual exact-head gates are SAT for Pocket #632 and Pirate #168.
-2. Run the composed cross-repo gate pinned to Pocket `ba1347d8…` + Pirate `f08ed860…`.
+2. Pinned cross-repo gate Pocket `ba1347d8…` + Pirate `f08ed860…`: **SAT** (run `36064664181`).
 3. Prove server → Pocket parent → Pirate vitals and Pirate → parent → server transient input at the pinned pair boundary.
 4. Keep stale revision, duplicate idempotency, reconnect, session change and respawn retry fail-closed.
 5. Only after paired SAT and integration review may the candidate authority changes be promoted into the canonical graph.
 
-Individual SAT is not paired SAT. UNKNOWN/VIOL is not PASS.
+Pinned paired structural SAT does not mean merged or deployed. UNKNOWN/VIOL is not PASS.
+
+
+## Paired proof
+
+Project Brain checked out both draft repositories at the exact candidate heads in the same workflow and verified the shared structural contracts:
+
+- `pirate-vitals/1` vocabulary on both sides
+- Pocket stale-revision/session-bound relay guards
+- Pirate fail-closed server-vitals ownership
+- `tradeQuote` / `trade` bridge to Pirate's canonical EconomyEngine
+- monster-intent sanitizer + Pirate CentralWorldWorker composition
+
+Paired gate: **SAT** — run `36064664181`.
+
+This is compatibility evidence for the pinned draft heads only. It is not merge/deploy evidence.
