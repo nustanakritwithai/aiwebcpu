@@ -1,7 +1,7 @@
 ---
 type: goal
 id: simclone-time-travel
-status: proposed
+status: compatibility-analyzed
 target_project: Simclone
 decision: ADAPT
 updated: 2026-09-24
@@ -21,34 +21,82 @@ updated: 2026-09-24
 
 ## Search Result
 
-Provider candidate:
+Provider:
 - [[Projects/TestGE]]
+
+Compatibility analysis:
+- [[../Integrations/Simclone-TestGE-TimeTravel]]
+
+Confirmed blocker:
+- [[../Issues/Simclone-TestGE-State-Model-Mismatch]]
 
 ## Current Decision
 
-**ADAPT**
+# **ADAPT**
 
-เหตุผล:
-TestGE มี documented rollback/replay แล้ว แต่ state schema และ action contract ของ Simclone ยังต้องตรวจ compatibility
+### SAT
 
-## Required Compatibility Check
+- TestGE มี rollback/replay contract และ public history implementation
+- Simclone deterministic จาก seed และมี test ว่า save/restore mid-task เดินต่อแล้วได้ state เดียวกัน
+- Simclone มี serialize / restore / validate ที่ใช้เป็น adapter boundary ได้
 
-1. map Simclone state → canonical snapshot
-2. map Simclone actions → canonical input/event
-3. check side effects that cannot rewind
-4. define save/version interaction
-5. deterministic replay test
-6. browser acceptance test
+### VIOL
+
+- TestGE `twa-history.js` ใช้ Simclone โดยตรงไม่ได้
+- TestGE history ผูกกับ TypedArray state + TWA deltaLog/commit
+- Simclone มี nested state และ mutation model คนละแบบ
+- Simclone events ไม่ใช่ replay log
+
+### UNKNOWN
+
+- TemporalHistory adapter implementation
+- command journal
+- full rollback/replay round-trip
+- browser timeline UX
+- persistent-save interaction
+
+## Selected Architecture
+
+```text
+TestGE verified history contract
+          ↓ ADAPT
+Simclone serialize/restore boundary
+          ↓
+Bounded checkpoints
+          ↓
+Canonical command journal
+          ↓
+Rollback / Replay
+          ↓
+Full-state hash verification
+```
+
+ห้าม rewrite Simclone ทั้ง engine ให้เป็น TestGE เพียงเพื่อเพิ่ม time travel
+
+## Next Implementation
+
+1. สร้าง TemporalHistory adapter
+2. bounded checkpoint ring
+3. command journal: tick + sequence + command + payload
+4. rollback without persistent save mutation
+5. replay deterministic ticks/commands
+6. round-trip full-state hash test
+7. run existing regression suite
+8. update Knowledge Graph with actual implementation evidence
 
 ## Success Contract
 
-- rewind แล้ว world hash/state ตรงกับ checkpoint ที่เลือก
-- replay input เดิมแล้วได้ผล deterministic ตาม contract
-- save เดิมไม่ถูกทำลายโดย migration
-- failure ต้องคืน UNKNOWN/VIOL ไม่ใช่ silent success
+- rewind แล้ว full world ตรงกับ checkpoint
+- replay round trip ได้ canonical hash เดิม
+- manual CLONE/BUILD replay ตาม tick/sequence
+- save schema/migration เดิมไม่พัง
+- corrupt history fail closed
+- existing tests ยังผ่าน
+- UNKNOWN ห้ามรายงานเป็น PASS
 
 ## Verification State
 
-implementation: UNKNOWN  
-compatibility: UNKNOWN  
-reuse candidate found: SAT
+reuse discovery: SAT  
+architecture compatibility by adaptation: SAT  
+direct module reuse: VIOL  
+implementation: UNKNOWN
