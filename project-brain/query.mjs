@@ -2,6 +2,7 @@ import {readFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 
 const DEFAULT_GRAPH_URL=new URL('./graph/project-brain.json',import.meta.url);
+const VERIFIER_REPORT_DIR=new URL('./verifier/reports/',import.meta.url);
 
 const norm=value=>String(value??'').trim().toLocaleLowerCase();
 
@@ -11,6 +12,12 @@ export async function loadGraph(pathOrUrl=DEFAULT_GRAPH_URL){
   if(!graph||!Array.isArray(graph.nodes)||!Array.isArray(graph.edges))
     throw new Error('Invalid Project Brain graph');
   return graph;
+}
+
+export async function loadVerificationReport(id){
+  if(!/^[a-z0-9._-]+$/i.test(String(id??'')))throw new Error('Invalid verification report id');
+  const url=new URL(String(id)+'.json',VERIFIER_REPORT_DIR);
+  return JSON.parse(await readFile(url,'utf8'));
 }
 
 export function nodeById(graph,id){
@@ -165,6 +172,18 @@ function compact(value){
 
 async function main(argv=process.argv.slice(2)){
   const [command,...rest]=argv;
+
+  if(command==='verification'){
+    const id=rest.join(' ').trim();
+    if(!id){
+      console.error('Usage: node project-brain/query.mjs verification <contract-id>');
+      process.exitCode=2;
+      return;
+    }
+    console.log(JSON.stringify(compact(await loadVerificationReport(id)),null,2));
+    return;
+  }
+
   const graph=await loadGraph();
 
   if(command==='checkpoints'){
@@ -174,7 +193,7 @@ async function main(argv=process.argv.slice(2)){
 
   const query=rest.join(' ').trim();
   if(!command||!query){
-    console.error('Usage: node project-brain/query.mjs <capability|providers|goal|integration|node|snapshot> <query-or-checkpoint>\n       node project-brain/query.mjs checkpoints');
+    console.error('Usage: node project-brain/query.mjs <capability|providers|goal|integration|node|snapshot|verification> <query-or-id>\n       node project-brain/query.mjs checkpoints');
     process.exitCode=2;
     return;
   }
