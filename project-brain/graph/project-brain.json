@@ -341,8 +341,26 @@
       "id": "version:project-brain-v051",
       "type": "VERSION",
       "name": "Project Brain Command Center UX V0.5.1",
+      "status": "superseded",
+      "activeFrom": "pb-2026-09-24-command-center-v051",
+      "activeUntil": "pb-2026-09-24-decision-workspace-v052"
+    },
+    {
+      "id": "ev:project-brain-v052-ui-ci",
+      "type": "EVIDENCE",
+      "name": "Project Brain V0.5.2 Decision Workspace contract CI",
+      "verdict": "SAT",
+      "scope": "PR #20 candidate head 7cfe6b6; canonical Goal loading, explicit goalId verifier matching, canonical/verifier candidate sources, read-only behavior and fail-closed UNKNOWN regressions",
+      "limitations": "Exact-main completed workflow for merge commit 3d46e1e was not observed at bookkeeping time. SAT applies to the Decision Workspace UI contract only.",
+      "source": "GitHub Actions run 36035414028",
+      "activeFrom": "pb-2026-09-24-decision-workspace-v052"
+    },
+    {
+      "id": "version:project-brain-v052",
+      "type": "VERSION",
+      "name": "Project Brain Decision Workspace V0.5.2",
       "status": "current",
-      "activeFrom": "pb-2026-09-24-command-center-v051"
+      "activeFrom": "pb-2026-09-24-decision-workspace-v052"
     }
   ],
   "edges": [
@@ -593,6 +611,12 @@
       "to": "version:project-brain-v05",
       "type": "SUPERSEDES",
       "activeFrom": "pb-2026-09-24-command-center-v051"
+    },
+    {
+      "from": "version:project-brain-v052",
+      "to": "version:project-brain-v051",
+      "type": "SUPERSEDES",
+      "activeFrom": "pb-2026-09-24-decision-workspace-v052"
     }
   ],
   "timeline": [
@@ -655,6 +679,11 @@
       "date": "2026-09-24",
       "event": "Project Brain V0.5.1 replaces the long stacked Web Viewer with a verified Command Center workspace, Overview dashboard and canonical global search",
       "source": "nustanakritwithai/aiwebcpu@8e3c816"
+    },
+    {
+      "date": "2026-09-24",
+      "event": "Project Brain V0.5.2 adds a verified Goal-centered Decision Workspace that links canonical needs, documented evidence and explicit verifier outcomes without browser-side semantic inference",
+      "source": "nustanakritwithai/aiwebcpu@3d46e1e"
     }
   ],
   "rules": {
@@ -759,9 +788,16 @@
         "label": "Command Center UX V0.5.1",
         "description": "Verified one-view workspace shell, Overview dashboard, canonical global search, responsive rail/drawer and deep-link views are merged.",
         "source": "nustanakritwithai/aiwebcpu@8e3c816"
+      },
+      {
+        "id": "pb-2026-09-24-decision-workspace-v052",
+        "date": "2026-09-24",
+        "label": "Decision Workspace V0.5.2",
+        "description": "Verified goal-centered read-only decision flow connects canonical NEEDS, documented evidence and explicit verifier outcomes without browser-side semantic inference.",
+        "source": "nustanakritwithai/aiwebcpu@3d46e1e"
       }
     ],
-    "defaultCheckpoint": "pb-2026-09-24-command-center-v051"
+    "defaultCheckpoint": "pb-2026-09-24-decision-workspace-v052"
   },
   "interfaces": {
     "human": "web",
