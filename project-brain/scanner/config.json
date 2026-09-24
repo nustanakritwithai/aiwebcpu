@@ -6,24 +6,271 @@
     "candidateVerdict": "UNKNOWN",
     "requireVerification": true,
     "scanIntervalHours": 6,
-    "principle": "Mechanical repository facts may be collected automatically. Capability meaning requires verification before entering the canonical graph."
+    "principle": "Mechanical repository facts may be collected automatically. Capability meaning requires verification before entering the canonical graph.",
+    "catalogPath": "project-brain/catalog/repositories.json",
+    "privateRepositories": "catalog-only-until-cross-repo-credential",
+    "totalCatalogRepositories": 37
   },
   "repositories": [
+    {
+      "id": "repo:3js-player-block-asset-engine",
+      "repo": "nustanakritwithai/3JS-player-block-asset-engine-",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md"
+      ]
+    },
+    {
+      "id": "repo:agent-citta-console",
+      "repo": "nustanakritwithai/agent-citta-console",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md",
+        "pyproject.toml",
+        "CHANGELOG.md"
+      ]
+    },
     {
       "id": "repo:aiwebcpu",
       "repo": "nustanakritwithai/aiwebcpu",
       "branch": "main",
+      "trackHead": false,
+      "trackExactHeadWorkflow": false,
       "evidencePaths": [
         "README.md",
         "project-brain/graph/project-brain.json",
         ".github/workflows/project-brain.yml",
+        "project-brain/scanner/config.json",
         "project-brain/scanner/scanner.mjs",
         ".github/workflows/project-brain-scan.yml",
         "brain/scanner.js",
-        "project-brain/scanner/config.json"
-      ],
-      "trackHead": false,
-      "trackExactHeadWorkflow": false
+        "project-brain/catalog/repositories.json"
+      ]
+    },
+    {
+      "id": "repo:apk-test",
+      "repo": "nustanakritwithai/APK-Test",
+      "branch": "main",
+      "evidencePaths": []
+    },
+    {
+      "id": "repo:astralife",
+      "repo": "nustanakritwithai/AstraLife",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md",
+        "ASTRALIFE_DEVELOPMENT_PLAN_V051_V10_TH.md"
+      ]
+    },
+    {
+      "id": "repo:clanwar",
+      "repo": "nustanakritwithai/ClanWar",
+      "branch": "claude/game-file-analysis-a20xup",
+      "evidencePaths": [
+        "README.md",
+        "package.json"
+      ]
+    },
+    {
+      "id": "repo:ecc",
+      "repo": "nustanakritwithai/ECC",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md",
+        "AGENTS.md",
+        "package.json",
+        "pyproject.toml"
+      ]
+    },
+    {
+      "id": "repo:echonews",
+      "repo": "nustanakritwithai/Echonews",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md",
+        "package.json"
+      ]
+    },
+    {
+      "id": "repo:eldercare-website",
+      "repo": "nustanakritwithai/eldercare-website",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md",
+        "PROJECT_SNAPSHOT.md",
+        "package.json"
+      ]
+    },
+    {
+      "id": "repo:empire-clash",
+      "repo": "nustanakritwithai/empire-clash",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md",
+        "package.json",
+        "render.yaml"
+      ]
+    },
+    {
+      "id": "repo:empire-war",
+      "repo": "nustanakritwithai/Empire-war",
+      "branch": "main",
+      "evidencePaths": []
+    },
+    {
+      "id": "repo:fcwar",
+      "repo": "nustanakritwithai/fcwar",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md",
+        "package.json",
+        "render.yaml"
+      ]
+    },
+    {
+      "id": "repo:football-manager-8-sec",
+      "repo": "nustanakritwithai/Football-Manager-8-sec",
+      "branch": "claude/tactic-manager-lab-design-cvyqs9",
+      "evidencePaths": [
+        "README.md",
+        "render.yaml"
+      ]
+    },
+    {
+      "id": "repo:gameturnbase",
+      "repo": "nustanakritwithai/GameTurnBase",
+      "branch": "master",
+      "evidencePaths": [
+        "README.md",
+        "AGENTS.md",
+        "package.json",
+        "TASKS.md"
+      ]
+    },
+    {
+      "id": "repo:hih",
+      "repo": "nustanakritwithai/Hih",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md",
+        "CLAUDE.md",
+        "VERSION",
+        "being.toml"
+      ]
+    },
+    {
+      "id": "repo:kingdom-sandbox",
+      "repo": "nustanakritwithai/Kingdom-sandbox",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md",
+        "TESTING.md",
+        "package.json",
+        "QUALITY-AUDIT-19.4A-COURT-REBASE.md"
+      ]
+    },
+    {
+      "id": "repo:magiccube",
+      "repo": "nustanakritwithai/Magiccube",
+      "branch": "main",
+      "evidencePaths": [
+        "game.js",
+        "agent-runtime.js",
+        "mobile.js"
+      ]
+    },
+    {
+      "id": "repo:monkey-king",
+      "repo": "nustanakritwithai/Monkey-king",
+      "branch": "main",
+      "evidencePaths": []
+    },
+    {
+      "id": "repo:my-oracle",
+      "repo": "nustanakritwithai/my-oracle",
+      "branch": "master",
+      "evidencePaths": [
+        "CLAUDE.md"
+      ]
+    },
+    {
+      "id": "repo:news-nus",
+      "repo": "nustanakritwithai/News-nus",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md"
+      ]
+    },
+    {
+      "id": "repo:openclaw-runtime-dashboard-vercel",
+      "repo": "nustanakritwithai/openclaw-runtime-dashboard-vercel",
+      "branch": "master",
+      "evidencePaths": [
+        "README.md",
+        "package.json",
+        "CRON_SETUP.md",
+        "update_metrics.py"
+      ]
+    },
+    {
+      "id": "repo:pirate-fruit",
+      "repo": "nustanakritwithai/Pirate-fruit-",
+      "branch": "claude/blox-fruits-three-js-roadmap-1f2f5u",
+      "evidencePaths": [
+        "README.md",
+        "package.json",
+        "API_PROTOCOL.md",
+        "SERVER_ARCHITECTURE.md"
+      ]
+    },
+    {
+      "id": "repo:pocketmonster",
+      "repo": "nustanakritwithai/PocketMonster",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md",
+        "INTEGRATION-MASTER-PLAN-V3.3.md"
+      ]
+    },
+    {
+      "id": "repo:ramagan",
+      "repo": "nustanakritwithai/Ramagan",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md",
+        "schema.md",
+        "index.html"
+      ]
+    },
+    {
+      "id": "repo:rustislandsurvival",
+      "repo": "nustanakritwithai/RustIslandSurvival-",
+      "branch": "claude/project-preparation-5vy1bg",
+      "evidencePaths": [
+        "README.md",
+        "package.json",
+        "render.yaml"
+      ]
+    },
+    {
+      "id": "repo:simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "branch": "main",
+      "evidencePaths": [
+        "AGENTS.md",
+        "GAME_PLAN.md",
+        "README.md",
+        "package.json"
+      ]
+    },
+    {
+      "id": "repo:testflysystem",
+      "repo": "nustanakritwithai/Testflysystem",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md",
+        "requirements.txt"
+      ]
     },
     {
       "id": "repo:testge",
@@ -36,22 +283,54 @@
       ]
     },
     {
-      "id": "repo:astralife",
-      "repo": "nustanakritwithai/AstraLife",
-      "branch": "main",
+      "id": "repo:udomsukflim",
+      "repo": "nustanakritwithai/Udomsukflim",
+      "branch": "claude/udomsuk-film-landing-page-i23304",
       "evidencePaths": [
-        "README.md"
+        "README.md",
+        "llms.txt",
+        "index.html"
       ]
     },
     {
-      "id": "repo:simclone",
-      "repo": "nustanakritwithai/Simclone",
+      "id": "repo:webai",
+      "repo": "nustanakritwithai/WebAi",
       "branch": "main",
       "evidencePaths": [
-        "AGENTS.md",
-        "docs/STATUS.md",
-        "GAME_PLAN.md",
-        "src/engine.mjs"
+        "README.md",
+        "package.json",
+        "VERIFICATION_ENGINE.md",
+        "REASONING_ENGINE_V01.md"
+      ]
+    },
+    {
+      "id": "repo:welcares",
+      "repo": "nustanakritwithai/welcares",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md",
+        "AGENT_DEVELOPMENT_GUIDE.md",
+        "package.json"
+      ]
+    },
+    {
+      "id": "repo:yeb",
+      "repo": "nustanakritwithai/Yeb",
+      "branch": "main",
+      "evidencePaths": [
+        "README.md",
+        "index.html"
+      ]
+    },
+    {
+      "id": "repo:zentra-ai-platform",
+      "repo": "nustanakritwithai/zentra-ai-platform",
+      "branch": "main",
+      "evidencePaths": [
+        "package.json",
+        "drizzle.config.ts",
+        "supabase-setup.sql",
+        "vite.config.ts"
       ]
     }
   ]

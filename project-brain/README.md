@@ -125,3 +125,22 @@ Scanner **ห้าม** สรุป capability ใหม่, compatibility, RE
 ดู implementation ที่ [scanner/README.md](scanner/README.md)
 
 Scheduled scan: ทุก 6 ชั่วโมง และเปิด/อัปเดต candidate PR เมื่อ state ต่างจาก accepted baseline
+
+
+## Full Repository Catalog
+
+Project Brain ดึง mechanical repository data ครบทั้งบัญชีแล้วที่:
+
+[Catalog](catalog/README.md) · [repositories.json](catalog/repositories.json)
+
+Snapshot ปัจจุบัน:
+- 37 repositories
+- 34 non-empty
+- 3 empty
+- 33 public
+- 4 private
+- exact-head CI: 16 SAT / 2 VIOL / 19 UNKNOWN
+
+ตัวเลข SAT/VIOL ด้านบนคือ **workflow evidence เท่านั้น** ไม่ใช่ capability verdict
+
+ทุก repo ใน Catalog เริ่มด้วย `semanticStatus = UNKNOWN` และต้องผ่าน Verifier ก่อน promote capability เข้ากราฟ

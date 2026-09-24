@@ -67,3 +67,16 @@ V0.4 prevents this by using path-only monitoring for `repo:aiwebcpu`:
 - scanner/config/workflow/web-controller/canonical-graph files remain tracked by blob SHA
 
 Other repositories keep HEAD + exact-head CI tracking.
+
+
+## Full account coverage
+
+Repository discovery is stored in `../catalog/repositories.json`.
+
+Current capture:
+- 37 total repositories
+- 33 public repositories scheduled for automatic scanning
+- 4 private repositories cataloged as `MANUAL_PRIVATE`
+- 3 empty repositories handled as a valid `EMPTY` state
+
+The scanner does not silently claim access to private repositories. Automatic private scanning requires an explicit cross-repository credential.

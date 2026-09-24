@@ -1,12 +1,26 @@
 {
-  "schemaVersion": "0.2",
-  "acceptedSource": "Full repository catalog bootstrap 2026-09-24",
-  "repositories": {
-    "repo:3js-player-block-asset-engine": {
+  "schemaVersion": "0.1",
+  "capturedAt": "2026-09-24",
+  "owner": "nustanakritwithai",
+  "totalRepositories": 37,
+  "policy": {
+    "catalogIsMechanicalDiscovery": true,
+    "semanticClaimsRequireVerification": true,
+    "emptyRepositoryIsNotError": true,
+    "privateRepositoriesRequireCrossRepoCredentialForScheduledScan": true
+  },
+  "repositories": [
+    {
       "id": "repo:3js-player-block-asset-engine",
+      "name": "3JS-player-block-asset-engine-",
       "repo": "nustanakritwithai/3JS-player-block-asset-engine-",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 1966,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "1844e64e322a8ad0995262c4150bdc7c6fc2b71b",
         "date": "2026-09-10T15:00:17Z",
@@ -25,13 +39,49 @@
           "sha": "c60eaedd52761d2d97c2c73c72699b8685dfe149",
           "status": "present"
         }
-      ]
+      ],
+      "detectedSignals": []
     },
-    "repo:agent-citta-console": {
+    {
+      "id": "repo:a2a-blackboard",
+      "name": "A2A-blackboard",
+      "repo": "nustanakritwithai/A2A-blackboard",
+      "visibility": "private",
+      "defaultBranch": "main",
+      "sizeKB": 1,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "MANUAL_PRIVATE",
+      "head": {
+        "sha": "11aa5f71faf74bf1d6e61d245356a7b08cf4be30",
+        "date": "2026-04-02T14:36:19Z",
+        "title": "Initial commit"
+      },
+      "exactHeadWorkflow": {
+        "verdict": "UNKNOWN",
+        "reason": "no-completed-workflow-run-for-head"
+      },
+      "evidenceFiles": [
+        {
+          "path": "README.md",
+          "sha": "2241000802112f1409325030f8b587152b14e459",
+          "status": "present"
+        }
+      ],
+      "detectedSignals": []
+    },
+    {
       "id": "repo:agent-citta-console",
+      "name": "agent-citta-console",
       "repo": "nustanakritwithai/agent-citta-console",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 257,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "062b14df34764f260140aad5b6fc88aab6ec9cae",
         "date": "2026-06-17T19:25:05Z",
@@ -60,43 +110,77 @@
           "sha": "8e033abcf802a20869db3d7b2c8f37286bcae109",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "python"
       ]
     },
-    "repo:aiwebcpu": {
+    {
+      "id": "repo:ai-game",
+      "name": "Ai-game",
+      "repo": "nustanakritwithai/Ai-game",
+      "visibility": "private",
+      "defaultBranch": "main",
+      "sizeKB": 208,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "MANUAL_PRIVATE",
+      "head": {
+        "sha": "7b784124c4b1417a9da4f31901b2a16060e63a92",
+        "date": "2026-06-09T21:13:59Z",
+        "title": "Fix Render deploy: generate AIWorldWar publish directory"
+      },
+      "exactHeadWorkflow": {
+        "verdict": "VIOL",
+        "conclusion": "failure",
+        "name": "Deploy static site to GitHub Pages",
+        "runId": 27236243128,
+        "url": "https://github.com/nustanakritwithai/Ai-game/actions/runs/27236243128"
+      },
+      "evidenceFiles": [
+        {
+          "path": "README.md",
+          "sha": "80456a71cdca54ba7da547424baba3ff96d0793b",
+          "status": "present"
+        },
+        {
+          "path": "package.json",
+          "sha": "1253daabb724028018eb2f49d87eb56554d9924b",
+          "status": "present"
+        }
+      ],
+      "detectedSignals": [
+        "node"
+      ]
+    },
+    {
       "id": "repo:aiwebcpu",
+      "name": "aiwebcpu",
       "repo": "nustanakritwithai/aiwebcpu",
-      "branch": "main",
-      "trackHead": false,
-      "trackExactHeadWorkflow": false,
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 211,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "13f2c7b33a0da9f9c7dc1af966b6fc8484ac2c21",
         "date": "2026-09-24T15:16:18Z",
         "title": "fix: stabilize Project Brain V0.4 self-monitoring"
       },
       "exactHeadWorkflow": {
-        "verdict": "UNKNOWN",
-        "reason": "exact-head-workflow-tracking-disabled-by-config"
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Verify Project Brain",
+        "runId": 36018942124,
+        "url": "https://github.com/nustanakritwithai/aiwebcpu/actions/runs/36018942124"
       },
       "evidenceFiles": [
         {
-          "path": ".github/workflows/project-brain-scan.yml",
-          "sha": "0ed31f7823f1ffe159baabe81e5e6d537ffbd819",
-          "status": "present"
-        },
-        {
-          "path": ".github/workflows/project-brain.yml",
-          "sha": "7235297e7f58e9910e9ab862ecd20e8b7e9b2ca8",
-          "status": "present"
-        },
-        {
-          "path": "brain/scanner.js",
-          "sha": "9f1a507f977cc2e4fe98fc142c44dc7de88c6c18",
-          "status": "present"
-        },
-        {
-          "path": "project-brain/catalog/repositories.json",
-          "sha": "9bb2fbbce17723c0d826c7da6ee9f1de3418dcbc",
+          "path": "README.md",
+          "sha": "4e5d46ada3ff7bf66759132b518088d723aaacd7",
           "status": "present"
         },
         {
@@ -105,27 +189,44 @@
           "status": "present"
         },
         {
+          "path": ".github/workflows/project-brain.yml",
+          "sha": "7235297e7f58e9910e9ab862ecd20e8b7e9b2ca8",
+          "status": "present"
+        },
+        {
           "path": "project-brain/scanner/config.json",
-          "sha": "ea384147b420a86b0fafb6270a68e4626ac7e3b3",
+          "sha": "01972efecf31dd43752e5a4cf6e12a82f76c51a3",
           "status": "present"
         },
         {
           "path": "project-brain/scanner/scanner.mjs",
-          "sha": "a13c9712f7ebfa77381436ecdf27dbcdc54eb4f6",
+          "sha": "31feb19bbe409177697bf334782ecd6832242f49",
           "status": "present"
         },
         {
-          "path": "README.md",
-          "sha": "4e5d46ada3ff7bf66759132b518088d723aaacd7",
+          "path": ".github/workflows/project-brain-scan.yml",
+          "sha": "0ed31f7823f1ffe159baabe81e5e6d537ffbd819",
+          "status": "present"
+        },
+        {
+          "path": "brain/scanner.js",
+          "sha": "9f1a507f977cc2e4fe98fc142c44dc7de88c6c18",
           "status": "present"
         }
-      ]
+      ],
+      "detectedSignals": []
     },
-    "repo:apk-test": {
+    {
       "id": "repo:apk-test",
+      "name": "APK-Test",
       "repo": "nustanakritwithai/APK-Test",
-      "branch": "main",
-      "empty": true,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 0,
+      "archived": false,
+      "catalogStatus": "EMPTY",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": null,
         "date": null,
@@ -135,13 +236,20 @@
         "verdict": "UNKNOWN",
         "reason": "empty-repository"
       },
-      "evidenceFiles": []
+      "evidenceFiles": [],
+      "detectedSignals": []
     },
-    "repo:astralife": {
+    {
       "id": "repo:astralife",
+      "name": "AstraLife",
       "repo": "nustanakritwithai/AstraLife",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 1343,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "21dcf780d6666732af2ef27500e478871864a6ac",
         "date": "2026-09-09T17:58:13Z",
@@ -165,13 +273,20 @@
           "sha": "11dfd21a8373e6bf1e0801c3cb19e36603189bdf",
           "status": "present"
         }
-      ]
+      ],
+      "detectedSignals": []
     },
-    "repo:clanwar": {
+    {
       "id": "repo:clanwar",
+      "name": "ClanWar",
       "repo": "nustanakritwithai/ClanWar",
-      "branch": "claude/game-file-analysis-a20xup",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "claude/game-file-analysis-a20xup",
+      "sizeKB": 1427,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "28f1d3d0ab7d0ff8fa3361037c0847d9e4230a18",
         "date": "2026-07-06T10:29:59Z",
@@ -192,13 +307,22 @@
           "sha": "f4cbccd101ea243e4682a9b4c9747f37464a8605",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "node"
       ]
     },
-    "repo:ecc": {
+    {
       "id": "repo:ecc",
+      "name": "ECC",
       "repo": "nustanakritwithai/ECC",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 49399,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "06c5e118c4d3e6c3b7f9445f973a2194c82de193",
         "date": "2026-08-16T22:23:27Z",
@@ -229,13 +353,24 @@
           "sha": "2e924826f6e60defe47ad9eb35accafd23bf6806",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "node",
+        "python",
+        "agent-instructions"
       ]
     },
-    "repo:echonews": {
+    {
       "id": "repo:echonews",
+      "name": "Echonews",
       "repo": "nustanakritwithai/Echonews",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 736,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "7c020336b34765fecafdd9b89e3be82fe964e0fd",
         "date": "2026-09-24T15:01:29Z",
@@ -259,13 +394,22 @@
           "sha": "e1c78b9babb8c12a99908e09dffd2cb36ddbb361",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "node"
       ]
     },
-    "repo:eldercare-website": {
+    {
       "id": "repo:eldercare-website",
+      "name": "eldercare-website",
       "repo": "nustanakritwithai/eldercare-website",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 281,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "66b23e211eb1dc80d11666dd191f0941d0bb0143",
         "date": "2026-04-08T18:45:54Z",
@@ -294,13 +438,22 @@
           "sha": "1bfe9a6ce3430fc815f96c1509410dd6c50cda18",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "node"
       ]
     },
-    "repo:empire-clash": {
+    {
       "id": "repo:empire-clash",
+      "name": "empire-clash",
       "repo": "nustanakritwithai/empire-clash",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 940,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "9525909752b4db59529d68a068ab1cc7f87da9e9",
         "date": "2026-07-06T09:39:46Z",
@@ -326,13 +479,23 @@
           "sha": "e7f1cd607f28a71a0825f70f40335c01ba2402a5",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "node",
+        "render"
       ]
     },
-    "repo:empire-war": {
+    {
       "id": "repo:empire-war",
+      "name": "Empire-war",
       "repo": "nustanakritwithai/Empire-war",
-      "branch": "main",
-      "empty": true,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 0,
+      "archived": false,
+      "catalogStatus": "EMPTY",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": null,
         "date": null,
@@ -342,13 +505,20 @@
         "verdict": "UNKNOWN",
         "reason": "empty-repository"
       },
-      "evidenceFiles": []
+      "evidenceFiles": [],
+      "detectedSignals": []
     },
-    "repo:fcwar": {
+    {
       "id": "repo:fcwar",
+      "name": "fcwar",
       "repo": "nustanakritwithai/fcwar",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 101,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "560c0f527ab413bacfb2322b4433329917a358c1",
         "date": "2026-07-11T05:37:00Z",
@@ -374,13 +544,23 @@
           "sha": "926ae560edda92d13cc4e2ac97aaed30820dfcaf",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "node",
+        "render"
       ]
     },
-    "repo:football-manager-8-sec": {
+    {
       "id": "repo:football-manager-8-sec",
+      "name": "Football-Manager-8-sec",
       "repo": "nustanakritwithai/Football-Manager-8-sec",
-      "branch": "claude/tactic-manager-lab-design-cvyqs9",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "claude/tactic-manager-lab-design-cvyqs9",
+      "sizeKB": 263,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "ade002d2bf4facf082ed8cc68cad4e63233e18f4",
         "date": "2026-06-14T06:47:49Z",
@@ -404,13 +584,22 @@
           "sha": "3e476b4c3ce715f3c277cbb797a52bcdfc4424ba",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "render"
       ]
     },
-    "repo:gameturnbase": {
+    {
       "id": "repo:gameturnbase",
+      "name": "GameTurnBase",
       "repo": "nustanakritwithai/GameTurnBase",
-      "branch": "master",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "master",
+      "sizeKB": 271274,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "5f420911e6a5888480c714a6d44664f8e1f62ed7",
         "date": "2026-08-10T16:34:47Z",
@@ -444,13 +633,23 @@
           "sha": "27a034131b06e7bfa09f6f2efb86e3d9c93419e2",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "node",
+        "agent-instructions"
       ]
     },
-    "repo:hih": {
+    {
       "id": "repo:hih",
+      "name": "Hih",
       "repo": "nustanakritwithai/Hih",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 147374,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "52e5537650c70fbe1fc9b21207032f0d31ac8745",
         "date": "2026-07-22T07:07:40Z",
@@ -481,13 +680,22 @@
           "sha": "8b6e4dc300dc3e8ed4ce7e7e4d08d1578f4cd753",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "agent-instructions"
       ]
     },
-    "repo:kingdom-sandbox": {
+    {
       "id": "repo:kingdom-sandbox",
+      "name": "Kingdom-sandbox",
       "repo": "nustanakritwithai/Kingdom-sandbox",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 2310,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "f1f0fd7e3c345640cbb3c9dd2d2aa7916503f483",
         "date": "2026-07-08T11:02:52Z",
@@ -518,13 +726,23 @@
           "sha": "9db9bb212f0a84b9131e8a42555377f11213d16d",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "node",
+        "verification-docs"
       ]
     },
-    "repo:magiccube": {
+    {
       "id": "repo:magiccube",
+      "name": "Magiccube",
       "repo": "nustanakritwithai/Magiccube",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 145,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "a4fa4dc78313dd384ace33b921838755e2aee499",
         "date": "2026-09-15T17:30:23Z",
@@ -553,13 +771,20 @@
           "sha": "5bba999aca8b3b26a7db6947457855d969b3541a",
           "status": "present"
         }
-      ]
+      ],
+      "detectedSignals": []
     },
-    "repo:monkey-king": {
+    {
       "id": "repo:monkey-king",
+      "name": "Monkey-king",
       "repo": "nustanakritwithai/Monkey-king",
-      "branch": "main",
-      "empty": true,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 0,
+      "archived": false,
+      "catalogStatus": "EMPTY",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": null,
         "date": null,
@@ -569,13 +794,92 @@
         "verdict": "UNKNOWN",
         "reason": "empty-repository"
       },
-      "evidenceFiles": []
+      "evidenceFiles": [],
+      "detectedSignals": []
     },
-    "repo:my-oracle": {
+    {
+      "id": "repo:monsterlifeserver",
+      "name": "MonsterLifeServer",
+      "repo": "nustanakritwithai/MonsterLifeServer",
+      "visibility": "private",
+      "defaultBranch": "main",
+      "sizeKB": 2012,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "MANUAL_PRIVATE",
+      "head": {
+        "sha": "ac5f40b25f66af64e572578e64de403d2ec48384",
+        "date": "2026-09-20T20:00:33Z",
+        "title": "เชื่อมระบบต่อสู้ Pirate เดิมกับ central server"
+      },
+      "exactHeadWorkflow": {
+        "verdict": "UNKNOWN",
+        "reason": "no-completed-workflow-run-for-head"
+      },
+      "evidenceFiles": [
+        {
+          "path": "AGENT_HANDOFF.md",
+          "sha": "471b61f59a8dad383b2186189ebd0b28fa6ae090",
+          "status": "present"
+        }
+      ],
+      "detectedSignals": [
+        "agent-instructions"
+      ]
+    },
+    {
+      "id": "repo:mulitagentwork",
+      "name": "MulitAgentWork",
+      "repo": "nustanakritwithai/MulitAgentWork",
+      "visibility": "private",
+      "defaultBranch": "main",
+      "sizeKB": 231,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "MANUAL_PRIVATE",
+      "head": {
+        "sha": "809307ac3f62de675243aa31dae4d19fb8e75ceb",
+        "date": "2026-04-05T17:58:37Z",
+        "title": "Expand to 4 specialist teams with sub-agents"
+      },
+      "exactHeadWorkflow": {
+        "verdict": "UNKNOWN",
+        "reason": "no-completed-workflow-run-for-head"
+      },
+      "evidenceFiles": [
+        {
+          "path": "README.md",
+          "sha": "54777c9c36b51b349c9747a84335ee4ecb1e69cf",
+          "status": "present"
+        },
+        {
+          "path": "package.json",
+          "sha": "02cc7db30c28f2a0a84d347184f4a705d796ec16",
+          "status": "present"
+        },
+        {
+          "path": "metadata.json",
+          "sha": "f110c0d6fb1ed3a6b61f945bd8d8e3613ca51fb3",
+          "status": "present"
+        }
+      ],
+      "detectedSignals": [
+        "node"
+      ]
+    },
+    {
       "id": "repo:my-oracle",
+      "name": "my-oracle",
       "repo": "nustanakritwithai/my-oracle",
-      "branch": "master",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "master",
+      "sizeKB": 3,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "9ad6cc020b91fabb080ddcb2fe56335e2df74ab1",
         "date": "2026-04-10T09:12:09Z",
@@ -591,13 +895,22 @@
           "sha": "76fa2002cf250f3a5c757e863bf9d84f3f9503d5",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "agent-instructions"
       ]
     },
-    "repo:news-nus": {
+    {
       "id": "repo:news-nus",
+      "name": "News-nus",
       "repo": "nustanakritwithai/News-nus",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 1,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "cd9d55f75873fa8d271a45aaaad7111687e754b0",
         "date": "2026-03-15T08:51:07Z",
@@ -613,13 +926,20 @@
           "sha": "2241000802112f1409325030f8b587152b14e459",
           "status": "present"
         }
-      ]
+      ],
+      "detectedSignals": []
     },
-    "repo:openclaw-runtime-dashboard-vercel": {
+    {
       "id": "repo:openclaw-runtime-dashboard-vercel",
+      "name": "openclaw-runtime-dashboard-vercel",
       "repo": "nustanakritwithai/openclaw-runtime-dashboard-vercel",
-      "branch": "master",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "master",
+      "sizeKB": 12,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "d6b6c4344014ddc0b2f85f6c07b66854727a43fe",
         "date": "2026-03-12T23:02:50Z",
@@ -650,13 +970,23 @@
           "sha": "ad646ac495bdde233f550b49857abda7e8a5fb34",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "node",
+        "python"
       ]
     },
-    "repo:pirate-fruit": {
+    {
       "id": "repo:pirate-fruit",
+      "name": "Pirate-fruit-",
       "repo": "nustanakritwithai/Pirate-fruit-",
-      "branch": "claude/blox-fruits-three-js-roadmap-1f2f5u",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "claude/blox-fruits-three-js-roadmap-1f2f5u",
+      "sizeKB": 20129,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "d20096d1720ec25a4c219fdc0e44b8373684e369",
         "date": "2026-09-20T20:00:28Z",
@@ -690,13 +1020,23 @@
           "sha": "205116460e0df1a8144ce24918b15264e4d799c2",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "node",
+        "server-contract"
       ]
     },
-    "repo:pocketmonster": {
+    {
       "id": "repo:pocketmonster",
+      "name": "PocketMonster",
       "repo": "nustanakritwithai/PocketMonster",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 33242,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "cf902e7410e8d67efa5a004d085dd7b7c858d2df",
         "date": "2026-09-20T20:01:57Z",
@@ -720,13 +1060,20 @@
           "sha": "fa81ab11b76a254fb436ed8753f491154307808e",
           "status": "present"
         }
-      ]
+      ],
+      "detectedSignals": []
     },
-    "repo:ramagan": {
+    {
       "id": "repo:ramagan",
+      "name": "Ramagan",
       "repo": "nustanakritwithai/Ramagan",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 299,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "693425f1ea788f7f9439dd2d6caa54eb5d00189c",
         "date": "2026-09-19T07:11:56Z",
@@ -755,13 +1102,20 @@
           "sha": "a946bc5e96a2ea16fd2cd95e0578d487ffb347e5",
           "status": "present"
         }
-      ]
+      ],
+      "detectedSignals": []
     },
-    "repo:rustislandsurvival": {
+    {
       "id": "repo:rustislandsurvival",
+      "name": "RustIslandSurvival-",
       "repo": "nustanakritwithai/RustIslandSurvival-",
-      "branch": "claude/project-preparation-5vy1bg",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "claude/project-preparation-5vy1bg",
+      "sizeKB": 509,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "9ceb2651255b62bf930dd0eec9039308c7c428e6",
         "date": "2026-07-03T16:43:30Z",
@@ -787,13 +1141,23 @@
           "sha": "7d39cf09dbba0616789c9f8343f7aa70680fd5b3",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "node",
+        "render"
       ]
     },
-    "repo:simclone": {
+    {
       "id": "repo:simclone",
+      "name": "Simclone",
       "repo": "nustanakritwithai/Simclone",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 333,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "c74319d431f300bed64aeba35dabc1d9b57e2568",
         "date": "2026-09-24T13:43:26Z",
@@ -827,13 +1191,23 @@
           "sha": "8a59c0e912c4dc5d7ace77e3b5f0631bdc10e939",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "node",
+        "agent-instructions"
       ]
     },
-    "repo:testflysystem": {
+    {
       "id": "repo:testflysystem",
+      "name": "Testflysystem",
       "repo": "nustanakritwithai/Testflysystem",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 24,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "a5e0a727c3449311d574a3f2bdb200d3c09cc88f",
         "date": "2026-09-15T11:32:51Z",
@@ -854,13 +1228,22 @@
           "sha": "dde895437a0b06d1d06c7a9f2c0da55b9663cf91",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "python"
       ]
     },
-    "repo:testge": {
+    {
       "id": "repo:testge",
+      "name": "TestGE",
       "repo": "nustanakritwithai/TestGE",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 592,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "0ca33d9655df31d69045e0a483465f3271928471",
         "date": "2026-09-16T07:16:58Z",
@@ -889,13 +1272,20 @@
           "sha": "bed50c45a65cd4ec51d5dac0bc970cafcb6baead",
           "status": "present"
         }
-      ]
+      ],
+      "detectedSignals": []
     },
-    "repo:udomsukflim": {
+    {
       "id": "repo:udomsukflim",
+      "name": "Udomsukflim",
       "repo": "nustanakritwithai/Udomsukflim",
-      "branch": "claude/udomsuk-film-landing-page-i23304",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "claude/udomsuk-film-landing-page-i23304",
+      "sizeKB": 433,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "d9ed9175fc56b29599d6a0d38dcd34657133ce66",
         "date": "2026-06-14T16:36:18Z",
@@ -921,13 +1311,20 @@
           "sha": "65654e39ffb47174f673669943850bb4c8cac8d4",
           "status": "present"
         }
-      ]
+      ],
+      "detectedSignals": []
     },
-    "repo:webai": {
+    {
       "id": "repo:webai",
+      "name": "WebAi",
       "repo": "nustanakritwithai/WebAi",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 722,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "340bac4c805cda00abd2acd0dc747f58ef906fa1",
         "date": "2026-09-08T11:42:26Z",
@@ -961,13 +1358,22 @@
           "sha": "a7d0c705a5fa9910ed2bc3b0b62a0d1fde5c5f31",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "node"
       ]
     },
-    "repo:welcares": {
+    {
       "id": "repo:welcares",
+      "name": "welcares",
       "repo": "nustanakritwithai/welcares",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 2317,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "8d8d0a10a5e2c24960234cbcd27314887cf0b2bd",
         "date": "2026-04-10T18:18:28Z",
@@ -996,13 +1402,23 @@
           "sha": "49aba2259a62de5c9d0d56d307f2bb428af99b53",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "node",
+        "agent-instructions"
       ]
     },
-    "repo:yeb": {
+    {
       "id": "repo:yeb",
+      "name": "Yeb",
       "repo": "nustanakritwithai/Yeb",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 88,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "458d90b92d234e35a681b987692284e54d635f3f",
         "date": "2026-09-19T08:22:07Z",
@@ -1026,13 +1442,20 @@
           "sha": "6b861d8063d3877f0aea0baeee71863bb599dba2",
           "status": "present"
         }
-      ]
+      ],
+      "detectedSignals": []
     },
-    "repo:zentra-ai-platform": {
+    {
       "id": "repo:zentra-ai-platform",
+      "name": "zentra-ai-platform",
       "repo": "nustanakritwithai/zentra-ai-platform",
-      "branch": "main",
-      "empty": false,
+      "visibility": "public",
+      "defaultBranch": "main",
+      "sizeKB": 2825,
+      "archived": false,
+      "catalogStatus": "DISCOVERED",
+      "semanticStatus": "UNKNOWN",
+      "scheduledScan": "AUTO",
       "head": {
         "sha": "a39bad467de6f6bff86accffbd718b83b5dcb7fa",
         "date": "2026-03-16T05:50:34Z",
@@ -1063,7 +1486,23 @@
           "sha": "00316553ca53cd5e8df0e73a65673ace7b7a03f3",
           "status": "present"
         }
+      ],
+      "detectedSignals": [
+        "node",
+        "vite"
       ]
+    }
+  ],
+  "summary": {
+    "total": 37,
+    "nonEmpty": 34,
+    "empty": 3,
+    "public": 33,
+    "private": 4,
+    "exactHeadCI": {
+      "SAT": 16,
+      "VIOL": 2,
+      "UNKNOWN": 19
     }
   }
 }

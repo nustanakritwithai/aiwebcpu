@@ -9,7 +9,7 @@
     "principle": "Mechanical repository facts may be collected automatically. Capability meaning requires verification before entering the canonical graph."
   },
   "summary": {
-    "monitoredRepositories": 4,
+    "monitoredRepositories": 33,
     "changedRepositories": 0,
     "candidates": 0,
     "mechanicalSAT": 0,
