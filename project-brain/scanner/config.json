@@ -16,7 +16,10 @@
       "evidencePaths": [
         "README.md",
         "project-brain/graph/project-brain.json",
-        ".github/workflows/project-brain.yml"
+        ".github/workflows/project-brain.yml",
+        "project-brain/scanner/scanner.mjs",
+        ".github/workflows/project-brain-scan.yml",
+        "brain/scanner.js"
       ]
     },
     {
