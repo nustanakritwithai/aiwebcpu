@@ -280,7 +280,9 @@ body.detail-open .mobile-hint{display:none}
   .rule-flow span{font-size:.68rem;padding:6px 7px}
 }
 
-body.ux-focus .node.dim,body.ux-focus .edge.dim,body.ux-focus .edge-label.dim{display:none}
+body.ux-focus .node.focus-out,
+body.ux-focus .edge.focus-out,
+body.ux-focus .edge-label.focus-out{display:none}
 .detail-actions .detail-badge{display:grid;place-items:center;flex:.7}
 
 
@@ -2082,4 +2084,145 @@ body.detail-open .detail-backdrop{display:block}
 }
 #graph[data-density="dense"] .node .meta{
   display:none;
+}
+
+
+/* Focus Inspection UX V0.5.6 */
+.node.focus-root circle{
+  stroke:var(--cyan);
+  stroke-width:4;
+  filter:drop-shadow(0 0 18px var(--cyan));
+}
+.node.selected circle{
+  stroke:#fff;
+  stroke-width:3.6;
+  filter:drop-shadow(0 0 16px #fff);
+}
+.node.selected.focus-root circle{
+  stroke:#fff;
+  stroke-width:4.4;
+  filter:
+    drop-shadow(0 0 10px #fff)
+    drop-shadow(0 0 20px var(--cyan));
+}
+
+.graph-inspection{
+  position:absolute;
+  top:8px;
+  left:8px;
+  right:8px;
+  z-index:12;
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:7px 9px;
+  border:1px solid #2a536f;
+  border-radius:12px;
+  background:#06121ee8;
+  backdrop-filter:blur(14px);
+  box-shadow:0 8px 30px #0007;
+}
+.graph-inspection[hidden]{display:none!important}
+.graph-inspection-copy{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.graph-inspection-copy small{
+  flex:0 0 auto;
+  border:1px solid #2d5f7f;
+  border-radius:999px;
+  padding:3px 6px;
+  color:var(--cyan);
+  font-size:.54rem;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+.graph-inspection-copy span{
+  min-width:0;
+  color:var(--muted);
+  font-size:.66rem;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.graph-inspection-copy span b{color:var(--text)}
+.graph-inspection-copy em{
+  flex:0 1 auto;
+  color:#7e9db2;
+  font-size:.58rem;
+  font-style:normal;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.graph-inspection-actions{
+  flex:0 0 auto;
+  display:flex;
+  gap:5px;
+}
+.graph-inspection-actions button{
+  min-height:30px;
+  border:1px solid #21445e;
+  border-radius:8px;
+  background:#081827;
+  color:#c7dcea;
+  padding:5px 8px;
+  font-size:.58rem;
+  cursor:pointer;
+}
+.graph-inspection-actions [data-inspection-action="focus"]{
+  border-color:#2d6b8e;
+  color:var(--cyan);
+  background:#0a2436;
+}
+
+#focus-mode:disabled,
+[data-inspection-action="focus"]:disabled,
+[data-detail-focus]:disabled{
+  opacity:.38;
+  cursor:not-allowed;
+}
+
+.detail-actions{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:6px;
+}
+.detail-actions a,
+.detail-actions button,
+.detail-actions .detail-badge{
+  min-width:0;
+}
+.detail-actions .detail-badge{
+  min-height:36px;
+  text-align:center;
+}
+
+body.ux-focus .graph-inspection{
+  border-color:#327aa0;
+  box-shadow:0 8px 30px #0007,0 0 0 1px #32d6ff1c;
+}
+
+@media(max-width:760px){
+  .graph-inspection{
+    top:6px;
+    left:6px;
+    right:6px;
+    min-height:40px;
+    padding:6px 7px;
+  }
+  .graph-inspection-copy em{display:none}
+  .graph-inspection-actions [data-inspection-action="clear"]{display:none}
+  .graph-inspection-actions button{padding:5px 7px}
+}
+
+@media(max-width:560px){
+  .graph-quick-actions #focus-mode{display:grid}
+  .graph-inspection-copy small{display:none}
+  .graph-inspection-actions [data-inspection-action="center"]{display:none}
+  .detail-actions{grid-template-columns:1fr 1fr}
 }
