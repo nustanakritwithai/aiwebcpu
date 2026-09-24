@@ -30,6 +30,7 @@
 
     <nav class="section-nav card" aria-label="Project Brain sections">
       <button type="button" data-scroll="graph-card" class="active">Graph</button>
+      <button type="button" data-scroll="catalog-section">Repositories</button>
       <button type="button" data-scroll="scanner-section">Scanner</button>
       <button type="button" data-scroll="timeline-section">Timeline</button>
       <button type="button" data-scroll="rule-section">Decision Rule</button>
@@ -64,6 +65,46 @@
       </p>
     </section>
 
+
+
+    <section class="catalog-panel card" id="catalog-section" aria-label="Full Repository Catalog">
+      <div class="catalog-head">
+        <div>
+          <p class="eyebrow">FULL REPOSITORY CATALOG</p>
+          <h2>37 repositories</h2>
+          <p>Mechanical discovery ก่อน promote เป็น capability</p>
+        </div>
+        <span class="catalog-status" id="catalog-status">กำลังโหลด</span>
+      </div>
+
+      <div class="catalog-metrics">
+        <article><small>TOTAL</small><b id="catalog-total">—</b><span>repositories</span></article>
+        <article><small>NON-EMPTY</small><b id="catalog-nonempty">—</b><span>with commits</span></article>
+        <article><small>PUBLIC</small><b id="catalog-public">—</b><span>auto-scan eligible</span></article>
+        <article><small>PRIVATE</small><b id="catalog-private">—</b><span>manual private scan</span></article>
+      </div>
+
+      <div class="catalog-controls">
+        <input id="catalog-search" type="search" placeholder="ค้นหา repo / branch / signal">
+        <div id="catalog-filters" class="catalog-filters">
+          <button type="button" data-catalog-filter="all" class="active">All</button>
+          <button type="button" data-catalog-filter="public">Public</button>
+          <button type="button" data-catalog-filter="private">Private</button>
+          <button type="button" data-catalog-filter="empty">Empty</button>
+          <button type="button" data-catalog-filter="SAT">CI SAT</button>
+          <button type="button" data-catalog-filter="VIOL">CI VIOL</button>
+          <button type="button" data-catalog-filter="UNKNOWN">CI UNKNOWN</button>
+        </div>
+      </div>
+
+      <div class="catalog-summary-line" id="catalog-summary-line">—</div>
+      <div id="catalog-repos" class="catalog-repos"></div>
+
+      <p class="catalog-boundary">
+        Catalog = repository metadata / HEAD / evidence-file SHA / exact-head CI.
+        ทุก repo ยังมี <b>semanticStatus = UNKNOWN</b> จนกว่า Verifier จะตรวจความหมายและ compatibility
+      </p>
+    </section>
 
     <section class="scanner-panel card" id="scanner-section" aria-label="Project Brain GitHub Scanner">
       <div class="scanner-head">
@@ -224,5 +265,6 @@
   <script type="module" src="./app.js"></script>
   <script type="module" src="./ux.js"></script>
   <script type="module" src="./scanner.js"></script>
+  <script type="module" src="./catalog.js"></script>
 </body>
 </html>
