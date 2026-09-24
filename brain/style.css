@@ -279,3 +279,6 @@ body.detail-open .mobile-hint{display:none}
   .rule-flow{gap:5px}
   .rule-flow span{font-size:.68rem;padding:6px 7px}
 }
+
+body.ux-focus .node.dim,body.ux-focus .edge.dim,body.ux-focus .edge-label.dim{display:none}
+.detail-actions .detail-badge{display:grid;place-items:center;flex:.7}
