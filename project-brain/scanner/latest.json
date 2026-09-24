@@ -96,7 +96,7 @@
         },
         {
           "path": "brain/index.html",
-          "sha": "da5c4265a75ad211d7b62027c55549ccc1cfc0b1",
+          "sha": "341737b3820b30dd6fd8e988b33fbd4c448e2f05",
           "status": "present"
         },
         {
@@ -116,7 +116,7 @@
         },
         {
           "path": "brain/style.css",
-          "sha": "1e92ff4ccc48e0fdabb1641a8f5c3e0dd313373f",
+          "sha": "4c2ee7cd4527bb9ccd7632c9875899d76883a5db",
           "status": "present"
         },
         {
