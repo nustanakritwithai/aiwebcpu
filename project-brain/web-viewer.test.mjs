@@ -439,3 +439,72 @@ test('detail backdrop clears selection through engine contract instead of direct
   assert.match(ux,/#detail-backdrop'\)\?\.addEventListener\('click',\(\)=>qs\('#reset-selection'\)\?\.click\(\)\)/);
   assert.doesNotMatch(ux,/#reset-selection'\)\?\.addEventListener\('click',[\s\S]*closeDetailSheet/);
 });
+
+
+test('Graph Exploration UX V0.5.8 keeps a bounded node navigation history',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  assert.match(ux,/let navigationHistory=\[\];/);
+  assert.match(ux,/let navigationIndex=-1;/);
+  assert.match(ux,/function recordNavigation\(id\)/);
+  assert.match(ux,/navigationHistory\.length>24/);
+  assert.match(ux,/navigationHistory=navigationHistory\.slice\(0,navigationIndex\+1\)/);
+});
+
+test('Back and Forward use the graph engine select-node contract, not DOM click replay',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  const start=ux.indexOf('function navigateHistory');
+  const end=ux.indexOf('\nfunction resetNavigation',start);
+  const block=ux.slice(start,end);
+  assert.match(block,/project-brain:select-node/);
+  assert.match(block,/source:'history'/);
+  assert.doesNotMatch(block,/\.click\(\)/);
+  assert.match(js,/project-brain:select-node/);
+  assert.match(js,/selectNode\(id,\{source:event\.detail\?\.source\?\?'external'\}\)/);
+});
+
+test('history replay does not append duplicate navigation entries',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  assert.match(ux,/if\(!id\|\|replayingNavigation\)return/);
+  assert.match(ux,/replayingNavigation=true/);
+  assert.match(ux,/replayingNavigation=false/);
+});
+
+test('selection records source metadata for graph, relation and external navigation',()=>{
+  assert.match(js,/selectNode\(node\.id,\{source:'graph'\}\)/);
+  assert.match(js,/selectNode\(b\.dataset\.node,\{source:'relation'\}\)/);
+  assert.match(js,/detail:\{id:node\.id,name:node\.name,type:node\.type,focusRootId,source\}/);
+});
+
+test('walking outside the focus neighborhood exits Focus but preserves the new selection',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  assert.match(ux,/function focusContains\(id\)/);
+  assert.match(ux,/edge\.from===focusRootId&&edge\.to===id/);
+  assert.match(ux,/if\(focusMode&&selectedNodeId&&!focusContains\(selectedNodeId\)\)/);
+  assert.match(ux,/setFocus\(false,\{persist:false\}\)/);
+  const selectionStart=ux.indexOf("document.addEventListener('project-brain:node-selected'");
+  const clearStart=ux.indexOf("document.addEventListener('project-brain:selection-cleared'");
+  const selectionBlock=ux.slice(selectionStart,clearStart);
+  assert.doesNotMatch(selectionBlock,/selectedNodeId=null/);
+});
+
+test('inspection bar and detail sheet expose Back and Forward controls',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  assert.match(html,/data-inspection-action=["']back["']/);
+  assert.match(html,/data-inspection-action=["']forward["']/);
+  assert.match(html,/id=["']graph-inspection-history["']/);
+  assert.match(ux,/dataset\.detailBack='true'/);
+  assert.match(ux,/dataset\.detailForward='true'/);
+  assert.match(css,/Graph Exploration UX V0\.5\.8/);
+});
+
+test('clearing selection resets exploration history',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  assert.match(ux,/function resetNavigation\(\)/);
+  assert.match(ux,/project-brain:selection-cleared'[\s\S]*resetNavigation\(\)/);
+});
+
+test('filtering out the selected node emits authoritative selection-cleared',()=>{
+  assert.match(js,/const selectedHidden=Boolean\(selectedId/);
+  assert.match(js,/reason:'filtered-out'/);
+  assert.match(js,/project-brain:selection-cleared/);
+});
