@@ -1,4 +1,4 @@
-# Project Brain Web Viewer V0.5
+# Project Brain Web Viewer V0.5.1
 
 Interactive read-only Knowledge Graph viewer for Project Brain.
 
@@ -136,3 +136,28 @@ Current proof contract:
 - `simclone-time-travel` → SAT / ADAPT
 
 Auto graph write and auto merge remain disabled.
+
+
+## Command Center UX V0.5.1
+
+The Web Viewer now uses a reusable workspace shell instead of stacking every subsystem in one long page.
+
+Views:
+- Overview
+- Knowledge Graph
+- Repositories
+- Capabilities
+- Verifier
+- Scanner
+- History
+
+UX rules:
+- one primary view visible at a time
+- deep links with `?view=<view>`
+- global search across canonical Graph, Catalog, Capability Inventory and Verifier registry
+- Overview metrics are loaded from canonical datasets
+- desktop uses a persistent rail
+- narrow layouts use a drawer + horizontal view navigation
+- prefers-reduced-motion is respected
+
+The shell lives in `brain/shell.js` and does not duplicate domain data.
