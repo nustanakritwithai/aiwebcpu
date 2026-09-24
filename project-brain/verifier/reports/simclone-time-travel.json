@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "0.1",
+  "contractId": "simclone-time-travel",
+  "goal": "Simclone ย้อนเวลาได้โดยคง deterministic authoritative engine เดิม",
+  "overallVerdict": "SAT",
+  "recommendation": "ADAPT",
+  "policy": {
+    "unknownIsPass": false,
+    "documentedIsVerified": false,
+    "ciIsSemanticProof": false,
+    "autoGraphWrite": false,
+    "autoMerge": false
+  },
+  "summary": {
+    "candidates": 3,
+    "sat": 3,
+    "viol": 0,
+    "unknown": 0,
+    "unresolved": 0
+  },
+  "candidates": [
+    {
+      "id": "testge-rollback",
+      "repo": "nustanakritwithai/TestGE",
+      "capability": "Checkpoint rollback replay and time travel",
+      "verdict": "SAT",
+      "decision": "ADAPT",
+      "adaptations": [
+        "Use TestGE history contract around Simclone serialized checkpoints instead of direct ARRAY_FIELDS history reuse."
+      ]
+    },
+    {
+      "id": "testge-replay",
+      "repo": "nustanakritwithai/TestGE",
+      "capability": "Checkpoint rollback replay and time travel",
+      "verdict": "SAT",
+      "decision": "ADAPT",
+      "adaptations": [
+        "Replay through Simclone command/step contracts after checkpoint restore."
+      ]
+    },
+    {
+      "id": "simclone-deterministic-engine",
+      "repo": "nustanakritwithai/Simclone",
+      "capability": "Deterministic authoritative colony simulation",
+      "verdict": "SAT",
+      "decision": "ADAPT",
+      "adaptations": [
+        "History wrapper must call existing serialize/restore/validate/step/command contracts without moving rules into the wrapper."
+      ]
+    }
+  ],
+  "limitations": [
+    "This checked-in report is a presentation summary. CI executes verifier.mjs against the current contract, inventory and catalog as the authoritative proof.",
+    "SAT here applies to the explicit Simclone time-travel compatibility contract, not to every TestGE or Simclone capability."
+  ]
+}
