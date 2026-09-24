@@ -32,6 +32,7 @@
       <button type="button" data-scroll="graph-card" class="active">Graph</button>
       <button type="button" data-scroll="catalog-section">Repositories</button>
       <button type="button" data-scroll="capability-section">Capabilities</button>
+      <button type="button" data-scroll="verifier-section">Verifier</button>
       <button type="button" data-scroll="scanner-section">Scanner</button>
       <button type="button" data-scroll="timeline-section">Timeline</button>
       <button type="button" data-scroll="rule-section">Decision Rule</button>
@@ -140,6 +141,44 @@
         <b>DOCUMENTED ≠ VERIFIED REUSE.</b>
         Inventory ยืนยันเพียงว่า repo มีหลักฐานรองรับข้อความนี้ ส่วน compatibility, safety และการเลือก
         REUSE / ADAPT / BUILD ยังเป็น <b>UNKNOWN</b> จนกว่าจะตรวจตาม goal จริง
+      </p>
+    </section>
+
+
+    <section class="verifier-panel card" id="verifier-section" aria-label="Project Brain Verifier">
+      <div class="verifier-head">
+        <div>
+          <p class="eyebrow">VERIFIER V0.5</p>
+          <h2>Goal-specific verification</h2>
+          <p>DOCUMENTED → Contract → SAT / VIOL / UNKNOWN → REUSE / ADAPT / BUILD</p>
+        </div>
+        <span id="verifier-status" class="verifier-status">กำลังโหลด</span>
+      </div>
+
+      <div class="verifier-metrics">
+        <article><small>CONTRACT</small><b id="verifier-contract">—</b><span>selected goal</span></article>
+        <article><small>VERDICT</small><b id="verifier-verdict">—</b><span>required checks</span></article>
+        <article><small>DECISION</small><b id="verifier-decision">—</b><span>reuse strategy</span></article>
+        <article><small>AUTO APPLY</small><b>OFF</b><span>review required</span></article>
+      </div>
+
+      <div class="verifier-controls">
+        <select id="verifier-select" aria-label="เลือก verification contract"></select>
+        <button id="verifier-refresh" type="button">รีเฟรช</button>
+      </div>
+
+      <div id="verifier-goal" class="verifier-goal">—</div>
+      <div id="verifier-results" class="verifier-results"></div>
+
+      <div class="verifier-patch" id="verifier-patch">
+        <h3>Graph Patch Candidate</h3>
+        <p>—</p>
+      </div>
+
+      <p class="verifier-boundary">
+        <b>CI SAT ไม่ใช่ semantic proof โดยอัตโนมัติ</b> ·
+        UNKNOWN ไม่ใช่ PASS ·
+        Graph patch เป็น candidate เท่านั้นและห้าม auto-merge
       </p>
     </section>
 
@@ -304,5 +343,6 @@
   <script type="module" src="./scanner.js"></script>
   <script type="module" src="./catalog.js"></script>
   <script type="module" src="./capabilities.js"></script>
+  <script type="module" src="./verifier.js"></script>
 </body>
 </html>
