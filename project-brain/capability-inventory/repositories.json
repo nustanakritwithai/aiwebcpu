@@ -1,0 +1,1816 @@
+{
+  "schemaVersion": "0.1",
+  "capturedAt": "2026-09-24",
+  "sourceCatalog": "project-brain/catalog/repositories.json",
+  "semantics": {
+    "DOCUMENTED": "Explicitly supported by repository documentation or inspected source code.",
+    "UNKNOWN": "No sufficiently strong repository evidence extracted yet.",
+    "reuseDecision": "Always UNKNOWN until compatibility/verification is performed for a concrete goal."
+  },
+  "summary": {
+    "repositories": 33,
+    "documentedRepositories": 29,
+    "unknownRepositories": 4,
+    "documentedCapabilities": 115
+  },
+  "repositories": [
+    {
+      "repoId": "repo:3js-player-block-asset-engine",
+      "name": "3JS-player-block-asset-engine-",
+      "repo": "nustanakritwithai/3JS-player-block-asset-engine-",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 4,
+      "capabilities": [
+        {
+          "label": "Procedural Three.js character rig",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "c60eaedd52761d2d97c2c73c72699b8685dfe149",
+              "claim": "README documents procedural Three.js geometry, rigid pivot rig and articulated limb hierarchies."
+            }
+          ]
+        },
+        {
+          "label": "Character animation runtime",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "c60eaedd52761d2d97c2c73c72699b8685dfe149",
+              "claim": "README lists walk/run/sprint, jump/fall/land/crouch, dodge/hit/knockback/get-up/death/faint/interact."
+            }
+          ]
+        },
+        {
+          "label": "Character sockets and rig adapter",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "c60eaedd52761d2d97c2c73c72699b8685dfe149",
+              "claim": "README documents engine joint mapping and hand/foot/chest/back/head/root sockets."
+            }
+          ]
+        },
+        {
+          "label": "Deterministic asset-source integrity check",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "c60eaedd52761d2d97c2c73c72699b8685dfe149",
+              "claim": "README states CI reconstructs compressed source and verifies SHA-256 before Studio injection."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:agent-citta-console",
+      "name": "agent-citta-console",
+      "repo": "nustanakritwithai/agent-citta-console",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 4,
+      "capabilities": [
+        {
+          "label": "Agent trace observability console",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "c90774d93d55918c20175f90917b810e4a8320a2",
+              "claim": "README documents JSONL trace ingestion, state analysis, risk detection and HTML dashboard."
+            }
+          ]
+        },
+        {
+          "label": "Agent risk detection and next-action recommendation",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "c90774d93d55918c20175f90917b810e4a8320a2",
+              "claim": "README documents detected risks and recommended next actions from agent traces."
+            }
+          ]
+        },
+        {
+          "label": "Framework-agnostic agent adapter boundary",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "c90774d93d55918c20175f90917b810e4a8320a2",
+              "claim": "README states runtime-specific systems integrate through adapters into a common schema."
+            }
+          ]
+        },
+        {
+          "label": "Local action dispatcher with confirmation flow",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "c90774d93d55918c20175f90917b810e4a8320a2",
+              "claim": "README documents action recording plus confirm/cancel routes."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:aiwebcpu",
+      "name": "aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 5,
+      "capabilities": [
+        {
+          "label": "CPU-first skill execution",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "4e5d46ada3ff7bf66759132b518088d723aaacd7",
+              "claim": "Repository README and Project Brain history document deterministic skill execution as the AI CPU direction."
+            }
+          ]
+        },
+        {
+          "label": "Project Brain Knowledge Graph",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "project-brain/graph/project-brain.json",
+              "sha": "77d03fc7fefc2808c4f25ea0d0fc5d75cba1a68c",
+              "claim": "Canonical graph stores projects, capabilities, evidence, goals, issues, integrations and versions."
+            }
+          ]
+        },
+        {
+          "label": "Temporal Knowledge Graph",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "project-brain/graph/project-brain.json",
+              "sha": "77d03fc7fefc2808c4f25ea0d0fc5d75cba1a68c",
+              "claim": "Canonical graph contains checkpoints, activeFrom/activeUntil and temporal state materialization."
+            }
+          ]
+        },
+        {
+          "label": "Repository change scanner",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "project-brain/scanner/scanner.mjs",
+              "sha": "31feb19bbe409177697bf334782ecd6832242f49",
+              "claim": "Scanner compares repository HEAD, exact-head CI and tracked evidence-file fingerprints."
+            }
+          ]
+        },
+        {
+          "label": "Evidence-aware web knowledge viewer",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "brain/scanner.js",
+              "sha": "9f1a507f977cc2e4fe98fc142c44dc7de88c6c18",
+              "claim": "Web UI exposes scanner baseline/candidates while preserving UNKNOWN on unreadable pending state."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:apk-test",
+      "name": "APK-Test",
+      "repo": "nustanakritwithai/APK-Test",
+      "catalogStatus": "EMPTY",
+      "extractionStatus": "UNKNOWN",
+      "capabilityCount": 0,
+      "capabilities": [],
+      "limitations": [],
+      "notes": [
+        "Repository is empty in the catalog; semantic capability remains UNKNOWN."
+      ]
+    },
+    {
+      "repoId": "repo:astralife",
+      "name": "AstraLife",
+      "repo": "nustanakritwithai/AstraLife",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 4,
+      "capabilities": [
+        {
+          "label": "Multi-agent survival simulation",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "e9a3f6096108e8661e774bc4e872a16080a363ce",
+              "claim": "README defines an experimental multi-agent survival world."
+            }
+          ]
+        },
+        {
+          "label": "Partial-observation agent loop",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "e9a3f6096108e8661e774bc4e872a16080a363ce",
+              "claim": "README core loop is World Truth → Partial Observation → Individual World Model → Decision Provider → Validated Action → Consequence → Learning."
+            }
+          ]
+        },
+        {
+          "label": "Experience-derived skill learning",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "e9a3f6096108e8661e774bc4e872a16080a363ce",
+              "claim": "README documents independent skill experience, competency, preference, reputation and task history."
+            }
+          ]
+        },
+        {
+          "label": "Emergent role specialization",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "e9a3f6096108e8661e774bc4e872a16080a363ce",
+              "claim": "README states roles are derived from lived experience rather than assigned at spawn."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:clanwar",
+      "name": "ClanWar",
+      "repo": "nustanakritwithai/ClanWar",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 5,
+      "capabilities": [
+        {
+          "label": "Three.js 3D siege match runtime",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "056a588f11b0ffa8ece9860b84e16d5db6726aa3",
+              "claim": "README states Phase 6 is a full Three.js game with match loop."
+            }
+          ]
+        },
+        {
+          "label": "Third-person chase camera",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "056a588f11b0ffa8ece9860b84e16d5db6726aa3",
+              "claim": "README documents GTA-style third-person chase camera with classic-view toggle."
+            }
+          ]
+        },
+        {
+          "label": "AI bot combatants",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "056a588f11b0ffa8ece9860b84e16d5db6726aa3",
+              "claim": "README documents AI bot enemies."
+            }
+          ]
+        },
+        {
+          "label": "Adaptive graphics quality watchdog",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "056a588f11b0ffa8ece9860b84e16d5db6726aa3",
+              "claim": "README documents quality tiers with an FPS watchdog."
+            }
+          ]
+        },
+        {
+          "label": "Mobile multi-touch controls",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "056a588f11b0ffa8ece9860b84e16d5db6726aa3",
+              "claim": "README documents simultaneous joystick and action controls."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:ecc",
+      "name": "ECC",
+      "repo": "nustanakritwithai/ECC",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 3,
+      "capabilities": [
+        {
+          "label": "Cross-agent harness package",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "0a18dbeeb59ffa51c641b832b126a5d3852bd21f",
+              "claim": "README describes ECC as an agent harness operating system with skills, agents, commands and hooks."
+            }
+          ]
+        },
+        {
+          "label": "Multi-environment agent configuration",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "0a18dbeeb59ffa51c641b832b126a5d3852bd21f",
+              "claim": "Repository exposes integrations/configs for multiple agent ecosystems and languages."
+            }
+          ]
+        },
+        {
+          "label": "Agent security/hardening surface",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "0a18dbeeb59ffa51c641b832b126a5d3852bd21f",
+              "claim": "README exposes agent-shield/security packaging and official-source guidance."
+            }
+          ]
+        }
+      ],
+      "limitations": [
+        "Repository appears to be a fork/derivative of upstream ECC; reuse rights and local modifications should be reviewed before promotion."
+      ],
+      "notes": []
+    },
+    {
+      "repoId": "repo:echonews",
+      "name": "Echonews",
+      "repo": "nustanakritwithai/Echonews",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 4,
+      "capabilities": [
+        {
+          "label": "Event-centric social news rooms",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "79085fa621def1e889b322a289fab8997a0af519",
+              "claim": "README defines one event room containing voices, claims and references."
+            }
+          ]
+        },
+        {
+          "label": "Claims with supporting/opposing evidence references",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "79085fa621def1e889b322a289fab8997a0af519",
+              "claim": "README states claims expose supporting and opposing references."
+            }
+          ]
+        },
+        {
+          "label": "Evidence-family independence guard",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "79085fa621def1e889b322a289fab8997a0af519",
+              "claim": "README states copies sharing a known evidence family do not increase independent-source counts."
+            }
+          ]
+        },
+        {
+          "label": "Local-only voice/post prototype",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "79085fa621def1e889b322a289fab8997a0af519",
+              "claim": "README states local posts/new rooms/follows are browser-only and not published."
+            }
+          ]
+        }
+      ],
+      "limitations": [
+        "README explicitly says this is not yet a live news service, AI fact-checker or multi-user social network."
+      ],
+      "notes": []
+    },
+    {
+      "repoId": "repo:eldercare-website",
+      "name": "eldercare-website",
+      "repo": "nustanakritwithai/eldercare-website",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 2,
+      "capabilities": [
+        {
+          "label": "Responsive React landing page",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "72ea02e06219f0069d0bacadcd5a923656bc60ab",
+              "claim": "README documents React/TypeScript/Vite/Tailwind responsive landing page."
+            }
+          ]
+        },
+        {
+          "label": "Healthcare service architecture showcase",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "72ea02e06219f0069d0bacadcd5a923656bc60ab",
+              "claim": "README documents service and AI-agent architecture as showcased content."
+            }
+          ]
+        }
+      ],
+      "limitations": [
+        "README presents architecture/showcase content; it does not prove those backend services are implemented in this repository."
+      ],
+      "notes": []
+    },
+    {
+      "repoId": "repo:empire-clash",
+      "name": "empire-clash",
+      "repo": "nustanakritwithai/empire-clash",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 4,
+      "capabilities": [
+        {
+          "label": "Three.js browser FPS",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "7e33ad5daaa97d2765f32a982a73a80234d5def6",
+              "claim": "README documents a 3D FPS with first/third-person views."
+            }
+          ]
+        },
+        {
+          "label": "WebSocket multiplayer position sync",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "7e33ad5daaa97d2765f32a982a73a80234d5def6",
+              "claim": "README documents real-time position sync over WebSocket."
+            }
+          ]
+        },
+        {
+          "label": "Touch FPS control layout",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "7e33ad5daaa97d2765f32a982a73a80234d5def6",
+              "claim": "README documents joystick, shooting, aim/look, jump/reload/sprint/zoom and melee touch controls."
+            }
+          ]
+        },
+        {
+          "label": "Class/weapon combat framework",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "7e33ad5daaa97d2765f32a982a73a80234d5def6",
+              "claim": "README documents 4 classes, 3 weapons, health/respawn, hitmarker/headshot and kill feed."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:empire-war",
+      "name": "Empire-war",
+      "repo": "nustanakritwithai/Empire-war",
+      "catalogStatus": "EMPTY",
+      "extractionStatus": "UNKNOWN",
+      "capabilityCount": 0,
+      "capabilities": [],
+      "limitations": [],
+      "notes": [
+        "Repository is empty in the catalog; semantic capability remains UNKNOWN."
+      ]
+    },
+    {
+      "repoId": "repo:fcwar",
+      "name": "fcwar",
+      "repo": "nustanakritwithai/fcwar",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 3,
+      "capabilities": [
+        {
+          "label": "Server-authoritative browser 3D game runtime",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "2b91dfd31ca1165b37ff91cc143312e1eab9f46a",
+              "claim": "README states server owns movement, combat, factions, classes, objectives, resources, buildings, scoring, death, respawn and round reset."
+            }
+          ]
+        },
+        {
+          "label": "Faction resource/build objective loop",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "2b91dfd31ca1165b37ff91cc143312e1eab9f46a",
+              "claim": "README documents harvesting, warehouse deposits, faction stock, walls, rally flags and fort scoring."
+            }
+          ]
+        },
+        {
+          "label": "WebSocket input/action protocol",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "package.json",
+              "sha": "ad38309909286e5c8f12942bdcbfa7656fa98443",
+              "claim": "Package metadata and tests identify server/protocol/authority test suites over Express/ws."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:football-manager-8-sec",
+      "name": "Football-Manager-8-sec",
+      "repo": "nustanakritwithai/Football-Manager-8-sec",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 6,
+      "capabilities": [
+        {
+          "label": "Turn-based tactical football simulation",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "153fb4c2ee8a90da4737a9c8cec6a1a50959abd5",
+              "claim": "README defines each turn as an 8-second simulation committed to real state."
+            }
+          ]
+        },
+        {
+          "label": "Rule-based tactical AI assistant",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "153fb4c2ee8a90da4737a9c8cec6a1a50959abd5",
+              "claim": "README documents rule-based analysis and tactical recommendations."
+            }
+          ]
+        },
+        {
+          "label": "Counterfactual 8-second preview",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "153fb4c2ee8a90da4737a9c8cec6a1a50959abd5",
+              "claim": "README documents preview on copied state without mutating the live match."
+            }
+          ]
+        },
+        {
+          "label": "Tactical guided refinement optimizer",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "153fb4c2ee8a90da4737a9c8cec6a1a50959abd5",
+              "claim": "README documents hill-climbing defensive adjustment suggestions."
+            }
+          ]
+        },
+        {
+          "label": "Similarity retrieval and turn dataset export",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "153fb4c2ee8a90da4737a9c8cec6a1a50959abd5",
+              "claim": "README documents similar-situation retrieval and per-turn dataset export."
+            }
+          ]
+        },
+        {
+          "label": "Browser-trained pass model",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "153fb4c2ee8a90da4737a9c8cec6a1a50959abd5",
+              "claim": "README documents logistic-regression training from pass data in browser."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:gameturnbase",
+      "name": "GameTurnBase",
+      "repo": "nustanakritwithai/GameTurnBase",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 5,
+      "capabilities": [
+        {
+          "label": "2.5D action RPG web client",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "ff993edf384c2cb528735144caa2b4124cdcee4d",
+              "claim": "README identifies a React/TypeScript/Vite 2.5D hero collection action RPG."
+            }
+          ]
+        },
+        {
+          "label": "WebGPU-first rendering with WebGL fallback",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "ff993edf384c2cb528735144caa2b4124cdcee4d",
+              "claim": "README documents WebGPU initialization with clean WebGLRenderer fallback."
+            }
+          ]
+        },
+        {
+          "label": "Refresh-rate-aware DPR control",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "ff993edf384c2cb528735144caa2b4124cdcee4d",
+              "claim": "README documents DPR caps based on detected display refresh rate."
+            }
+          ]
+        },
+        {
+          "label": "Audited server-side currency RPC boundary",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "ff993edf384c2cb528735144caa2b4124cdcee4d",
+              "claim": "README documents JWT-derived identity, atomic debit, idempotency and currency transaction audit."
+            }
+          ]
+        },
+        {
+          "label": "Version-gated release pipeline",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "ff993edf384c2cb528735144caa2b4124cdcee4d",
+              "claim": "README documents authoritative version files, release gating, build/deploy and SBOM release artifact."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:hih",
+      "name": "Hih",
+      "repo": "nustanakritwithai/Hih",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 4,
+      "capabilities": [
+        {
+          "label": "Agent life-cycle harness",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "fcf8940105459179b6d63a2b0b52f474be119e79",
+              "claim": "README defines awaken → think → act → reflect → grow lifecycle."
+            }
+          ]
+        },
+        {
+          "label": "Persistent agent vitals and episodic memory",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "fcf8940105459179b6d63a2b0b52f474be119e79",
+              "claim": "README documents mood, growth level and episodic memories."
+            }
+          ]
+        },
+        {
+          "label": "Pre-tool safety reflexes",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "fcf8940105459179b6d63a2b0b52f474be119e79",
+              "claim": "README documents R01–R10 pre-tool guardrails."
+            }
+          ]
+        },
+        {
+          "label": "Agent continuity Life Engine",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "fcf8940105459179b6d63a2b0b52f474be119e79",
+              "claim": "README documents identity, continuity, memory, relationship and goals in state/dioo.db."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:kingdom-sandbox",
+      "name": "Kingdom-sandbox",
+      "repo": "nustanakritwithai/Kingdom-sandbox",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 5,
+      "capabilities": [
+        {
+          "label": "Autonomous kingdom simulation",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "71b01e5b6a541e1e87acfc5f60a100bd674948fc",
+              "claim": "README defines an AI Economy + War + Governance simulator where agents act autonomously."
+            }
+          ]
+        },
+        {
+          "label": "Utility-AI decision scoring",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "71b01e5b6a541e1e87acfc5f60a100bd674948fc",
+              "claim": "README documents benefit − risk − cost utility scoring for jobs, migration, army joining and banditry."
+            }
+          ]
+        },
+        {
+          "label": "Stock-flow economy and dynamic pricing",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "71b01e5b6a541e1e87acfc5f60a100bd674948fc",
+              "claim": "README documents physical stock, scarcity/danger/tax price formation and merchant profit calculation."
+            }
+          ]
+        },
+        {
+          "label": "Agent-based military and governance simulation",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "71b01e5b6a541e1e87acfc5f60a100bd674948fc",
+              "claim": "README documents armies built from agents plus taxation, governors, corruption, rebellion and independence."
+            }
+          ]
+        },
+        {
+          "label": "Sandbox observability heatmaps",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "71b01e5b6a541e1e87acfc5f60a100bd674948fc",
+              "claim": "README documents hunger, wealth, danger, trade, food price, loyalty, unrest and faction influence heatmaps."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:magiccube",
+      "name": "Magiccube",
+      "repo": "nustanakritwithai/Magiccube",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 3,
+      "capabilities": [
+        {
+          "label": "Three.js mobile combat sandbox",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "game.js",
+              "sha": "f94c4d25ea4ea021a8d7e526cea9a9a5debc1ab6",
+              "claim": "Code creates Three.js scene, player, targets, HP state and projectile-oriented runtime."
+            }
+          ]
+        },
+        {
+          "label": "Sandboxed generated-object runtime contract",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "agent-runtime.js",
+              "sha": "2f0c7384ec0f3fd12a6f04e94242cfd59b778364",
+              "claim": "Runtime compiles generated JavaScript against restricted THREE/root/world bindings and rejects host rendering APIs."
+            }
+          ]
+        },
+        {
+          "label": "Generated object validation before install",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "agent-runtime.js",
+              "sha": "2f0c7384ec0f3fd12a6f04e94242cfd59b778364",
+              "claim": "Runtime validates generated code in a temporary root and requires an attached visible object."
+            }
+          ]
+        }
+      ],
+      "limitations": [
+        "Generated-code safety is only documented at source-contract level here; broader security isolation is not proven."
+      ],
+      "notes": []
+    },
+    {
+      "repoId": "repo:monkey-king",
+      "name": "Monkey-king",
+      "repo": "nustanakritwithai/Monkey-king",
+      "catalogStatus": "EMPTY",
+      "extractionStatus": "UNKNOWN",
+      "capabilityCount": 0,
+      "capabilities": [],
+      "limitations": [],
+      "notes": [
+        "Repository is empty in the catalog; semantic capability remains UNKNOWN."
+      ]
+    },
+    {
+      "repoId": "repo:my-oracle",
+      "name": "my-oracle",
+      "repo": "nustanakritwithai/my-oracle",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 3,
+      "capabilities": [
+        {
+          "label": "Personal agent memory convention",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "CLAUDE.md",
+              "sha": "76fa2002cf250f3a5c757e863bf9d84f3f9503d5",
+              "claim": "CLAUDE.md documents MEMORY path, session startup reading and automatic important-memory recording."
+            }
+          ]
+        },
+        {
+          "label": "Observe-Think-Plan-Execute-Verify-Learn workflow",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "CLAUDE.md",
+              "sha": "76fa2002cf250f3a5c757e863bf9d84f3f9503d5",
+              "claim": "CLAUDE.md documents the algorithm-mode lifecycle."
+            }
+          ]
+        },
+        {
+          "label": "Surgical-change safety rules",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "CLAUDE.md",
+              "sha": "76fa2002cf250f3a5c757e863bf9d84f3f9503d5",
+              "claim": "CLAUDE.md requires focused fixes, verification before claims and confirmation before destructive actions."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:news-nus",
+      "name": "News-nus",
+      "repo": "nustanakritwithai/News-nus",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "UNKNOWN",
+      "capabilityCount": 0,
+      "capabilities": [],
+      "limitations": [],
+      "notes": [
+        "README only identifies an AI Studio/Gemini scaffold. No reusable repository-specific capability is documented strongly enough for promotion."
+      ]
+    },
+    {
+      "repoId": "repo:openclaw-runtime-dashboard-vercel",
+      "name": "openclaw-runtime-dashboard-vercel",
+      "repo": "nustanakritwithai/openclaw-runtime-dashboard-vercel",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 3,
+      "capabilities": [
+        {
+          "label": "Static runtime metrics dashboard",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "64615e60284311550d60c6caeba832ef6bb639b7",
+              "claim": "README documents a static Next.js dashboard reading public/metrics.json."
+            }
+          ]
+        },
+        {
+          "label": "Git-driven metric refresh workflow",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "64615e60284311550d60c6caeba832ef6bb639b7",
+              "claim": "README documents editing metrics.json and redeploying through Vercel."
+            }
+          ]
+        },
+        {
+          "label": "Scheduled metrics update tooling",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "CRON_SETUP.md",
+              "sha": "ac6e24a8c67926f0099bf4839068f56027371863",
+              "claim": "Repository includes cron setup for automated metric updates."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:pirate-fruit",
+      "name": "Pirate-fruit-",
+      "repo": "nustanakritwithai/Pirate-fruit-",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 5,
+      "capabilities": [
+        {
+          "label": "Modular authoritative game server boundary",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "SERVER_ARCHITECTURE.md",
+              "sha": "205116460e0df1a8144ce24918b15264e4d799c2",
+              "claim": "Architecture selects Fastify modular monolith with server-owned authoritative state and persistence."
+            }
+          ]
+        },
+        {
+          "label": "Client/shared/server domain separation",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "SERVER_ARCHITECTURE.md",
+              "sha": "205116460e0df1a8144ce24918b15264e4d799c2",
+              "claim": "Architecture explicitly separates presentation client, browser-free shared contracts, server authority and PostgreSQL."
+            }
+          ]
+        },
+        {
+          "label": "Versioned safe request lifecycle",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "SERVER_ARCHITECTURE.md",
+              "sha": "205116460e0df1a8144ce24918b15264e4d799c2",
+              "claim": "Architecture documents request IDs, CORS, rate limits, dependency injection, structured errors and runtime counters."
+            }
+          ]
+        },
+        {
+          "label": "Forward migration database boundary",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "SERVER_ARCHITECTURE.md",
+              "sha": "205116460e0df1a8144ce24918b15264e4d799c2",
+              "claim": "Architecture documents typed schema, immutable forward SQL, schema checksums and pre-listener migrations."
+            }
+          ]
+        },
+        {
+          "label": "Action-combat client framework",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "ee2c5eb126da48d06a130ec2f2aa1312c524b3f6",
+              "claim": "README documents state-machine combat, combo, blocking/guard, skill sets and movement/combat controls."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:pocketmonster",
+      "name": "PocketMonster",
+      "repo": "nustanakritwithai/PocketMonster",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 5,
+      "capabilities": [
+        {
+          "label": "Monster progression core",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "edb591d0917225fdc492412261b62947e0d589b5",
+              "claim": "README documents stats, training, nutrition, equipment, genes, evolution and condition."
+            }
+          ]
+        },
+        {
+          "label": "Capture/evolution/breeding gameplay systems",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "edb591d0917225fdc492412261b62947e0d589b5",
+              "claim": "README documents capture rules, evolution branches, raising events and breeding."
+            }
+          ]
+        },
+        {
+          "label": "Combat rating/debug projection",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "edb591d0917225fdc492412261b62947e0d589b5",
+              "claim": "README documents CR plus DPS/EHP preview and contribution breakdown."
+            }
+          ]
+        },
+        {
+          "label": "Federation-of-authorities architecture",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "INTEGRATION-MASTER-PLAN-V3.3.md",
+              "sha": "fa81ab11b76a254fb436ed8753f491154307808e",
+              "claim": "Plan defines separate Pirate, Pocket, World and Shared Core authorities."
+            }
+          ]
+        },
+        {
+          "label": "Canonical shared combat stat contract",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "INTEGRATION-MASTER-PLAN-V3.3.md",
+              "sha": "fa81ab11b76a254fb436ed8753f491154307808e",
+              "claim": "Plan defines canonical CombatStats vocabulary, single-writer HP and authoritative world/server computation."
+            }
+          ]
+        }
+      ],
+      "limitations": [
+        "Federation architecture is an architecture baseline/implementation plan; individual integration phases must be verified separately."
+      ],
+      "notes": []
+    },
+    {
+      "repoId": "repo:ramagan",
+      "name": "Ramagan",
+      "repo": "nustanakritwithai/Ramagan",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 4,
+      "capabilities": [
+        {
+          "label": "Immutable append-only stock ledger",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "3aa5a0ec3d8de69b3e6185ae2684120c54191000",
+              "claim": "README locks events as immutable and requires compensating events instead of edit/delete."
+            }
+          ]
+        },
+        {
+          "label": "As-of inventory balance reconstruction",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "3aa5a0ec3d8de69b3e6185ae2684120c54191000",
+              "claim": "README defines balance at time T as sum of quantity deltas up to occurred_at."
+            }
+          ]
+        },
+        {
+          "label": "Inventory oversell validation",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "3aa5a0ec3d8de69b3e6185ae2684120c54191000",
+              "claim": "README locks rule that sale cannot exceed remaining lot balance."
+            }
+          ]
+        },
+        {
+          "label": "Append-only browser/Drive sync prototype",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "3aa5a0ec3d8de69b3e6185ae2684120c54191000",
+              "claim": "README documents Google Drive OAuth plus append-only auto-sync/conflict UI."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:rustislandsurvival",
+      "name": "RustIslandSurvival-",
+      "repo": "nustanakritwithai/RustIslandSurvival-",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 4,
+      "capabilities": [
+        {
+          "label": "Authoritative WebSocket round runtime",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "bdeffba099e018c83d1f153ca85738909b8a4bcb",
+              "claim": "README documents authoritative GameRoom tick loop, shared round clock, player positions, beacon and winner."
+            }
+          ]
+        },
+        {
+          "label": "Graceful offline fallback",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "bdeffba099e018c83d1f153ca85738909b8a4bcb",
+              "claim": "README states client falls back to original single-player/local-bot game when disconnected."
+            }
+          ]
+        },
+        {
+          "label": "Deterministic shared island seed",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "bdeffba099e018c83d1f153ca85738909b8a4bcb",
+              "claim": "Roadmap marks shared per-round server seed complete."
+            }
+          ]
+        },
+        {
+          "label": "Shared resource/building/monster authority",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "bdeffba099e018c83d1f153ca85738909b8a4bcb",
+              "claim": "README roadmap marks shared resources, walls/doors and server-owned monsters/beacon siege implemented."
+            }
+          ]
+        }
+      ],
+      "limitations": [
+        "README states deeper anti-cheat and interest management remain future work."
+      ],
+      "notes": []
+    },
+    {
+      "repoId": "repo:simclone",
+      "name": "Simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 5,
+      "capabilities": [
+        {
+          "label": "Deterministic authoritative colony simulation",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "AGENTS.md",
+              "sha": "859f9d971637fe818985fd2160d1797bcb030a63",
+              "claim": "AGENTS.md defines src/engine.mjs as authoritative with no DOM, Date, Math.random or external API calls."
+            }
+          ]
+        },
+        {
+          "label": "Lifecycle, autonomous birth and age death",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "AGENTS.md",
+              "sha": "859f9d971637fe818985fd2160d1797bcb030a63",
+              "claim": "AGENTS.md documents simulation-time lifecycle, birth pacing, deterministic lifespan and shared death cleanup."
+            }
+          ]
+        },
+        {
+          "label": "Historical identity archive",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "7fa04020a6984bbd30e665a7662e40904e4d8ad5",
+              "claim": "README documents bounded archive preserving lineage, death facts, skills and retained memories."
+            }
+          ]
+        },
+        {
+          "label": "Skill inheritance with provenance boundaries",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "AGENTS.md",
+              "sha": "859f9d971637fe818985fd2160d1797bcb030a63",
+              "claim": "AGENTS.md documents 35% XP inheritance and explicit limits around mentor/archive/culture."
+            }
+          ]
+        },
+        {
+          "label": "Deterministic save migration and continuation verification",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "7fa04020a6984bbd30e665a7662e40904e4d8ad5",
+              "claim": "README documents save migrations and long-run continuity suites with UNKNOWN rules."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:testflysystem",
+      "name": "Testflysystem",
+      "repo": "nustanakritwithai/Testflysystem",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 3,
+      "capabilities": [
+        {
+          "label": "Executable connectome pipeline",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "31c866f1395813a02bc25dee0e074685ceb0b069",
+              "claim": "README target pipeline converts MaleCNS data into executable connectome and neural dynamics."
+            }
+          ]
+        },
+        {
+          "label": "Scientific provenance classification",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "31c866f1395813a02bc25dee0e074685ceb0b069",
+              "claim": "README defines MEASURED/ANNOTATED/PREDICTED/INFERRED/ASSUMED/EXPERIMENTAL classes."
+            }
+          ]
+        },
+        {
+          "label": "Closed-loop neural sensorimotor research architecture",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "31c866f1395813a02bc25dee0e074685ceb0b069",
+              "claim": "README target connects sensory stimulation through neural dynamics to motor decoder and environment feedback."
+            }
+          ]
+        }
+      ],
+      "limitations": [
+        "README explicitly distinguishes measured connectivity from unknown/assumed neural dynamics."
+      ],
+      "notes": []
+    },
+    {
+      "repoId": "repo:testge",
+      "name": "TestGE",
+      "repo": "nustanakritwithai/TestGE",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 5,
+      "capabilities": [
+        {
+          "label": "Transactional authoritative world runtime",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "260bfde1d4ce4cdfc2ea77876f3fec5ca36a485a",
+              "claim": "README defines deterministic data-oriented transactional authoritative runtime."
+            }
+          ]
+        },
+        {
+          "label": "Proposal → Verify → Atomic Commit architecture",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "260bfde1d4ce4cdfc2ea77876f3fec5ca36a485a",
+              "claim": "README states compute cannot mutate canonical world directly."
+            }
+          ]
+        },
+        {
+          "label": "Checkpoint rollback replay and time travel",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "260bfde1d4ce4cdfc2ea77876f3fec5ca36a485a",
+              "claim": "README marks checkpoint/multi-step rollback/replay/time-travel audit complete."
+            }
+          ]
+        },
+        {
+          "label": "Delta replication and interest filtering",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "260bfde1d4ce4cdfc2ea77876f3fec5ca36a485a",
+              "claim": "README marks delta replication + interest filtering complete."
+            }
+          ]
+        },
+        {
+          "label": "Client prediction/reconciliation demo",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "260bfde1d4ce4cdfc2ea77876f3fec5ca36a485a",
+              "claim": "README marks client prediction/reconciliation demo complete."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:udomsukflim",
+      "name": "Udomsukflim",
+      "repo": "nustanakritwithai/Udomsukflim",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 4,
+      "capabilities": [
+        {
+          "label": "Local SEO landing-page architecture",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "bcfb356f81bf63b705ac6350efad5fb10629adc6",
+              "claim": "README documents one-page local SEO structure, canonical, sitemap and conversion CTAs."
+            }
+          ]
+        },
+        {
+          "label": "Structured-data SEO pack",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "bcfb356f81bf63b705ac6350efad5fb10629adc6",
+              "claim": "README documents LocalBusiness/AutoRepair, FAQPage, WebSite, WebPage and BreadcrumbList JSON-LD."
+            }
+          ]
+        },
+        {
+          "label": "AI-crawler discovery surface",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "bcfb356f81bf63b705ac6350efad5fb10629adc6",
+              "claim": "README documents robots rules for AI crawlers and llms.txt."
+            }
+          ]
+        },
+        {
+          "label": "Core Web Vitals-oriented static delivery",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "bcfb356f81bf63b705ac6350efad5fb10629adc6",
+              "claim": "README documents image loading/decoding, hero priority and non-blocking fonts."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:webai",
+      "name": "WebAi",
+      "repo": "nustanakritwithai/WebAi",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 4,
+      "capabilities": [
+        {
+          "label": "Supervised browser coding agent",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "8d041c225bfd64928c3605989e21f5c2a5825934",
+              "claim": "README describes WebAi architecture and supervised agent execution."
+            }
+          ]
+        },
+        {
+          "label": "Protected multi-gate verification engine",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "VERIFICATION_ENGINE.md",
+              "sha": "221f98bd8a032dbab5fecfb78415f783e592c4c8",
+              "claim": "Verification doc defines file safety, security, build, unit, integration and regression gates."
+            }
+          ]
+        },
+        {
+          "label": "Verifier command ownership boundary",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "VERIFICATION_ENGINE.md",
+              "sha": "221f98bd8a032dbab5fecfb78415f783e592c4c8",
+              "claim": "Verification doc states the model never returns verifier shell commands and protected policy owns commands."
+            }
+          ]
+        },
+        {
+          "label": "Fail-closed verifier-source protection",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "VERIFICATION_ENGINE.md",
+              "sha": "221f98bd8a032dbab5fecfb78415f783e592c4c8",
+              "claim": "Verification doc rejects npm verification when the same execution modified package.json."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:welcares",
+      "name": "welcares",
+      "repo": "nustanakritwithai/welcares",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 3,
+      "capabilities": [
+        {
+          "label": "Multi-agent healthcare coordination architecture",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "1288a9115196b00b6d8676e89f6ccfde6084e719",
+              "claim": "README describes 7 specialized agents coordinating healthcare services."
+            }
+          ]
+        },
+        {
+          "label": "Agent responsibility/workflow policy documentation",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "1288a9115196b00b6d8676e89f6ccfde6084e719",
+              "claim": "README links responsibility matrix, workflow state machine, data-access policy and routing policy."
+            }
+          ]
+        },
+        {
+          "label": "LLM routing and cost-optimization design",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "1288a9115196b00b6d8676e89f6ccfde6084e719",
+              "claim": "README documents LLM gateway with cost optimization and routing policy."
+            }
+          ]
+        }
+      ],
+      "limitations": [
+        "README may include architecture targets beyond currently implemented runtime; each backend capability requires code-level verification before reuse."
+      ],
+      "notes": []
+    },
+    {
+      "repoId": "repo:yeb",
+      "name": "Yeb",
+      "repo": "nustanakritwithai/Yeb",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 3,
+      "capabilities": [
+        {
+          "label": "Step-by-step home repair wizard",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "330c97c9a10652f562a1bea5718cc0fa091646cc",
+              "claim": "README documents object → problem → step wizard flow."
+            }
+          ]
+        },
+        {
+          "label": "Local repair history",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "330c97c9a10652f562a1bea5718cc0fa091646cc",
+              "claim": "README documents repair history under yeb.repairs.v1."
+            }
+          ]
+        },
+        {
+          "label": "Repair diagnosis library",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "README.md",
+              "sha": "330c97c9a10652f562a1bea5718cc0fa091646cc",
+              "claim": "README documents diagnosis for buttons, zippers, bedding and curtains."
+            }
+          ]
+        }
+      ],
+      "limitations": [],
+      "notes": []
+    },
+    {
+      "repoId": "repo:zentra-ai-platform",
+      "name": "zentra-ai-platform",
+      "repo": "nustanakritwithai/zentra-ai-platform",
+      "catalogStatus": "DISCOVERED",
+      "extractionStatus": "DOCUMENTED",
+      "capabilityCount": 3,
+      "capabilities": [
+        {
+          "label": "Full-stack Express/React commerce platform shell",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "server/index.ts",
+              "sha": "c0d18dbedbdf7cf0b607de0a488e52a2cd448cb6",
+              "claim": "Server code uses Express HTTP server and client App routes cover stores, products, orders, customers, POS, marketplace and checkout."
+            }
+          ]
+        },
+        {
+          "label": "AI commerce UI surfaces",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "client/src/App.tsx",
+              "sha": "a0238c5554fa09267be4426adde8cb62b41352c5",
+              "claim": "Client routes include AI Agents, AI Chat, Knowledge Base and AI Generate."
+            }
+          ]
+        },
+        {
+          "label": "Supabase/PostgreSQL integration stack",
+          "status": "DOCUMENTED",
+          "reuseDecision": "UNKNOWN",
+          "evidence": [
+            {
+              "path": "package.json",
+              "sha": "02d3ebd197c827d063e7949ac6cb3cca780320fb",
+              "claim": "Dependencies include Supabase client and PostgreSQL session/storage packages."
+            }
+          ]
+        }
+      ],
+      "limitations": [
+        "Package/routes prove surfaces and dependencies, not production correctness of every commerce feature."
+      ],
+      "notes": []
+    }
+  ]
+}
