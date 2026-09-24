@@ -90,13 +90,23 @@
           "status": "present"
         },
         {
-          "path": "brain/catalog.js",
-          "sha": "4f0bc3486cdf66066507c0db3e60cace09aac38a",
+          "path": "brain/capabilities.js",
+          "sha": "c2419a9c76725eaea277d445652ed1022426d1fa",
           "status": "present"
         },
         {
           "path": "brain/scanner.js",
           "sha": "9f1a507f977cc2e4fe98fc142c44dc7de88c6c18",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/capability-inventory/README.md",
+          "sha": "ddc1638b749d55ef641434e56ef241c286dfdb7a",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/capability-inventory/repositories.json",
+          "sha": "18e77415c24c84d25e294e64cf6d0addc6ede70a",
           "status": "present"
         },
         {
@@ -111,7 +121,7 @@
         },
         {
           "path": "project-brain/scanner/config.json",
-          "sha": "c79343f66601cd04e1d3fff8f534c0db957da6cf",
+          "sha": "01c9506f000fa92ecbc1e895edd6387a1aca6a65",
           "status": "present"
         },
         {
