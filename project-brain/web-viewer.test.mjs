@@ -271,3 +271,40 @@ test('large complete graph uses bounded layout iterations',()=>{
   assert.match(js,/nodes\.length>180\?130/);
   assert.match(js,/const iterations=/);
 });
+
+
+test('Graph Focus UX V0.5.4 removes secondary dashboards from Graph view',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  assert.match(html,/id=["']time-machine["'][^>]+data-pb-view=["']history["']/);
+  assert.match(css,/body\[data-active-view="graph"\] \.brain-pulse\{display:none!important\}/);
+  assert.match(css,/\.graph-card \.legend\{display:none!important\}/);
+  assert.match(css,/\.workspace\[data-pb-view="graph"\]\{\s*display:block/);
+  assert.match(css,/\.workspace>\.detail\{\s*position:fixed/);
+  assert.match(ux,/const UX_PREF='project-brain:ux:v054'/);
+});
+
+test('Graph Focus UX defaults to Core and keeps relation labels opt-in',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  assert.match(ux,/let activePreset='core'/);
+  assert.match(ux,/prefs\.activePreset\?prefs\.activePreset:'core'/);
+  assert.match(js,/let showEdgeLabels=false/);
+  assert.match(html,/data-preset=["']core["'][^>]+class=["'][^"']*active/);
+  assert.match(html,/id=["']edge-labels["'][^>]*type=["']checkbox["'](?![^>]*checked)/);
+});
+
+test('Graph filter preset does not collapse into custom during programmatic filter clicks',async()=>{
+  const ux=await readFile(new URL('../brain/ux.js',import.meta.url),'utf8');
+  assert.match(ux,/typeFilters\?\.addEventListener\('click',\(\)=>\{\s*if\(applyingPreset\)return;/);
+});
+
+test('portrait or coarse-pointer devices force the rail into a drawer',()=>{
+  assert.match(css,/@media \(max-width:1180px\), \(pointer:coarse\) and \(orientation:portrait\)/);
+  assert.match(css,/body\[data-active-view="graph"\] \.app-stage>\.topbar\{\s*display:none/);
+  assert.match(css,/\.app-rail\{[\s\S]*transform:translateX\(-105%\)/);
+});
+
+test('Graph canvas takes the primary viewport on compact devices',()=>{
+  assert.match(css,/\.graph-card \.svg-wrap\{[\s\S]*height:calc\(100dvh - 170px\)/);
+  assert.match(css,/body\.detail-open \.workspace>\.detail\{transform:translateY\(0\)\}/);
+  assert.match(css,/\.graph-options-panel\{[\s\S]*position:fixed/);
+});
