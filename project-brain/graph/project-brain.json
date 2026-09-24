@@ -2,62 +2,343 @@
   "schemaVersion": "0.1",
   "updated": "2026-09-24",
   "purpose": "Machine-readable seed for Project Brain. GitHub repos remain source of truth for code.",
-  "nodeTypes": ["PROJECT", "CAPABILITY", "EVIDENCE", "GOAL", "ISSUE", "INTEGRATION", "VERSION"],
-  "relationTypes": ["PROVIDES", "NEEDS", "VERIFIED_BY", "USED_IN", "DEPENDS_ON", "BLOCKED_BY", "ADAPTED_FROM", "SUPERSEDES", "REUSE_CANDIDATE_FOR"],
+  "nodeTypes": [
+    "PROJECT",
+    "CAPABILITY",
+    "EVIDENCE",
+    "GOAL",
+    "ISSUE",
+    "INTEGRATION",
+    "VERSION"
+  ],
+  "relationTypes": [
+    "PROVIDES",
+    "NEEDS",
+    "VERIFIED_BY",
+    "USED_IN",
+    "DEPENDS_ON",
+    "BLOCKED_BY",
+    "ADAPTED_FROM",
+    "SUPERSEDES",
+    "REUSE_CANDIDATE_FOR"
+  ],
   "nodes": [
-    {"id":"repo:aiwebcpu","type":"PROJECT","name":"aiwebcpu","repo":"nustanakritwithai/aiwebcpu","status":"active"},
-    {"id":"repo:testge","type":"PROJECT","name":"TestGE","repo":"nustanakritwithai/TestGE","status":"v1"},
-    {"id":"repo:astralife","type":"PROJECT","name":"AstraLife","repo":"nustanakritwithai/AstraLife","status":"v0.5"},
-    {"id":"repo:simclone","type":"PROJECT","name":"Simclone","repo":"nustanakritwithai/Simclone","status":"active-alpha"},
-
-    {"id":"cap:verification","type":"CAPABILITY","name":"Verification","status":"active"},
-    {"id":"cap:rollback","type":"CAPABILITY","name":"Rollback","status":"documented-verified"},
-    {"id":"cap:replay","type":"CAPABILITY","name":"Replay","status":"documented-verified"},
-    {"id":"cap:world-state","type":"CAPABILITY","name":"Authoritative World State","status":"documented-verified"},
-    {"id":"cap:replication","type":"CAPABILITY","name":"Delta Replication","status":"documented-verified"},
-    {"id":"cap:agent-learning","type":"CAPABILITY","name":"Agent Learning","status":"experimental"},
-    {"id":"cap:emergent-role","type":"CAPABILITY","name":"Emergent Roles","status":"experimental"},
-    {"id":"cap:colony","type":"CAPABILITY","name":"Colony Simulation","status":"active"},
-    {"id":"cap:cpu-decision","type":"CAPABILITY","name":"CPU Decision","status":"active"},
-
-    {"id":"ev:testge-v1-readme","type":"EVIDENCE","name":"TestGE TWA V1 documented feature set","verdict":"SAT"},
-    {"id":"ev:astralife-v05-readme","type":"EVIDENCE","name":"AstraLife V0.5 documented checkpoint","verdict":"SAT"},
-    {"id":"ev:aiwebcpu-v02-plan","type":"EVIDENCE","name":"aiwebcpu V0.2 Real Skill First contract","verdict":"SAT"},
-    {"id":"ev:simclone-ui-tests-20260923","type":"EVIDENCE","name":"Simclone recent unit/browser verification signal","verdict":"SAT_WITH_LIMITS"},
-
-    {"id":"goal:simclone-time-travel","type":"GOAL","name":"Simclone ย้อนเวลาได้","status":"proposed"}
+    {
+      "id": "repo:aiwebcpu",
+      "type": "PROJECT",
+      "name": "aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "status": "active"
+    },
+    {
+      "id": "repo:testge",
+      "type": "PROJECT",
+      "name": "TestGE",
+      "repo": "nustanakritwithai/TestGE",
+      "status": "v1"
+    },
+    {
+      "id": "repo:astralife",
+      "type": "PROJECT",
+      "name": "AstraLife",
+      "repo": "nustanakritwithai/AstraLife",
+      "status": "v0.5"
+    },
+    {
+      "id": "repo:simclone",
+      "type": "PROJECT",
+      "name": "Simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "status": "active-alpha"
+    },
+    {
+      "id": "cap:verification",
+      "type": "CAPABILITY",
+      "name": "Verification",
+      "status": "active"
+    },
+    {
+      "id": "cap:rollback",
+      "type": "CAPABILITY",
+      "name": "Rollback",
+      "status": "documented-verified"
+    },
+    {
+      "id": "cap:replay",
+      "type": "CAPABILITY",
+      "name": "Replay",
+      "status": "documented-verified"
+    },
+    {
+      "id": "cap:world-state",
+      "type": "CAPABILITY",
+      "name": "Authoritative World State",
+      "status": "documented-verified"
+    },
+    {
+      "id": "cap:replication",
+      "type": "CAPABILITY",
+      "name": "Delta Replication",
+      "status": "documented-verified"
+    },
+    {
+      "id": "cap:agent-learning",
+      "type": "CAPABILITY",
+      "name": "Agent Learning",
+      "status": "experimental"
+    },
+    {
+      "id": "cap:emergent-role",
+      "type": "CAPABILITY",
+      "name": "Emergent Roles",
+      "status": "experimental"
+    },
+    {
+      "id": "cap:colony",
+      "type": "CAPABILITY",
+      "name": "Colony Simulation",
+      "status": "active"
+    },
+    {
+      "id": "cap:cpu-decision",
+      "type": "CAPABILITY",
+      "name": "CPU Decision",
+      "status": "active"
+    },
+    {
+      "id": "ev:testge-v1-readme",
+      "type": "EVIDENCE",
+      "name": "TestGE TWA V1 documented feature set",
+      "verdict": "SAT"
+    },
+    {
+      "id": "ev:astralife-v05-readme",
+      "type": "EVIDENCE",
+      "name": "AstraLife V0.5 documented checkpoint",
+      "verdict": "SAT"
+    },
+    {
+      "id": "ev:aiwebcpu-v02-plan",
+      "type": "EVIDENCE",
+      "name": "aiwebcpu V0.2 Real Skill First contract",
+      "verdict": "SAT"
+    },
+    {
+      "id": "ev:simclone-ui-tests-20260923",
+      "type": "EVIDENCE",
+      "name": "Simclone recent unit/browser verification signal",
+      "verdict": "SAT",
+      "scope": "offline unit/browser verification only",
+      "limitations": "public/native behavior remains UNKNOWN when not separately verified"
+    },
+    {
+      "id": "goal:simclone-time-travel",
+      "type": "GOAL",
+      "name": "Simclone ย้อนเวลาได้",
+      "status": "compatibility-analyzed",
+      "decision": "ADAPT"
+    },
+    {
+      "id": "ev:testge-history-source",
+      "type": "EVIDENCE",
+      "name": "TestGE history/core source compatibility evidence",
+      "verdict": "SAT",
+      "scope": "TestGE rollback/replay implementation exists and is tied to TWA ARRAY_FIELDS + deltaLog"
+    },
+    {
+      "id": "ev:simclone-determinism",
+      "type": "EVIDENCE",
+      "name": "Simclone deterministic save/restore continuation test",
+      "verdict": "SAT",
+      "scope": "seed determinism and mid-task save/restore continuation"
+    },
+    {
+      "id": "ev:direct-history-compatibility",
+      "type": "EVIDENCE",
+      "name": "Direct TestGE history reuse in Simclone compatibility check",
+      "verdict": "VIOL",
+      "scope": "whole-world direct module reuse"
+    },
+    {
+      "id": "issue:simclone-testge-state-model-mismatch",
+      "type": "ISSUE",
+      "name": "Simclone/TestGE state model mismatch",
+      "status": "confirmed",
+      "verdict": "VIOL"
+    },
+    {
+      "id": "integration:simclone-testge-time-travel",
+      "type": "INTEGRATION",
+      "name": "Simclone × TestGE Time Travel",
+      "status": "planned",
+      "decision": "ADAPT"
+    }
   ],
   "edges": [
-    {"from":"repo:aiwebcpu","to":"cap:verification","type":"PROVIDES"},
-
-    {"from":"repo:testge","to":"cap:world-state","type":"PROVIDES"},
-    {"from":"repo:testge","to":"cap:rollback","type":"PROVIDES"},
-    {"from":"repo:testge","to":"cap:replay","type":"PROVIDES"},
-    {"from":"repo:testge","to":"cap:replication","type":"PROVIDES"},
-    {"from":"cap:rollback","to":"ev:testge-v1-readme","type":"VERIFIED_BY"},
-    {"from":"cap:replay","to":"ev:testge-v1-readme","type":"VERIFIED_BY"},
-
-    {"from":"repo:astralife","to":"cap:agent-learning","type":"PROVIDES"},
-    {"from":"repo:astralife","to":"cap:emergent-role","type":"PROVIDES"},
-    {"from":"cap:agent-learning","to":"ev:astralife-v05-readme","type":"VERIFIED_BY"},
-
-    {"from":"repo:simclone","to":"cap:colony","type":"PROVIDES"},
-    {"from":"repo:simclone","to":"cap:cpu-decision","type":"PROVIDES"},
-
-    {"from":"goal:simclone-time-travel","to":"cap:rollback","type":"NEEDS"},
-    {"from":"goal:simclone-time-travel","to":"cap:replay","type":"NEEDS"},
-    {"from":"goal:simclone-time-travel","to":"cap:verification","type":"NEEDS"},
-    {"from":"cap:rollback","to":"goal:simclone-time-travel","type":"REUSE_CANDIDATE_FOR"},
-    {"from":"cap:replay","to":"goal:simclone-time-travel","type":"REUSE_CANDIDATE_FOR"}
+    {
+      "from": "repo:aiwebcpu",
+      "to": "cap:verification",
+      "type": "PROVIDES"
+    },
+    {
+      "from": "repo:testge",
+      "to": "cap:world-state",
+      "type": "PROVIDES"
+    },
+    {
+      "from": "repo:testge",
+      "to": "cap:rollback",
+      "type": "PROVIDES"
+    },
+    {
+      "from": "repo:testge",
+      "to": "cap:replay",
+      "type": "PROVIDES"
+    },
+    {
+      "from": "repo:testge",
+      "to": "cap:replication",
+      "type": "PROVIDES"
+    },
+    {
+      "from": "cap:rollback",
+      "to": "ev:testge-v1-readme",
+      "type": "VERIFIED_BY"
+    },
+    {
+      "from": "cap:replay",
+      "to": "ev:testge-v1-readme",
+      "type": "VERIFIED_BY"
+    },
+    {
+      "from": "repo:astralife",
+      "to": "cap:agent-learning",
+      "type": "PROVIDES"
+    },
+    {
+      "from": "repo:astralife",
+      "to": "cap:emergent-role",
+      "type": "PROVIDES"
+    },
+    {
+      "from": "cap:agent-learning",
+      "to": "ev:astralife-v05-readme",
+      "type": "VERIFIED_BY"
+    },
+    {
+      "from": "repo:simclone",
+      "to": "cap:colony",
+      "type": "PROVIDES"
+    },
+    {
+      "from": "repo:simclone",
+      "to": "cap:cpu-decision",
+      "type": "PROVIDES"
+    },
+    {
+      "from": "goal:simclone-time-travel",
+      "to": "cap:rollback",
+      "type": "NEEDS"
+    },
+    {
+      "from": "goal:simclone-time-travel",
+      "to": "cap:replay",
+      "type": "NEEDS"
+    },
+    {
+      "from": "goal:simclone-time-travel",
+      "to": "cap:verification",
+      "type": "NEEDS"
+    },
+    {
+      "from": "cap:rollback",
+      "to": "goal:simclone-time-travel",
+      "type": "REUSE_CANDIDATE_FOR"
+    },
+    {
+      "from": "cap:replay",
+      "to": "goal:simclone-time-travel",
+      "type": "REUSE_CANDIDATE_FOR"
+    },
+    {
+      "from": "cap:rollback",
+      "to": "ev:testge-history-source",
+      "type": "VERIFIED_BY"
+    },
+    {
+      "from": "cap:replay",
+      "to": "ev:testge-history-source",
+      "type": "VERIFIED_BY"
+    },
+    {
+      "from": "repo:simclone",
+      "to": "ev:simclone-determinism",
+      "type": "VERIFIED_BY"
+    },
+    {
+      "from": "issue:simclone-testge-state-model-mismatch",
+      "to": "ev:direct-history-compatibility",
+      "type": "VERIFIED_BY"
+    },
+    {
+      "from": "integration:simclone-testge-time-travel",
+      "to": "issue:simclone-testge-state-model-mismatch",
+      "type": "BLOCKED_BY"
+    },
+    {
+      "from": "integration:simclone-testge-time-travel",
+      "to": "cap:rollback",
+      "type": "ADAPTED_FROM"
+    },
+    {
+      "from": "integration:simclone-testge-time-travel",
+      "to": "cap:replay",
+      "type": "ADAPTED_FROM"
+    },
+    {
+      "from": "integration:simclone-testge-time-travel",
+      "to": "repo:simclone",
+      "type": "USED_IN"
+    },
+    {
+      "from": "goal:simclone-time-travel",
+      "to": "integration:simclone-testge-time-travel",
+      "type": "DEPENDS_ON"
+    }
   ],
   "timeline": [
-    {"date":"2026-09-03","event":"aiwebcpu current main direction reaches V0.2 Real Skill First work","source":"nustanakritwithai/aiwebcpu"},
-    {"date":"2026-09-23","event":"Simclone active alpha receives verified UI/save recovery work with explicit verification limits","source":"nustanakritwithai/Simclone"},
-    {"date":"2026-09-24","event":"Project Brain Obsidian V0.1 bootstrap created","source":"nustanakritwithai/aiwebcpu"}
+    {
+      "date": "2026-09-03",
+      "event": "aiwebcpu current main direction reaches V0.2 Real Skill First work",
+      "source": "nustanakritwithai/aiwebcpu"
+    },
+    {
+      "date": "2026-09-23",
+      "event": "Simclone active alpha receives verified UI/save recovery work with explicit verification limits",
+      "source": "nustanakritwithai/Simclone"
+    },
+    {
+      "date": "2026-09-24",
+      "event": "Project Brain Obsidian V0.1 bootstrap created",
+      "source": "nustanakritwithai/aiwebcpu"
+    },
+    {
+      "date": "2026-09-24",
+      "event": "Project Brain compatibility analysis classifies direct TestGE history reuse in Simclone as VIOL and selects ADAPT via serialized-state history contract",
+      "source": "project-brain/Integrations/Simclone-TestGE-TimeTravel.md"
+    }
   ],
   "rules": {
-    "buildOrder": ["REUSE", "ADAPT", "BUILD"],
-    "verificationStates": ["SAT", "VIOL", "UNKNOWN"],
+    "buildOrder": [
+      "REUSE",
+      "ADAPT",
+      "BUILD"
+    ],
+    "verificationStates": [
+      "SAT",
+      "VIOL",
+      "UNKNOWN"
+    ],
     "unknownIsPass": false,
     "agentCompletionIsEvidence": false
   }
