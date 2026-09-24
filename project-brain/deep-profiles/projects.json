@@ -380,7 +380,7 @@
           "detail": "The JSON-lines worker hosts monster world stepping, authoritative profiles, state operations, reward handoff and export/restore boundaries without starting a process on import.",
           "evidence": {
             "path": "server/src/world/centralWorker.ts",
-            "sha": "826618bf3c00380a18abaec47155f1d821d65b16a"
+            "sha": "826618bf3c00380a18abaec47155f1d821d65b16"
           }
         },
         {
