@@ -1,4 +1,4 @@
-# Project Brain Web Viewer V0.4
+# Project Brain Web Viewer V0.5
 
 Interactive read-only Knowledge Graph viewer for Project Brain.
 
@@ -108,3 +108,31 @@ Current first semantic pass:
 - 115 documented capability candidates
 
 `DOCUMENTED` means the repository documentation or inspected source explicitly supports the statement. It is not a reuse verdict. REUSE / ADAPT / BUILD remains UNKNOWN until goal-specific compatibility verification.
+
+
+## Verifier V0.5
+
+The Web Viewer exposes checked-in goal-specific verification reports.
+
+Verifier flow:
+
+```text
+DOCUMENTED capability
+  ↓
+explicit Goal Contract
+  ↓
+evidence freshness + explicit compatibility checks
+  ↓
+SAT / VIOL / UNKNOWN
+  ↓
+REUSE / ADAPT / BUILD
+  ↓
+review-only graph patch candidate
+```
+
+The browser does not reimplement verification logic. It renders reports produced/proven by `project-brain/verifier/verifier.mjs` and CI.
+
+Current proof contract:
+- `simclone-time-travel` → SAT / ADAPT
+
+Auto graph write and auto merge remain disabled.
