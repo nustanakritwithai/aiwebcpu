@@ -146,3 +146,24 @@ Discovery snapshot ปัจจุบัน:
 ทุก public repo ใน Catalog เริ่มด้วย `semanticStatus = UNKNOWN` และต้องผ่าน Verifier ก่อน promote capability เข้ากราฟ
 
 Project Brain สาธารณะไม่ persist ชื่อ, commit metadata หรือ evidence ของ private repositories; ต้องมี authenticated private layer แยกต่างหากก่อน
+
+
+## Repository Capability Inventory
+
+[Inventory](capability-inventory/README.md) · [repositories.json](capability-inventory/repositories.json)
+
+First semantic extraction pass:
+- 33 public repositories represented
+- 29 repositories with documented capabilities
+- 4 repositories remain UNKNOWN
+- 115 documented capability candidates
+
+กฎสำคัญ:
+
+```text
+DOCUMENTED ≠ VERIFIED
+DOCUMENTED ≠ REUSE
+reuseDecision = UNKNOWN
+```
+
+Capability จะเข้า canonical graph เมื่อมี goal จริงแล้วผ่าน compatibility + verification เท่านั้น
