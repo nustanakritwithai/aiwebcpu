@@ -35,6 +35,7 @@ const empty=document.querySelector('#empty');
 let graph=null;
 let visibleTypes=new Set();
 let selectedId=null;
+let focusRootId=null;
 let positions=new Map();
 let layoutKey='';
 let transform={x:0,y:0,k:1};
@@ -215,7 +216,8 @@ function renderGraph(){
   svg.dataset.density=nodes.length<=60?'comfortable':nodes.length<=120?'compact':'dense';
   nodeLayer.replaceChildren();edgeLayer.replaceChildren();edgeLabelLayer.replaceChildren();
   empty.hidden=nodes.length>0;
-  const connected=selectedId?connectedSet(selectedId,edges):null;
+  const selectedConnected=selectedId?connectedSet(selectedId,edges):null;
+  const focusConnected=focusRootId?connectedSet(focusRootId,edges):null;
 
   for(const edge of edges){
     const a=positions.get(edge.from),b=positions.get(edge.to);
@@ -224,7 +226,10 @@ function renderGraph(){
     const line=el('line',{
       x1:a.x,y1:a.y,x2:b.x,y2:b.y,
       stroke:style.color,
-      class:'edge'+(selectedId&&!connected.has(edge.from)&&!connected.has(edge.to)?' dim':(selectedId&&(edge.from===selectedId||edge.to===selectedId)?' active':''))
+      class:'edge'
+        +(focusConnected&&!focusConnected.has(edge.from)&&!focusConnected.has(edge.to)?' focus-out':'')
+        +(selectedId&&selectedConnected&&!selectedConnected.has(edge.from)&&!selectedConnected.has(edge.to)?' dim':'')
+        +(selectedId&&(edge.from===selectedId||edge.to===selectedId)?' active':'')
     });
     if(style.dash)line.setAttribute('stroke-dasharray',style.dash);
     line.setAttribute('marker-end',`url(#arrow-${style.marker})`);
@@ -234,7 +239,9 @@ function renderGraph(){
       const text=el('text',{
         x:(a.x+b.x)/2,y:(a.y+b.y)/2-4,
         'text-anchor':'middle',
-        class:'edge-label'+(selectedId&&!connected.has(edge.from)&&!connected.has(edge.to)?' dim':'')
+        class:'edge-label'
+          +(focusConnected&&!focusConnected.has(edge.from)&&!focusConnected.has(edge.to)?' focus-out':'')
+          +(selectedId&&selectedConnected&&!selectedConnected.has(edge.from)&&!selectedConnected.has(edge.to)?' dim':'')
       });
       text.textContent=edge.type;
       edgeLabelLayer.append(text);
@@ -249,7 +256,9 @@ function renderGraph(){
     g.style.color=style.color;
     g.setAttribute('transform',`translate(${p.x},${p.y})`);
     if(selectedId===node.id)g.classList.add('selected');
-    if(selectedId&&!connected.has(node.id))g.classList.add('dim');
+    if(focusRootId===node.id)g.classList.add('focus-root');
+    if(focusConnected&&!focusConnected.has(node.id))g.classList.add('focus-out');
+    if(selectedId&&selectedConnected&&!selectedConnected.has(node.id))g.classList.add('dim');
     if(q&&matches.has(node.id))g.classList.add('match');
     if(q&&!matches.has(node.id)&&!selectedId)g.classList.add('dim');
 
@@ -316,6 +325,54 @@ function fit(){
   applyTransform();
 }
 
+function centerOnNode(id,{scale=null}={}){
+  const p=positions.get(id);
+  const rect=svg.getBoundingClientRect();
+  if(!p||!rect.width||!rect.height)return false;
+  const k=Math.max(.48,Math.min(1.55,scale??Math.max(.82,Math.min(1.12,transform.k||1))));
+  transform={
+    x:rect.width/2-p.x*k,
+    y:rect.height/2-p.y*k,
+    k
+  };
+  applyTransform();
+  return true;
+}
+
+function fitNodeIds(ids){
+  const {nodes,edges}=filtered();
+  ensureLayout(nodes,edges);
+  const wanted=new Set(ids);
+  const subset=nodes.filter(node=>wanted.has(node.id));
+  const bounds=positionBounds(subset);
+  const rect=svg.getBoundingClientRect();
+  if(!bounds||!rect.width||!rect.height)return false;
+  const margin=Math.max(32,Math.min(72,Math.min(rect.width,rect.height)*.08));
+  const bw=Math.max(1,bounds.maxX-bounds.minX);
+  const bh=Math.max(1,bounds.maxY-bounds.minY);
+  const k=Math.max(.55,Math.min(1.55,Math.min(
+    Math.max(1,rect.width-margin*2)/bw,
+    Math.max(1,rect.height-margin*2)/bh
+  )));
+  transform={
+    x:(rect.width-bw*k)/2-bounds.minX*k,
+    y:(rect.height-bh*k)/2-bounds.minY*k,
+    k
+  };
+  applyTransform();
+  return true;
+}
+
+function clearSelection({clearFocus=true}={}){
+  const previous=selectedId;
+  selectedId=null;
+  if(clearFocus)focusRootId=null;
+  renderGraph();
+  document.dispatchEvent(new CustomEvent('project-brain:selection-cleared',{
+    detail:{previousId:previous,focusCleared:clearFocus}
+  }));
+}
+
 function selectNode(id){
   selectedId=id;
   const current=filtered();
@@ -343,6 +400,9 @@ function selectNode(id){
   `;
   detail.querySelectorAll('[data-node]').forEach(b=>b.addEventListener('click',()=>selectNode(b.dataset.node)));
   renderGraph();
+  document.dispatchEvent(new CustomEvent('project-brain:node-selected',{
+    detail:{id:node.id,name:node.name,type:node.type,focusRootId}
+  }));
 }
 
 function setupFilters(){
@@ -393,7 +453,10 @@ function setupInteraction(){
   document.querySelector('#fit').addEventListener('click',fit);
   document.querySelector('#zoom-in').addEventListener('click',()=>{transform.k=Math.min(2.5,transform.k*1.18);applyTransform()});
   document.querySelector('#zoom-out').addEventListener('click',()=>{transform.k=Math.max(.25,transform.k/1.18);applyTransform()});
-  document.querySelector('#reset-selection').addEventListener('click',()=>{selectedId=null;detail.innerHTML='<div class="detail-placeholder"><span class="big-icon">◎</span><h2>เลือก Node</h2><p>แตะ node ในกราฟเพื่อดู properties, ความสัมพันธ์, evidence และ reuse context</p></div>';renderGraph()});
+  document.querySelector('#reset-selection').addEventListener('click',()=>{
+    clearSelection({clearFocus:true});
+    detail.innerHTML='<div class="detail-placeholder"><span class="big-icon">◎</span><h2>เลือก Node</h2><p>แตะ node ในกราฟเพื่อดู properties, ความสัมพันธ์, evidence และ reuse context</p></div>';
+  });
 
   const wrap=document.querySelector('#svg-wrap');
   wrap.addEventListener('pointerdown',e=>{
@@ -417,7 +480,7 @@ function setupInteraction(){
     transform.k=Math.max(.25,Math.min(2.5,transform.k*scale));
     applyTransform();
   },{passive:false});
-  svg.addEventListener('click',()=>{selectedId=null;renderGraph()});
+  svg.addEventListener('click',()=>clearSelection({clearFocus:true}));
   let resizeTimer=null;
   addEventListener('resize',()=>{
     clearTimeout(resizeTimer);
@@ -462,9 +525,35 @@ document.addEventListener('project-brain:set-visible-types',event=>{
   });
   if(!changed)return;
   if(selectedId&&!graph.nodes.some(n=>n.id===selectedId&&visibleTypes.has(n.type)))selectedId=null;
+  if(focusRootId&&!graph.nodes.some(n=>n.id===focusRootId&&visibleTypes.has(n.type)))focusRootId=null;
   layoutKey='';
   renderGraph();
   requestAnimationFrame(fit);
+});
+
+document.addEventListener('project-brain:set-focus-root',event=>{
+  const id=event.detail?.id??null;
+  const current=filtered();
+  if(id&&!current.nodes.some(node=>node.id===id))return;
+  focusRootId=id;
+  renderGraph();
+
+  if(focusRootId){
+    const connected=connectedSet(focusRootId,current.edges);
+    requestAnimationFrame(()=>fitNodeIds([...connected]));
+  }else if(selectedId){
+    requestAnimationFrame(()=>centerOnNode(selectedId,{scale:1}));
+  }
+
+  document.dispatchEvent(new CustomEvent('project-brain:focus-root-changed',{
+    detail:{id:focusRootId,selectedId}
+  }));
+});
+
+document.addEventListener('project-brain:center-node',event=>{
+  const id=event.detail?.id??selectedId;
+  if(!id)return;
+  requestAnimationFrame(()=>centerOnNode(id,{scale:event.detail?.scale??null}));
 });
 
 document.addEventListener('project-brain:set-checkpoint',event=>{
@@ -473,6 +562,7 @@ document.addEventListener('project-brain:set-checkpoint',event=>{
   temporalCheckpointId=id;
   const activeIds=new Set(graph.nodes.filter(temporalActive).map(n=>n.id));
   if(selectedId&&!activeIds.has(selectedId))document.querySelector('#reset-selection')?.click();
+  if(focusRootId&&!activeIds.has(focusRootId))focusRootId=null;
   layoutKey='';
   renderGraph();
   fit();
