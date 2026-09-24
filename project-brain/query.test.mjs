@@ -6,6 +6,7 @@ import {
   inspectGoal,
   inspectIntegration,
   capabilitySummary,
+  documentedCapabilitySummary,
   graphAtCheckpoint,
   snapshotSummary,
   isActiveAt,
@@ -100,4 +101,16 @@ test('Agent query can load a checked-in verification report',async()=>{
 
 test('verification report loader rejects path traversal',async()=>{
   await assert.rejects(()=>loadVerificationReport('../graph/project-brain'),/Invalid verification report id/);
+});
+
+
+test('documented capability query returns repository and documentation evidence',()=>{
+  const rows=documentedCapabilitySummary(graph,'Transactional authoritative world runtime');
+  assert.equal(rows.length,1);
+  const row=rows[0];
+  assert.equal(row.capability.type,'CAPABILITY_CANDIDATE');
+  assert.equal(row.capability.status,'DOCUMENTED');
+  assert.equal(row.reuseDecision,'UNKNOWN');
+  assert.ok(row.repositories.some(x=>x.id==='repo:testge'));
+  assert.ok(row.evidence.some(x=>x.evidenceStatus==='DOCUMENTED'&&x.verdict==='UNKNOWN'));
 });

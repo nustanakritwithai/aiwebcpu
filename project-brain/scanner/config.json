@@ -61,7 +61,10 @@
         "brain/style.css",
         "brain/shell.js",
         "brain/README.md",
-        "brain/decision.js"
+        "brain/decision.js",
+        "project-brain/graph/sync-catalog-inventory.mjs",
+        "brain/app.js",
+        "brain/ux.js"
       ]
     },
     {

@@ -213,3 +213,44 @@ Rules:
 - stale evidence SHA is VIOL
 - missing capability is UNKNOWN
 - graph patches are never auto-applied or auto-merged
+
+
+## Complete Knowledge Graph Coverage V0.5.3
+
+Canonical Knowledge Graph is now deterministically synchronized from:
+
+```text
+Repository Catalog (33 public repos)
+        +
+Capability Inventory (116 DOCUMENTED candidates)
+        ↓
+sync-catalog-inventory.mjs
+        ↓
+Canonical Graph
+```
+
+Current coverage:
+- 33 public PROJECT nodes from the catalog
+- 116 `CAPABILITY_CANDIDATE` nodes
+- 42 unique documentation evidence-file nodes
+- `DOCUMENTS` edges from repository → documented capability
+- `DOCUMENTED_BY` edges from capability → evidence file
+
+Semantic boundary:
+
+```text
+CAPABILITY_CANDIDATE.status = DOCUMENTED
+reuseDecision = UNKNOWN
+documentation evidence verdict = UNKNOWN
+```
+
+A documented capability is not promoted to the verified `CAPABILITY` layer until a goal-specific Verifier contract resolves it.
+
+Sync:
+
+```bash
+node project-brain/graph/sync-catalog-inventory.mjs
+node project-brain/graph/sync-catalog-inventory.mjs --check
+```
+
+CI runs `--check` and fails if the canonical Graph drifts from Catalog/Inventory.

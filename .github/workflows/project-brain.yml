@@ -30,6 +30,8 @@ jobs:
           node-version: "24"
       - name: Validate graph JSON
         run: node -e "JSON.parse(require('fs').readFileSync('project-brain/graph/project-brain.json','utf8')); console.log('graph json ok')"
+      - name: Verify graph coverage sync
+        run: node project-brain/graph/sync-catalog-inventory.mjs --check
       - name: Run Project Brain tests
         run: node --test project-brain/*.test.mjs
       - name: Smoke query CLI

@@ -1,6 +1,7 @@
 const TYPE_STYLE={
   PROJECT:{label:'Project',color:'#3694ff'},
-  CAPABILITY:{label:'Capability',color:'#3ee68b'},
+  CAPABILITY:{label:'Verified Capability',color:'#3ee68b'},
+  CAPABILITY_CANDIDATE:{label:'Documented Capability',color:'#7fd8b2'},
   EVIDENCE:{label:'Evidence',color:'#ffd15c'},
   GOAL:{label:'Goal',color:'#bb75ff'},
   ISSUE:{label:'Issue',color:'#ff666f'},
@@ -17,7 +18,9 @@ const REL_STYLE={
   BLOCKED_BY:{color:'#ff666f',marker:'red',dash:'5 4'},
   ADAPTED_FROM:{color:'#32d6ff',marker:'cyan'},
   SUPERSEDES:{color:'#ff9b4a',marker:'orange'},
-  REUSE_CANDIDATE_FOR:{color:'#ff72c8',marker:'pink',dash:'4 3'}
+  REUSE_CANDIDATE_FOR:{color:'#ff72c8',marker:'pink',dash:'4 3'},
+  DOCUMENTS:{color:'#6fcda1',marker:'green',dash:'3 3'},
+  DOCUMENTED_BY:{color:'#c9b66b',marker:'yellow',dash:'3 3'}
 };
 
 const svg=document.querySelector('#graph');
@@ -71,7 +74,8 @@ function hash(text){
 function initialPosition(node,index){
   const bands={
     PROJECT:[150,260],
-    CAPABILITY:[390,220],
+    CAPABILITY:[390,185],
+    CAPABILITY_CANDIDATE:[390,320],
     GOAL:[650,150],
     INTEGRATION:[650,340],
     ISSUE:[730,500],
@@ -86,8 +90,9 @@ function initialPosition(node,index){
 function settle(nodes,edges){
   positions=new Map(nodes.map((n,i)=>[n.id,initialPosition(n,i)]));
   const W=900,H=650;
-  for(let iter=0;iter<360;iter++){
-    const alpha=(1-iter/360)*.9+.04;
+  const iterations=nodes.length>180?130:nodes.length>100?220:360;
+  for(let iter=0;iter<iterations;iter++){
+    const alpha=(1-iter/iterations)*.9+.04;
     const list=[...positions.values()];
 
     for(let i=0;i<list.length;i++)for(let j=i+1;j<list.length;j++){
@@ -189,7 +194,7 @@ function renderGraph(){
     if(q&&matches.has(node.id))g.classList.add('match');
     if(q&&!matches.has(node.id)&&!selectedId)g.classList.add('dim');
 
-    const radius=node.type==='PROJECT'?17:node.type==='GOAL'||node.type==='INTEGRATION'?15:13;
+    const radius=node.type==='PROJECT'?17:node.type==='GOAL'||node.type==='INTEGRATION'?15:node.type==='CAPABILITY_CANDIDATE'?11:13;
     const circle=el('circle',{r:radius,fill:style.color,'fill-opacity':'.16'});
     const title=el('title');title.textContent=`${node.name} · ${node.type}`;circle.append(title);
     g.append(circle);
