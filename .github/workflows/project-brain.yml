@@ -6,12 +6,13 @@ on:
     paths:
       - "project-brain/**"
       - "brain/**"
-      - "brain/**"
       - ".github/workflows/project-brain.yml"
   push:
     branches: [main]
     paths:
       - "project-brain/**"
+      - "brain/**"
+      - ".github/workflows/project-brain.yml"
 
 permissions:
   contents: read
