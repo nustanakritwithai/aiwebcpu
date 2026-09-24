@@ -60,7 +60,8 @@
         "brain/index.html",
         "brain/style.css",
         "brain/shell.js",
-        "brain/README.md"
+        "brain/README.md",
+        "brain/decision.js"
       ]
     },
     {
