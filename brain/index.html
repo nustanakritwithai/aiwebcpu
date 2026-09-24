@@ -10,9 +10,9 @@
 <body>
   <header class="topbar">
     <div>
-      <p class="eyebrow">PROJECT BRAIN V0.2</p>
-      <h1>Knowledge Graph</h1>
-      <p class="subtitle">ค้นหาของที่มีอยู่แล้ว ก่อนสร้างใหม่</p>
+      <p class="eyebrow">PROJECT BRAIN · KNOWLEDGE MAP</p>
+      <h1>เห็นทั้งระบบในจอเดียว</h1>
+      <p class="subtitle">ค้นหา → โฟกัส → ดูหลักฐาน → ตัดสิน REUSE / ADAPT / BUILD</p>
     </div>
     <div class="status">
       <span id="graph-status" class="status-dot">กำลังโหลด</span>
@@ -21,18 +21,44 @@
   </header>
 
   <main>
+    <section class="brain-pulse" aria-label="สรุป Project Brain">
+      <article class="pulse-card"><small>KNOWLEDGE</small><b id="metric-nodes">—</b><span>Nodes</span></article>
+      <article class="pulse-card"><small>CONNECTIONS</small><b id="metric-relations">—</b><span>Relations</span></article>
+      <article class="pulse-card"><small>EVIDENCE</small><b id="metric-evidence">—</b><span>SAT / total</span></article>
+      <article class="pulse-card decision"><small>ACTIVE DECISION</small><b id="metric-decision">—</b><span>Current goal</span></article>
+    </section>
+
+    <nav class="section-nav card" aria-label="Project Brain sections">
+      <button type="button" data-scroll="graph-card" class="active">Graph</button>
+      <button type="button" data-scroll="timeline-section">Timeline</button>
+      <button type="button" data-scroll="rule-section">Decision Rule</button>
+    </nav>
+
     <section class="controls card">
       <label class="search">
         <span>ค้นหา</span>
         <input id="search" type="search" placeholder="เช่น rollback, Simclone, evidence">
       </label>
 
-      <div class="filters" id="type-filters" aria-label="กรองประเภท node"></div>
+      <div class="preset-row" aria-label="มุมมองด่วน">
+        <span>มุมมองด่วน</span>
+        <button class="preset-chip active" data-preset="all" type="button">ทั้งหมด</button>
+        <button class="preset-chip" data-preset="core" type="button">Core</button>
+        <button class="preset-chip" data-preset="reuse" type="button">Reuse</button>
+        <button class="preset-chip" data-preset="problems" type="button">Problems</button>
+        <button class="preset-chip" data-preset="evidence" type="button">Evidence</button>
+      </div>
+
+      <details class="filter-drawer">
+        <summary>ตัวกรองประเภท Node <span id="filter-count">ทั้งหมด</span></summary>
+        <div class="filters" id="type-filters" aria-label="กรองประเภท node"></div>
+      </details>
 
       <div class="toolbar">
         <button id="fit" type="button">พอดีจอ</button>
         <button id="zoom-out" type="button" aria-label="ซูมออก">−</button>
         <button id="zoom-in" type="button" aria-label="ซูมเข้า">＋</button>
+        <button id="focus-mode" type="button" aria-pressed="false">โฟกัสความสัมพันธ์</button>
         <label class="toggle">
           <input id="edge-labels" type="checkbox" checked>
           <span>ชื่อ relation</span>
@@ -41,7 +67,7 @@
     </section>
 
     <section class="workspace">
-      <article class="graph-card card">
+      <article class="graph-card card" id="graph-card">
         <div class="graph-head">
           <div>
             <h2>แผนที่ความรู้ปัจจุบัน</h2>
@@ -75,7 +101,7 @@
         </div>
       </article>
 
-      <aside class="detail card" id="detail">
+      <aside class="detail card" id="detail" aria-live="polite">
         <div class="detail-placeholder">
           <span class="big-icon">◎</span>
           <h2>เลือก Node</h2>
@@ -84,7 +110,9 @@
       </aside>
     </section>
 
-    <section class="timeline card">
+    <div class="detail-backdrop" id="detail-backdrop" hidden></div>
+
+    <section class="timeline card" id="timeline-section">
       <div class="section-head">
         <div>
           <h2>Timeline</h2>
@@ -96,7 +124,7 @@
       <p class="note">หมายเหตุ: V0.2 แสดง timeline ของเหตุการณ์ก่อน ส่วน historical graph replay ตาม valid_from / valid_to จะเป็น milestone ถัดไป</p>
     </section>
 
-    <section class="rule card">
+    <section class="rule card" id="rule-section">
       <h2>Decision Rule</h2>
       <div class="rule-flow">
         <span>NEED</span><b>→</b><span>SEARCH GRAPH</span><b>→</b><span class="reuse">REUSE</span><b>→</b><span class="adapt">ADAPT</span><b>→</b><span class="build">BUILD</span><b>→</b><span>VERIFY</span><b>→</b><span>UPDATE BRAIN</span>
@@ -104,6 +132,8 @@
       <p>SAT / VIOL / UNKNOWN · UNKNOWN ไม่ใช่ PASS · Agent บอกว่าเสร็จไม่ถือเป็นหลักฐาน</p>
     </section>
   </main>
+
+  <div class="mobile-hint" id="mobile-hint">แตะ Node เพื่อดูรายละเอียด · ลากพื้นหลังเพื่อเลื่อน · จีบนิ้วหรือใช้ +/− เพื่อซูม</div>
 
   <template id="node-row-template">
     <button class="relation-row" type="button">
