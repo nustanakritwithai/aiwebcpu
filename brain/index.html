@@ -469,6 +469,18 @@
         <div class="legend" id="legend"></div>
 
         <div class="svg-wrap" id="svg-wrap">
+          <div class="graph-inspection" id="graph-inspection" hidden>
+            <div class="graph-inspection-copy">
+              <small id="graph-inspection-state">SELECTED</small>
+              <span>กำลังดู <b id="graph-inspection-node">—</b></span>
+              <em id="graph-inspection-focus"></em>
+            </div>
+            <div class="graph-inspection-actions">
+              <button type="button" data-inspection-action="center">จัดกึ่งกลาง</button>
+              <button type="button" data-inspection-action="focus">เข้า Focus</button>
+              <button type="button" data-inspection-action="clear">ล้าง</button>
+            </div>
+          </div>
           <svg id="graph" role="img" aria-label="Project Brain Knowledge Graph">
             <defs>
               <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z"/></marker>
