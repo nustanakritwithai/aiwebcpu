@@ -401,8 +401,8 @@ test('detail actions expose center and focus without clearing selection',async()
   const start=ux.indexOf('function enhanceDetailActions');
   const end=ux.indexOf('\nfunction populateMetrics',start);
   const block=ux.slice(start,end);
-  assert.match(block,/data\.detailCenter='true'/);
-  assert.match(block,/data\.detailFocus='true'/);
+  assert.match(block,/dataset\.detailCenter='true'/);
+  assert.match(block,/dataset\.detailFocus='true'/);
   assert.match(block,/project-brain:center-node/);
   assert.doesNotMatch(block,/reset-selection/);
 });
