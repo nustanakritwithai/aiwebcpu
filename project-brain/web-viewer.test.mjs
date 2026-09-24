@@ -556,7 +556,7 @@ test('Project Deep Profile V0.6.1 loads source-level project profiles without pr
 
 test('deep project profiles cover the major active cross-project systems',async()=>{
   const profiles=JSON.parse(await readFile(new URL('./deep-profiles/projects.json',import.meta.url),'utf8'));
-  assert.equal(profiles.schemaVersion,'1.2.0');
+  assert.equal(profiles.schemaVersion,'1.3.0');
   for(const repoId of ['repo:simclone','repo:testge','repo:pocketmonster','repo:pirate-fruit','repo:echonews','repo:astralife']){
     const row=profiles.projects.find(project=>project.repoId===repoId);
     assert.ok(row,repoId);
@@ -582,7 +582,7 @@ test('deep project profiles keep evidence SHA-bound and reuse-neutral',async()=>
 
 test('PocketMonster x Pirate Fruit V0.6.3 records paired draft heads and authority boundaries',async()=>{
   const profiles=JSON.parse(await readFile(new URL('./deep-profiles/projects.json',import.meta.url),'utf8'));
-  assert.equal(profiles.schemaVersion,'1.2.0');
+  assert.equal(profiles.schemaVersion,'1.3.0');
   const pocket=profiles.projects.find(project=>project.repoId==='repo:pocketmonster');
   const pirate=profiles.projects.find(project=>project.repoId==='repo:pirate-fruit');
   for(const row of [pocket,pirate])assert.ok(row);
@@ -623,4 +623,25 @@ test('Cross Project Integration Lens V0.6.4 exposes the paired candidate without
   assert.match(css,/Cross Project Integration Lens V0\.6\.4/);
   assert.match(css,/\.cross-candidate-grid/);
   assert.match(css,/\.cross-partner-button/);
+});
+
+test('Contract Matrix V0.6.5 traces Pocket x Pirate request to render boundaries',async()=>{
+  const profiles=JSON.parse(await readFile(new URL('./deep-profiles/projects.json',import.meta.url),'utf8'));
+  const pocket=profiles.projects.find(project=>project.repoId==='repo:pocketmonster');
+  const integration=pocket.crossProjectIntegration;
+  assert.equal(integration.contractSchemaVersion,'1.0.0');
+  assert.ok(integration.contracts.length>=7);
+  for(const contract of integration.contracts){
+    for(const field of ['request','validate','compute','commit','render','owner']) assert.ok(contract[field],contract.id+':'+field);
+    assert.match(contract.evidence.pocket.sha,/^[0-9a-f]{40}$/);
+    assert.match(contract.evidence.pirate.sha,/^[0-9a-f]{40}$/);
+  }
+  assert.equal(integration.pocket.gateVerdict,'SAT');
+  assert.equal(integration.pirate.gateVerdict,'RUNNING');
+  assert.ok(integration.contracts.some(row=>row.id==='player-vitals'&&row.state==='CANDIDATE_PAIR'));
+  assert.ok(integration.contracts.some(row=>row.id==='central-market'&&row.state==='CANDIDATE_PAIR'));
+  assert.ok(integration.contracts.some(row=>row.id==='shared-monster-world'&&row.state==='MERGED_BASELINE'));
+  assert.ok(integration.contracts.some(row=>row.id==='combat-v91-federation'&&row.state==='CONTRACT_ONLY'));
+  assert.match(js,/Contract Matrix V0\.6\.5/);
+  assert.match(css,/Contract Matrix V0\.6\.5/);
 });

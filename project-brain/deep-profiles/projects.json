@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.2.0",
+  "schemaVersion": "1.3.0",
   "semantics": {
     "status": "DOCUMENTED source-level multi-project + cross-project profile",
     "rule": "Deep profile data adds source context, authority boundaries and exact-head verification signals but does not promote capability reuse decisions or overwrite canonical graph authority."
@@ -406,22 +406,185 @@
         "pocket": {
           "pullRequest": 632,
           "ref": "codex/pirate-vitals-economy-client-20260921",
-          "head": "ef84398e78471cad61c597dd4211d4f8dd7d128e",
+          "head": "ba1347d8537519543669273c7964d8c6079c57b2",
           "draft": true,
-          "gateVerdict": "VIOL",
+          "gateVerdict": "SAT",
           "runId": 35540443000,
-          "blocker": "Monster controls integration stops on a regression assertion that still expects world-presence-protocol.mjs?v=7 while the candidate imports v8."
+          "blocker": null,
+          "gate": "all exact-head PR workflows",
+          "runIds": [
+            36062010375,
+            36062010376,
+            36062010380,
+            36062010414
+          ]
         },
         "pirate": {
           "pullRequest": 168,
           "ref": "codex/pirate-vitals-economy-native-20260921",
-          "head": "8842f808b3ac1aadf633f0f975812c7a800b8384",
+          "head": "6cfb6685776593d85f8629b68ad6e212a980d93c",
           "draft": true,
-          "gateVerdict": "VIOL",
+          "gateVerdict": "RUNNING",
           "runId": 35540739646,
-          "blocker": "Client/server gate stops at TypeScript build: PlayerVitalsSkillAuthority callback signature mismatch plus remoteTrade fixtures using invalid IslandId 'pirate-fruit'."
+          "blocker": "Exact-head verification is still running after the deterministic remote-save smoke repair.",
+          "gate": "Client and server gates + browser/audio/renderer",
+          "runIds": [
+            36062739449,
+            36062739569,
+            36062739614
+          ]
         },
-        "rule": "Draft branch evidence is not merged/live proof. Both exact-head gates must pass before authority promotion."
+        "rule": "Draft branch evidence is not merged/live proof. Both exact-head gates must pass before authority promotion.",
+        "contractSchemaVersion": "1.0.0",
+        "contracts": [
+          {
+            "id": "shared-monster-world",
+            "name": "Shared Monster World",
+            "state": "MERGED_BASELINE",
+            "owner": "Pirate central server worker",
+            "request": "Pirate/Pocket gameplay emits bounded monster intent or world step input.",
+            "validate": "Pocket shared protocol sanitizes intent/authority envelopes; Pirate server revalidates actor, island, range and world state.",
+            "compute": "Pirate CentralWorldWorker + MonsterWorldService run spawn/AI/HP/death/respawn and PvE hit timing.",
+            "commit": "Pirate server owns the shared monster world state, pending hit/reward state and persistence boundary.",
+            "render": "Server world messages travel through Pocket parent/original-world bridge into the Pirate scene as presentation.",
+            "evidence": {
+              "pocket": {
+                "path": "world-presence-protocol.mjs",
+                "sha": "efe1d001fb0e0755d1ca58c7568b88f800676c06"
+              },
+              "pirate": {
+                "path": "server/src/world/centralWorker.ts",
+                "sha": "826618bf3c00380a18abaec47155f1d821d65b16"
+              }
+            }
+          },
+          {
+            "id": "player-state-save",
+            "name": "Player State / Save",
+            "state": "MERGED_BASELINE",
+            "owner": "Pirate server persistence",
+            "request": "Pirate child submits a bounded state operation through the Pocket parent queue.",
+            "validate": "Pocket binds the request to the active launch session, sanitizes the operation and enforces revision/idempotency envelopes.",
+            "compute": "Pirate centralOperationsAdapter applies the domain operation against canonical player state.",
+            "commit": "Pirate server/persistence commits the next revision; stale/conflicting state is rejected instead of silently forking.",
+            "render": "Pocket receives persisted documents/outcome and refreshes the child memory mirror; the iframe never receives the account token.",
+            "evidence": {
+              "pocket": {
+                "path": "pirate-central-state-client.mjs",
+                "sha": "86d982d474fc15024c355327ca1a79d754114de9"
+              },
+              "pirate": {
+                "path": "server/src/player/centralOperationsAdapter.ts",
+                "sha": "a974390397a202f90ce0a800fab09eb18ab23a41"
+              }
+            }
+          },
+          {
+            "id": "boat-operations",
+            "name": "Boat Purchase / Upgrade / Selection",
+            "state": "MERGED_BASELINE",
+            "owner": "Pirate boat/player domain",
+            "request": "Pirate scene emits boatPurchase, boatUpgrade or boatSelection operation.",
+            "validate": "Pocket parent accepts only bounded known boat operations and idempotency keys.",
+            "compute": "Pirate central boat adapter resolves canonical boat ownership/progression rules.",
+            "commit": "Pirate player aggregate is revisioned and persisted server-side.",
+            "render": "Persisted boat/loadout state returns to the embedded Pirate client and presentation updates from canonical state.",
+            "evidence": {
+              "pocket": {
+                "path": "pirate-central-state-client.mjs",
+                "sha": "86d982d474fc15024c355327ca1a79d754114de9"
+              },
+              "pirate": {
+                "path": "server/src/player/centralBoatAdapter.ts",
+                "sha": "2d51b98b2f97ba946c91eb6120fdb006e6862c76"
+              }
+            }
+          },
+          {
+            "id": "quest-reward",
+            "name": "Quest / Reward",
+            "state": "MERGED_BASELINE",
+            "owner": "Pirate quest/reward domain",
+            "request": "Pirate scene submits quest state/accept/progress/claim operations or server-generated monster reward handoff.",
+            "validate": "Pocket operation sanitizer limits quest fields; Pirate server checks canonical quest/progression state and reward identity.",
+            "compute": "Pirate centralQuestAdapter / centralRewardAdapter derive accepted state and rewards from server definitions.",
+            "commit": "Quest/progression/reward changes commit through Pirate canonical state and idempotent receipt paths.",
+            "render": "Pocket returns authoritative outcome/persisted state; Pirate UI mirrors it without inventing a second reward total.",
+            "evidence": {
+              "pocket": {
+                "path": "pirate-central-state-client.mjs",
+                "sha": "86d982d474fc15024c355327ca1a79d754114de9"
+              },
+              "pirate": {
+                "path": "server/src/quest/centralQuestAdapter.ts",
+                "sha": "8c3be47296f2b5e47063bac42858b62c87cd4c51"
+              }
+            }
+          },
+          {
+            "id": "player-vitals",
+            "name": "Player Vitals / Respawn",
+            "state": "CANDIDATE_PAIR",
+            "owner": "Pirate server candidate",
+            "request": "Pirate scene sends transient blocking/mounted/sprinting plus idempotent potion/skill/respawn intents through Pocket.",
+            "validate": "Pocket PR #632 validates pirate-vitals/1 and session-bound operations; Pirate PR #168 validates canonical resource and cooldown rules.",
+            "compute": "Pirate server advances HP, guard, energy, MP, hitstun, potion/skill resource use and safe respawn.",
+            "commit": "Pirate server is the intended single writer; revisioned vitals snapshot is emitted only from canonical state.",
+            "render": "Pocket relays the validated snapshot; Pirate client becomes presentation-only after authority claim and rejects stale/malformed revisions.",
+            "evidence": {
+              "pocket": {
+                "path": "pirate-original-world-contract.mjs",
+                "sha": "5f1e14920134458a6476fc1ba5f32f39501ea988"
+              },
+              "pirate": {
+                "path": "server/src/player/vitalsRules.ts",
+                "sha": "21d65a8973c94c2660521c758cda99322ba26686"
+              }
+            }
+          },
+          {
+            "id": "central-market",
+            "name": "Living Economy Trade Mutation",
+            "state": "CANDIDATE_PAIR",
+            "owner": "Pirate central market candidate",
+            "request": "Pirate scene asks for tradeQuote/trade through Pocket's bounded operation bridge.",
+            "validate": "Pocket PR #632 validates action/island/commodity/quantity/idempotency. Pirate parses the request again server-side.",
+            "compute": "Pirate loads the bundled EconomyEngine from the canonical market snapshot and calculates the trusted quote.",
+            "commit": "Player + market projections return together so the outer server transaction can commit both; idempotency receipts prevent duplicate trade.",
+            "render": "Pocket returns canonical outcome/persisted player state; Pirate UI mirrors coins/cargo and reads the next market snapshot.",
+            "evidence": {
+              "pocket": {
+                "path": "pirate-central-state-client.mjs",
+                "sha": "f9b98d9b5857caf03d2f0f30bdc462d1ae1bd27b"
+              },
+              "pirate": {
+                "path": "server/src/trade/centralOriginalTradeOperation.ts",
+                "sha": "b16589e3adfe24b5c1a2fb99d20402fe1379b9f3"
+              }
+            }
+          },
+          {
+            "id": "combat-v91-federation",
+            "name": "Unified Combat V9.1 Federation",
+            "state": "CONTRACT_ONLY",
+            "owner": "Server execution + target domain owner",
+            "request": "Client may submit intent/prediction only; it cannot submit authoritative HP or trusted combat result.",
+            "validate": "Pocket V9.1 server authority contract requires server permits, profile provenance, state versions and one-use RNG authority.",
+            "compute": "World/server resolver is designed to compute effective combat from domain-owned base profiles.",
+            "commit": "Target domain owner must commit HP/status/resources atomically; Shared Core is not an HP store.",
+            "render": "Client receives confirmed/corrected/rejected authority results and remains a projection layer.",
+            "evidence": {
+              "pocket": {
+                "path": "combat-v91-server-authority.mjs",
+                "sha": "cb56775235d88bd7dfb9ed6840731fc78d50216a"
+              },
+              "pirate": {
+                "path": "server/src/world/centralWorker.ts",
+                "sha": "826618bf3c00380a18abaec47155f1d821d65b16"
+              }
+            }
+          }
+        ]
       }
     },
     {
@@ -633,22 +796,185 @@
         "pocket": {
           "pullRequest": 632,
           "ref": "codex/pirate-vitals-economy-client-20260921",
-          "head": "ef84398e78471cad61c597dd4211d4f8dd7d128e",
+          "head": "ba1347d8537519543669273c7964d8c6079c57b2",
           "draft": true,
-          "gateVerdict": "VIOL",
+          "gateVerdict": "SAT",
           "runId": 35540443000,
-          "blocker": "Monster controls integration stops on a regression assertion that still expects world-presence-protocol.mjs?v=7 while the candidate imports v8."
+          "blocker": null,
+          "gate": "all exact-head PR workflows",
+          "runIds": [
+            36062010375,
+            36062010376,
+            36062010380,
+            36062010414
+          ]
         },
         "pirate": {
           "pullRequest": 168,
           "ref": "codex/pirate-vitals-economy-native-20260921",
-          "head": "8842f808b3ac1aadf633f0f975812c7a800b8384",
+          "head": "6cfb6685776593d85f8629b68ad6e212a980d93c",
           "draft": true,
-          "gateVerdict": "VIOL",
+          "gateVerdict": "RUNNING",
           "runId": 35540739646,
-          "blocker": "Client/server gate stops at TypeScript build: PlayerVitalsSkillAuthority callback signature mismatch plus remoteTrade fixtures using invalid IslandId 'pirate-fruit'."
+          "blocker": "Exact-head verification is still running after the deterministic remote-save smoke repair.",
+          "gate": "Client and server gates + browser/audio/renderer",
+          "runIds": [
+            36062739449,
+            36062739569,
+            36062739614
+          ]
         },
-        "rule": "Draft branch evidence is not merged/live proof. Both exact-head gates must pass before authority promotion."
+        "rule": "Draft branch evidence is not merged/live proof. Both exact-head gates must pass before authority promotion.",
+        "contractSchemaVersion": "1.0.0",
+        "contracts": [
+          {
+            "id": "shared-monster-world",
+            "name": "Shared Monster World",
+            "state": "MERGED_BASELINE",
+            "owner": "Pirate central server worker",
+            "request": "Pirate/Pocket gameplay emits bounded monster intent or world step input.",
+            "validate": "Pocket shared protocol sanitizes intent/authority envelopes; Pirate server revalidates actor, island, range and world state.",
+            "compute": "Pirate CentralWorldWorker + MonsterWorldService run spawn/AI/HP/death/respawn and PvE hit timing.",
+            "commit": "Pirate server owns the shared monster world state, pending hit/reward state and persistence boundary.",
+            "render": "Server world messages travel through Pocket parent/original-world bridge into the Pirate scene as presentation.",
+            "evidence": {
+              "pocket": {
+                "path": "world-presence-protocol.mjs",
+                "sha": "efe1d001fb0e0755d1ca58c7568b88f800676c06"
+              },
+              "pirate": {
+                "path": "server/src/world/centralWorker.ts",
+                "sha": "826618bf3c00380a18abaec47155f1d821d65b16"
+              }
+            }
+          },
+          {
+            "id": "player-state-save",
+            "name": "Player State / Save",
+            "state": "MERGED_BASELINE",
+            "owner": "Pirate server persistence",
+            "request": "Pirate child submits a bounded state operation through the Pocket parent queue.",
+            "validate": "Pocket binds the request to the active launch session, sanitizes the operation and enforces revision/idempotency envelopes.",
+            "compute": "Pirate centralOperationsAdapter applies the domain operation against canonical player state.",
+            "commit": "Pirate server/persistence commits the next revision; stale/conflicting state is rejected instead of silently forking.",
+            "render": "Pocket receives persisted documents/outcome and refreshes the child memory mirror; the iframe never receives the account token.",
+            "evidence": {
+              "pocket": {
+                "path": "pirate-central-state-client.mjs",
+                "sha": "86d982d474fc15024c355327ca1a79d754114de9"
+              },
+              "pirate": {
+                "path": "server/src/player/centralOperationsAdapter.ts",
+                "sha": "a974390397a202f90ce0a800fab09eb18ab23a41"
+              }
+            }
+          },
+          {
+            "id": "boat-operations",
+            "name": "Boat Purchase / Upgrade / Selection",
+            "state": "MERGED_BASELINE",
+            "owner": "Pirate boat/player domain",
+            "request": "Pirate scene emits boatPurchase, boatUpgrade or boatSelection operation.",
+            "validate": "Pocket parent accepts only bounded known boat operations and idempotency keys.",
+            "compute": "Pirate central boat adapter resolves canonical boat ownership/progression rules.",
+            "commit": "Pirate player aggregate is revisioned and persisted server-side.",
+            "render": "Persisted boat/loadout state returns to the embedded Pirate client and presentation updates from canonical state.",
+            "evidence": {
+              "pocket": {
+                "path": "pirate-central-state-client.mjs",
+                "sha": "86d982d474fc15024c355327ca1a79d754114de9"
+              },
+              "pirate": {
+                "path": "server/src/player/centralBoatAdapter.ts",
+                "sha": "2d51b98b2f97ba946c91eb6120fdb006e6862c76"
+              }
+            }
+          },
+          {
+            "id": "quest-reward",
+            "name": "Quest / Reward",
+            "state": "MERGED_BASELINE",
+            "owner": "Pirate quest/reward domain",
+            "request": "Pirate scene submits quest state/accept/progress/claim operations or server-generated monster reward handoff.",
+            "validate": "Pocket operation sanitizer limits quest fields; Pirate server checks canonical quest/progression state and reward identity.",
+            "compute": "Pirate centralQuestAdapter / centralRewardAdapter derive accepted state and rewards from server definitions.",
+            "commit": "Quest/progression/reward changes commit through Pirate canonical state and idempotent receipt paths.",
+            "render": "Pocket returns authoritative outcome/persisted state; Pirate UI mirrors it without inventing a second reward total.",
+            "evidence": {
+              "pocket": {
+                "path": "pirate-central-state-client.mjs",
+                "sha": "86d982d474fc15024c355327ca1a79d754114de9"
+              },
+              "pirate": {
+                "path": "server/src/quest/centralQuestAdapter.ts",
+                "sha": "8c3be47296f2b5e47063bac42858b62c87cd4c51"
+              }
+            }
+          },
+          {
+            "id": "player-vitals",
+            "name": "Player Vitals / Respawn",
+            "state": "CANDIDATE_PAIR",
+            "owner": "Pirate server candidate",
+            "request": "Pirate scene sends transient blocking/mounted/sprinting plus idempotent potion/skill/respawn intents through Pocket.",
+            "validate": "Pocket PR #632 validates pirate-vitals/1 and session-bound operations; Pirate PR #168 validates canonical resource and cooldown rules.",
+            "compute": "Pirate server advances HP, guard, energy, MP, hitstun, potion/skill resource use and safe respawn.",
+            "commit": "Pirate server is the intended single writer; revisioned vitals snapshot is emitted only from canonical state.",
+            "render": "Pocket relays the validated snapshot; Pirate client becomes presentation-only after authority claim and rejects stale/malformed revisions.",
+            "evidence": {
+              "pocket": {
+                "path": "pirate-original-world-contract.mjs",
+                "sha": "5f1e14920134458a6476fc1ba5f32f39501ea988"
+              },
+              "pirate": {
+                "path": "server/src/player/vitalsRules.ts",
+                "sha": "21d65a8973c94c2660521c758cda99322ba26686"
+              }
+            }
+          },
+          {
+            "id": "central-market",
+            "name": "Living Economy Trade Mutation",
+            "state": "CANDIDATE_PAIR",
+            "owner": "Pirate central market candidate",
+            "request": "Pirate scene asks for tradeQuote/trade through Pocket's bounded operation bridge.",
+            "validate": "Pocket PR #632 validates action/island/commodity/quantity/idempotency. Pirate parses the request again server-side.",
+            "compute": "Pirate loads the bundled EconomyEngine from the canonical market snapshot and calculates the trusted quote.",
+            "commit": "Player + market projections return together so the outer server transaction can commit both; idempotency receipts prevent duplicate trade.",
+            "render": "Pocket returns canonical outcome/persisted player state; Pirate UI mirrors coins/cargo and reads the next market snapshot.",
+            "evidence": {
+              "pocket": {
+                "path": "pirate-central-state-client.mjs",
+                "sha": "f9b98d9b5857caf03d2f0f30bdc462d1ae1bd27b"
+              },
+              "pirate": {
+                "path": "server/src/trade/centralOriginalTradeOperation.ts",
+                "sha": "b16589e3adfe24b5c1a2fb99d20402fe1379b9f3"
+              }
+            }
+          },
+          {
+            "id": "combat-v91-federation",
+            "name": "Unified Combat V9.1 Federation",
+            "state": "CONTRACT_ONLY",
+            "owner": "Server execution + target domain owner",
+            "request": "Client may submit intent/prediction only; it cannot submit authoritative HP or trusted combat result.",
+            "validate": "Pocket V9.1 server authority contract requires server permits, profile provenance, state versions and one-use RNG authority.",
+            "compute": "World/server resolver is designed to compute effective combat from domain-owned base profiles.",
+            "commit": "Target domain owner must commit HP/status/resources atomically; Shared Core is not an HP store.",
+            "render": "Client receives confirmed/corrected/rejected authority results and remains a projection layer.",
+            "evidence": {
+              "pocket": {
+                "path": "combat-v91-server-authority.mjs",
+                "sha": "cb56775235d88bd7dfb9ed6840731fc78d50216a"
+              },
+              "pirate": {
+                "path": "server/src/world/centralWorker.ts",
+                "sha": "826618bf3c00380a18abaec47155f1d821d65b16"
+              }
+            }
+          }
+        ]
       }
     },
     {

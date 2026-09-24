@@ -174,6 +174,24 @@ function projectDeepDive(node){
       <p>${esc(row.blocker??'')}</p>
     </article>
   `).join(''):'';
+  /* Contract Matrix V0.6.5 */
+  const crossContractRows=(crossIntegration?.contracts??[]).map(contract=>`
+    <article class="cross-contract-card">
+      <div class="cross-contract-head">
+        <b>${esc(contract.name)}</b>
+        <small class="state-${esc(String(contract.state??'unknown').toLowerCase())}">${esc(contract.state??'UNKNOWN')}</small>
+      </div>
+      <div class="cross-contract-pipeline">
+        <p><strong>REQUEST</strong><span>${esc(contract.request??'')}</span></p>
+        <p><strong>VALIDATE</strong><span>${esc(contract.validate??'')}</span></p>
+        <p><strong>COMPUTE</strong><span>${esc(contract.compute??'')}</span></p>
+        <p><strong>COMMIT</strong><span>${esc(contract.commit??'')}</span></p>
+        <p><strong>RENDER</strong><span>${esc(contract.render??'')}</span></p>
+      </div>
+      <footer>OWNER · ${esc(contract.owner??'UNKNOWN')}</footer>
+    </article>
+  `).join('');
+
   const crossIntegrationHtml=crossIntegration?`
     <section class="cross-integration-lens" aria-label="Cross Project Integration">
       <div class="cross-integration-head">
@@ -188,6 +206,12 @@ function projectDeepDive(node){
         <code>Pirate ${esc(String(crossIntegration.mergedBaseline?.pirateHead??'').slice(0,8)||'—')}</code>
       </div>
       <div class="cross-candidate-grid">${crossCandidateRows}</div>
+      ${crossContractRows?`
+        <div class="cross-contract-section">
+          <div class="project-deep-title"><b>Contract Matrix</b><span>Request → Validate → Compute → Commit → Render</span></div>
+          <div class="cross-contract-list">${crossContractRows}</div>
+        </div>
+      `:''}
     </section>
   `:'';
 

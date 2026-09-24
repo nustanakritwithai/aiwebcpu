@@ -73,6 +73,7 @@ Viewer อ่าน canonical graph เดียวโดยตรง ไม่�
 - Project Deep Profiles V0.6.2 ขยาย source-level drill-down ไปยัง TestGE, PocketMonster, Pirate Fruit, Echonews และ AstraLife พร้อม direct source HEAD, exact-head workflow, architecture/authority state, next gates และ limitations โดยยังไม่เปลี่ยน reuse verdict
 - PocketMonster × Pirate Fruit V0.6.3 เจาะเส้นทางรวมเกมโดยตรง: merged original-world/state bridge, draft PR #632 + #168, server-owned vitals, parent-session transport, central market quote/execute และ exact-head CI blockers; ยังไม่ promote เข้า canonical reuse verdict
 - Cross Project Integration Lens V0.6.4 แสดงคู่ Pocket/Pirate ในหน้า PROJECT detail โดยตรง: partner navigation, merged baseline SHA, candidate PR heads, exact-head VIOL blocker และ authority state โดยยังเป็น read-only overlay
+- Contract Matrix V0.6.5 แตก PocketMonster × Pirate Fruit เป็นราย contract ด้วย pipeline Request → Validate → Compute → Commit → Render สำหรับ shared monsters, save/state, boats, quest/reward, vitals, central market และ Combat V9.1
 
 ## Query Layer
 
