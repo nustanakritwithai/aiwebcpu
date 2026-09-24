@@ -436,7 +436,7 @@
     },
     {
       "date": "2026-09-24",
-      "event": "Project Brain Obsidian V0.1 bootstrap created",
+      "event": "Project Brain V0.1 knowledge graph bootstrap created",
       "source": "nustanakritwithai/aiwebcpu"
     },
     {
@@ -451,13 +451,18 @@
     },
     {
       "date": "2026-09-24",
-      "event": "Project Brain mobile UX V0.2.1 verified and merged",
+      "event": "Project Brain responsive Web UX V0.2.1 verified and merged",
       "source": "nustanakritwithai/aiwebcpu@79be91b"
     },
     {
       "date": "2026-09-24",
       "event": "Project Brain Temporal Knowledge Graph V0.3 verified and merged",
       "source": "nustanakritwithai/aiwebcpu@d4e41bb"
+    },
+    {
+      "date": "2026-09-24",
+      "event": "Project Brain retires local vault/device sync and standardizes on the Web Viewer as its human interface",
+      "source": "project-brain/Web-Only.md"
     }
   ],
   "rules": {
@@ -517,8 +522,8 @@
       {
         "id": "pb-2026-09-24-mobile-ux",
         "date": "2026-09-24",
-        "label": "Mobile UX V0.2.1",
-        "description": "Presets, focus mode, deep links and mobile bottom-sheet inspection are verified.",
+        "label": "Responsive Web UX V0.2.1",
+        "description": "Presets, focus mode, deep links and responsive Web Viewer inspection are verified.",
         "source": "nustanakritwithai/aiwebcpu@79be91b"
       },
       {
@@ -527,8 +532,23 @@
         "label": "Temporal Graph V0.3",
         "description": "Verified temporal knowledge-state replay, historical snapshot query and time-machine viewer are merged.",
         "source": "nustanakritwithai/aiwebcpu@d4e41bb"
+      },
+      {
+        "id": "pb-2026-09-24-web-only",
+        "date": "2026-09-24",
+        "label": "Web-only interface",
+        "description": "Project Brain retires the local vault/device-sync path and uses the Web Viewer as the only human interface.",
+        "source": "project-brain/Web-Only.md"
       }
     ],
-    "defaultCheckpoint": "pb-2026-09-24-temporal-v03"
+    "defaultCheckpoint": "pb-2026-09-24-web-only"
+  },
+  "interfaces": {
+    "human": "web",
+    "webPath": "/brain/",
+    "agentQuery": "project-brain/query.mjs",
+    "localVault": false,
+    "deviceSync": false,
+    "canonicalGraph": "project-brain/graph/project-brain.json"
   }
 }

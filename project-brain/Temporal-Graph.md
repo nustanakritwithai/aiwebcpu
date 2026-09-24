@@ -93,4 +93,13 @@ node project-brain/query.mjs snapshot pb-2026-09-24-compat
 - Merge commit: `d4e41bbf071a86f0f34d9e4e3675ade9e2526fd1`
 - Project Brain CI: SAT
 - Temporal schema/query/viewer contract: SAT
-- Current checkpoint: `pb-2026-09-24-temporal-v03`
+- Current checkpoint: `pb-2026-09-24-web-only`
+
+
+## Human Interface
+
+Temporal Graph แสดงผ่าน Project Brain Web Viewer เท่านั้น
+
+- ไม่มี local vault
+- ไม่มี device sync
+- มือถือและ desktop ใช้ Web Viewer ตัวเดียวกัน
