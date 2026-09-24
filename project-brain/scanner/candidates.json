@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "0.1",
+  "policy": {
+    "autoGraphWrites": false,
+    "autoMerge": false,
+    "candidateVerdict": "UNKNOWN",
+    "requireVerification": true,
+    "scanIntervalHours": 6,
+    "principle": "Mechanical repository facts may be collected automatically. Capability meaning requires verification before entering the canonical graph."
+  },
+  "summary": {
+    "monitoredRepositories": 4,
+    "changedRepositories": 0,
+    "candidates": 0,
+    "mechanicalSAT": 0,
+    "mechanicalVIOL": 0,
+    "semanticVerdict": "UNKNOWN"
+  },
+  "changedRepositories": [],
+  "candidates": []
+}
