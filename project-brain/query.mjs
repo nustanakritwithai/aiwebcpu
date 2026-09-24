@@ -35,12 +35,24 @@ export function isActiveAt(graph,item,checkpointId){
   return at>=from&&at<until;
 }
 
+export function materializeAt(graph,item,checkpointId){
+  const states=item.temporalStates??[];
+  const state=states.find(row=>isActiveAt(graph,row,checkpointId));
+  if(!state)return {...item};
+  const {temporalStates,...base}=item;
+  return {...base,...(state.values??{}),temporalStates};
+}
+
 export function graphAtCheckpoint(graph,checkpointId){
   const checkpoint=checkpointById(graph,checkpointId);
   if(!checkpoint)throw new Error('Unknown Project Brain checkpoint: '+checkpointId);
-  const nodes=graph.nodes.filter(n=>isActiveAt(graph,n,checkpointId));
+  const nodes=graph.nodes
+    .filter(n=>isActiveAt(graph,n,checkpointId))
+    .map(n=>materializeAt(graph,n,checkpointId));
   const ids=new Set(nodes.map(n=>n.id));
-  const edges=graph.edges.filter(e=>ids.has(e.from)&&ids.has(e.to)&&isActiveAt(graph,e,checkpointId));
+  const edges=graph.edges
+    .filter(e=>ids.has(e.from)&&ids.has(e.to)&&isActiveAt(graph,e,checkpointId))
+    .map(e=>materializeAt(graph,e,checkpointId));
   return {
     ...graph,
     nodes,
