@@ -2284,3 +2284,18 @@ body.ux-focus .graph-inspection{
     width:30px;
   }
 }
+
+/* Focus Sharpness UX V0.5.9 */
+/* Keep the SVG graph crisp while Focus detail is open. The detail sheet may
+   dim the canvas, but must never blur nodes, labels, or relation lines. */
+body.ux-focus.detail-open .detail-backdrop{
+  background:#02060b38;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+}
+body.ux-focus .graph-inspection{
+  background:#06121ef2;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+}
+

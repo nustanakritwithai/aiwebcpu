@@ -508,3 +508,13 @@ test('filtering out the selected node emits authoritative selection-cleared',()=
   assert.match(js,/reason:'filtered-out'/);
   assert.match(js,/project-brain:selection-cleared/);
 });
+
+test('Focus Sharpness UX V0.5.9 keeps graph nodes crisp behind Focus detail',()=>{
+  assert.match(css,/Focus Sharpness UX V0\.5\.9/);
+  const start=css.indexOf('/* Focus Sharpness UX V0.5.9 */');
+  const block=css.slice(start);
+  assert.match(block,/body\.ux-focus\.detail-open \.detail-backdrop\{[\s\S]*backdrop-filter:none;[\s\S]*-webkit-backdrop-filter:none;/);
+  assert.match(block,/body\.ux-focus \.graph-inspection\{[\s\S]*backdrop-filter:none;[\s\S]*-webkit-backdrop-filter:none;/);
+  assert.doesNotMatch(block,/body\.ux-focus\.detail-open \.detail-backdrop\{[^}]*blur\(/);
+});
+
