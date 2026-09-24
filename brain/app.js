@@ -36,6 +36,7 @@ let graph=null;
 let visibleTypes=new Set();
 let selectedId=null;
 let positions=new Map();
+let layoutKey='';
 let transform={x:0,y:0,k:1};
 let draggingStage=false;
 let dragStart=null;
@@ -71,28 +72,72 @@ function hash(text){
   return h>>>0;
 }
 
-function initialPosition(node,index){
-  const bands={
-    PROJECT:[150,260],
-    CAPABILITY:[390,185],
-    CAPABILITY_CANDIDATE:[390,320],
-    GOAL:[650,150],
-    INTEGRATION:[650,340],
-    ISSUE:[730,500],
-    EVIDENCE:[380,520],
-    VERSION:[150,500]
+function layoutSize(){
+  const rect=document.querySelector('#svg-wrap')?.getBoundingClientRect?.()??{width:900,height:650};
+  return {
+    W:Math.max(760,Math.min(1500,rect.width||900)),
+    H:Math.max(680,Math.min(1400,rect.height||650))
   };
-  const [bx,by]=bands[node.type]??[430,360];
+}
+
+function groupOrdinals(nodes){
+  const groups=new Map();
+  for(const node of nodes){
+    const list=groups.get(node.type)??[];
+    list.push(node);
+    groups.set(node.type,list);
+  }
+  const result=new Map();
+  for(const list of groups.values()){
+    list.sort((a,b)=>String(a.name??a.id).localeCompare(String(b.name??b.id)));
+    list.forEach((node,rank)=>result.set(node.id,{rank,count:list.length}));
+  }
+  return result;
+}
+
+function initialPosition(node,index,nodes,W,H,ordinals){
+  const bands={
+    PROJECT:{x:.14,y0:.10,y1:.90,cols:3},
+    CAPABILITY:{x:.43,y0:.10,y1:.42,cols:2},
+    CAPABILITY_CANDIDATE:{x:.46,y0:.18,y1:.78,cols:3},
+    GOAL:{x:.80,y0:.10,y1:.25,cols:1},
+    INTEGRATION:{x:.79,y0:.34,y1:.56,cols:1},
+    ISSUE:{x:.84,y0:.64,y1:.82,cols:1},
+    EVIDENCE:{x:.53,y0:.70,y1:.92,cols:3},
+    VERSION:{x:.16,y0:.76,y1:.93,cols:2}
+  };
+  const spec=bands[node.type]??{x:.50,y0:.18,y1:.82,cols:2};
+  const info=ordinals.get(node.id)??{rank:index,count:nodes.length};
+  const cols=Math.max(1,Math.min(spec.cols,info.count));
+  const rows=Math.max(1,Math.ceil(info.count/cols));
+  const col=info.rank%cols;
+  const row=Math.floor(info.rank/cols);
+  const xSpread=Math.min(118,W*.085);
+  const x=spec.x*W+(col-(cols-1)/2)*xSpread;
+  const t=rows===1?.5:(row+.5)/rows;
+  const y=(spec.y0+(spec.y1-spec.y0)*t)*H;
   const h=hash(node.id);
-  return {x:bx+((h%170)-85),y:by+(((h>>>8)%180)-90),vx:0,vy:0,index};
+  const jitterX=((h%19)-9)*.9;
+  const jitterY=(((h>>>8)%17)-8)*.9;
+  return {x:x+jitterX,y:y+jitterY,vx:0,vy:0,index};
+}
+
+function layoutSignature(nodes,edges,W,H){
+  const ids=nodes.map(n=>n.id).sort().join('|');
+  const edgeSig=edges.map(e=>`${e.from}>${e.to}:${e.type}`).sort().join('|');
+  return `${Math.round(W/40)}x${Math.round(H/40)}|${ids}|${edgeSig}`;
 }
 
 function settle(nodes,edges){
-  positions=new Map(nodes.map((n,i)=>[n.id,initialPosition(n,i)]));
-  const W=900,H=650;
-  const iterations=nodes.length>180?130:nodes.length>100?220:360;
+  const {W,H}=layoutSize();
+  const ordinals=groupOrdinals(nodes);
+  positions=new Map(nodes.map((n,i)=>[n.id,initialPosition(n,i,nodes,W,H,ordinals)]));
+  const iterations=nodes.length>180?110:nodes.length>100?170:nodes.length>60?240:320;
+  const minDistance=nodes.length<=60?70:nodes.length<=120?54:38;
+  const repulsion=nodes.length<=60?8800:nodes.length<=120?6800:5200;
+
   for(let iter=0;iter<iterations;iter++){
-    const alpha=(1-iter/iterations)*.9+.04;
+    const alpha=(1-iter/iterations)*.92+.035;
     const list=[...positions.values()];
 
     for(let i=0;i<list.length;i++)for(let j=i+1;j<list.length;j++){
@@ -100,7 +145,9 @@ function settle(nodes,edges){
       let dx=b.x-a.x,dy=b.y-a.y,d2=dx*dx+dy*dy;
       if(d2<1){dx=.2;dy=.2;d2=.08}
       const dist=Math.sqrt(d2);
-      const force=Math.min(1.8,5200/d2)*alpha;
+      const repel=Math.min(2.8,repulsion/d2)*alpha;
+      const collision=dist<minDistance?(minDistance-dist)*.045*alpha:0;
+      const force=repel+collision;
       const fx=dx/dist*force,fy=dy/dist*force;
       a.vx-=fx;a.vy-=fy;b.vx+=fx;b.vy+=fy;
     }
@@ -109,25 +156,35 @@ function settle(nodes,edges){
       const a=positions.get(edge.from),b=positions.get(edge.to);
       if(!a||!b)continue;
       const dx=b.x-a.x,dy=b.y-a.y,dist=Math.max(1,Math.hypot(dx,dy));
-      const ideal=edge.type==='VERIFIED_BY'?105:145;
-      const force=(dist-ideal)*.008*alpha;
+      const ideal=edge.type==='VERIFIED_BY'||edge.type==='DOCUMENTED_BY'?125:170;
+      const force=(dist-ideal)*.0065*alpha;
       const fx=dx/dist*force,fy=dy/dist*force;
       a.vx+=fx;a.vy+=fy;b.vx-=fx;b.vy-=fy;
     }
 
     for(const node of nodes){
       const p=positions.get(node.id);
-      const base=initialPosition(node,p.index);
-      p.vx+=(base.x-p.x)*.0016*alpha;
-      p.vy+=(base.y-p.y)*.0016*alpha;
+      const base=initialPosition(node,p.index,nodes,W,H,ordinals);
+      p.vx+=(base.x-p.x)*.003*alpha;
+      p.vy+=(base.y-p.y)*.003*alpha;
     }
 
     for(const p of positions.values()){
-      p.vx*=.78;p.vy*=.78;
-      p.x=Math.max(35,Math.min(W-35,p.x+p.vx));
-      p.y=Math.max(35,Math.min(H-35,p.y+p.vy));
+      p.vx*=.77;p.vy*=.77;
+      p.x=Math.max(48,Math.min(W-48,p.x+p.vx));
+      p.y=Math.max(48,Math.min(H-58,p.y+p.vy));
     }
   }
+
+  layoutKey=layoutSignature(nodes,edges,W,H);
+}
+
+function ensureLayout(nodes,edges){
+  const {W,H}=layoutSize();
+  const next=layoutSignature(nodes,edges,W,H);
+  if(next===layoutKey&&nodes.every(n=>positions.has(n.id)))return false;
+  settle(nodes,edges);
+  return true;
 }
 
 function filtered(){
@@ -154,6 +211,7 @@ function connectedSet(id,edges){
 
 function renderGraph(){
   const {nodes,edges,matches,q}=filtered();
+  ensureLayout(nodes,edges);
   nodeLayer.replaceChildren();edgeLayer.replaceChildren();edgeLabelLayer.replaceChildren();
   empty.hidden=nodes.length>0;
   const connected=selectedId?connectedSet(selectedId,edges):null;
@@ -200,7 +258,8 @@ function renderGraph(){
     g.append(circle);
 
     const label=el('text',{x:0,y:radius+14,'text-anchor':'middle'});
-    label.textContent=node.name.length>30?node.name.slice(0,28)+'…':node.name;
+    const labelLimit=nodes.length<=60?22:nodes.length<=110?16:12;
+    label.textContent=node.name.length>labelLimit?node.name.slice(0,labelLimit-1)+'…':node.name;
     g.append(label);
 
     const meta=el('text',{x:0,y:radius+25,'text-anchor':'middle',class:'meta'});
@@ -222,11 +281,37 @@ function applyTransform(){
   viewport.setAttribute('transform',`translate(${transform.x} ${transform.y}) scale(${transform.k})`);
 }
 
+function positionBounds(nodes){
+  const list=nodes.map(node=>positions.get(node.id)).filter(Boolean);
+  if(!list.length)return null;
+  const padX=nodes.length<=60?72:54;
+  const padTop=44;
+  const padBottom=58;
+  return {
+    minX:Math.min(...list.map(p=>p.x))-padX,
+    maxX:Math.max(...list.map(p=>p.x))+padX,
+    minY:Math.min(...list.map(p=>p.y))-padTop,
+    maxY:Math.max(...list.map(p=>p.y))+padBottom
+  };
+}
+
 function fit(){
-  const box={x:0,y:0,w:900,h:650};
+  const {nodes,edges}=filtered();
+  ensureLayout(nodes,edges);
+  const bounds=positionBounds(nodes);
   const rect=svg.getBoundingClientRect();
-  const k=Math.max(.35,Math.min(1.4,Math.min(rect.width/box.w,rect.height/box.h)*.93));
-  transform={x:(rect.width-box.w*k)/2,y:(rect.height-box.h*k)/2,k};
+  if(!bounds||!rect.width||!rect.height)return;
+  const margin=Math.max(18,Math.min(42,Math.min(rect.width,rect.height)*.045));
+  const bw=Math.max(1,bounds.maxX-bounds.minX);
+  const bh=Math.max(1,bounds.maxY-bounds.minY);
+  const availableW=Math.max(1,rect.width-margin*2);
+  const availableH=Math.max(1,rect.height-margin*2);
+  const k=Math.max(.28,Math.min(1.55,Math.min(availableW/bw,availableH/bh)));
+  transform={
+    x:(rect.width-bw*k)/2-bounds.minX*k,
+    y:(rect.height-bh*k)/2-bounds.minY*k,
+    k
+  };
   applyTransform();
 }
 
@@ -262,19 +347,24 @@ function selectNode(id){
 function setupFilters(){
   const holder=document.querySelector('#type-filters');
   const legend=document.querySelector('#legend');
+  const defaultTypes=new Set(['PROJECT','CAPABILITY','GOAL','INTEGRATION']);
+  visibleTypes=new Set();
   holder.replaceChildren();legend.replaceChildren();
   for(const type of graph.nodeTypes){
-    visibleTypes.add(type);
+    if(defaultTypes.has(type))visibleTypes.add(type);
     const style=TYPE_STYLE[type]??{label:type,color:'#fff'};
     const b=document.createElement('button');
     b.className='filter-chip';
     b.innerHTML=`<span class="dot" style="color:${style.color};background:${style.color}"></span>${style.label}`;
     b.dataset.type=type;
+    b.classList.toggle('off',!visibleTypes.has(type));
     b.addEventListener('click',()=>{
       if(visibleTypes.has(type))visibleTypes.delete(type);else visibleTypes.add(type);
       b.classList.toggle('off',!visibleTypes.has(type));
       if(selectedId&&!graph.nodes.some(n=>n.id===selectedId&&visibleTypes.has(n.type)))selectedId=null;
+      layoutKey='';
       renderGraph();
+      requestAnimationFrame(fit);
     });
     holder.append(b);
 
@@ -327,7 +417,15 @@ function setupInteraction(){
     applyTransform();
   },{passive:false});
   svg.addEventListener('click',()=>{selectedId=null;renderGraph()});
-  addEventListener('resize',fit);
+  let resizeTimer=null;
+  addEventListener('resize',()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer=setTimeout(()=>{
+      layoutKey='';
+      renderGraph();
+      fit();
+    },90);
+  });
 }
 
 async function boot(){
@@ -338,7 +436,6 @@ async function boot(){
     const requestedCheckpoint=new URL(location.href).searchParams.get('at');
     const defaultCheckpoint=graph.temporal?.defaultCheckpoint??graph.temporal?.checkpoints?.at(-1)?.id??null;
     temporalCheckpointId=(requestedCheckpoint&&temporalIndex(requestedCheckpoint)>=0)?requestedCheckpoint:defaultCheckpoint;
-    settle(graph.nodes,graph.edges);
     setupFilters();
     renderTimeline();
     setupInteraction();
@@ -354,12 +451,25 @@ async function boot(){
   }
 }
 
+document.addEventListener('project-brain:set-visible-types',event=>{
+  const requested=Array.isArray(event.detail?.types)?event.detail.types:[];
+  visibleTypes=new Set(requested.filter(type=>graph?.nodeTypes?.includes(type)));
+  document.querySelectorAll('#type-filters .filter-chip').forEach(button=>{
+    button.classList.toggle('off',!visibleTypes.has(button.dataset.type));
+  });
+  if(selectedId&&!graph.nodes.some(n=>n.id===selectedId&&visibleTypes.has(n.type)))selectedId=null;
+  layoutKey='';
+  renderGraph();
+  requestAnimationFrame(fit);
+});
+
 document.addEventListener('project-brain:set-checkpoint',event=>{
   const id=event.detail?.id;
   if(!id||temporalIndex(id)<0)return;
   temporalCheckpointId=id;
   const activeIds=new Set(graph.nodes.filter(temporalActive).map(n=>n.id));
   if(selectedId&&!activeIds.has(selectedId))document.querySelector('#reset-selection')?.click();
+  layoutKey='';
   renderGraph();
   fit();
   document.dispatchEvent(new CustomEvent('project-brain:checkpoint-changed',{detail:{id}}));
