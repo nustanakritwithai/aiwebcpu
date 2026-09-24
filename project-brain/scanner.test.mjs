@@ -10,9 +10,24 @@ import {
 
 const config=JSON.parse(await readFile(new URL('./scanner/config.json',import.meta.url),'utf8'));
 const baseline=JSON.parse(await readFile(new URL('./scanner/baseline.json',import.meta.url),'utf8'));
-const changedFixture=JSON.parse(await readFile(new URL('./scanner/fixtures/changed.json',import.meta.url),'utf8'));
 const changed=structuredClone(baseline);
-changed.repositories['repo:simclone']=changedFixture.repositories['repo:simclone'];
+{
+  const sim=changed.repositories['repo:simclone'];
+  sim.head={
+    sha:'deadbeefdeadbeefdeadbeefdeadbeefdeadbeef',
+    date:'2026-09-24T16:00:00Z',
+    message:'feat: candidate inventory work'
+  };
+  sim.exactHeadWorkflow={
+    verdict:'SAT',
+    conclusion:'success',
+    name:'Verify Simclone',
+    runId:999,
+    url:'https://example.invalid/run/999'
+  };
+  const evidence=sim.evidenceFiles[0];
+  evidence.sha='1111111111111111111111111111111111111111';
+}
 
 test('unchanged accepted baseline produces no scanner candidates',()=>{
   assert.deepEqual(compareStates(baseline,baseline),[]);
