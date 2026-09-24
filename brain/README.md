@@ -1,4 +1,4 @@
-# Project Brain Web Viewer V0.5.5
+# Project Brain Web Viewer V0.5.6
 
 Interactive read-only Knowledge Graph viewer for Project Brain.
 
@@ -253,3 +253,27 @@ V0.5.5:
 - node label size adapts to visible graph density
 
 Complete data remains available through All/Documented presets.
+
+
+## Focus Inspection UX V0.5.6
+
+Focus is now an inspection mode instead of a temporary visual filter.
+
+State is separated:
+
+```text
+selectedId  = node currently inspected
+focusRootId = node whose 1-hop neighborhood is isolated
+```
+
+Behavior:
+- selecting a node opens detail and persists selection
+- entering Focus isolates the focus root and its direct neighborhood
+- navigating to a related node can change selection without losing the focus root
+- exiting Focus keeps the selected node and detail panel
+- exiting Focus recenters the selected node
+- selected and focus-root highlights are visually distinct
+- inspection context bar exposes Center / Focus / Clear
+- only explicit Clear or background click clears selection
+
+Focus state is not restored from localStorage on reload; node deep-link selection remains the durable context.
