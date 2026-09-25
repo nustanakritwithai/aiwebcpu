@@ -44,6 +44,34 @@ See [`AI_CPU_REAL_SKILL_FIRST_PLAN.md`](./AI_CPU_REAL_SKILL_FIRST_PLAN.md) for t
 - [`AI_CPU_WEB_V0_1_PLAN.md`](./AI_CPU_WEB_V0_1_PLAN.md) — V0.1 parser / matcher / safety hardening
 - [`AI_CPU_WEB_V0_PLAN.md`](./AI_CPU_WEB_V0_PLAN.md) — original V0 master plan / historical baseline
 
+## Verified agent runtime foundation
+
+A Pi-inspired verified control-plane foundation now lives at:
+
+`aicpu/verified-runtime/`
+
+It adds the runtime primitives needed to evolve AI CPU from a browser skill prototype into a verified agent system:
+
+- parent-linked session/candidate history
+- Pi session projection adapter
+- lazy skill loading
+- deterministic -> local -> frontier compute routing
+- fail-closed policy gating
+- evidence-backed SAT / VIOL / UNKNOWN verification
+- VRR repair / alternate / new-approach lineage
+- evidence-gated canonical memory proposals
+
+The foundation does not grant unrestricted autonomous execution. Writes require a sandbox, unknown security classes fail closed, and canonical memory is never auto-committed.
+
+Verify with:
+
+```bash
+node --test aicpu/verified-runtime/core.test.mjs
+node aicpu/verified-runtime/demo.mjs
+```
+
+See [`aicpu/verified-runtime/README.md`](./aicpu/verified-runtime/README.md).
+
 ## Core principle
 
 > Agent solves unknown problems. AI CPU executes proven programs.
