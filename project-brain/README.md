@@ -284,3 +284,21 @@ Current diagnosis:
 Target fix sequence is P0 one ingress → P1 canonical server parity → P2 pinned worker → P3 runtime/CORS/WSS readiness → P4 real browser QA → P5 promotion.
 
 Private VPS repository metadata is intentionally not persisted in this public Project Brain dataset.
+
+## Agent Operating Layer V0.7
+
+External agents now have a deterministic entry point instead of inferring the next task from prose.
+
+```bash
+node project-brain/query.mjs work
+node project-brain/query.mjs work P0
+```
+
+- `AGENTS.md` = repository-level operating contract
+- `project-brain/agent-work.json` = machine-readable dependency-aware work queue
+- `project-brain/Agent-Work.md` = runbook
+- only `READY` work is actionable by default
+- `UNKNOWN` never unlocks dependent work
+- completion requires deterministic acceptance evidence
+
+Current active sequence for Pocket browser ↔ VPS is `P0 → P1 → P2 → P3 → P4 → P5`, with **P0 — Freeze one ingress** READY.
