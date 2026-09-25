@@ -1,0 +1,193 @@
+{
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-09-25",
+  "policy": {
+    "evidenceModel": [
+      "SAT",
+      "VIOL",
+      "UNKNOWN"
+    ],
+    "unknownIsPass": false,
+    "firstReadyOnly": true,
+    "publicBrainNoPrivateSecrets": true
+  },
+  "activeGoal": {
+    "id": "pocket-vps-connectivity",
+    "title": "PocketMonster browser ↔ VPS authenticated gameplay",
+    "status": "BLOCKED",
+    "sourceProfile": "project-brain/deep-profiles/pocket-vps-connectivity.json",
+    "sourceRunbook": "project-brain/Integrations/PocketMonster-VPS-Connectivity.md"
+  },
+  "work": [
+    {
+      "id": "P0",
+      "title": "Freeze one ingress",
+      "status": "READY",
+      "dependsOn": [],
+      "objective": "Use one stable HTTPS/WSS public origin for the Pocket browser → VPS path and keep the application listener loopback-only.",
+      "inspect": [
+        "PocketMonster runtime-config.json and CSP/public-origin configuration",
+        "VPS reverse-proxy/tunnel/public-url configuration through authenticated private access",
+        "Current public HTTPS and WSS routing"
+      ],
+      "acceptance": [
+        "runtime-config, CSP, Server.PublicUrl and ingress configuration resolve to the same stable origin",
+        "HTTPS /api/health succeeds through that origin",
+        "WSS upgrade succeeds through that origin",
+        "no second public application port is required"
+      ],
+      "evidenceRequired": [
+        "exact config/source refs",
+        "HTTP status",
+        "WSS upgrade result",
+        "redacted correlation/timestamp if available"
+      ],
+      "doNot": [
+        "Do not publish private VPS repository names, paths, credentials or machine configuration in public Project Brain.",
+        "Do not open another raw VPS application port.",
+        "Do not use a rotating quick-tunnel URL as production runtime-config."
+      ]
+    },
+    {
+      "id": "P1",
+      "title": "Close server contract parity",
+      "status": "BLOCKED",
+      "dependsOn": [
+        "P0"
+      ],
+      "objective": "Promote the canonical server contract required by the merged Pocket/Pirate client.",
+      "inspect": [
+        "POST /api/pirate/vitals/input",
+        "Pirate state GET and /api/pirate/state/operation",
+        "tradeQuote/trade and current worker operations"
+      ],
+      "acceptance": [
+        "canonical server source exposes the required routes/operations",
+        "exact-head contract tests are SAT",
+        "client and server operation names/payload semantics match"
+      ],
+      "evidenceRequired": [
+        "server exact-head CI",
+        "route/operation contract tests",
+        "client/server contract comparison"
+      ],
+      "doNot": [
+        "Do not treat client CI as proof of server endpoint support."
+      ]
+    },
+    {
+      "id": "P2",
+      "title": "Pin one Pirate worker artifact",
+      "status": "BLOCKED",
+      "dependsOn": [
+        "P1"
+      ],
+      "objective": "Build and deploy the VPS Pirate worker from the exact reviewed Pirate source used by the shipped release.",
+      "inspect": [
+        "Pirate centralWorker",
+        "economy engine",
+        "server release manifest/build recipe"
+      ],
+      "acceptance": [
+        "release manifest pins Pirate source SHA",
+        "worker artifacts have recorded SHA-256",
+        "CI rejects stale or mismatched worker source"
+      ],
+      "evidenceRequired": [
+        "source SHA",
+        "artifact SHA-256",
+        "artifact parity gate"
+      ],
+      "doNot": [
+        "Do not infer worker parity from repository branch names or commit messages."
+      ]
+    },
+    {
+      "id": "P3",
+      "title": "Prove runtime readiness",
+      "status": "BLOCKED",
+      "dependsOn": [
+        "P2"
+      ],
+      "objective": "Prove the running VPS process has the reviewed worker bound and the public origin is ready for browser traffic.",
+      "inspect": [
+        "worker readiness",
+        "HTTPS health/version",
+        "CORS preflight",
+        "WSS authentication/upgrade"
+      ],
+      "acceptance": [
+        "read-only readiness reports worker contract/version/hash without secrets",
+        "HTTPS health/version SAT from public origin",
+        "CORS preflight SAT",
+        "WSS upgrade/auth readiness SAT"
+      ],
+      "evidenceRequired": [
+        "readiness response",
+        "deployment gate output",
+        "public-origin network results"
+      ],
+      "doNot": [
+        "Do not expose credentials or machine paths from readiness endpoints."
+      ]
+    },
+    {
+      "id": "P4",
+      "title": "Run real browser QA",
+      "status": "BLOCKED",
+      "dependsOn": [
+        "P3"
+      ],
+      "objective": "Complete one QA-only authenticated browser transaction across Firebase launcher → Pocket → VPS → Pirate gameplay.",
+      "inspect": [
+        "launch ticket",
+        "session establishment",
+        "REST",
+        "WSS",
+        "Pirate state/vitals/operation"
+      ],
+      "acceptance": [
+        "QA login and launch-ticket issue/redeem SAT",
+        "authenticated WSS SAT",
+        "Pirate state GET SAT",
+        "vitals input POST SAT",
+        "one idempotent Pirate operation SAT"
+      ],
+      "evidenceRequired": [
+        "redacted status/error codes",
+        "correlation IDs",
+        "browser E2E result"
+      ],
+      "doNot": [
+        "Do not enable broad production player/economy writes only to diagnose connectivity."
+      ]
+    },
+    {
+      "id": "P5",
+      "title": "Promote live-host authority",
+      "status": "BLOCKED",
+      "dependsOn": [
+        "P4"
+      ],
+      "objective": "Update Project Brain only after P0-P4 have deterministic SAT evidence.",
+      "inspect": [
+        "all prior work items",
+        "canonical integration node",
+        "temporal checkpoint"
+      ],
+      "acceptance": [
+        "P0-P4 are SAT with evidence",
+        "live-host integration status is updated from BLOCKED/UNKNOWN",
+        "new checkpoint and tests preserve UNKNOWN ≠ PASS"
+      ],
+      "evidenceRequired": [
+        "Project Brain patch",
+        "CI",
+        "new temporal checkpoint"
+      ],
+      "doNot": [
+        "Do not promote from documentation-only or health-only proof."
+      ]
+    }
+  ]
+}
