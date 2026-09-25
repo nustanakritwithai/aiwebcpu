@@ -1,0 +1,27 @@
+name: AI CPU Verified Runtime
+
+on:
+  push:
+    paths:
+      - 'aicpu/verified-runtime/**'
+      - '.github/workflows/aicpu-verified-runtime.yml'
+  pull_request:
+    paths:
+      - 'aicpu/verified-runtime/**'
+      - '.github/workflows/aicpu-verified-runtime.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verified-runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run deterministic contract tests
+        run: node --test aicpu/verified-runtime/core.test.mjs
+      - name: Run deterministic demo
+        run: node aicpu/verified-runtime/demo.mjs
