@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "1.0.0",
+  "version": "0.6.9",
+  "status": "BLOCKED",
+  "scope": "PocketMonster browser ↔ VPS gameplay integration",
+  "capturedAt": "2026-09-25",
+  "privacy": "Private VPS repository names, paths, SHAs, credentials and machine configuration are intentionally not persisted in this public Project Brain artifact.",
+  "summary": "The remaining problem is not the Pocket × Pirate game-domain merge. The public client release is merged and deployed, but the browser-to-VPS runtime chain still lacks one canonical, verified end-to-end contract from public ingress through authenticated Pirate gameplay operations.",
+  "findings": [
+    {
+      "id": "client-server-contract-parity",
+      "verdict": "VIOL",
+      "layer": "API contract",
+      "fact": "The public Pocket client calls POST /api/pirate/vitals/input and sends newer Pirate state operations such as tradeQuote/trade. The canonical reviewed VPS server source does not yet expose the full merged contract; the corresponding server implementation remains outside the canonical deployed source line.",
+      "publicEvidence": [
+        {
+          "repo": "nustanakritwithai/PocketMonster",
+          "path": "pirate-central-state-client.mjs",
+          "sha": "f9b98d9b5857caf03d2f0f30bdc462d1ae1bd27b"
+        }
+      ],
+      "resolution": "Promote one reviewed server candidate into the canonical server line, then pin the deployed binary/source version in Project Brain. Do not treat client CI as server endpoint proof."
+    },
+    {
+      "id": "worker-artifact-parity",
+      "verdict": "VIOL",
+      "layer": "Server worker artifact",
+      "fact": "The reviewed public Pirate worker used by the shipped Pocket artifact includes the required vitals/trade/economy operations. The reviewed private server release recipe is not pinned to that same worker source; source parity is therefore not guaranteed.",
+      "publicEvidence": [
+        {
+          "repo": "nustanakritwithai/Pirate-fruit-",
+          "path": "server/src/world/centralWorker.ts",
+          "sha": "6040d1aff149dd67c58d1ed9c8e1539b4a8d8f34"
+        },
+        {
+          "repo": "nustanakritwithai/PocketMonster",
+          "path": "pirate-fruit-offline/SOURCE.json",
+          "sha": "897cd4b859d66b2f2f83392ac05d64c3931e178a"
+        }
+      ],
+      "resolution": "Build the VPS worker bundle from the exact reviewed Pirate source used by the release, package centralWorker + economy engine together, and assert required ops before artifact publication."
+    },
+    {
+      "id": "ingress-source-of-truth",
+      "verdict": "VIOL",
+      "layer": "HTTPS/WSS ingress",
+      "fact": "The public client currently pins a raw-IP HTTPS/WSS origin. Operational server material supports more than one ingress strategy, so the browser and VPS do not have one stable ingress source of truth.",
+      "publicEvidence": [
+        {
+          "repo": "nustanakritwithai/PocketMonster",
+          "path": "runtime-config.json",
+          "sha": "9836a8b69b45637f5b4c87a28fce0c5684615bf5"
+        }
+      ],
+      "resolution": "Choose one stable HTTPS origin and use it everywhere. Preferred target: a named HTTPS tunnel/hostname that forwards only to the loopback app listener; do not use a rotating quick-tunnel URL or a second direct public app port."
+    },
+    {
+      "id": "runtime-worker-binding",
+      "verdict": "UNKNOWN",
+      "layer": "VPS runtime",
+      "fact": "The server-side Pirate worker must be explicitly bound at runtime. Repository review cannot prove the currently running VPS process has the reviewed worker executable/bundle paths and that the worker handshake is ready.",
+      "publicEvidence": [],
+      "resolution": "Add a read-only readiness probe that reports worker contract/version/hash without secrets, and fail deployment if the worker is absent, stale or not ready."
+    },
+    {
+      "id": "browser-authenticated-e2e",
+      "verdict": "UNKNOWN",
+      "layer": "Real browser authentication",
+      "fact": "Release evidence proves health/version, merged code, static deployment and behavioral tests, but no authenticated production browser gameplay transaction was completed.",
+      "publicEvidence": [
+        {
+          "repo": "nustanakritwithai/aiwebcpu",
+          "path": "project-brain/deep-profiles/pocket-pirate-release.json",
+          "sha": "982a0ff28316660feb079c6c62596b53e1c46da6"
+        }
+      ],
+      "resolution": "Run one QA-only Firebase launch-ticket flow in a real browser and verify REST + WSS + Pirate state + vitals input with redacted evidence."
+    },
+    {
+      "id": "health-version-preflight",
+      "verdict": "SAT",
+      "layer": "Read-only backend preflight",
+      "fact": "The existing release verifier proves the configured backend health/version contract from automation. This is necessary but does not prove browser origin, auth, WSS, or Pirate gameplay routes.",
+      "publicEvidence": [
+        {
+          "repo": "nustanakritwithai/PocketMonster",
+          "path": "scripts/verify-live-v9-deployment.mjs",
+          "sha": "39a81ed97b81ad4043cddae3eb5a96d73aff4a2a"
+        }
+      ],
+      "resolution": "Keep this gate, but place it before dedicated browser-origin and gameplay-contract gates instead of treating it as end-to-end proof."
+    }
+  ],
+  "targetArchitecture": {
+    "publicOrigin": "One stable HTTPS hostname/tunnel origin",
+    "edge": "TLS termination + CORS + WSS",
+    "app": "VPS application bound to loopback only",
+    "worker": "Reviewed Pirate central worker pinned by source SHA + artifact SHA256",
+    "browser": "Firebase launcher → launch ticket → Pocket Pages → authenticated REST/WSS",
+    "authority": "Pocket parent = session/validation/transport; Pirate/VPS server = canonical gameplay mutation"
+  },
+  "fixPlan": [
+    {
+      "phase": "P0",
+      "title": "Freeze one ingress",
+      "gate": "One stable HTTPS/WSS origin; runtime-config, CSP, server PublicUrl and reverse proxy/tunnel agree exactly."
+    },
+    {
+      "phase": "P1",
+      "title": "Close server contract parity",
+      "gate": "Canonical server source exposes Pirate state, vitals input, trade quote/execute and current worker ops; exact-head CI SAT."
+    },
+    {
+      "phase": "P2",
+      "title": "Pin one worker artifact",
+      "gate": "Server release manifest pins reviewed Pirate source + centralWorker/economy-engine hashes and rejects stale worker source."
+    },
+    {
+      "phase": "P3",
+      "title": "Prove runtime readiness",
+      "gate": "Public /api/health + /api/version + worker readiness + CORS preflight + WSS upgrade SAT from deployment automation."
+    },
+    {
+      "phase": "P4",
+      "title": "Run real browser QA",
+      "gate": "Firebase QA login → launch-ticket → Pages → session → REST/WSS → Pirate state GET → vitals input → one idempotent gameplay operation SAT."
+    },
+    {
+      "phase": "P5",
+      "title": "Promote authority",
+      "gate": "Only after P0-P4 SAT may Project Brain change live-host scope from UNKNOWN/BLOCKED to SAT."
+    }
+  ],
+  "doNotDo": [
+    "Do not solve this by opening another raw VPS application port.",
+    "Do not use a rotating quick-tunnel URL as production runtime-config.",
+    "Do not merge client success and backend health into one PASS.",
+    "Do not enable broad player/economy writes merely to diagnose connectivity.",
+    "Do not persist private VPS repository metadata or credentials in public Project Brain."
+  ]
+}

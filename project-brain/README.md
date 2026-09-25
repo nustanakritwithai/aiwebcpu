@@ -266,3 +266,21 @@ CI runs `--check` and fails if the canonical Graph drifts from Catalog/Inventory
 ## Release Evidence V0.6.8
 
 Pocket × Pirate now has a canonical integration node and a nine-message field map. The Release Evidence panel separates merged code, exact-head CI, behavioral/native artifact verification, Pages/Firebase deployment and the untested authenticated production host. Historical structural proof is retained with its original pins; no reuse verdict is promoted.
+
+## VPS Connectivity Diagnosis V0.6.9
+
+Pocket × Pirate merged release evidence remains SAT in its original scope, but the real browser → VPS authenticated gameplay path is now tracked separately as **BLOCKED**.
+
+[Diagnosis](Integrations/PocketMonster-VPS-Connectivity.md) · [machine profile](deep-profiles/pocket-vps-connectivity.json)
+
+Current diagnosis:
+- backend health/version automation = scoped SAT
+- client/server Pirate API parity = VIOL
+- server worker artifact parity = VIOL
+- one stable HTTPS/WSS ingress = VIOL
+- running VPS worker binding = UNKNOWN
+- authenticated browser gameplay transaction = UNKNOWN
+
+Target fix sequence is P0 one ingress → P1 canonical server parity → P2 pinned worker → P3 runtime/CORS/WSS readiness → P4 real browser QA → P5 promotion.
+
+Private VPS repository metadata is intentionally not persisted in this public Project Brain dataset.
