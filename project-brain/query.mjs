@@ -3,6 +3,7 @@ import {fileURLToPath} from 'node:url';
 
 const DEFAULT_GRAPH_URL=new URL('./graph/project-brain.json',import.meta.url);
 const VERIFIER_REPORT_DIR=new URL('./verifier/reports/',import.meta.url);
+const AGENT_WORK_URL=new URL('./agent-work.json',import.meta.url);
 
 const norm=value=>String(value??'').trim().toLocaleLowerCase();
 
@@ -12,6 +13,26 @@ export async function loadGraph(pathOrUrl=DEFAULT_GRAPH_URL){
   if(!graph||!Array.isArray(graph.nodes)||!Array.isArray(graph.edges))
     throw new Error('Invalid Project Brain graph');
   return graph;
+}
+
+export async function loadAgentWorkQueue(pathOrUrl=AGENT_WORK_URL){
+  const queue=JSON.parse(await readFile(pathOrUrl,'utf8'));
+  if(!queue||!Array.isArray(queue.work)||!queue.activeGoal)throw new Error('Invalid Project Brain agent work queue');
+  return queue;
+}
+
+export function workItemById(queue,id){
+  const q=norm(id);
+  return queue.work.find(item=>norm(item.id)===q)??null;
+}
+
+export function workSummary(queue){
+  return {
+    activeGoal:queue.activeGoal,
+    policy:queue.policy,
+    ready:queue.work.filter(item=>item.status==='READY'),
+    work:queue.work
+  };
 }
 
 export async function loadVerificationReport(id){
@@ -182,6 +203,15 @@ function compact(value){
 async function main(argv=process.argv.slice(2)){
   const [command,...rest]=argv;
 
+  if(command==='work'){
+    const queue=await loadAgentWorkQueue();
+    const id=rest.join(' ').trim();
+    const result=id?workItemById(queue,id):workSummary(queue);
+    if(id&&!result)throw new Error('Unknown agent work item: '+id);
+    console.log(JSON.stringify(compact(result),null,2));
+    return;
+  }
+
   if(command==='verification'){
     const id=rest.join(' ').trim();
     if(!id){
@@ -202,7 +232,7 @@ async function main(argv=process.argv.slice(2)){
 
   const query=rest.join(' ').trim();
   if(!command||!query){
-    console.error('Usage: node project-brain/query.mjs <capability|documented|providers|goal|integration|node|snapshot|verification> <query-or-id>\n       node project-brain/query.mjs checkpoints');
+    console.error('Usage: node project-brain/query.mjs <capability|documented|providers|goal|integration|node|snapshot|verification> <query-or-id>\n       node project-brain/query.mjs work [work-item-id]\n       node project-brain/query.mjs checkpoints');
     process.exitCode=2;
     return;
   }
