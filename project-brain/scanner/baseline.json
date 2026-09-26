@@ -1,16 +1,17 @@
 {
-  "schemaVersion": "0.2",
-  "acceptedSource": "Public repository catalog bootstrap with private-detail redaction 2026-09-24",
+  "schemaVersion": "0.1",
   "repositories": {
     "repo:3js-player-block-asset-engine": {
       "id": "repo:3js-player-block-asset-engine",
       "repo": "nustanakritwithai/3JS-player-block-asset-engine-",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "1844e64e322a8ad0995262c4150bdc7c6fc2b71b",
         "date": "2026-09-10T15:00:17Z",
-        "title": "Fix Blue Explorer floating cuffs"
+        "message": "Fix Blue Explorer floating cuffs\n\nReparent rolled cuff meshes from shoulder pivots to their matching elbow pivots while preserving bind-pose placement, so the cuffs follow forearm motion instead of appearing to float."
       },
       "exactHeadWorkflow": {
         "verdict": "SAT",
@@ -32,10 +33,12 @@
       "repo": "nustanakritwithai/agent-citta-console",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "062b14df34764f260140aad5b6fc88aab6ec9cae",
         "date": "2026-06-17T19:25:05Z",
-        "title": "feat: Self-Reflection Trace MVP"
+        "message": "Merge pull request #13 from nustanakritwithai/cursor/self-reflection-trace-mvp-a934\n\nfeat: Self-Reflection Trace MVP — contextual post-action evidence"
       },
       "exactHeadWorkflow": {
         "verdict": "SAT",
@@ -66,13 +69,13 @@
       "id": "repo:aiwebcpu",
       "repo": "nustanakritwithai/aiwebcpu",
       "branch": "main",
+      "empty": false,
       "trackHead": false,
       "trackExactHeadWorkflow": false,
-      "empty": false,
       "head": {
-        "sha": "13f2c7b33a0da9f9c7dc1af966b6fc8484ac2c21",
-        "date": "2026-09-24T15:16:18Z",
-        "title": "fix: stabilize Project Brain V0.4 self-monitoring"
+        "sha": "8cc7f16347d879956797a2c1bce3643e5518d261",
+        "date": "2026-09-25T07:33:14Z",
+        "message": "feat: add Pi-inspired verified agent runtime foundation\n\n* feat: add AI CPU verified runtime core\n\n* feat: add Pi session adapter boundary\n\n* test: cover verified runtime contracts\n\n* docs: describe verified runtime foundation\n\n* feat: add verified runtime demo\n\n* ci: verify AI CPU runtime contracts\n\n* docs: link verified agent runtime foundation"
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
@@ -90,63 +93,18 @@
           "status": "present"
         },
         {
-          "path": "brain/app.js",
-          "sha": "a65709a188ce6ec015f9bce025da67a3c2cc6a7d",
+          "path": "README.md",
+          "sha": "2f49269b0df89a3caba30c0bf1b1acf7f6e5b51b",
           "status": "present"
         },
         {
-          "path": "brain/capabilities.js",
-          "sha": "c2419a9c76725eaea277d445652ed1022426d1fa",
-          "status": "present"
-        },
-        {
-          "path": "brain/decision.js",
-          "sha": "e99f8ee60a4c45ecafd88d978354f894d8558860",
-          "status": "present"
-        },
-        {
-          "path": "brain/index.html",
-          "sha": "c221f96b909c96d09a59857ea7677cbd7108b05c",
-          "status": "present"
-        },
-        {
-          "path": "brain/README.md",
-          "sha": "0b9c622c62ad172cdc5d391704be0197c2e58e98",
+          "path": "brain/catalog.js",
+          "sha": "4f0bc3486cdf66066507c0db3e60cace09aac38a",
           "status": "present"
         },
         {
           "path": "brain/scanner.js",
           "sha": "9f1a507f977cc2e4fe98fc142c44dc7de88c6c18",
-          "status": "present"
-        },
-        {
-          "path": "brain/shell.js",
-          "sha": "c28928b315d4eafcf7340c504c031af7fbae39d0",
-          "status": "present"
-        },
-        {
-          "path": "brain/style.css",
-          "sha": "7cc3a3800fe6bc093c5c7aeb704d0245409fe1b9",
-          "status": "present"
-        },
-        {
-          "path": "brain/ux.js",
-          "sha": "b1529d4c1a3101055e367815b12f4d765a6281f5",
-          "status": "present"
-        },
-        {
-          "path": "brain/verifier.js",
-          "sha": "4af68e7e780d75cbce80a8bf17c8576884c68259",
-          "status": "present"
-        },
-        {
-          "path": "project-brain/capability-inventory/README.md",
-          "sha": "c62c00afe8eef4c78aa9957721b160e8c5250f9c",
-          "status": "present"
-        },
-        {
-          "path": "project-brain/capability-inventory/repositories.json",
-          "sha": "41d8e193a0638de32b836d4d99193276ef4d43ce",
           "status": "present"
         },
         {
@@ -156,17 +114,7 @@
         },
         {
           "path": "project-brain/graph/project-brain.json",
-          "sha": "ff9624faec852adb79d60adf554e5d05f38741aa",
-          "status": "present"
-        },
-        {
-          "path": "project-brain/graph/sync-catalog-inventory.mjs",
-          "sha": "826bd2d12906a118468f94e9f9a2d050cb1aebe9",
-          "status": "present"
-        },
-        {
-          "path": "project-brain/query.mjs",
-          "sha": "35126cae5cf0a16eb6d1f3bb5827cc1c1e276303",
+          "sha": "6cd885db122aa1aac94a78b4a080057b69c2a49a",
           "status": "present"
         },
         {
@@ -180,28 +128,18 @@
           "status": "present"
         },
         {
-          "path": "project-brain/verifier/contracts/simclone-time-travel.json",
-          "sha": "cbbcba4caa853901149ad305d58949c37431f9dd",
+          "path": "project-brain/capability-inventory/repositories.json",
+          "sha": "41d8e193a0638de32b836d4d99193276ef4d43ce",
           "status": "present"
         },
         {
-          "path": "project-brain/verifier/index.json",
-          "sha": "332799853e9078e3679b6889f5f014fbf1dd92a2",
+          "path": "project-brain/capability-inventory/README.md",
+          "sha": "c62c00afe8eef4c78aa9957721b160e8c5250f9c",
           "status": "present"
         },
         {
-          "path": "project-brain/verifier/patches/simclone-time-travel.json",
-          "sha": "2fd3871eb824480ae509ba2477f855552599899a",
-          "status": "present"
-        },
-        {
-          "path": "project-brain/verifier/README.md",
-          "sha": "86ad3c0b34133b5fc7d304b365ecea19c2524f08",
-          "status": "present"
-        },
-        {
-          "path": "project-brain/verifier/reports/simclone-time-travel.json",
-          "sha": "a177851a67aec175eeaab6c65640378f08889efd",
+          "path": "brain/capabilities.js",
+          "sha": "c2419a9c76725eaea277d445652ed1022426d1fa",
           "status": "present"
         },
         {
@@ -210,8 +148,78 @@
           "status": "present"
         },
         {
-          "path": "README.md",
-          "sha": "4e5d46ada3ff7bf66759132b518088d723aaacd7",
+          "path": "project-brain/verifier/README.md",
+          "sha": "86ad3c0b34133b5fc7d304b365ecea19c2524f08",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/verifier/index.json",
+          "sha": "332799853e9078e3679b6889f5f014fbf1dd92a2",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/verifier/contracts/simclone-time-travel.json",
+          "sha": "cbbcba4caa853901149ad305d58949c37431f9dd",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/verifier/reports/simclone-time-travel.json",
+          "sha": "a177851a67aec175eeaab6c65640378f08889efd",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/verifier/patches/simclone-time-travel.json",
+          "sha": "2fd3871eb824480ae509ba2477f855552599899a",
+          "status": "present"
+        },
+        {
+          "path": "brain/verifier.js",
+          "sha": "4af68e7e780d75cbce80a8bf17c8576884c68259",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/query.mjs",
+          "sha": "310654d6f9028c8dd04a05e6b220e03db63e1fc7",
+          "status": "present"
+        },
+        {
+          "path": "brain/index.html",
+          "sha": "c221f96b909c96d09a59857ea7677cbd7108b05c",
+          "status": "present"
+        },
+        {
+          "path": "brain/style.css",
+          "sha": "1a77f1b315321d129efde618e7b03b002306f27d",
+          "status": "present"
+        },
+        {
+          "path": "brain/shell.js",
+          "sha": "cfee177a8ce99e6843dbe87d1e38d005554e993f",
+          "status": "present"
+        },
+        {
+          "path": "brain/README.md",
+          "sha": "0b9c622c62ad172cdc5d391704be0197c2e58e98",
+          "status": "present"
+        },
+        {
+          "path": "brain/decision.js",
+          "sha": "e99f8ee60a4c45ecafd88d978354f894d8558860",
+          "status": "present"
+        },
+        {
+          "path": "project-brain/graph/sync-catalog-inventory.mjs",
+          "sha": "826bd2d12906a118468f94e9f9a2d050cb1aebe9",
+          "status": "present"
+        },
+        {
+          "path": "brain/app.js",
+          "sha": "b317918de901575fa348d5f4391eb4693e4cb0dd",
+          "status": "present"
+        },
+        {
+          "path": "brain/ux.js",
+          "sha": "b1529d4c1a3101055e367815b12f4d765a6281f5",
           "status": "present"
         }
       ]
@@ -221,10 +229,12 @@
       "repo": "nustanakritwithai/APK-Test",
       "branch": "main",
       "empty": true,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": null,
         "date": null,
-        "title": null
+        "message": ""
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
@@ -237,10 +247,12 @@
       "repo": "nustanakritwithai/AstraLife",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "21dcf780d6666732af2ef27500e478871864a6ac",
         "date": "2026-09-09T17:58:13Z",
-        "title": "P6.11 — Snapshot Governor + Event Wakeups"
+        "message": "Merge pull request #43 from nustanakritwithai/p6-11-snapshot-governor\n\nP6.11 — Snapshot Governor + Event Wakeups"
       },
       "exactHeadWorkflow": {
         "verdict": "SAT",
@@ -267,10 +279,12 @@
       "repo": "nustanakritwithai/ClanWar",
       "branch": "claude/game-file-analysis-a20xup",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "28f1d3d0ab7d0ff8fa3361037c0847d9e4230a18",
         "date": "2026-07-06T10:29:59Z",
-        "title": "feat(6G): quality tiers + shadows + fps watchdog + fullscreen"
+        "message": "feat(6G): quality tiers + shadows + fps watchdog + fullscreen — Phase 6 complete\n\nQuality.ts picks low/med/high from ?quality= or a device heuristic (memory/\ncores/coarse-pointer; touch devices default to med since shadows are the\nbiggest mobile cost) and a QualityWatchdog steps the tier down — never up —\nafter 5s below 38fps. Tiers drive pixel-ratio cap (1/1.5/2), antialias,\nPCF-soft shadows (high only, 2048² map with the sun's shadow box following\nthe player), and the particle budget (220/400/500 — ParticlePool is now\nsized per tier). HTML HUD gains a fullscreen toggle; the debug HUD shows\nq:<tier>·cam:<mode>. 9/9 checks pass including Pixel-5-landscape touch\n(joystick drag moves the player, ATK tap lands a real hit) and the portrait\nrotate-hint; 6E match-loop and camera suites stay green. project-status.md\nand README updated — this closes the Phase 6 master plan (6A–6G all live).\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_013ZS9UxC8T4qP8dRsj6mJKn"
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
@@ -294,10 +308,12 @@
       "repo": "nustanakritwithai/ECC",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "06c5e118c4d3e6c3b7f9445f973a2194c82de193",
         "date": "2026-08-16T22:23:27Z",
-        "title": "test(release): verify packed Ito distribution"
+        "message": "test(release): verify packed Ito distribution (#2803)"
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
@@ -331,17 +347,19 @@
       "repo": "nustanakritwithai/Echonews",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
-        "sha": "7c020336b34765fecafdd9b89e3be82fe964e0fd",
-        "date": "2026-09-24T15:01:29Z",
-        "title": "Merge P2 pinned JWKS TLS dialer"
+        "sha": "81f4aea2daa7501bbf5f66d3ebff818b5912d6ba",
+        "date": "2026-09-24T15:54:12Z",
+        "message": "Merge P2 pinned JWKS HTTP-over-TLS integration\n\nComplete P2.1c.2d.4c.5c.7b.2b.2b with PINNED_JWKS_HTTP_OVER_TLS_V1. Send the exact pinned GET over the verified frozen-IP TLS connection, enforce bounded fail-closed HTTP framing, and route the result through the inherited JWKS envelope validator. Dedicated gate passed 90/90 inherited+new deterministic cases; Transaction Fence and frontend/browser workflows also passed. ETag/304 and refresh/cache semantics remain intentionally blocked for the next task."
       },
       "exactHeadWorkflow": {
         "verdict": "SAT",
         "conclusion": "success",
-        "name": "P2.1c.2d.1 Transaction Fence Gate",
-        "runId": 36017092873,
-        "url": "https://github.com/nustanakritwithai/Echonews/actions/runs/36017092873"
+        "name": "Test and deploy Echo News",
+        "runId": 36222941714,
+        "url": "https://github.com/nustanakritwithai/Echonews/actions/runs/36222941714"
       },
       "evidenceFiles": [
         {
@@ -361,10 +379,12 @@
       "repo": "nustanakritwithai/eldercare-website",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "66b23e211eb1dc80d11666dd191f0941d0bb0143",
         "date": "2026-04-08T18:45:54Z",
-        "title": "Add project snapshot for future reference"
+        "message": "Add project snapshot for future reference"
       },
       "exactHeadWorkflow": {
         "verdict": "SAT",
@@ -396,10 +416,12 @@
       "repo": "nustanakritwithai/empire-clash",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "9525909752b4db59529d68a068ab1cc7f87da9e9",
         "date": "2026-07-06T09:39:46Z",
-        "title": "Guard updateResourceMeshes to prevent render loop crash"
+        "message": "Guard updateResourceMeshes to prevent render loop crash"
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
@@ -428,10 +450,12 @@
       "repo": "nustanakritwithai/Empire-war",
       "branch": "main",
       "empty": true,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": null,
         "date": null,
-        "title": null
+        "message": ""
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
@@ -444,10 +468,12 @@
       "repo": "nustanakritwithai/fcwar",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "560c0f527ab413bacfb2322b4433329917a358c1",
         "date": "2026-07-11T05:37:00Z",
-        "title": "Merge Abandoned Mine PBR prototype and switch Render deploy to it"
+        "message": "Merge Abandoned Mine PBR prototype and switch Render deploy to it\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01KRZVTuSJWmWDrDPWLgiQrh"
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
@@ -476,10 +502,12 @@
       "repo": "nustanakritwithai/Football-Manager-8-sec",
       "branch": "claude/tactic-manager-lab-design-cvyqs9",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "ade002d2bf4facf082ed8cc68cad4e63233e18f4",
         "date": "2026-06-14T06:47:49Z",
-        "title": "P3.2: Corner headers + wait for whistle set-piece realism"
+        "message": "P3.2: Corner headers + 'wait for whistle' set-piece realism\n\nTwo fixes to set pieces:\n\n1) In-match corners now actually whip the ball in for headers. The\n   match-rules restart (setupCorner) previously placed the ball with the\n   taker but never flagged it as a set piece, so the taker just dribbled.\n   Now setupCorner/setupFreeKick set state.setPiece so the taker delivers\n   via the set-piece logic. Corner delivery + header resolution reworked:\n   - attackers are sent to varied header spots (near post, penalty spot,\n     far post, edge) and anchored there (setPieceAnchor) so normal\n     off-ball logic can't drag them out of the box before the ball lands\n   - delivery picks a zone (near/central/far); the aimed, least-marked\n     attacker gets a duel bonus so attacking headers happen regularly\n   - resolveCrossArrival branches for corners: attacker win -> header on\n     goal (glancing/powerful/far-post) via the shot pipeline with a\n     header xG factor; near-post deliveries can be flicked on to the far\n     post for a second chance; defender win -> headed clear (sometimes\n     out for another corner)\n   - attemptShot gains a shotKind param ('header') -> lower xG + \"Header\"\n     wording in events\n\n2) \"Wait for the whistle\" before every set piece: the taker holds for\n   ~1.3s while runners take up position, the referee whistles (~0.4s\n   before contact, with a whistle sound wired in main.js), then the kick\n   is taken — instead of an instant restart.\n\nBalance: ~4 corners/match producing real header chances, ~0.3 header\ngoals/match. New tests/p32-setpiece-headers.mjs (whistle-before-kick\nordering, corner always whipped in, headers fire, taker never dribbles)\npasses 10/10; all 12 suites green.\n\nhttps://claude.ai/code/session_011quKsFr7AzVsKi6dbzMCFr"
       },
       "exactHeadWorkflow": {
         "verdict": "SAT",
@@ -506,17 +534,19 @@
       "repo": "nustanakritwithai/GameTurnBase",
       "branch": "master",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "5f420911e6a5888480c714a6d44664f8e1f62ed7",
         "date": "2026-08-10T16:34:47Z",
-        "title": "fix(gacha): open Standard Banner for playtest"
+        "message": "fix(gacha): open Standard Banner for playtest\n\nHonor Ring 0's explicit playtest approval across every Lobby entry point, replace the coming-soon behavior with the real Gacha modal, and add a guarded banner-reactivation migration that validates the five-Hero pool, 100% rates, and pity row before publishing.\n\nVerified locally: 1,067 frontend tests, typecheck, lint, production build, 11 bundle budgets, and memory archive 202/202. Edge dependency download was blocked twice by npm connection refusal; no Edge source changed."
       },
       "exactHeadWorkflow": {
         "verdict": "VIOL",
         "conclusion": "failure",
         "name": "Security & Secret Scan",
-        "runId": 35953141775,
-        "url": "https://github.com/nustanakritwithai/GameTurnBase/actions/runs/35953141775"
+        "runId": 36217057863,
+        "url": "https://github.com/nustanakritwithai/GameTurnBase/actions/runs/36217057863"
       },
       "evidenceFiles": [
         {
@@ -546,10 +576,12 @@
       "repo": "nustanakritwithai/Hih",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "52e5537650c70fbe1fc9b21207032f0d31ac8745",
         "date": "2026-07-22T07:07:40Z",
-        "title": "feat(memory-auditor): M2.5 manual shadow audit trial tooling"
+        "message": "feat(memory-auditor): M2.5 manual shadow audit trial tooling (#9)\n\nM2.5 tooling only (rebased on main after #8). compare-runs CLI, manual_shadow_audit.sh, trial protocol. MANUAL_INVOCATION_ONLY."
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
@@ -583,10 +615,12 @@
       "repo": "nustanakritwithai/Kingdom-sandbox",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "f1f0fd7e3c345640cbb3c9dd2d2aa7916503f483",
         "date": "2026-07-08T11:02:52Z",
-        "title": "Phase 19.4A: Court System Rebase / Activation Audit"
+        "message": "Phase 19.4A: Court System Rebase / Activation Audit (#23)\n\n- Port CourtSystem from cursor/phase19-court-politics-246b @ 1ab7601 onto main+19.3\n- Add BALANCE.court (passive mode: enablePoliticsTick false for 19.4A)\n- Wire sovereignty/death/save hooks; schema 19.4A\n- CourtSystem.runIntegrityCheck replaces WorldIntegrity court repair\n- DataHygiene court-safe rules + daily recruitment ref cleanup\n- test-harness-19.js PASS (no SKIP); 191 regression + 193 hygiene PASS\n- QUALITY-AUDIT-19.4A-COURT-REBASE.md compatibility report\n\nCo-authored-by: Cursor Agent <cursoragent@cursor.com>\nCo-authored-by: nustanakritwithai <nustanakritwithai@users.noreply.github.com>"
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
@@ -620,10 +654,12 @@
       "repo": "nustanakritwithai/Magiccube",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "a4fa4dc78313dd384ace33b921838755e2aee499",
         "date": "2026-09-15T17:30:23Z",
-        "title": "feat: add projectile collision damage and Cube respawn"
+        "message": "feat: add projectile collision damage and Cube respawn"
       },
       "exactHeadWorkflow": {
         "verdict": "SAT",
@@ -655,10 +691,12 @@
       "repo": "nustanakritwithai/Monkey-king",
       "branch": "main",
       "empty": true,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": null,
         "date": null,
-        "title": null
+        "message": ""
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
@@ -671,10 +709,12 @@
       "repo": "nustanakritwithai/my-oracle",
       "branch": "master",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "9ad6cc020b91fabb080ddcb2fe56335e2df74ab1",
         "date": "2026-04-10T09:12:09Z",
-        "title": "Add Oracle skills, memory structure, and gitignore"
+        "message": "Add Oracle skills, memory structure, and gitignore\n\n- Update CLAUDE.md with full identity and rules\n- Add memory index and user profile\n- Add awaken, recap, philosophy skills\n- Add .gitignore for settings.local.json\n\nCo-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>"
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
@@ -693,10 +733,12 @@
       "repo": "nustanakritwithai/News-nus",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "cd9d55f75873fa8d271a45aaaad7111687e754b0",
         "date": "2026-03-15T08:51:07Z",
-        "title": "Initial commit"
+        "message": "Initial commit"
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
@@ -715,10 +757,12 @@
       "repo": "nustanakritwithai/openclaw-runtime-dashboard-vercel",
       "branch": "master",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "d6b6c4344014ddc0b2f85f6c07b66854727a43fe",
         "date": "2026-03-12T23:02:50Z",
-        "title": "Add automated metrics update script, shell wrapper, and cron setup docs"
+        "message": "Add automated metrics update script, shell wrapper, and cron setup docs\n\n- update_metrics.py: Fetches current metrics.json via GitHub API, applies\n  realistic drift to CPU/memory/requests/uptime, and pushes the updated file.\n- run_update.sh: Bash wrapper with logging and error handling.\n- CRON_SETUP.md: Setup guide for running every 5 minutes via cron.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>"
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
@@ -752,17 +796,19 @@
       "repo": "nustanakritwithai/Pirate-fruit-",
       "branch": "claude/blox-fruits-three-js-roadmap-1f2f5u",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
-        "sha": "d20096d1720ec25a4c219fdc0e44b8373684e369",
-        "date": "2026-09-20T20:00:28Z",
-        "title": "เชื่อมระบบต่อสู้โจรสลัดเดิมผ่านเซิร์ฟเวอร์กลาง"
+        "sha": "eeec6e626e7b542d2229ffd909ffb5c015c2f111",
+        "date": "2026-09-24T23:16:16Z",
+        "message": "Merge reviewed Pirate vitals and central economy integration\n\nExact candidate c8c725e8: Client/server gate 36070843568, renderer 36070843569 and audio 36070843576 passed. Behavioral producer/relay/receiver pair run 36071452541 passed 8 groups; HTTP/CAS host is injected in that proof. Includes MP-potion single-writer fix. This merge does not enable production flags or claim external host deployment."
       },
       "exactHeadWorkflow": {
         "verdict": "SAT",
         "conclusion": "success",
-        "name": "github_actions in /. - Update #1588676204",
-        "runId": 35852430682,
-        "url": "https://github.com/nustanakritwithai/Pirate-fruit-/actions/runs/35852430682"
+        "name": "Audio A1 browser smoke",
+        "runId": 36071876231,
+        "url": "https://github.com/nustanakritwithai/Pirate-fruit-/actions/runs/36071876231"
       },
       "evidenceFiles": [
         {
@@ -792,17 +838,19 @@
       "repo": "nustanakritwithai/PocketMonster",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
-        "sha": "cf902e7410e8d67efa5a004d085dd7b7c858d2df",
-        "date": "2026-09-20T20:01:57Z",
-        "title": "เชื่อมผลต่อสู้และเซฟโจรสลัดจากระบบกลางเดิม"
+        "sha": "f7f243d21906d9fa26127529313b441b4b938ce0",
+        "date": "2026-09-24T23:31:36Z",
+        "message": "Merge verified Pocket Pirate vitals relay and reviewed native release\n\nCurrent head 94ab7ba4 passed all four PR CI workflows including real Studio/native browser acceptance. Paired runtime + native artifact + inherited backend preflight run 36072889289 passed with Pirate c8c725e8 (upstream PR168 merged). Exact native source/hash gates retained. No production feature flags are enabled; live authenticated gameplay writes remain separately scoped."
       },
       "exactHeadWorkflow": {
         "verdict": "SAT",
         "conclusion": "success",
         "name": "Deploy PocketMonster game assets to GitHub Pages",
-        "runId": 35534212847,
-        "url": "https://github.com/nustanakritwithai/PocketMonster/actions/runs/35534212847"
+        "runId": 36073170000,
+        "url": "https://github.com/nustanakritwithai/PocketMonster/actions/runs/36073170000"
       },
       "evidenceFiles": [
         {
@@ -822,10 +870,12 @@
       "repo": "nustanakritwithai/Ramagan",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "693425f1ea788f7f9439dd2d6caa54eb5d00189c",
         "date": "2026-09-19T07:11:56Z",
-        "title": "fix(auth): call bindRoleUi in init and force PIN gate"
+        "message": "fix(auth): call bindRoleUi in init and force PIN gate\n\nLogin handlers were never bound. Apply role chrome on boot, hide tabs\nuntil PIN login, bump ?v=roles2."
       },
       "exactHeadWorkflow": {
         "verdict": "SAT",
@@ -857,10 +907,12 @@
       "repo": "nustanakritwithai/RustIslandSurvival-",
       "branch": "claude/project-preparation-5vy1bg",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "9ceb2651255b62bf930dd0eec9039308c7c428e6",
         "date": "2026-07-03T16:43:30Z",
-        "title": "Block grabbing/smashing/seeing a beacon through fort walls"
+        "message": "Block grabbing/smashing/seeing a beacon through fort walls\n\nLine-of-sight protection for a planted (or crated) beacon behind a wall:\n- Server: new segBlocked(ax,ay,bx,by) samples the segment against\n  wall/door tiles. beaconDmg is now rejected when a wall sits between the\n  attacker and the beacon, and grabbing a crate through a wall is\n  rejected too - so a rival can no longer stand outside the fort and\n  chip/steal the beacon; they must breach the wall first. Authoritative,\n  so it holds even against a hacked client.\n- Client: matching wallBetween() guards beaconAction (grab + smash show\n  a \"there's a wall in the way\" hint and do nothing) and hides the\n  beacon action button when a wall blocks, so the affordance disappears\n  from outside a sealed fort.\n\nFog behind walls: beaconHidden() hides an enemy's walled-off beacon from\nthe main view, minimap and full map (your own beacon is always visible\nto you), and remote players/bots sealed behind a wall are no longer\nrendered - you can't scout what's inside a closed fort.\n\nVerified: client wallBetween true from outside a closed 8-wall ring\n(straight and diagonal) and false from inside; own beacon never hidden\nfrom its owner; smash through a wall refused with hp unchanged; server\nsegBlocked true outside / false inside / false with no walls on the line.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_013mKFzgQrsB3g1d4XBuZYoc"
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
@@ -889,37 +941,39 @@
       "repo": "nustanakritwithai/Simclone",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
-        "sha": "c74319d431f300bed64aeba35dabc1d9b57e2568",
-        "date": "2026-09-24T13:43:26Z",
-        "title": "ci: preserve full verification with a bounded 20-minute budget"
+        "sha": "3ab58da6289a28dbdde3656ce5d8285f1656ad8f",
+        "date": "2026-09-26T13:18:34Z",
+        "message": "Governor v1: office, policy, legitimacy, succession and UI\n\n* integrate(governor): add GOV0_GOV1_GOVERNOR_CANDIDATE_SUCCESS_CONTRACT.md on VAL2\n\n* integrate(governor): add GOV2_GOV6_GOVERNOR_V1_SUCCESS_CONTRACT.md on VAL2\n\n* integrate(governor): add governor-browser-fixture.mjs on VAL2\n\n* integrate(governor): add governance-authority.mjs on VAL2\n\n* integrate(governor): add governance-policy.mjs on VAL2\n\n* integrate(governor): add governor-candidate.mjs on VAL2\n\n* integrate(governor): add governance-authority.test.mjs on VAL2\n\n* integrate(governor): add governor-candidate.test.mjs on VAL2\n\n* integrate(governor): apply autonomous-life-view.mjs on VAL2\n\n* integrate(governor): apply engine.mjs on VAL2\n\n* integrate(governor): apply independent-ui.mjs on VAL2\n\n* integrate(governor): apply independent-ui-smoke.py on VAL2\n\n* chore(governor): merge Governor pins with VAL2 runtime map\n\n* ci: allow full independent 120-year proof\n\n* ci: keep PR verification focused and fast\n\n* ci: keep Pages release gate focused\n\n* ci: move exhaustive proofs to manual full regression\n\n* ci: restore required active UI release gate"
       },
       "exactHeadWorkflow": {
         "verdict": "SAT",
         "conclusion": "success",
         "name": "Deploy Simclone to GitHub Pages",
-        "runId": 36007630124,
-        "url": "https://github.com/nustanakritwithai/Simclone/actions/runs/36007630124"
+        "runId": 36244731918,
+        "url": "https://github.com/nustanakritwithai/Simclone/actions/runs/36244731918"
       },
       "evidenceFiles": [
         {
           "path": "AGENTS.md",
-          "sha": "859f9d971637fe818985fd2160d1797bcb030a63",
+          "sha": "ef0bddfda8a65407411dfe7fc9c321e0e007cc19",
           "status": "present"
         },
         {
           "path": "GAME_PLAN.md",
-          "sha": "0b3b456baf1741eb6b6fca3624f739ff3763586b",
+          "sha": "bf89123ee56d7c40e8b42d099a2130e83cb099e5",
           "status": "present"
         },
         {
           "path": "README.md",
-          "sha": "7fa04020a6984bbd30e665a7662e40904e4d8ad5",
+          "sha": "e3701f5c0e4d44e5ff930db9683cac5cc3800223",
           "status": "present"
         },
         {
           "path": "package.json",
-          "sha": "8a59c0e912c4dc5d7ace77e3b5f0631bdc10e939",
+          "sha": "99b864a24c8ca0ee5167b252b69c1cb1c68fe9da",
           "status": "present"
         }
       ]
@@ -929,10 +983,12 @@
       "repo": "nustanakritwithai/Testflysystem",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "a5e0a727c3449311d574a3f2bdb200d3c09cc88f",
         "date": "2026-09-15T11:32:51Z",
-        "title": "Lab v0.2: make neural connections editable in realtime"
+        "message": "Lab v0.2: make neural connections editable in realtime"
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
@@ -956,10 +1012,12 @@
       "repo": "nustanakritwithai/TestGE",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "0ca33d9655df31d69045e0a483465f3271928471",
         "date": "2026-09-16T07:16:58Z",
-        "title": "R11.5c: add fully offline post-battle quality report"
+        "message": "Merge pull request #83 from nustanakritwithai/jrpg-r11-offline-quality\n\nR11.5c: add fully offline post-battle quality report"
       },
       "exactHeadWorkflow": {
         "verdict": "SAT",
@@ -991,10 +1049,12 @@
       "repo": "nustanakritwithai/Udomsukflim",
       "branch": "claude/udomsuk-film-landing-page-i23304",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "d9ed9175fc56b29599d6a0d38dcd34657133ce66",
         "date": "2026-06-14T16:36:18Z",
-        "title": "Phase 3 visual/interactive additions"
+        "message": "Phase 3.1-3.4, 3.6 visual/interactive additions (SEO-first)\n\n- Phase 3.1: add #trust section with 4 CSS-3D trust cards (real HTML\n  content + Line/Maps/call CTAs)\n- Phase 3.2: add #job-select interactive \"เลือกประเภทงานของคุณ\" card\n  grid — plain anchor links to existing sections, JS only toggles a\n  highlight class\n- Phase 3.3: add #process 3D-stepped vertical timeline (6 steps) with\n  call/Line/Maps CTAs\n- Phase 3.4: add comparison table in #price (\"เลือกฟิล์มแบบไหนดี\") —\n  all rows always visible, JS only highlights a row on filter click\n- Phase 3.5: add 3 gallery placeholders (บ้าน/คอนโด/อาคาร) with\n  SEO-friendly filenames and \"รอรูปจริงจากร้าน\" captions\n- Phase 3.6: add review-pending block in #portfolio linking to Google\n  reviews, no fake ratings/review schema\n\nAll new visuals use transform/opacity/shadow only, respect\nprefers-reduced-motion, keep all content in real HTML, and preserve\nexisting H1/H2/NAP/FAQ/price/schema.\n\nhttps://claude.ai/code/session_019hg9jS3XSyaWnkYT4FNUT1"
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",
@@ -1023,10 +1083,12 @@
       "repo": "nustanakritwithai/WebAi",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "340bac4c805cda00abd2acd0dc747f58ef906fa1",
         "date": "2026-09-08T11:42:26Z",
-        "title": "fix: preserve latest browser agent follow-up commands"
+        "message": "fix: preserve latest browser agent follow-up commands"
       },
       "exactHeadWorkflow": {
         "verdict": "SAT",
@@ -1063,10 +1125,12 @@
       "repo": "nustanakritwithai/welcares",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "8d8d0a10a5e2c24960234cbcd27314887cf0b2bd",
         "date": "2026-04-10T18:18:28Z",
-        "title": "fix: set chat input text color to dark"
+        "message": "fix: set chat input text color to dark (#1E293B) — was invisible on white bg"
       },
       "exactHeadWorkflow": {
         "verdict": "SAT",
@@ -1098,10 +1162,12 @@
       "repo": "nustanakritwithai/Yeb",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "458d90b92d234e35a681b987692284e54d635f3f",
         "date": "2026-09-19T08:22:07Z",
-        "title": "fix(v0.4.1): footer V0.4 + one-tap back from quick library"
+        "message": "fix(v0.4.1): footer V0.4 + one-tap back from quick library"
       },
       "exactHeadWorkflow": {
         "verdict": "SAT",
@@ -1128,10 +1194,12 @@
       "repo": "nustanakritwithai/zentra-ai-platform",
       "branch": "main",
       "empty": false,
+      "trackHead": true,
+      "trackExactHeadWorkflow": true,
       "head": {
         "sha": "a39bad467de6f6bff86accffbd718b83b5dcb7fa",
         "date": "2026-03-16T05:50:34Z",
-        "title": "fix: navbar & footer links"
+        "message": "fix: navbar & footer links — use scrollIntoView for hash router, remove placeholder hrefs"
       },
       "exactHeadWorkflow": {
         "verdict": "UNKNOWN",

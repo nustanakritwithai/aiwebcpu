@@ -6,16 +6,447 @@
     "candidateVerdict": "UNKNOWN",
     "requireVerification": true,
     "scanIntervalHours": 6,
-    "principle": "Mechanical repository facts may be collected automatically. Capability meaning requires verification before entering the canonical graph."
+    "principle": "Mechanical repository facts may be collected automatically. Capability meaning requires verification before entering the canonical graph.",
+    "catalogPath": "project-brain/catalog/repositories.json",
+    "privateRepositories": "omitted-from-public-dataset-until-authenticated-private-layer",
+    "totalCatalogRepositories": 37
   },
   "summary": {
     "monitoredRepositories": 33,
-    "changedRepositories": 0,
-    "candidates": 0,
-    "mechanicalSAT": 0,
-    "mechanicalVIOL": 0,
+    "changedRepositories": 6,
+    "candidates": 20,
+    "mechanicalSAT": 4,
+    "mechanicalVIOL": 1,
     "semanticVerdict": "UNKNOWN"
   },
-  "changedRepositories": [],
-  "candidates": []
+  "changedRepositories": [
+    "repo:aiwebcpu",
+    "repo:echonews",
+    "repo:gameturnbase",
+    "repo:pirate-fruit",
+    "repo:pocketmonster",
+    "repo:simclone"
+  ],
+  "candidates": [
+    {
+      "id": "scan:5894b0c9",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "kind": "EVIDENCE_FILE_CHANGED",
+      "path": "README.md",
+      "verdict": "UNKNOWN",
+      "before": {
+        "path": "README.md",
+        "sha": "4e5d46ada3ff7bf66759132b518088d723aaacd7",
+        "status": "present"
+      },
+      "after": {
+        "path": "README.md",
+        "sha": "2f49269b0df89a3caba30c0bf1b1acf7f6e5b51b",
+        "status": "present"
+      },
+      "reason": "Tracked evidence file fingerprint changed. Semantic implications require verification."
+    },
+    {
+      "id": "scan:97a9eecd",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "kind": "EVIDENCE_FILE_CHANGED",
+      "path": "brain/app.js",
+      "verdict": "UNKNOWN",
+      "before": {
+        "path": "brain/app.js",
+        "sha": "a65709a188ce6ec015f9bce025da67a3c2cc6a7d",
+        "status": "present"
+      },
+      "after": {
+        "path": "brain/app.js",
+        "sha": "b317918de901575fa348d5f4391eb4693e4cb0dd",
+        "status": "present"
+      },
+      "reason": "Tracked evidence file fingerprint changed. Semantic implications require verification."
+    },
+    {
+      "id": "scan:0006e14c",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "kind": "EVIDENCE_FILE_CHANGED",
+      "path": "brain/catalog.js",
+      "verdict": "UNKNOWN",
+      "before": null,
+      "after": {
+        "path": "brain/catalog.js",
+        "sha": "4f0bc3486cdf66066507c0db3e60cace09aac38a",
+        "status": "present"
+      },
+      "reason": "Tracked evidence file fingerprint changed. Semantic implications require verification."
+    },
+    {
+      "id": "scan:a93bc2f1",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "kind": "EVIDENCE_FILE_CHANGED",
+      "path": "brain/shell.js",
+      "verdict": "UNKNOWN",
+      "before": {
+        "path": "brain/shell.js",
+        "sha": "c28928b315d4eafcf7340c504c031af7fbae39d0",
+        "status": "present"
+      },
+      "after": {
+        "path": "brain/shell.js",
+        "sha": "cfee177a8ce99e6843dbe87d1e38d005554e993f",
+        "status": "present"
+      },
+      "reason": "Tracked evidence file fingerprint changed. Semantic implications require verification."
+    },
+    {
+      "id": "scan:405b0996",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "kind": "EVIDENCE_FILE_CHANGED",
+      "path": "brain/style.css",
+      "verdict": "UNKNOWN",
+      "before": {
+        "path": "brain/style.css",
+        "sha": "7cc3a3800fe6bc093c5c7aeb704d0245409fe1b9",
+        "status": "present"
+      },
+      "after": {
+        "path": "brain/style.css",
+        "sha": "1a77f1b315321d129efde618e7b03b002306f27d",
+        "status": "present"
+      },
+      "reason": "Tracked evidence file fingerprint changed. Semantic implications require verification."
+    },
+    {
+      "id": "scan:75242a1c",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "kind": "EVIDENCE_FILE_CHANGED",
+      "path": "project-brain/graph/project-brain.json",
+      "verdict": "UNKNOWN",
+      "before": {
+        "path": "project-brain/graph/project-brain.json",
+        "sha": "ff9624faec852adb79d60adf554e5d05f38741aa",
+        "status": "present"
+      },
+      "after": {
+        "path": "project-brain/graph/project-brain.json",
+        "sha": "6cd885db122aa1aac94a78b4a080057b69c2a49a",
+        "status": "present"
+      },
+      "reason": "Tracked evidence file fingerprint changed. Semantic implications require verification."
+    },
+    {
+      "id": "scan:9a2381db",
+      "repoId": "repo:aiwebcpu",
+      "repo": "nustanakritwithai/aiwebcpu",
+      "kind": "EVIDENCE_FILE_CHANGED",
+      "path": "project-brain/query.mjs",
+      "verdict": "UNKNOWN",
+      "before": {
+        "path": "project-brain/query.mjs",
+        "sha": "35126cae5cf0a16eb6d1f3bb5827cc1c1e276303",
+        "status": "present"
+      },
+      "after": {
+        "path": "project-brain/query.mjs",
+        "sha": "310654d6f9028c8dd04a05e6b220e03db63e1fc7",
+        "status": "present"
+      },
+      "reason": "Tracked evidence file fingerprint changed. Semantic implications require verification."
+    },
+    {
+      "id": "scan:9c80b65b",
+      "repoId": "repo:echonews",
+      "repo": "nustanakritwithai/Echonews",
+      "kind": "HEAD_CHANGED",
+      "verdict": "UNKNOWN",
+      "before": {
+        "sha": "7c020336b34765fecafdd9b89e3be82fe964e0fd",
+        "date": "2026-09-24T15:01:29Z",
+        "title": "Merge P2 pinned JWKS TLS dialer"
+      },
+      "after": {
+        "sha": "81f4aea2daa7501bbf5f66d3ebff818b5912d6ba",
+        "date": "2026-09-24T15:54:12Z",
+        "message": "Merge P2 pinned JWKS HTTP-over-TLS integration\n\nComplete P2.1c.2d.4c.5c.7b.2b.2b with PINNED_JWKS_HTTP_OVER_TLS_V1. Send the exact pinned GET over the verified frozen-IP TLS connection, enforce bounded fail-closed HTTP framing, and route the result through the inherited JWKS envelope validator. Dedicated gate passed 90/90 inherited+new deterministic cases; Transaction Fence and frontend/browser workflows also passed. ETag/304 and refresh/cache semantics remain intentionally blocked for the next task."
+      },
+      "exactHeadWorkflow": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Test and deploy Echo News",
+        "runId": 36222941714,
+        "url": "https://github.com/nustanakritwithai/Echonews/actions/runs/36222941714"
+      },
+      "reason": "Repository HEAD changed. Commit meaning is not promoted to capability knowledge automatically."
+    },
+    {
+      "id": "scan:72e260a4",
+      "repoId": "repo:echonews",
+      "repo": "nustanakritwithai/Echonews",
+      "kind": "CI_CHANGED",
+      "verdict": "UNKNOWN",
+      "before": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "P2.1c.2d.1 Transaction Fence Gate",
+        "runId": 36017092873,
+        "url": "https://github.com/nustanakritwithai/Echonews/actions/runs/36017092873"
+      },
+      "after": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Test and deploy Echo News",
+        "runId": 36222941714,
+        "url": "https://github.com/nustanakritwithai/Echonews/actions/runs/36222941714"
+      },
+      "mechanicalEvidence": "SAT",
+      "reason": "Exact-head workflow evidence changed. This verifies CI state only, not project capability semantics."
+    },
+    {
+      "id": "scan:71f8c783",
+      "repoId": "repo:gameturnbase",
+      "repo": "nustanakritwithai/GameTurnBase",
+      "kind": "CI_CHANGED",
+      "verdict": "UNKNOWN",
+      "before": {
+        "verdict": "VIOL",
+        "conclusion": "failure",
+        "name": "Security & Secret Scan",
+        "runId": 35953141775,
+        "url": "https://github.com/nustanakritwithai/GameTurnBase/actions/runs/35953141775"
+      },
+      "after": {
+        "verdict": "VIOL",
+        "conclusion": "failure",
+        "name": "Security & Secret Scan",
+        "runId": 36217057863,
+        "url": "https://github.com/nustanakritwithai/GameTurnBase/actions/runs/36217057863"
+      },
+      "mechanicalEvidence": "VIOL",
+      "reason": "Exact-head workflow evidence changed. This verifies CI state only, not project capability semantics."
+    },
+    {
+      "id": "scan:c80f5a99",
+      "repoId": "repo:pirate-fruit",
+      "repo": "nustanakritwithai/Pirate-fruit-",
+      "kind": "HEAD_CHANGED",
+      "verdict": "UNKNOWN",
+      "before": {
+        "sha": "d20096d1720ec25a4c219fdc0e44b8373684e369",
+        "date": "2026-09-20T20:00:28Z",
+        "title": "เชื่อมระบบต่อสู้โจรสลัดเดิมผ่านเซิร์ฟเวอร์กลาง"
+      },
+      "after": {
+        "sha": "eeec6e626e7b542d2229ffd909ffb5c015c2f111",
+        "date": "2026-09-24T23:16:16Z",
+        "message": "Merge reviewed Pirate vitals and central economy integration\n\nExact candidate c8c725e8: Client/server gate 36070843568, renderer 36070843569 and audio 36070843576 passed. Behavioral producer/relay/receiver pair run 36071452541 passed 8 groups; HTTP/CAS host is injected in that proof. Includes MP-potion single-writer fix. This merge does not enable production flags or claim external host deployment."
+      },
+      "exactHeadWorkflow": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Audio A1 browser smoke",
+        "runId": 36071876231,
+        "url": "https://github.com/nustanakritwithai/Pirate-fruit-/actions/runs/36071876231"
+      },
+      "reason": "Repository HEAD changed. Commit meaning is not promoted to capability knowledge automatically."
+    },
+    {
+      "id": "scan:b4f7f693",
+      "repoId": "repo:pirate-fruit",
+      "repo": "nustanakritwithai/Pirate-fruit-",
+      "kind": "CI_CHANGED",
+      "verdict": "UNKNOWN",
+      "before": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "github_actions in /. - Update #1588676204",
+        "runId": 35852430682,
+        "url": "https://github.com/nustanakritwithai/Pirate-fruit-/actions/runs/35852430682"
+      },
+      "after": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Audio A1 browser smoke",
+        "runId": 36071876231,
+        "url": "https://github.com/nustanakritwithai/Pirate-fruit-/actions/runs/36071876231"
+      },
+      "mechanicalEvidence": "SAT",
+      "reason": "Exact-head workflow evidence changed. This verifies CI state only, not project capability semantics."
+    },
+    {
+      "id": "scan:fd280f0e",
+      "repoId": "repo:pocketmonster",
+      "repo": "nustanakritwithai/PocketMonster",
+      "kind": "HEAD_CHANGED",
+      "verdict": "UNKNOWN",
+      "before": {
+        "sha": "cf902e7410e8d67efa5a004d085dd7b7c858d2df",
+        "date": "2026-09-20T20:01:57Z",
+        "title": "เชื่อมผลต่อสู้และเซฟโจรสลัดจากระบบกลางเดิม"
+      },
+      "after": {
+        "sha": "f7f243d21906d9fa26127529313b441b4b938ce0",
+        "date": "2026-09-24T23:31:36Z",
+        "message": "Merge verified Pocket Pirate vitals relay and reviewed native release\n\nCurrent head 94ab7ba4 passed all four PR CI workflows including real Studio/native browser acceptance. Paired runtime + native artifact + inherited backend preflight run 36072889289 passed with Pirate c8c725e8 (upstream PR168 merged). Exact native source/hash gates retained. No production feature flags are enabled; live authenticated gameplay writes remain separately scoped."
+      },
+      "exactHeadWorkflow": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy PocketMonster game assets to GitHub Pages",
+        "runId": 36073170000,
+        "url": "https://github.com/nustanakritwithai/PocketMonster/actions/runs/36073170000"
+      },
+      "reason": "Repository HEAD changed. Commit meaning is not promoted to capability knowledge automatically."
+    },
+    {
+      "id": "scan:82534de7",
+      "repoId": "repo:pocketmonster",
+      "repo": "nustanakritwithai/PocketMonster",
+      "kind": "CI_CHANGED",
+      "verdict": "UNKNOWN",
+      "before": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy PocketMonster game assets to GitHub Pages",
+        "runId": 35534212847,
+        "url": "https://github.com/nustanakritwithai/PocketMonster/actions/runs/35534212847"
+      },
+      "after": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy PocketMonster game assets to GitHub Pages",
+        "runId": 36073170000,
+        "url": "https://github.com/nustanakritwithai/PocketMonster/actions/runs/36073170000"
+      },
+      "mechanicalEvidence": "SAT",
+      "reason": "Exact-head workflow evidence changed. This verifies CI state only, not project capability semantics."
+    },
+    {
+      "id": "scan:a15e1a80",
+      "repoId": "repo:simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "kind": "HEAD_CHANGED",
+      "verdict": "UNKNOWN",
+      "before": {
+        "sha": "c74319d431f300bed64aeba35dabc1d9b57e2568",
+        "date": "2026-09-24T13:43:26Z",
+        "title": "ci: preserve full verification with a bounded 20-minute budget"
+      },
+      "after": {
+        "sha": "3ab58da6289a28dbdde3656ce5d8285f1656ad8f",
+        "date": "2026-09-26T13:18:34Z",
+        "message": "Governor v1: office, policy, legitimacy, succession and UI\n\n* integrate(governor): add GOV0_GOV1_GOVERNOR_CANDIDATE_SUCCESS_CONTRACT.md on VAL2\n\n* integrate(governor): add GOV2_GOV6_GOVERNOR_V1_SUCCESS_CONTRACT.md on VAL2\n\n* integrate(governor): add governor-browser-fixture.mjs on VAL2\n\n* integrate(governor): add governance-authority.mjs on VAL2\n\n* integrate(governor): add governance-policy.mjs on VAL2\n\n* integrate(governor): add governor-candidate.mjs on VAL2\n\n* integrate(governor): add governance-authority.test.mjs on VAL2\n\n* integrate(governor): add governor-candidate.test.mjs on VAL2\n\n* integrate(governor): apply autonomous-life-view.mjs on VAL2\n\n* integrate(governor): apply engine.mjs on VAL2\n\n* integrate(governor): apply independent-ui.mjs on VAL2\n\n* integrate(governor): apply independent-ui-smoke.py on VAL2\n\n* chore(governor): merge Governor pins with VAL2 runtime map\n\n* ci: allow full independent 120-year proof\n\n* ci: keep PR verification focused and fast\n\n* ci: keep Pages release gate focused\n\n* ci: move exhaustive proofs to manual full regression\n\n* ci: restore required active UI release gate"
+      },
+      "exactHeadWorkflow": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy Simclone to GitHub Pages",
+        "runId": 36244731918,
+        "url": "https://github.com/nustanakritwithai/Simclone/actions/runs/36244731918"
+      },
+      "reason": "Repository HEAD changed. Commit meaning is not promoted to capability knowledge automatically."
+    },
+    {
+      "id": "scan:83d061fc",
+      "repoId": "repo:simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "kind": "CI_CHANGED",
+      "verdict": "UNKNOWN",
+      "before": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy Simclone to GitHub Pages",
+        "runId": 36007630124,
+        "url": "https://github.com/nustanakritwithai/Simclone/actions/runs/36007630124"
+      },
+      "after": {
+        "verdict": "SAT",
+        "conclusion": "success",
+        "name": "Deploy Simclone to GitHub Pages",
+        "runId": 36244731918,
+        "url": "https://github.com/nustanakritwithai/Simclone/actions/runs/36244731918"
+      },
+      "mechanicalEvidence": "SAT",
+      "reason": "Exact-head workflow evidence changed. This verifies CI state only, not project capability semantics."
+    },
+    {
+      "id": "scan:2afd00fa",
+      "repoId": "repo:simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "kind": "EVIDENCE_FILE_CHANGED",
+      "path": "AGENTS.md",
+      "verdict": "UNKNOWN",
+      "before": {
+        "path": "AGENTS.md",
+        "sha": "859f9d971637fe818985fd2160d1797bcb030a63",
+        "status": "present"
+      },
+      "after": {
+        "path": "AGENTS.md",
+        "sha": "ef0bddfda8a65407411dfe7fc9c321e0e007cc19",
+        "status": "present"
+      },
+      "reason": "Tracked evidence file fingerprint changed. Semantic implications require verification."
+    },
+    {
+      "id": "scan:0d6ef05a",
+      "repoId": "repo:simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "kind": "EVIDENCE_FILE_CHANGED",
+      "path": "GAME_PLAN.md",
+      "verdict": "UNKNOWN",
+      "before": {
+        "path": "GAME_PLAN.md",
+        "sha": "0b3b456baf1741eb6b6fca3624f739ff3763586b",
+        "status": "present"
+      },
+      "after": {
+        "path": "GAME_PLAN.md",
+        "sha": "bf89123ee56d7c40e8b42d099a2130e83cb099e5",
+        "status": "present"
+      },
+      "reason": "Tracked evidence file fingerprint changed. Semantic implications require verification."
+    },
+    {
+      "id": "scan:bc41a199",
+      "repoId": "repo:simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "kind": "EVIDENCE_FILE_CHANGED",
+      "path": "README.md",
+      "verdict": "UNKNOWN",
+      "before": {
+        "path": "README.md",
+        "sha": "7fa04020a6984bbd30e665a7662e40904e4d8ad5",
+        "status": "present"
+      },
+      "after": {
+        "path": "README.md",
+        "sha": "e3701f5c0e4d44e5ff930db9683cac5cc3800223",
+        "status": "present"
+      },
+      "reason": "Tracked evidence file fingerprint changed. Semantic implications require verification."
+    },
+    {
+      "id": "scan:052aa823",
+      "repoId": "repo:simclone",
+      "repo": "nustanakritwithai/Simclone",
+      "kind": "EVIDENCE_FILE_CHANGED",
+      "path": "package.json",
+      "verdict": "UNKNOWN",
+      "before": {
+        "path": "package.json",
+        "sha": "8a59c0e912c4dc5d7ace77e3b5f0631bdc10e939",
+        "status": "present"
+      },
+      "after": {
+        "path": "package.json",
+        "sha": "99b864a24c8ca0ee5167b252b69c1cb1c68fe9da",
+        "status": "present"
+      },
+      "reason": "Tracked evidence file fingerprint changed. Semantic implications require verification."
+    }
+  ]
 }
