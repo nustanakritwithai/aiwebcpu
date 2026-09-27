@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "updatedAt": "2026-09-25",
+  "updatedAt": "2026-09-27",
   "policy": {
     "evidenceModel": [
       "SAT",
@@ -13,7 +13,7 @@
   },
   "activeGoal": {
     "id": "pocket-vps-connectivity",
-    "title": "PocketMonster browser ↔ VPS authenticated gameplay",
+    "title": "PocketMonster production browser ↔ VPS authenticated gameplay",
     "status": "BLOCKED",
     "sourceProfile": "project-brain/deep-profiles/pocket-vps-connectivity.json",
     "sourceRunbook": "project-brain/Integrations/PocketMonster-VPS-Connectivity.md"
@@ -21,23 +21,25 @@
   "work": [
     {
       "id": "P0",
-      "title": "Freeze one ingress",
+      "title": "Freeze one backend ingress",
       "status": "READY",
       "dependsOn": [],
-      "objective": "Use one stable HTTPS/WSS public origin for the Pocket browser → VPS path and keep the application listener loopback-only.",
+      "objective": "Preserve the verified frontend roles (Firebase auth/launcher → GitHub Pages game/runtime) while replacing backend raw-IP/ingress drift with one stable HTTPS/WSS origin; keep the application listener loopback-only.",
       "inspect": [
-        "PocketMonster runtime-config.json and CSP/public-origin configuration",
+        "PocketMonster .github/workflows/firebase-hosting-merge.yml, firebase-launcher-entry.mjs, launch-bootstrap.mjs, runtime-config.json and CSP connect-src",
         "VPS reverse-proxy/tunnel/public-url configuration through authenticated private access",
-        "Current public HTTPS and WSS routing"
+        "Current public HTTPS /api/health and WSS /ws/chat routing"
       ],
       "acceptance": [
-        "runtime-config, CSP, Server.PublicUrl and ingress configuration resolve to the same stable origin",
-        "HTTPS /api/health succeeds through that origin",
-        "WSS upgrade succeeds through that origin",
+        "Firebase remains explicitly the auth/launch-ticket launcher and GitHub Pages remains explicitly the game/runtime host unless a separate migration is approved",
+        "apiBaseUrl, webSocketUrl, CSP connect-src, deployment verifier, Server.PublicUrl and ingress configuration resolve to the same stable backend origin",
+        "HTTPS /api/health succeeds through that backend origin",
+        "WSS upgrade succeeds through that backend origin",
         "no second public application port is required"
       ],
       "evidenceRequired": [
-        "exact config/source refs",
+        "exact public config/source refs",
+        "redacted private-ingress configuration conclusion",
         "HTTP status",
         "WSS upgrade result",
         "redacted correlation/timestamp if available"
@@ -45,7 +47,8 @@
       "doNot": [
         "Do not publish private VPS repository names, paths, credentials or machine configuration in public Project Brain.",
         "Do not open another raw VPS application port.",
-        "Do not use a rotating quick-tunnel URL as production runtime-config."
+        "Do not use a rotating quick-tunnel URL as production runtime-config.",
+        "Do not treat the intentional Firebase launcher → GitHub Pages runtime handoff as the backend-ingress defect."
       ]
     },
     {
@@ -138,20 +141,23 @@
       "dependsOn": [
         "P3"
       ],
-      "objective": "Complete one QA-only authenticated browser transaction across Firebase launcher → Pocket → VPS → Pirate gameplay.",
+      "objective": "Complete one QA-only authenticated browser transaction across Firebase launcher → GitHub Pages Pocket runtime → VPS → Pirate gameplay, without treating that proof as general-player admission.",
       "inspect": [
-        "launch ticket",
+        "Firebase launcher authentication",
+        "launch-ticket issue and redeem",
+        "GitHub Pages game handoff",
         "session establishment",
         "REST",
         "WSS",
         "Pirate state/vitals/operation"
       ],
       "acceptance": [
-        "QA login and launch-ticket issue/redeem SAT",
+        "approved QA login and launch-ticket issue/redeem SAT",
         "authenticated WSS SAT",
         "Pirate state GET SAT",
         "vitals input POST SAT",
-        "one idempotent Pirate operation SAT"
+        "one idempotent Pirate operation SAT",
+        "result is labeled QA-authenticated scope and does not claim general-player admission"
       ],
       "evidenceRequired": [
         "redacted status/error codes",
@@ -159,7 +165,8 @@
         "browser E2E result"
       ],
       "doNot": [
-        "Do not enable broad production player/economy writes only to diagnose connectivity."
+        "Do not enable broad production player/economy writes only to diagnose connectivity.",
+        "Do not infer general-player multiplayer availability from the one-user QA allowlist."
       ]
     },
     {
@@ -169,15 +176,16 @@
       "dependsOn": [
         "P4"
       ],
-      "objective": "Update Project Brain only after P0-P4 have deterministic SAT evidence.",
+      "objective": "Promote only scopes proven by P0-P4. Preserve general-player admission as VIOL/BLOCKED while the rollout remains QA-scoped.",
       "inspect": [
         "all prior work items",
         "canonical integration node",
         "temporal checkpoint"
       ],
       "acceptance": [
-        "P0-P4 are SAT with evidence",
-        "live-host integration status is updated from BLOCKED/UNKNOWN",
+        "P0-P4 are SAT with evidence for the QA-authenticated path",
+        "QA-authenticated live-host integration status is updated only for that proven scope",
+        "general-player admission remains VIOL/BLOCKED unless a separate admission rollout has deterministic evidence",
         "new checkpoint and tests preserve UNKNOWN ≠ PASS"
       ],
       "evidenceRequired": [
@@ -186,7 +194,8 @@
         "new temporal checkpoint"
       ],
       "doNot": [
-        "Do not promote from documentation-only or health-only proof."
+        "Do not promote from documentation-only or health-only proof.",
+        "Do not collapse QA-authenticated SAT and general-player admission into one verdict."
       ]
     }
   ]
