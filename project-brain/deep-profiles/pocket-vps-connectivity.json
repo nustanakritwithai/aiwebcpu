@@ -3,10 +3,53 @@
   "version": "0.6.9",
   "status": "BLOCKED",
   "scope": "PocketMonster browser ↔ VPS gameplay integration",
-  "capturedAt": "2026-09-25",
+  "capturedAt": "2026-09-27",
   "privacy": "Private VPS repository names, paths, SHAs, credentials and machine configuration are intentionally not persisted in this public Project Brain artifact.",
-  "summary": "The remaining problem is not the Pocket × Pirate game-domain merge. The public client release is merged and deployed, but the browser-to-VPS runtime chain still lacks one canonical, verified end-to-end contract from public ingress through authenticated Pirate gameplay operations.",
+  "summary": "Pocket × Pirate game-domain integration is merged, and the production frontend topology is now source-verified: Firebase Hosting is the authentication/launch-ticket launcher, GitHub Pages serves the game/runtime, and the runtime connects onward to the configured backend. The remaining browser-to-VPS chain is still BLOCKED because the backend ingress is raw-IP/non-canonical, server/worker parity is incomplete, general-player admission remains QA-scoped, and live authenticated browser gameplay has not been proven.",
   "findings": [
+    {
+      "id": "general-player-admission",
+      "verdict": "VIOL",
+      "layer": "Production admission scope",
+      "fact": "Available rollout evidence supports a QA-scoped production path, including a single approved QA identity / one-user launch-ticket allowlist. That does not satisfy a general-player online admission goal.",
+      "publicEvidence": [
+        {
+          "repo": "nustanakritwithai/PocketMonster",
+          "path": "docs/browser-agent-production-login-handoff.md",
+          "sha": "5c914c50ea9210bcecc75e98080a193ddd97b1fe"
+        },
+        {
+          "repo": "nustanakritwithai/PocketMonster",
+          "path": "tests/production-launch-workflows.mjs",
+          "sha": "8ede5362288788d69dec1ad7c4174e72aab8c98f"
+        }
+      ],
+      "resolution": "Use the approved QA identity for P4 E2E. If the product goal is general-player multiplayer, perform a separate explicit admission rollout and verify that scope before marking it SAT."
+    },
+    {
+      "id": "production-host-topology",
+      "verdict": "SAT",
+      "layer": "Hosting/runtime topology",
+      "fact": "Current source-level deployment contracts show Firebase Hosting as the authentication and launch-ticket launcher, while the game/runtime is served from GitHub Pages. The launcher hands an authenticated launch to the game origin, and the game runtime then uses the configured API/WSS backend.",
+      "publicEvidence": [
+        {
+          "repo": "nustanakritwithai/PocketMonster",
+          "path": ".github/workflows/firebase-hosting-merge.yml",
+          "sha": "ab5b4e12abbff770bce6d30219f82baf3aac0fbb"
+        },
+        {
+          "repo": "nustanakritwithai/PocketMonster",
+          "path": "firebase-launcher-entry.mjs",
+          "sha": "ba7e66ceaffbea3ed819f03dc9e2219f24e41571"
+        },
+        {
+          "repo": "nustanakritwithai/PocketMonster",
+          "path": "launch-bootstrap.mjs",
+          "sha": "7d3931110e9e151e2a1c0fd8c9f1259e7a1b0d60"
+        }
+      ],
+      "resolution": "Treat Firebase-launcher and Pages-runtime as intentional frontend roles unless a separate frontend consolidation is approved. P0 must freeze the backend API/WSS ingress rather than merely collapse frontend hosts."
+    },
     {
       "id": "client-server-contract-parity",
       "verdict": "VIOL",
@@ -44,15 +87,20 @@
       "id": "ingress-source-of-truth",
       "verdict": "VIOL",
       "layer": "HTTPS/WSS ingress",
-      "fact": "The public client currently pins a raw-IP HTTPS/WSS origin. Operational server material supports more than one ingress strategy, so the browser and VPS do not have one stable ingress source of truth.",
+      "fact": "The production runtime and deployment contract still pin a raw-IP HTTPS/WSS backend origin. Firebase and GitHub Pages have intentional frontend roles, but the backend path still lacks one stable named ingress source of truth.",
       "publicEvidence": [
         {
           "repo": "nustanakritwithai/PocketMonster",
           "path": "runtime-config.json",
           "sha": "9836a8b69b45637f5b4c87a28fce0c5684615bf5"
+        },
+        {
+          "repo": "nustanakritwithai/PocketMonster",
+          "path": ".github/workflows/firebase-hosting-merge.yml",
+          "sha": "ab5b4e12abbff770bce6d30219f82baf3aac0fbb"
         }
       ],
-      "resolution": "Choose one stable HTTPS origin and use it everywhere. Preferred target: a named HTTPS tunnel/hostname that forwards only to the loopback app listener; do not use a rotating quick-tunnel URL or a second direct public app port."
+      "resolution": "Choose one stable named HTTPS backend origin and use it for apiBaseUrl, webSocketUrl, CSP connect-src, deployment verification and private ingress configuration. Do not treat the Firebase → Pages frontend handoff itself as the ingress defect."
     },
     {
       "id": "runtime-worker-binding",
@@ -92,18 +140,18 @@
     }
   ],
   "targetArchitecture": {
-    "publicOrigin": "One stable HTTPS hostname/tunnel origin",
+    "publicOrigin": "One stable backend HTTPS/WSS hostname/tunnel origin",
     "edge": "TLS termination + CORS + WSS",
     "app": "VPS application bound to loopback only",
     "worker": "Reviewed Pirate central worker pinned by source SHA + artifact SHA256",
-    "browser": "Firebase launcher → launch ticket → Pocket Pages → authenticated REST/WSS",
+    "browser": "Firebase launcher (auth + launch-ticket only) → authenticated handoff → GitHub Pages game/runtime → stable backend REST/WSS origin",
     "authority": "Pocket parent = session/validation/transport; Pirate/VPS server = canonical gameplay mutation"
   },
   "fixPlan": [
     {
       "phase": "P0",
-      "title": "Freeze one ingress",
-      "gate": "One stable HTTPS/WSS origin; runtime-config, CSP, server PublicUrl and reverse proxy/tunnel agree exactly."
+      "title": "Freeze one backend ingress",
+      "gate": "Firebase launcher and Pages runtime roles are explicit; apiBaseUrl/webSocketUrl, CSP, deployment verifier, Server.PublicUrl and reverse proxy/tunnel agree on one stable backend HTTPS/WSS origin."
     },
     {
       "phase": "P1",
@@ -123,12 +171,12 @@
     {
       "phase": "P4",
       "title": "Run real browser QA",
-      "gate": "Firebase QA login → launch-ticket → Pages → session → REST/WSS → Pirate state GET → vitals input → one idempotent gameplay operation SAT."
+      "gate": "One approved QA identity completes Firebase launcher → launch-ticket → Pages → session → REST/WSS → Pirate state GET → vitals input → one idempotent gameplay operation SAT; this does not by itself prove general-player admission."
     },
     {
       "phase": "P5",
       "title": "Promote authority",
-      "gate": "Only after P0-P4 SAT may Project Brain change live-host scope from UNKNOWN/BLOCKED to SAT."
+      "gate": "Only proven scopes may be promoted. QA-authenticated live-host SAT must not overwrite general-player-admission VIOL/BLOCKED while admission remains QA-scoped."
     }
   ],
   "doNotDo": [
@@ -136,6 +184,8 @@
     "Do not use a rotating quick-tunnel URL as production runtime-config.",
     "Do not merge client success and backend health into one PASS.",
     "Do not enable broad player/economy writes merely to diagnose connectivity.",
-    "Do not persist private VPS repository metadata or credentials in public Project Brain."
+    "Do not persist private VPS repository metadata or credentials in public Project Brain.",
+    "Do not treat the intentional Firebase launcher → GitHub Pages runtime handoff as the backend-ingress defect.",
+    "Do not claim general-player multiplayer SAT from a one-user QA launch-ticket proof."
   ]
 }
