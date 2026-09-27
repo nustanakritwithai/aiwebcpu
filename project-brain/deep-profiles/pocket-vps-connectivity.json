@@ -6,6 +6,22 @@
   "capturedAt": "2026-09-27",
   "privacy": "Private VPS repository names, paths, SHAs, credentials and machine configuration are intentionally not persisted in this public Project Brain artifact.",
   "summary": "Pocket × Pirate game-domain integration is merged, and the production frontend topology is now source-verified: Firebase Hosting is the authentication/launch-ticket launcher, GitHub Pages serves the game/runtime, and the runtime connects onward to the configured backend. The remaining browser-to-VPS chain is still BLOCKED because the backend ingress is raw-IP/non-canonical, server/worker parity is incomplete, general-player admission remains QA-scoped, and live authenticated browser gameplay has not been proven.",
+  "runtimeEvidenceRefresh": {
+    "observedAt": "2026-09-27T17:14:00+07:00",
+    "vantagePoint": "VPS automation against public ingress, not an external browser",
+    "health": "SAT: HTTP 200 ready=true",
+    "version": "SAT labels only: server/game 8.4.0, API 1.1; not contract parity",
+    "corsPreflight": "SAT: HTTP 204 for Pirate state OPTIONS with Pages Origin and authorization request header",
+    "wssUpgrade": "SAT: Open, unauthenticated; no gameplay messages verified",
+    "pirateStateWithoutSession": "HTTP 401; authenticated handler and worker readiness UNKNOWN",
+    "publicMergedPullRequests": ["https://github.com/nustanakritwithai/PocketMonster/pull/632", "https://github.com/nustanakritwithai/Pirate-fruit-/pull/168"],
+    "clientRelease": "8.4.0-github.f7f243d21906d9fa26127529313b441b4b938ce0",
+    "privateReviewConclusion": "Required server candidate remains unmerged and its worker source pin differs from the merged client line; retained local edits require reconciliation.",
+    "unknown": ["Authenticated launch/session and WSS", "Worker readiness/hash", "Monster throw/combat/HP round-trip", "Current general-player admission configuration"],
+    "constraints": ["Browser testing excluded by owner", "Heavy builds off VPS", "No runtime change or deployment performed"],
+    "progressPolicy": "Earlier informal 33 percent gate count is not measured implementation progress.",
+    "reproduce": "Use authorized private access to query configured health/version, send Pages-origin OPTIONS and attempt unauthenticated WSS upgrade; dispose socket and record statuses only. Compare public PRs and private server recipe separately."
+  },
   "findings": [
     {
       "id": "general-player-admission",

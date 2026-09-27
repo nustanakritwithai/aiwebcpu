@@ -18,6 +18,15 @@
     "sourceProfile": "project-brain/deep-profiles/pocket-vps-connectivity.json",
     "sourceRunbook": "project-brain/Integrations/PocketMonster-VPS-Connectivity.md"
   },
+  "handoffRefresh": {
+    "observedAt": "2026-09-27T17:14:00+07:00",
+    "source": "project-brain/deep-profiles/pocket-vps-connectivity.json#runtimeEvidenceRefresh",
+    "nextAction": "Reconcile retained local edits against merged Pocket PR632 and Pirate PR168 and outstanding private server candidate before editing or promotion.",
+    "evidence": "VPS-side public HTTPS health/version, CORS preflight and unauthenticated WSS upgrade passed only in that scope.",
+    "blockers": ["Server candidate unpromoted", "Worker source pin differs", "Authenticated monster throw/combat/HP unverified"],
+    "constraints": ["Preserve local edits", "Heavy builds off VPS", "Browser testing excluded; P4 remains blocked"],
+    "phasePolicy": "P0-P5 gates unchanged; no phase completion inferred."
+  },
   "work": [
     {
       "id": "P0",
