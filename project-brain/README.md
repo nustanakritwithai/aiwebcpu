@@ -285,6 +285,20 @@ Target fix sequence is P0 one ingress → P1 canonical server parity → P2 pinn
 
 Private VPS repository metadata is intentionally not persisted in this public Project Brain dataset.
 
+## Production topology evidence refresh — 2026-09-27
+
+PocketMonster production host roles are now source-verified for agent handoff:
+
+```text
+Firebase Hosting = authentication + launch-ticket launcher
+        ↓
+GitHub Pages = game/runtime
+        ↓
+configured backend HTTPS/WSS = still the connectivity boundary
+```
+
+This refresh does **not** mark live connectivity complete. One stable backend ingress remains VIOL, real browser TLS/WSS + authenticated Pirate gameplay remain UNKNOWN, and available production admission evidence is QA-scoped rather than general-player. The first actionable queue item remains **P0 — Freeze one backend ingress**.
+
 ## Agent Operating Layer V0.7
 
 External agents now have a deterministic entry point instead of inferring the next task from prose.
