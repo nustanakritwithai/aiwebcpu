@@ -19,6 +19,24 @@ real browser authenticated gameplay SAT
 
 ## Root-cause map
 
+### Runtime refresh: 27 September 2026, 17:14 +07:00
+
+The [machine profile](../deep-profiles/pocket-vps-connectivity.json), under
+`runtimeEvidenceRefresh`, records VPS-side public HTTPS health/version,
+Pages-origin CORS preflight and unauthenticated WSS upgrade as scoped SAT.
+External-browser TLS/WSS, authenticated gameplay and worker readiness remain
+UNKNOWN. State GET without a session returned 401, not proof of gameplay readiness.
+
+Pocket PR632 and Pirate PR168 are merged. The required private server candidate
+remains unmerged and its worker pin differs from the merged client line. Reconcile
+retained local edits against these sources before resuming the old handoff.
+No P0-P5 phase is promoted. Current admission configuration was not re-read;
+the QA-only finding below is prior rollout evidence, not a fresh runtime audit.
+
+Browser testing is excluded by the owner for this task, so P4 remains blocked.
+Heavy builds must use off-VPS CI. The earlier informal 33 percent gate count is
+not measured implementation progress. No runtime changes or deployment occurred.
+
 | Layer | Verdict | Diagnosis |
 |---|---|---|
 | Public client release | SAT | Pocket/Pirate merged release and static deployment are already proven. |
