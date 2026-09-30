@@ -41,7 +41,8 @@ export async function loadVerificationReport(id){
   return JSON.parse(await readFile(url,'utf8'));
 }
 
-export function nodeById(graph,id){
+export function nodeById(graph,id,options){
+  graph=queryGraph(graph,options);
   return graph.nodes.find(n=>n.id===id)??null;
 }
 
@@ -72,6 +73,8 @@ export function materializeAt(graph,item,checkpointId){
 }
 
 export function graphAtCheckpoint(graph,checkpointId){
+  if(graph.temporal?.selectedCheckpoint&&graph.temporal.selectedCheckpoint!==checkpointId)
+    throw new Error('Cannot change checkpoint on a materialized graph; load the canonical graph first');
   const checkpoint=checkpointById(graph,checkpointId);
   if(!checkpoint)throw new Error('Unknown Project Brain checkpoint: '+checkpointId);
   const nodes=graph.nodes
@@ -92,6 +95,21 @@ export function graphAtCheckpoint(graph,checkpointId){
   };
 }
 
+// Query defaults follow accepted knowledge, not an assertion of live source freshness.
+// Already-materialized snapshots retain their selection; legacy non-temporal graphs
+// remain supported. Keep loadGraph() as the raw canonical loader for history tools.
+export function queryGraph(graph,{at}={}){
+  const selected=graph.temporal?.selectedCheckpoint;
+  const checkpointId=at??selected??graph.temporal?.defaultCheckpoint;
+  if(checkpointId==null){
+    if(graph.temporal)throw new Error('Temporal graph has no default checkpoint');
+    return graph;
+  }
+  if(!checkpointById(graph,checkpointId))throw new Error('Unknown Project Brain checkpoint: '+checkpointId);
+  if(selected===checkpointId)return graph;
+  return graphAtCheckpoint(graph,checkpointId);
+}
+
 export function snapshotSummary(graph,checkpointId){
   const snap=graphAtCheckpoint(graph,checkpointId);
   const checkpoint=checkpointById(graph,checkpointId);
@@ -104,7 +122,8 @@ export function snapshotSummary(graph,checkpointId){
   };
 }
 
-export function findNodes(graph,query,{type=null}={}){
+export function findNodes(graph,query,{type=null,at}={}){
+  graph=queryGraph(graph,{at});
   const q=norm(query);
   return graph.nodes.filter(n=>(!type||n.type===type)&&(
     norm(n.id).includes(q)||
@@ -113,19 +132,23 @@ export function findNodes(graph,query,{type=null}={}){
   ));
 }
 
-export function outgoing(graph,id,type=null){
+export function outgoing(graph,id,type=null,options){
+  graph=queryGraph(graph,options);
   return graph.edges.filter(e=>e.from===id&&(!type||e.type===type));
 }
 
-export function incoming(graph,id,type=null){
+export function incoming(graph,id,type=null,options){
+  graph=queryGraph(graph,options);
   return graph.edges.filter(e=>e.to===id&&(!type||e.type===type));
 }
 
-export function evidenceFor(graph,id){
+export function evidenceFor(graph,id,options){
+  graph=queryGraph(graph,options);
   return outgoing(graph,id,'VERIFIED_BY').map(e=>nodeById(graph,e.to)).filter(Boolean);
 }
 
-export function providersFor(graph,capabilityQuery){
+export function providersFor(graph,capabilityQuery,options){
+  graph=queryGraph(graph,options);
   const caps=findNodes(graph,capabilityQuery,{type:'CAPABILITY'});
   const rows=[];
   for(const cap of caps){
@@ -141,7 +164,8 @@ export function providersFor(graph,capabilityQuery){
   return rows;
 }
 
-export function inspectGoal(graph,goalQuery){
+export function inspectGoal(graph,goalQuery,options){
+  graph=queryGraph(graph,options);
   const goals=findNodes(graph,goalQuery,{type:'GOAL'});
   return goals.map(goal=>{
     const needs=outgoing(graph,goal.id,'NEEDS').map(e=>nodeById(graph,e.to)).filter(Boolean);
@@ -156,7 +180,8 @@ export function inspectGoal(graph,goalQuery){
   });
 }
 
-export function inspectIntegration(graph,integrationQuery){
+export function inspectIntegration(graph,integrationQuery,options){
+  graph=queryGraph(graph,options);
   const integrations=findNodes(graph,integrationQuery,{type:'INTEGRATION'});
   return integrations.map(integration=>({
     integration,
@@ -169,7 +194,8 @@ export function inspectIntegration(graph,integrationQuery){
   }));
 }
 
-export function capabilitySummary(graph,query){
+export function capabilitySummary(graph,query,options){
+  graph=queryGraph(graph,options);
   return findNodes(graph,query,{type:'CAPABILITY'}).map(capability=>({
     capability,
     providers:incoming(graph,capability.id,'PROVIDES').map(e=>nodeById(graph,e.from)).filter(Boolean),
@@ -178,7 +204,8 @@ export function capabilitySummary(graph,query){
   }));
 }
 
-export function documentedCapabilitySummary(graph,query){
+export function documentedCapabilitySummary(graph,query,options){
+  graph=queryGraph(graph,options);
   return findNodes(graph,query,{type:'CAPABILITY_CANDIDATE'}).map(capability=>({
     capability,
     repositories:incoming(graph,capability.id,'DOCUMENTS').map(e=>nodeById(graph,e.from)).filter(Boolean),
@@ -200,8 +227,29 @@ function compact(value){
   return value;
 }
 
+export function parseQueryArguments(argv){
+  const positional=[];
+  let at;
+  let literal=false;
+  for(let i=0;i<argv.length;i++){
+    const arg=argv[i];
+    if(literal){positional.push(arg);continue;}
+    if(arg==='--'){literal=true;continue;}
+    if(arg==='--at'||arg.startsWith('--at=')){
+      if(at!==undefined)throw new Error('Duplicate --at checkpoint');
+      at=arg==='--at'?argv[++i]:arg.slice(5);
+      if(!at||at.startsWith('--'))throw new Error('Missing --at checkpoint');
+    }else if(arg.startsWith('--'))throw new Error('Unknown option: '+arg);
+    else positional.push(arg);
+  }
+  const [command,...rest]=positional;
+  if(at!==undefined&&!['capability','documented','providers','goal','integration','node'].includes(command))
+    throw new Error('--at is only supported for graph queries; snapshot takes a checkpoint argument');
+  return {command,rest,at};
+}
+
 async function main(argv=process.argv.slice(2)){
-  const [command,...rest]=argv;
+  const {command,rest,at}=parseQueryArguments(argv);
 
   if(command==='work'){
     const queue=await loadAgentWorkQueue();
@@ -223,7 +271,8 @@ async function main(argv=process.argv.slice(2)){
     return;
   }
 
-  const graph=await loadGraph();
+  const canonicalGraph=await loadGraph();
+  const graph=['checkpoints','snapshot'].includes(command)?canonicalGraph:queryGraph(canonicalGraph,{at});
 
   if(command==='checkpoints'){
     console.log(JSON.stringify(compact(graph.temporal?.checkpoints??[]),null,2));
@@ -232,7 +281,7 @@ async function main(argv=process.argv.slice(2)){
 
   const query=rest.join(' ').trim();
   if(!command||!query){
-    console.error('Usage: node project-brain/query.mjs <capability|documented|providers|goal|integration|node|snapshot|verification> <query-or-id>\n       node project-brain/query.mjs work [work-item-id]\n       node project-brain/query.mjs checkpoints');
+    console.error('Usage: node project-brain/query.mjs <capability|documented|providers|goal|integration|node> <query> [--at <checkpoint-id>]\n       node project-brain/query.mjs snapshot <checkpoint-id>\n       node project-brain/query.mjs verification <contract-id>\n       node project-brain/query.mjs work [work-item-id]\n       node project-brain/query.mjs checkpoints');
     process.exitCode=2;
     return;
   }
