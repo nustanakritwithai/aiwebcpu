@@ -40,8 +40,8 @@ test('time-travel integration exposes confirmed blocker and VIOL evidence',()=>{
   assert.ok(blocker.evidence.some(e=>e.verdict==='VIOL'));
 });
 
-test('capability summary includes reuse candidate goal',()=>{
-  const [row]=capabilitySummary(graph,'replay');
+test('historical capability summary includes reuse candidate goal',()=>{
+  const [row]=capabilitySummary(graph,'replay',{at:'pb-2026-09-24-bootstrap'});
   assert.ok(row);
   assert.ok(row.reuseCandidates.some(n=>n.id==='goal:simclone-time-travel'));
 });
@@ -114,3 +114,4 @@ test('documented capability query returns repository and documentation evidence'
   assert.ok(row.repositories.some(x=>x.id==='repo:testge'));
   assert.ok(row.evidence.some(x=>x.evidenceStatus==='DOCUMENTED'&&x.verdict==='UNKNOWN'));
 });
+

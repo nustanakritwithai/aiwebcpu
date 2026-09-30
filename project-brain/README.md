@@ -91,6 +91,41 @@ node project-brain/query.mjs snapshot pb-2026-09-24-compat
 
 ผลลัพธ์เป็น JSON เพื่อให้ Agent ใช้งานต่อได้โดยไม่ต้อง scrape หน้าเว็บ
 
+### Current and historical agent queries
+
+Ordinary graph queries (`capability`, `documented`, `providers`, `goal`,
+`integration`, `node`) now select `temporal.defaultCheckpoint` by default.
+Expired nodes/edges are excluded, edges to absent endpoints are removed, and
+properties are materialized from the selected temporal state. JSON result shapes
+remain unchanged.
+
+```bash
+node project-brain/query.mjs capability replay
+node project-brain/query.mjs capability replay --at pb-2026-09-24-bootstrap
+node project-brain/query.mjs goal "Simclone ย้อนเวลาได้" --at pb-2026-09-24-compat
+```
+
+`--at <checkpoint-id>` (or `--at=<checkpoint-id>`) is explicit history selection.
+Unknown/missing checkpoints and duplicate options fail instead of falling back to
+current data. `snapshot <checkpoint-id>` and `checkpoints` keep their existing
+interfaces. `work` and `verification` still read their separate checked-in records;
+they do not support `--at` and are not made fresh by a graph query.
+
+**Current means latest accepted knowledge selected by the graph's default, not
+live repository HEAD or newly reverified evidence.** This change does not update
+source SHAs, refresh scanner state, change evidence scope, or promote SAT/REUSE.
+Historical verdicts retain their original meaning; UNKNOWN remains UNKNOWN.
+Records without intervals retain the existing temporal semantics: active across
+checkpoints, not newly dated or reverified.
+
+For module consumers, `loadGraph()` still loads the complete canonical graph.
+Query helpers select the default automatically and accept `{at: checkpointId}`
+(`findNodes` accepts it alongside `type`; `incoming`/`outgoing` take it after `type`).
+A graph already returned by `graphAtCheckpoint()` retains its selected checkpoint.
+To select a different checkpoint, use the original canonical graph; a filtered
+snapshot cannot reconstruct records that have been removed.
+
+
 ## Temporal Graph V0.3
 
 อ่านรายละเอียดที่ [Temporal-Graph.md](Temporal-Graph.md)
@@ -316,3 +351,4 @@ node project-brain/query.mjs work P0
 - completion requires deterministic acceptance evidence
 
 Current active sequence for Pocket browser ↔ VPS is `P0 → P1 → P2 → P3 → P4 → P5`, with **P0 — Freeze one ingress** READY.
+

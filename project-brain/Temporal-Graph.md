@@ -76,9 +76,15 @@ URL รองรับ `?at=<checkpoint-id>` เพื่อ share historical vi
 
 ```bash
 node project-brain/query.mjs checkpoints
+node project-brain/query.mjs capability replay
+node project-brain/query.mjs capability replay --at pb-2026-09-24-bootstrap
 node project-brain/query.mjs snapshot pb-2026-09-24-bootstrap
 node project-brain/query.mjs snapshot pb-2026-09-24-compat
 ```
+
+Graph queries default to `temporal.defaultCheckpoint`; `--at` selects explicit history.
+Selection describes accepted knowledge, not live HEAD or evidence freshness.
+See [Query Layer](README.md#query-layer) for the CLI and module compatibility rules.
 
 ## Verification
 
@@ -103,3 +109,4 @@ Temporal Graph แสดงผ่าน Project Brain Web Viewer เท่าน
 - ไม่มี local vault
 - ไม่มี device sync
 - มือถือและ desktop ใช้ Web Viewer ตัวเดียวกัน
+
